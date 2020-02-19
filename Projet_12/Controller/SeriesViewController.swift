@@ -9,21 +9,19 @@
 import UIKit
 
 class SeriesViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
 }
 
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Genres.genres.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SerieCell", for: indexPath)
-        SeriesService(session: URLSession(configuration: .default))
-            .getSeriesList(genre: "18") { (success, seriesList) in
-            
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SerieCell", for: indexPath) as? SerieTableViewCell else {
+            return UITableViewCell()
         }
+        cell.configure(genreInd: indexPath.row)
         return cell
     }
-    
-    
 }

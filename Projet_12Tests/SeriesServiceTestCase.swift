@@ -10,7 +10,7 @@
 import XCTest
 
 class SeriesServiceTestCase: XCTestCase {
-    let genre = "Drama"
+    let genre = 18
     
     //=====================
     // Test function getSeriesList

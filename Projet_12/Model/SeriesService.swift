@@ -22,17 +22,18 @@ class SeriesService {
     }
     
     // Function which creates an Url with parameters
-    private func seriesListUrl(genre: String) -> URL? {
+    private func seriesListUrl(genre: Int) -> URL? {
+        let stringGenre = String(genre)
         var seriesURL = URLComponents(string: SeriesService.seriesListURL)
         seriesURL?.queryItems = [URLQueryItem(name: "api_key", value: APIKeys.serieAPIKey),
-                                 URLQueryItem(name: "with_genres", value: genre)]
+                                 URLQueryItem(name: "with_genres", value: stringGenre)]
         
         guard let url = seriesURL?.url else { return nil }
         return url
     }
     
     // Function which gets an objet SeriesList from a response request
-    func getSeriesList(genre: String, callback: @escaping (Bool, SeriesList?) -> Void) {
+    func getSeriesList(genre: Int, callback: @escaping (Bool, SeriesList?) -> Void) {
         guard let url = seriesListUrl(genre: genre) else {
             callback(false, nil)
             return
