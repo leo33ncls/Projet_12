@@ -14,6 +14,7 @@
 		282B446023D627900062C135 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 282B445F23D627900062C135 /* GoogleService-Info.plist */; };
 		282D6BEE23FCD482002A90DA /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D6BED23FCD482002A90DA /* Genres.swift */; };
 		282D6BF023FCDA2C002A90DA /* SerieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D6BEF23FCDA2C002A90DA /* SerieCollectionViewCell.swift */; };
+		282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D6BF123FD8CA6002A90DA /* SerieDetailsViewController.swift */; };
 		28538D1823EB22DF00EE4FC1 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D1723EB22DF00EE4FC1 /* SeriesService.swift */; };
 		28538D1A23F2195B00EE4FC1 /* SeriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D1923F2195B00EE4FC1 /* SeriesList.swift */; };
 		28538D2A23F21D6A00EE4FC1 /* SeriesServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D2923F21D6A00EE4FC1 /* SeriesServiceTestCase.swift */; };
@@ -54,6 +55,7 @@
 		282B445F23D627900062C135 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		282D6BED23FCD482002A90DA /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Genres.swift; path = Projet_12/Model/Genres.swift; sourceTree = SOURCE_ROOT; };
 		282D6BEF23FCDA2C002A90DA /* SerieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieCollectionViewCell.swift; sourceTree = "<group>"; };
+		282D6BF123FD8CA6002A90DA /* SerieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailsViewController.swift; sourceTree = "<group>"; };
 		28538D1723EB22DF00EE4FC1 /* SeriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesService.swift; sourceTree = "<group>"; };
 		28538D1923F2195B00EE4FC1 /* SeriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesList.swift; sourceTree = "<group>"; };
 		28538D1F23F21D0200EE4FC1 /* Projet_12Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Projet_12Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				28E324DA23DFA5E900E1884C /* SignUpViewController.swift */,
 				28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */,
 				28D106B223F23473002C39C8 /* SeriesViewController.swift */,
+				282D6BF123FD8CA6002A90DA /* SerieDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
 				28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */,
 				28538D1823EB22DF00EE4FC1 /* SeriesService.swift in Sources */,

@@ -47,9 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                // Go to page
-                //let vc = self.storyboard?.instantiateViewController(withIdentifier: "")
-                //self.present(vc!, animated: true, completion: nil)
+                /*let emailRef = UsersService.usersDTBRef.child(/*email*/)
+                emailRef.observe(.value) { (snapshot) in
+                    if snapshot.exists() {
+                        // Go to page
+                        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "")
+                        //self.present(vc!, animated: true, completion: nil)
+                    }
+                }*/
             }
         }
     }

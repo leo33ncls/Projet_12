@@ -14,9 +14,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToSignUpInfos", let signUpInfosVC = segue.destination as? SignUpInfosViewController {
+            signUpInfosVC.email = emailTextField.text
+        }
     }
     
     @IBAction func createAccount(_ sender: UIButton) {
@@ -28,9 +30,7 @@ class SignUpViewController: UIViewController {
         }
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil {
-                //
-                // Go to page...
-                //
+                self.performSegue(withIdentifier: "segueToSignUpInfos", sender: nil)
             } else {
                 UIAlertController().showAlert(title: "Error",
                                               message: error?.localizedDescription ?? "Error has occured",

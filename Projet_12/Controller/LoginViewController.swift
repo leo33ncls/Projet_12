@@ -29,9 +29,8 @@ class LoginViewController: UIViewController {
                                               message: error.localizedDescription,
                                               viewController: self)
             } else {
-                // Go to page
-                //let vc = self.storyboard?.instantiateViewController(withIdentifier: "")
-                //self.present(vc!, animated: true, completion: nil)
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+                self.present(vc, animated: true, completion: nil)
             }
         }
     }

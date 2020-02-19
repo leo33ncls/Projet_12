@@ -7,3 +7,23 @@
 //
 
 import Foundation
+import FirebaseDatabase
+
+class UsersService {
+    private static let usersDTBRef = Database.database().reference().child("Users")
+    
+    static func saveUser(user: User) {
+        let userDictionary: NSDictionary = ["Nickname": user.nickname,
+                                            "email": user.email,
+                                            "LastName": user.lastName,
+                                            "FirstName": user.firstName,
+                                            "Phone": user.phone]
+        usersDTBRef.childByAutoId().setValue(userDictionary) { (error, ref) in
+            if error != nil {
+                print(error?.localizedDescription ?? "Error saving user")
+            } else {
+                print("User saved successfully")
+            }
+        }
+    }
+}
