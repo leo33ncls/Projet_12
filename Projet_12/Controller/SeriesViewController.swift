@@ -10,6 +10,27 @@ import UIKit
 
 class SeriesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    let segueIdentifier = "segueToSerieDetails"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let name = NSNotification.Name(rawValue: "CollectionViewSelected")
+        NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
+    }
+    
+    @objc func collectionViewTapped(_ notification: NSNotification) {
+        guard let serie = notification.userInfo?["serie"] as? Result else {
+            return
+        }
+        performSegue(withIdentifier: segueIdentifier, sender: serie)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segueIdentifier == segue.identifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
+            serieDetailsVC.serie = sender as? Result
+        }
+    }
 }
 
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {

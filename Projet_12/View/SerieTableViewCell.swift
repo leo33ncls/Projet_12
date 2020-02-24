@@ -14,6 +14,7 @@ class SerieTableViewCell: UITableViewCell {
     @IBOutlet weak var genreLabel: UILabel!
     
     var serieList: SeriesList?
+    //static var serieSelected: Result?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +40,14 @@ class SerieTableViewCell: UITableViewCell {
                 }
         }
     }
+    
+    /*static func getSerieSelected(callback: (Bool, Result?) -> Void) {
+        guard let serie = serieSelected else {
+            callback(false, nil)
+            return
+        }
+        callback(true, serie)
+    }*/
 }
 
 extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -59,6 +68,10 @@ extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let series = serieList else { return }
-        let serie = series.results[indexPath.row]
+        let serieSelected = series.results[indexPath.row]
+        
+        let serieDict: [String: Result] = ["serie": serieSelected]
+        let notifName = NSNotification.Name("CollectionViewSelected")
+        NotificationCenter.default.post(name: notifName, object: nil, userInfo: serieDict)
     }
 }

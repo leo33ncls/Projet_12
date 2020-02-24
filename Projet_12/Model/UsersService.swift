@@ -10,7 +10,7 @@ import Foundation
 import FirebaseDatabase
 
 class UsersService {
-    private static let usersDTBRef = Database.database().reference().child("Users")
+    static let usersDTBRef = Database.database().reference().child("Users")
     
     static func saveUser(user: User) {
         let userDictionary: NSDictionary = ["Nickname": user.nickname,
