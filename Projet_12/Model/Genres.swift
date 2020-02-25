@@ -26,4 +26,17 @@ class Genres {
                                                      (10767, "Talk"),
                                                      (10768, "War & Politics"),
                                                      (37, "Western")]
+    
+    static func getStringGenre(genreId: [Int]) -> String {
+        var genres = [String]()
+        for index in 0..<genreId.count {
+            for i in 0..<Genres.genres.count {
+                if genreId[index] == Genres.genres[i].id {
+                    genres.append(Genres.genres[i].genre)
+                }
+            }
+        }
+        
+        return genres.joined(separator: ", ")
+    }
 }
