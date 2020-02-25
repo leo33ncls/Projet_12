@@ -10,15 +10,16 @@ import UIKit
 
 class ImageSerieTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var serieImageView: UIImageView!
+    @IBOutlet weak var serieNameLabel: UILabel!
     
+    func configure(serie: Result) {
+        serieNameLabel.text = serie.name
+        SeriesService(session: URLSession(configuration: .default))
+            .getSerieImage(imageUrl: serie.backdropPath) { (data) in
+                if let data = data {
+                    self.serieImageView.image = UIImage(data: data)
+                }
+        }
+    }
 }
