@@ -481,7 +481,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="createAccount:" destination="g7f-4A-xSh" eventType="touchUpInside" id="64F-XT-KBc"/>
+                                    <action selector="saveEmailAndPassword:" destination="g7f-4A-xSh" eventType="touchUpInside" id="lu7-If-LCS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -492,7 +492,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="iiT-DM-2ae" id="bCx-7y-YSZ"/>
                         <outlet property="passwordTextField" destination="y1b-Az-lKT" id="DHZ-qa-GFI"/>
-                        <outlet property="signUpButton" destination="Mia-bE-UM4" id="w6Y-kQ-kEQ"/>
+                        <outlet property="signUpButton" destination="Mia-bE-UM4" id="cx2-qd-8Tp"/>
                         <segue destination="ly7-ZE-3ll" kind="show" identifier="segueToSignUpInfos" id="dHl-lN-fW5"/>
                     </connections>
                 </viewController>

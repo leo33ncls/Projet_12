@@ -18,7 +18,7 @@ class UsersService {
                                             "LastName": user.lastName,
                                             "FirstName": user.firstName,
                                             "Phone": user.phone]
-        usersDTBRef.childByAutoId().setValue(userDictionary) { (error, ref) in
+        usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
             if error != nil {
                 print(error?.localizedDescription ?? "Error saving user")
             } else {

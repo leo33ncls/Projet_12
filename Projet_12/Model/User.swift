@@ -9,13 +9,15 @@
 import Foundation
 
 class User {
+    var id: String
     var nickname: String
     var email: String
     var lastName: String
     var firstName: String
     var phone: String
     
-    init(nickname: String, email: String, lastName: String, firstName: String, phone: String) {
+    init(id: String, nickname: String, email: String, lastName: String, firstName: String, phone: String) {
+        self.id = id
         self.nickname = nickname
         self.email = email
         self.lastName = lastName

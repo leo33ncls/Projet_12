@@ -15,14 +15,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBAction func dismiss(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func loginAction(_ sender: UIButton) {
-        guard let email = emailTextField.text, let password = passwordTextField.text,
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text,
             email != "", password != "" else {
                 UIAlertController().showAlert(title: "Warning",
                                               message: "Please enter your email and password",
                                               viewController: self)
                 return
         }
+        
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 UIAlertController().showAlert(title: "Error",

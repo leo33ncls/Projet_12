@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignUpInfosViewController: UIViewController {
 
@@ -15,9 +17,11 @@ class SignUpInfosViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     var email: String?
+    var password: String?
    
     @IBAction func saveInformations(_ sender: UIButton) {
         guard let userEmail = email,
+            let userPassword = password,
             let nickname = nicknameTextField.text, nickname != "",
             let lastName = lastNameTextField.text, lastName != "",
             let firstName = firstNameTextField.text, firstName != "",
@@ -25,10 +29,21 @@ class SignUpInfosViewController: UIViewController {
                 UIAlertController().showAlert(title: "Attention !", message: "Informations manquantes !", viewController: self)
                 return
         }
-        let user = User(nickname: nickname, email: userEmail, lastName: lastName,
-                        firstName: firstName, phone: phone)
-        UsersService.saveUser(user: user)
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
-        self.present(vc, animated: true, completion: nil)
+        
+        Auth.auth().createUser(withEmail: userEmail, password: userPassword) { (user, error) in
+            if let error = error {
+                UIAlertController().showAlert(title: "Error",
+                                              message: error.localizedDescription,
+                                              viewController: self)
+            } else {
+                guard let userId = user?.user.uid else { return }
+                let user = User(id: userId, nickname: nickname, email: userEmail, lastName: lastName,
+                                firstName: firstName, phone: phone)
+                UsersService.saveUser(user: user)
+                
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
     }
 }

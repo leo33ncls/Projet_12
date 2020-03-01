@@ -47,12 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                let emailRef = UsersService.usersDTBRef.child((Auth.auth().currentUser?.email)!)
-                emailRef.observe(.value) { (snapshot) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let rootVC = self.window?.rootViewController,
+                    let id = Auth.auth().currentUser?.uid else { return }
+                
+                let ref = UsersService.usersDTBRef.child(id)
+                ref.observe(.value) { (snapshot) in
                     if snapshot.exists() {
-                        // Go to page
-                        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "")
-                        //self.present(vc!, animated: true, completion: nil)
+                        guard let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                            as? UITabBarController else { return }
+                        rootVC.present(vc, animated: true, completion: nil)
+                    } else {
+                        guard let vc = storyboard.instantiateViewController(withIdentifier: "NicknameVC")
+                            as? NickNameViewController else { return }
+                        rootVC.present(vc, animated: true, completion: nil)
                     }
                 }
             }

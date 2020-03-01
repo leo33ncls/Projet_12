@@ -7,24 +7,30 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class NickNameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var nicknameTextField: UITextField!
+   
+    @IBAction func saveAccount(_ sender: UIButton) {
+        guard let currentUser = Auth.auth().currentUser,
+            let nickname = nicknameTextField.text, nickname != "",
+            let email = currentUser.email,
+            let name = currentUser.displayName,
+            let phone = currentUser.phoneNumber else {
+                print(Auth.auth().currentUser?.uid)
+                print(Auth.auth().currentUser?.email)
+                print(Auth.auth().currentUser?.displayName)
+                print(Auth.auth().currentUser?.phoneNumber)
+                print("Saving Error")
+            return
+        }
+        let user = User(id: currentUser.uid, nickname: nickname, email: email,
+                        lastName: name, firstName: name, phone: phone)
+        UsersService.saveUser(user: user)
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+        self.present(vc, animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
