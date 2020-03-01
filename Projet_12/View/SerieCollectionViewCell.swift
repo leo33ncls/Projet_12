@@ -13,6 +13,7 @@ class SerieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var serieNameLabel: UILabel!
     
     func configure(serie: Result) {
+        serieImageView.image = nil
         serieNameLabel.text = serie.name
         
         SeriesService(session: URLSession(configuration: .default))

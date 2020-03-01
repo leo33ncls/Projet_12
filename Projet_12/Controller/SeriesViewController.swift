@@ -43,6 +43,15 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(genreInd: indexPath.row)
+        /*cell.callback = { (success, serie) in
+        }
+        cell.serieClickListener = self*/
         return cell
     }
 }
+
+/*extension SeriesViewController: SerieClickListener {
+    func onClick(serie: Result) {
+        
+    }
+}*/

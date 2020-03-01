@@ -8,13 +8,18 @@
 
 import UIKit
 
+/*protocol SerieClickListener {
+    func onClick(serie: Result)
+}*/
+
 class SerieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var genreLabel: UILabel!
     
     var serieList: SeriesList?
-    //static var serieSelected: Result?
+    //var callback: ((Bool, Result) -> Void)?
+    //var serieClickListener: SerieClickListener?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,14 +45,6 @@ class SerieTableViewCell: UITableViewCell {
                 }
         }
     }
-    
-    /*static func getSerieSelected(callback: (Bool, Result?) -> Void) {
-        guard let serie = serieSelected else {
-            callback(false, nil)
-            return
-        }
-        callback(true, serie)
-    }*/
 }
 
 extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -69,6 +66,13 @@ extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let series = serieList else { return }
         let serieSelected = series.results[indexPath.row]
+        /*if let callback = self.callback {
+            callback(true, serieSelected)
+        }
+        
+        if let listener = serieClickListener {
+            listener.onClick(serie: serieSelected)
+        }*/
         
         let serieDict: [String: Result] = ["serie": serieSelected]
         let notifName = NSNotification.Name("CollectionViewSelected")
