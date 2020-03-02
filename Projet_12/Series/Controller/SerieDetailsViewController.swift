@@ -13,6 +13,7 @@ class SerieDetailsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         registerCell()
         tableView.reloadData()
     }
@@ -38,6 +39,7 @@ class SerieDetailsViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageSerieCell") as? ImageSerieTableViewCell else {
             return UITableViewCell()
         }
+        cell.setUpShadow(width: view.bounds.width)
         cell.configure(serie: currentSerie)
         return cell
     }

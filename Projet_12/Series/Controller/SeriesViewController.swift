@@ -19,6 +19,11 @@ class SeriesViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     @objc func collectionViewTapped(_ notification: NSNotification) {
         guard let serie = notification.userInfo?["serie"] as? Result else {
             return

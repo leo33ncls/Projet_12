@@ -22,4 +22,11 @@ class ImageSerieTableViewCell: UITableViewCell {
                 }
         }
     }
+    
+    func setUpShadow(width: CGFloat) {
+        serieImageView.layer.addSublayer(CustomShadowLayer(view: serieImageView,
+                                                           shadowColor: UIColor.customGrey,
+                                                           shadowWidth: width,
+                                                           shadowRadius: serieNameLabel.bounds.height + 20))
+    }
 }

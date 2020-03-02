@@ -19,6 +19,7 @@ class EvaluationTableViewCell: UITableViewCell {
     }
     
     func configure(serie: Result) {
+        self.selectionStyle = .none
         if serie.voteAverage >= 7 {
             evaluationPressLabel.textColor = UIColor.green
         } else if serie.voteAverage > 5 {

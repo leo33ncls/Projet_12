@@ -22,6 +22,7 @@ class InformationSerieTableViewCell: UITableViewCell {
     }
     
     func configure(serie: Result) {
+        self.selectionStyle = .none
         genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: serie.genreIDS))"
         dateLabel.text = "Date de sortie: \(serie.firstAirDate)"
         popularityLabel.text = "Popularité: \(serie.popularity)"
