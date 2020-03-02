@@ -15,12 +15,10 @@ class UsersService {
     static func saveUser(user: User) {
         let userDictionary: NSDictionary = ["Nickname": user.nickname,
                                             "email": user.email,
-                                            "LastName": user.lastName,
-                                            "FirstName": user.firstName,
-                                            "Phone": user.phone]
+                                            "FullName": user.fullName]
         usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
-            if error != nil {
-                print(error?.localizedDescription ?? "Error saving user")
+            if let error = error {
+                print(error.localizedDescription)
             } else {
                 print("User saved successfully")
             }

@@ -12,16 +12,12 @@ class User {
     var id: String
     var nickname: String
     var email: String
-    var lastName: String
-    var firstName: String
-    var phone: String
+    var fullName: String
     
-    init(id: String, nickname: String, email: String, lastName: String, firstName: String, phone: String) {
+    init(id: String, nickname: String, email: String, fullName: String) {
         self.id = id
         self.nickname = nickname
         self.email = email
-        self.lastName = lastName
-        self.firstName = firstName
-        self.phone = phone
+        self.fullName = fullName
     }
 }

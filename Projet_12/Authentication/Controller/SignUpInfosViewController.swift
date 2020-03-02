@@ -15,17 +15,22 @@ class SignUpInfosViewController: UIViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
     var email: String?
     var password: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        nicknameTextField.delegate = self
+        lastNameTextField.delegate = self
+        firstNameTextField.delegate = self
+    }
    
     @IBAction func saveInformations(_ sender: UIButton) {
         guard let userEmail = email,
             let userPassword = password,
             let nickname = nicknameTextField.text, nickname != "",
             let lastName = lastNameTextField.text, lastName != "",
-            let firstName = firstNameTextField.text, firstName != "",
-            let phone = phoneTextField.text, phone != "" else {
+            let firstName = firstNameTextField.text, firstName != "" else {
                 UIAlertController().showAlert(title: "Attention !", message: "Informations manquantes !", viewController: self)
                 return
         }
@@ -37,13 +42,26 @@ class SignUpInfosViewController: UIViewController {
                                               viewController: self)
             } else {
                 guard let userId = user?.user.uid else { return }
-                let user = User(id: userId, nickname: nickname, email: userEmail, lastName: lastName,
-                                firstName: firstName, phone: phone)
+                let user = User(id: userId, nickname: nickname, email: userEmail, fullName: lastName + firstName)
                 UsersService.saveUser(user: user)
                 
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
                 self.present(vc, animated: true, completion: nil)
             }
         }
+    }
+    
+}
+
+extension SignUpInfosViewController: UITextFieldDelegate {
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        nicknameTextField.resignFirstResponder()
+        lastNameTextField.resignFirstResponder()
+        firstNameTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
