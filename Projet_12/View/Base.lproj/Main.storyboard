@@ -461,10 +461,106 @@
                             <outlet property="delegate" destination="67T-08-PtU" id="RCb-bC-rTZ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="5OI-2C-r0E" kind="show" identifier="segueToEvaluationVC" id="EnA-dS-2rh"/>
+                        <segue destination="QeR-jN-r1r" kind="show" identifier="segueToForumVC" id="DUY-gk-enr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUC-ey-Gzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4176.8000000000002" y="129.98500749625188"/>
+            <point key="canvasLocation" x="4225" y="130"/>
+        </scene>
+        <!--Evaluation View Controller-->
+        <scene sceneID="Dwi-c8-iP6">
+            <objects>
+                <viewController id="5OI-2C-r0E" customClass="EvaluationViewController" customModule="Projet_12" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dlS-2m-Xhr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="urw-co-FJ3">
+                                <rect key="frame" x="14" y="191" width="347" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="5OI-2C-r0E" eventType="valueChanged" id="NmF-vo-IMb"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quelle note donneriez vous à ... ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t80-lT-i7k">
+                                <rect key="frame" x="16" y="76" width="343" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="EIe-rN-cij"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zG-Rt-g8i">
+                                <rect key="frame" x="112.5" y="318" width="150" height="40"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3zG-Rt-g8i" secondAttribute="height" multiplier="15:4" id="LZs-GK-ZWh"/>
+                                    <constraint firstAttribute="height" constant="40" id="Y9x-qF-uYN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <state key="normal" title="Valider">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="validateButtonTapped:" destination="5OI-2C-r0E" eventType="touchUpInside" id="yix-Tc-H9q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2N-Sz-uw2">
+                                <rect key="frame" x="16" y="223" width="343" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="BJy-C2-3lC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3zG-Rt-g8i" firstAttribute="top" secondItem="b2N-Sz-uw2" secondAttribute="bottom" constant="70" id="9VT-2N-prA"/>
+                            <constraint firstItem="ylr-ae-dlX" firstAttribute="trailing" secondItem="urw-co-FJ3" secondAttribute="trailing" constant="16" id="9jL-x5-J7z"/>
+                            <constraint firstItem="urw-co-FJ3" firstAttribute="top" secondItem="t80-lT-i7k" secondAttribute="bottom" constant="35" id="Ijg-XY-t3f"/>
+                            <constraint firstItem="ylr-ae-dlX" firstAttribute="trailing" secondItem="t80-lT-i7k" secondAttribute="trailing" constant="16" id="J47-g9-VCa"/>
+                            <constraint firstItem="b2N-Sz-uw2" firstAttribute="leading" secondItem="ylr-ae-dlX" secondAttribute="leading" constant="16" id="M9h-vy-cs1"/>
+                            <constraint firstItem="t80-lT-i7k" firstAttribute="top" secondItem="ylr-ae-dlX" secondAttribute="top" constant="12" id="Mux-hM-n6t"/>
+                            <constraint firstItem="ylr-ae-dlX" firstAttribute="trailing" secondItem="b2N-Sz-uw2" secondAttribute="trailing" constant="16" id="Qu1-JR-Twm"/>
+                            <constraint firstItem="3zG-Rt-g8i" firstAttribute="centerX" secondItem="dlS-2m-Xhr" secondAttribute="centerX" id="SJB-jL-doM"/>
+                            <constraint firstItem="t80-lT-i7k" firstAttribute="leading" secondItem="ylr-ae-dlX" secondAttribute="leading" constant="16" id="V0w-J6-YAV"/>
+                            <constraint firstItem="urw-co-FJ3" firstAttribute="leading" secondItem="ylr-ae-dlX" secondAttribute="leading" constant="16" id="Vlx-7e-6G5"/>
+                            <constraint firstItem="b2N-Sz-uw2" firstAttribute="top" secondItem="urw-co-FJ3" secondAttribute="bottom" constant="2" id="Wre-jV-nrW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ylr-ae-dlX"/>
+                    </view>
+                    <connections>
+                        <outlet property="evaluationLabel" destination="b2N-Sz-uw2" id="UPk-Wg-jaJ"/>
+                        <outlet property="evaluationSlider" destination="urw-co-FJ3" id="OEv-Ak-qze"/>
+                        <outlet property="questionLabel" destination="t80-lT-i7k" id="pPB-UZ-Vmb"/>
+                        <outlet property="validateButton" destination="3zG-Rt-g8i" id="Zb6-NV-tbj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXJ-hB-r4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5036" y="130"/>
+        </scene>
+        <!--Forum View Controller-->
+        <scene sceneID="nzt-6y-Grg">
+            <objects>
+                <viewController id="QeR-jN-r1r" customClass="ForumViewController" customModule="Projet_12" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Not-VD-dhO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="p8N-Cr-Zy1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xt3-My-i60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4225" y="928"/>
         </scene>
         <!--S'inscrire-->
         <scene sceneID="mQA-6D-3Jz">

@@ -10,12 +10,31 @@ import UIKit
 
 class SerieDetailsViewController: UITableViewController {
     var serie: Result?
+    var segueToEvaluationIdentifier = "segueToEvaluationVC"
+    var segueToForumIdentifier = "segueToForumVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         registerCell()
-        tableView.reloadData()
+        
+        let name = NSNotification.Name(rawValue: "EvaluateButtonTapped")
+        NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped), name: name, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let currentSerie = serie else { return }
+        if segue.identifier == segueToEvaluationIdentifier,
+            let evaluationVC = segue.destination as? EvaluationViewController {
+            evaluationVC.serie = currentSerie
+        } else if segue.identifier == segueToForumIdentifier,
+        let forumVC = segue.destination as? ForumViewController {
+            forumVC.serie = currentSerie
+        }
+    }
+    
+    @objc func collectionViewTapped() {
+        performSegue(withIdentifier: segueToEvaluationIdentifier, sender: nil)
     }
     
     private func registerCell() {
@@ -96,6 +115,12 @@ class SerieDetailsViewController: UITableViewController {
         case 3: return 150
         case 4: return 70
         default: return 150
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 5 {
+            performSegue(withIdentifier: segueToForumIdentifier, sender: nil)
         }
     }
 }

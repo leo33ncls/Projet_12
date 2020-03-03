@@ -12,12 +12,7 @@ class EvaluationTableViewCell: UITableViewCell {
     @IBOutlet weak var evaluationPressLabel: UILabel!
     @IBOutlet weak var evaluationReadersLabel: UILabel!
     @IBOutlet weak var giveEvaluationButton: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
+
     func configure(serie: Result) {
         self.selectionStyle = .none
         if serie.voteAverage >= 7 {
@@ -33,7 +28,16 @@ class EvaluationTableViewCell: UITableViewCell {
         
         evaluationReadersLabel.textColor = UIColor.blue
         evaluationReadersLabel.text = "5"
+        EvaluationService.getEvaluations(serie: serie)
         
         giveEvaluationButton.setTitle("Donner\n une\n note\n >", for: .normal)
+    }
+    
+    private func giveReadersAverageEvaluation() {
+    }
+    
+    @IBAction func evaluateButtonTapped(_ sender: UIButton) {
+        let notifName = NSNotification.Name("EvaluateButtonTapped")
+        NotificationCenter.default.post(name: notifName, object: nil, userInfo: nil)
     }
 }

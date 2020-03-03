@@ -32,7 +32,7 @@ class SeriesViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segueIdentifier == segue.identifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
+        if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Result
         }
     }
