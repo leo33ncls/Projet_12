@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class Post {
+    let userId: String
+    let date: Date
+    let text: String
+    
+    init(userId: String, date: Date, text: String) {
+        self.userId = userId
+        self.date = date
+        self.text = text
+    }
+}

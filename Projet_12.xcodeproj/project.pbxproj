@@ -38,6 +38,9 @@
 		2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896599B240DE1DC003536BD /* EvaluationService.swift */; };
 		2896599E240DE24F003536BD /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896599D240DE24F003536BD /* Evaluation.swift */; };
 		289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896599F240EA4DB003536BD /* ForumViewController.swift */; };
+		289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A1240EACE2003536BD /* TopicEditingViewController.swift */; };
+		289659A4240EB3D2003536BD /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A3240EB3D2003536BD /* Topic.swift */; };
+		289659A6240EB49A003536BD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A5240EB49A003536BD /* Post.swift */; };
 		289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289A667423D62CB200F84F93 /* AuthenticationViewController.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
@@ -98,6 +101,9 @@
 		2896599B240DE1DC003536BD /* EvaluationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationService.swift; sourceTree = "<group>"; };
 		2896599D240DE24F003536BD /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		2896599F240EA4DB003536BD /* ForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
+		289659A1240EACE2003536BD /* TopicEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicEditingViewController.swift; sourceTree = "<group>"; };
+		289659A3240EB3D2003536BD /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		289659A5240EB49A003536BD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		289A667423D62CB200F84F93 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +253,7 @@
 				282D6BF123FD8CA6002A90DA /* SerieDetailsViewController.swift */,
 				28965998240DD428003536BD /* EvaluationViewController.swift */,
 				2896599F240EA4DB003536BD /* ForumViewController.swift */,
+				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -256,6 +263,8 @@
 			children = (
 				2896599D240DE24F003536BD /* Evaluation.swift */,
 				2896599B240DE1DC003536BD /* EvaluationService.swift */,
+				289659A3240EB3D2003536BD /* Topic.swift */,
+				289659A5240EB49A003536BD /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,11 +525,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				28387C512404C96D00B20BB1 /* NickNameViewController.swift in Sources */,
+				289659A4240EB3D2003536BD /* Topic.swift in Sources */,
 				282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */,
 				28965999240DD428003536BD /* EvaluationViewController.swift in Sources */,
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
+				289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */,
 				28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */,
 				28965995240CA0F0003536BD /* CustomShadowLayer.swift in Sources */,
 				282D6BF5240479AC002A90DA /* ImageSerieTableViewCell.swift in Sources */,
@@ -533,6 +544,7 @@
 				28965997240CA236003536BD /* UIColor.swift in Sources */,
 				28D106B523F2F872002C39C8 /* APIKeys.swift in Sources */,
 				282D6BFD2404A700002A90DA /* EvaluationTableViewCell.swift in Sources */,
+				289659A6240EB49A003536BD /* Post.swift in Sources */,
 				2896599E240DE24F003536BD /* Evaluation.swift in Sources */,
 				28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */,
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,

@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class Topic {
+    let serieId: Int
+    let userId: String
+    let date: Date
+    let title: String
+    var post: [Post]
+    
+    init(serieId: Int, userId: String, date: Date, title: String, post: [Post]) {
+        self.serieId = serieId
+        self.userId = userId
+        self.date = date
+        self.title = title
+        self.post = post
+    }
+}

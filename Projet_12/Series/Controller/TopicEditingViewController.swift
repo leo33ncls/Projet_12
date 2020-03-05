@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TopicEditingViewController: UIViewController {
 
+    @IBOutlet weak var topicTitleTextField: UITextField!
+    @IBOutlet weak var postTextView: UITextView!
+    
+    var serie: Result?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let currentSerie = serie else { return }
+        self.navigationItem.title = currentSerie.name
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func createTopic(_ sender: UIButton) {
+        guard let currentSerie = serie else { return }
+        guard let user = Auth.auth().currentUser else { return }
+        if let topictitle = topicTitleTextField.text, topictitle != "",
+            let postText = postTextView.text, postText != "" {
+            let post = Post(userId: user.uid,
+                            date: Date(),
+                            text: postText)
+            let topic = Topic(serieId: currentSerie.id,
+                              userId: user.uid,
+                              date: Date(),
+                              title: topictitle,
+                              post: [post])
+        } else {
+            UIAlertController().showAlert(title: "Attention",
+                                          message: "Informations manquantes !",
+                                          viewController: self)
+        }
     }
-    */
-
 }
