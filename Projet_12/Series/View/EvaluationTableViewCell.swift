@@ -15,25 +15,31 @@ class EvaluationTableViewCell: UITableViewCell {
 
     func configure(serie: Result) {
         self.selectionStyle = .none
-        if serie.voteAverage >= 7 {
-            evaluationPressLabel.textColor = UIColor.green
-        } else if serie.voteAverage > 5 {
-            evaluationPressLabel.textColor = UIColor.blue
-        } else if serie.voteAverage > 3 {
-            evaluationPressLabel.textColor = UIColor.orange
-        } else {
-            evaluationPressLabel.textColor = UIColor.red
-        }
+        
+        setEvaluationColor(evaluation: serie.voteAverage, label: evaluationPressLabel)
         evaluationPressLabel.text = "\(serie.voteAverage)"
         
         evaluationReadersLabel.textColor = UIColor.blue
-        evaluationReadersLabel.text = "5"
-        EvaluationService.getEvaluations(serie: serie)
+        EvaluationService.getEvaluations(serie: serie) { result in
+            if let result = result {
+                let roundedResult = Double(round(10*result)/10)
+                self.evaluationReadersLabel.text = "\(roundedResult)"
+            } else {
+                self.evaluationReadersLabel.text = "/"
+            }
+        }
         
         giveEvaluationButton.setTitle("Donner\n une\n note\n >", for: .normal)
     }
     
-    private func giveReadersAverageEvaluation() {
+    private func setEvaluationColor(evaluation: Double, label: UILabel) {
+        switch evaluation {
+        case 0..<3: label.textColor = UIColor.red
+        case 3..<5: label.textColor = UIColor.orange
+        case 5..<7: label.textColor = UIColor.blue
+        case 7...10: label.textColor = UIColor.green
+        default: label.textColor = UIColor.blue
+        }
     }
     
     @IBAction func evaluateButtonTapped(_ sender: UIButton) {

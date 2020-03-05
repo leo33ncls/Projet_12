@@ -7,24 +7,37 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class EvaluationViewController: UIViewController {
+    
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var evaluationSlider: UISlider!
+    @IBOutlet weak var evaluationLabel: UILabel!
+    @IBOutlet weak var validateButton: UIButton!
+    
+    var serie: Result?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let currentSerie = serie else { return }
+        self.navigationItem.title = currentSerie.name
+        questionLabel.text = "Quelle note donneriez vous à \(currentSerie.name) ?"
+        validateButton.layer.cornerRadius = 5.0
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let currentValue = Int(sender.value)
+        evaluationLabel.text = "\(currentValue)/10"
     }
-    */
-
+    
+    @IBAction func validateButtonTapped(_ sender: UIButton) {
+        guard let user = Auth.auth().currentUser else { return }
+        guard let currentSerie = serie else { return }
+        let evaluation = Evaluation(userID: user.uid,
+                                    serieID: currentSerie.id,
+                                    evaluation: Int(evaluationSlider.value))
+        EvaluationService.saveEvaluation(evaluation: evaluation)
+        navigationController?.popViewController(animated: true)
+    }
 }

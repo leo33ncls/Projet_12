@@ -20,6 +20,11 @@ class SerieDetailsViewController: UITableViewController {
         
         let name = NSNotification.Name(rawValue: "EvaluateButtonTapped")
         NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped), name: name, object: nil)
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,13 +118,13 @@ class SerieDetailsViewController: UITableViewController {
         case 1: return 150
         case 2: return 140
         case 3: return 150
-        case 4: return 70
+        case 4: return 45
         default: return 150
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 5 {
+        if indexPath.row == 4 {
             performSegue(withIdentifier: segueToForumIdentifier, sender: nil)
         }
     }

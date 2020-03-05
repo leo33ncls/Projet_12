@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class Evaluation {
+    var userID: String
+    var serieID: Int
+    var evaluation: Int
+    
+    init(userID: String, serieID: Int, evaluation: Int) {
+        self.userID = userID
+        self.serieID = serieID
+        self.evaluation = evaluation
+    }
+}
