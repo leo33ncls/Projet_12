@@ -13,15 +13,26 @@ class UsersService {
     static let usersDTBRef = Database.database().reference().child("Users")
     
     static func saveUser(user: User) {
-        let userDictionary: NSDictionary = ["Nickname": user.nickname,
+        let userDictionary: NSDictionary = ["nickname": user.nickname,
                                             "email": user.email,
-                                            "FullName": user.fullName]
+                                            "fullName": user.fullName]
         usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 print("User saved successfully")
             }
+        }
+    }
+    
+    static func getUserNickname(userId: String, callback: @escaping (String)-> Void) {
+        usersDTBRef.child(userId).observe(.value) { (snapshot) in
+            guard let dictUser = snapshot.value as? [String: Any],
+                let nickname = dictUser["nickname"] as? String else {
+                    callback("Unknown")
+                    return
+            }
+            callback(nickname)
         }
     }
 }
