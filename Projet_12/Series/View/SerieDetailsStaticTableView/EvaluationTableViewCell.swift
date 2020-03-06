@@ -15,21 +15,25 @@ class EvaluationTableViewCell: UITableViewCell {
 
     func configure(serie: Result) {
         self.selectionStyle = .none
+        giveEvaluationButton.layer.cornerRadius = 10
+        giveEvaluationButton.backgroundColor = UIColor.white
+        giveEvaluationButton.layer.borderColor = UIColor.black.cgColor
+        giveEvaluationButton.setTitleColor(UIColor.black, for: .normal)
+        giveEvaluationButton.layer.borderWidth = 3
         
         setEvaluationColor(evaluation: serie.voteAverage, label: evaluationPressLabel)
         evaluationPressLabel.text = "\(serie.voteAverage)"
         
-        evaluationReadersLabel.textColor = UIColor.blue
+        evaluationReadersLabel.textColor = UIColor.gray
         EvaluationService.getEvaluations(serie: serie) { result in
             if let result = result {
                 let roundedResult = Double(round(10*result)/10)
+                self.setEvaluationColor(evaluation: roundedResult, label: self.evaluationReadersLabel)
                 self.evaluationReadersLabel.text = "\(roundedResult)"
             } else {
                 self.evaluationReadersLabel.text = "/"
             }
         }
-        
-        giveEvaluationButton.setTitle("Donner\n une\n note\n >", for: .normal)
     }
     
     private func setEvaluationColor(evaluation: Double, label: UILabel) {

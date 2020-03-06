@@ -117,7 +117,8 @@ class SerieDetailsViewController: UITableViewController {
         case 0: return 200
         case 1: return 150
         case 2: return 140
-        case 3: return 150
+        case 3: tableView.estimatedRowHeight = 150
+            return UITableView.automaticDimension
         case 4: return 45
         default: return 150
         }
