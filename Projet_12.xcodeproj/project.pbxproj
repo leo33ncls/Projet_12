@@ -41,6 +41,11 @@
 		289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A1240EACE2003536BD /* TopicEditingViewController.swift */; };
 		289659A4240EB3D2003536BD /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A3240EB3D2003536BD /* Topic.swift */; };
 		289659A6240EB49A003536BD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A5240EB49A003536BD /* Post.swift */; };
+		289659AA24117BD4003536BD /* ForumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659A924117BD4003536BD /* ForumService.swift */; };
+		289659AC24119F7B003536BD /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659AB24119F7B003536BD /* DateService.swift */; };
+		289659B12411A814003536BD /* TopicCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289659B02411A814003536BD /* TopicCellView.xib */; };
+		289659B32411A8A5003536BD /* TopicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659B22411A8A5003536BD /* TopicCellView.swift */; };
+		289659B52411B195003536BD /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659B42411B195003536BD /* TopicCell.swift */; };
 		289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289A667423D62CB200F84F93 /* AuthenticationViewController.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
@@ -104,6 +109,11 @@
 		289659A1240EACE2003536BD /* TopicEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicEditingViewController.swift; sourceTree = "<group>"; };
 		289659A3240EB3D2003536BD /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		289659A5240EB49A003536BD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		289659A924117BD4003536BD /* ForumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumService.swift; sourceTree = "<group>"; };
+		289659AB24119F7B003536BD /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		289659B02411A814003536BD /* TopicCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCellView.xib; sourceTree = "<group>"; };
+		289659B22411A8A5003536BD /* TopicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCellView.swift; sourceTree = "<group>"; };
+		289659B42411B195003536BD /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		289A667423D62CB200F84F93 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
@@ -230,18 +240,9 @@
 		28965992240C859A003536BD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				28D106BC23F30892002C39C8 /* SerieTableViewCell.swift */,
-				282D6BEF23FCDA2C002A90DA /* SerieCollectionViewCell.swift */,
-				282D6BF3240479AC002A90DA /* ImageSerieTableViewCell.swift */,
-				282D6BF4240479AC002A90DA /* ImageSerieTableViewCell.xib */,
-				282D6BF724048A72002A90DA /* InformationSerieTableViewCell.swift */,
-				282D6BF824048A72002A90DA /* InformationSerieTableViewCell.xib */,
-				282D6BFB2404A700002A90DA /* EvaluationTableViewCell.swift */,
-				282D6BFC2404A700002A90DA /* EvaluationTableViewCell.xib */,
-				28387C482404B25000B20BB1 /* SynopsisTableViewCell.swift */,
-				28387C492404B25000B20BB1 /* SynopsisTableViewCell.xib */,
-				28387C4C2404B6A000B20BB1 /* ForumTableViewCell.swift */,
-				28387C4D2404B6A000B20BB1 /* ForumTableViewCell.xib */,
+				289659AD2411A6BC003536BD /* SerieTableView */,
+				289659AE2411A6CC003536BD /* SerieDetailsStaticTableView */,
+				289659AF2411A727003536BD /* ForumTableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,8 +266,45 @@
 				2896599B240DE1DC003536BD /* EvaluationService.swift */,
 				289659A3240EB3D2003536BD /* Topic.swift */,
 				289659A5240EB49A003536BD /* Post.swift */,
+				289659A924117BD4003536BD /* ForumService.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		289659AD2411A6BC003536BD /* SerieTableView */ = {
+			isa = PBXGroup;
+			children = (
+				28D106BC23F30892002C39C8 /* SerieTableViewCell.swift */,
+				282D6BEF23FCDA2C002A90DA /* SerieCollectionViewCell.swift */,
+			);
+			path = SerieTableView;
+			sourceTree = "<group>";
+		};
+		289659AE2411A6CC003536BD /* SerieDetailsStaticTableView */ = {
+			isa = PBXGroup;
+			children = (
+				282D6BF3240479AC002A90DA /* ImageSerieTableViewCell.swift */,
+				282D6BF4240479AC002A90DA /* ImageSerieTableViewCell.xib */,
+				282D6BF724048A72002A90DA /* InformationSerieTableViewCell.swift */,
+				282D6BF824048A72002A90DA /* InformationSerieTableViewCell.xib */,
+				282D6BFB2404A700002A90DA /* EvaluationTableViewCell.swift */,
+				282D6BFC2404A700002A90DA /* EvaluationTableViewCell.xib */,
+				28387C482404B25000B20BB1 /* SynopsisTableViewCell.swift */,
+				28387C492404B25000B20BB1 /* SynopsisTableViewCell.xib */,
+				28387C4C2404B6A000B20BB1 /* ForumTableViewCell.swift */,
+				28387C4D2404B6A000B20BB1 /* ForumTableViewCell.xib */,
+			);
+			path = SerieDetailsStaticTableView;
+			sourceTree = "<group>";
+		};
+		289659AF2411A727003536BD /* ForumTableView */ = {
+			isa = PBXGroup;
+			children = (
+				289659B42411B195003536BD /* TopicCell.swift */,
+				289659B22411A8A5003536BD /* TopicCellView.swift */,
+				289659B02411A814003536BD /* TopicCellView.xib */,
+			);
+			path = ForumTableView;
 			sourceTree = "<group>";
 		};
 		289A667023D62BCB00F84F93 /* Model */ = {
@@ -275,6 +313,7 @@
 				28538D1923F2195B00EE4FC1 /* SeriesList.swift */,
 				28538D1723EB22DF00EE4FC1 /* SeriesService.swift */,
 				282D6BED23FCD482002A90DA /* Genres.swift */,
+				289659AB24119F7B003536BD /* DateService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +459,7 @@
 				282B445823D623640062C135 /* LaunchScreen.storyboard in Resources */,
 				282B446023D627900062C135 /* GoogleService-Info.plist in Resources */,
 				282B445523D623640062C135 /* Assets.xcassets in Resources */,
+				289659B12411A814003536BD /* TopicCellView.xib in Resources */,
 				282B445323D623620062C135 /* Main.storyboard in Resources */,
 				282D6BF6240479AC002A90DA /* ImageSerieTableViewCell.xib in Resources */,
 				28387C4B2404B25000B20BB1 /* SynopsisTableViewCell.xib in Resources */,
@@ -531,6 +571,7 @@
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
+				289659AA24117BD4003536BD /* ForumService.swift in Sources */,
 				289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */,
 				28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */,
 				28965995240CA0F0003536BD /* CustomShadowLayer.swift in Sources */,
@@ -538,6 +579,7 @@
 				28538D1823EB22DF00EE4FC1 /* SeriesService.swift in Sources */,
 				28E324E023DFA80900E1884C /* UIAlertController.swift in Sources */,
 				28D106BD23F30892002C39C8 /* SerieTableViewCell.swift in Sources */,
+				289659AC24119F7B003536BD /* DateService.swift in Sources */,
 				282D6BF924048A72002A90DA /* InformationSerieTableViewCell.swift in Sources */,
 				28387C4E2404B6A000B20BB1 /* ForumTableViewCell.swift in Sources */,
 				28538D1A23F2195B00EE4FC1 /* SeriesList.swift in Sources */,
@@ -554,6 +596,8 @@
 				289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */,
 				28E324E223DFAD0A00E1884C /* LoginViewController.swift in Sources */,
 				282B444E23D623620062C135 /* AppDelegate.swift in Sources */,
+				289659B32411A8A5003536BD /* TopicCellView.swift in Sources */,
+				289659B52411B195003536BD /* TopicCell.swift in Sources */,
 				28D106B323F23473002C39C8 /* SeriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

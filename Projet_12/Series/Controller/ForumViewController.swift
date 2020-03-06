@@ -13,6 +13,7 @@ class ForumViewController: UIViewController {
     @IBOutlet weak var serieNameLabel: UILabel!
     
     var serie: Result?
+    var topics = [Topic]()
     let segueToTopicEditingIdentifier = "segueToTopicEditingVC"
 
     override func viewDidLoad() {
@@ -22,6 +23,22 @@ class ForumViewController: UIViewController {
         
         guard let currentSerie = serie else { return }
         serieNameLabel.text = "Forum: \(currentSerie.name)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let currentSerie = serie else { return }
+        ForumService.getTopics(serie: currentSerie) { (topicArray) in
+            if let topicArray = topicArray {
+                self.topics = topicArray
+                self.topicsTableView.reloadData()
+            } else {
+                UIAlertController().showAlert(title: "Désolé !",
+                                              message: "Aucun sujet pour le moment !",
+                                              viewController: self)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,12 +56,15 @@ class ForumViewController: UIViewController {
 
 extension ForumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return topics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicCell else {
+            return UITableViewCell()
+        }
+        let topic = topics[indexPath.row]
+        cell.topicCellView.configure(topic: topic, indexPath: indexPath.row)
+        return cell
     }
-    
-    
 }

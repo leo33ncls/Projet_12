@@ -25,16 +25,23 @@ class TopicEditingViewController: UIViewController {
     @IBAction func createTopic(_ sender: UIButton) {
         guard let currentSerie = serie else { return }
         guard let user = Auth.auth().currentUser else { return }
+
         if let topictitle = topicTitleTextField.text, topictitle != "",
             let postText = postTextView.text, postText != "" {
+
             let post = Post(userId: user.uid,
                             date: Date(),
                             text: postText)
             let topic = Topic(serieId: currentSerie.id,
+                              topicId: nil,
                               userId: user.uid,
                               date: Date(),
                               title: topictitle,
                               post: [post])
+            
+            ForumService.saveTopic(topic: topic)
+            navigationController?.popViewController(animated: true)
+
         } else {
             UIAlertController().showAlert(title: "Attention",
                                           message: "Informations manquantes !",
