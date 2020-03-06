@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class DateService {
+    
+    func stringToDate(_ string: String) -> Date? {
+        let dateFomatter = DateFormatter()
+        dateFomatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
+        if let date = dateFomatter.date(from: string) {
+            return date
+        } else {
+            return nil
+        }
+    }
+}
