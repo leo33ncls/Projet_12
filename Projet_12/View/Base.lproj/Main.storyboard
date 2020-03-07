@@ -617,11 +617,97 @@
                         <outlet property="serieNameLabel" destination="HNK-i4-nXa" id="Tpm-7i-nFy"/>
                         <outlet property="topicsTableView" destination="1Dx-sB-LiF" id="3B0-VU-5ha"/>
                         <segue destination="AaK-Q2-0rq" kind="show" identifier="segueToTopicEditingVC" id="MGd-Qc-jzc"/>
+                        <segue destination="w4h-n3-Dob" kind="show" identifier="segueToTopicVC" id="2gv-sw-pRx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xt3-My-i60" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4224.8000000000002" y="927.88605697151434"/>
+        </scene>
+        <!--Forum-->
+        <scene sceneID="xNb-kB-SgK">
+            <objects>
+                <viewController id="w4h-n3-Dob" customClass="TopicViewController" customModule="Projet_12" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OHT-l2-YRq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom Serie" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9x-M7-LdE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Q20-Yg-8qp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sujet: ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYQ-TU-F2v">
+                                <rect key="frame" x="0.0" y="99" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VIh-uO-k7l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="220" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t4Z-bD-Mje">
+                                <rect key="frame" x="0.0" y="149" width="375" height="469"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="lte-ja-vSp" customClass="PostTableViewCell" customModule="Projet_12" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="220"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lte-ja-vSp" id="v8r-Fq-EIu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-Yf-15A" customClass="PostView" customModule="Projet_12" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="200"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f5r-Yf-15A" firstAttribute="leading" secondItem="v8r-Fq-EIu" secondAttribute="leading" constant="8" id="3vT-HS-jsJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="f5r-Yf-15A" secondAttribute="trailing" constant="8" id="YSe-Ff-X7t"/>
+                                                <constraint firstAttribute="bottom" secondItem="f5r-Yf-15A" secondAttribute="bottom" constant="20" id="vJv-bC-27S"/>
+                                                <constraint firstItem="f5r-Yf-15A" firstAttribute="top" secondItem="v8r-Fq-EIu" secondAttribute="top" id="wPl-iu-XI8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="postView" destination="f5r-Yf-15A" id="6tV-jp-3Lc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TAJ-vv-J6w" firstAttribute="trailing" secondItem="t4Z-bD-Mje" secondAttribute="trailing" id="CLm-Nd-GMC"/>
+                            <constraint firstItem="r9x-M7-LdE" firstAttribute="top" secondItem="TAJ-vv-J6w" secondAttribute="top" id="GFt-rK-91n"/>
+                            <constraint firstItem="r9x-M7-LdE" firstAttribute="trailing" secondItem="TAJ-vv-J6w" secondAttribute="trailing" id="M4U-Ov-HaU"/>
+                            <constraint firstItem="AYQ-TU-F2v" firstAttribute="trailing" secondItem="TAJ-vv-J6w" secondAttribute="trailing" id="Ysf-k0-p58"/>
+                            <constraint firstItem="t4Z-bD-Mje" firstAttribute="leading" secondItem="TAJ-vv-J6w" secondAttribute="leading" id="ZEM-eg-4av"/>
+                            <constraint firstItem="r9x-M7-LdE" firstAttribute="leading" secondItem="TAJ-vv-J6w" secondAttribute="leading" id="Zpw-aT-uaQ"/>
+                            <constraint firstItem="AYQ-TU-F2v" firstAttribute="top" secondItem="r9x-M7-LdE" secondAttribute="bottom" id="iiT-OW-Gbn"/>
+                            <constraint firstItem="t4Z-bD-Mje" firstAttribute="top" secondItem="AYQ-TU-F2v" secondAttribute="bottom" id="jBR-0p-ZrF"/>
+                            <constraint firstItem="TAJ-vv-J6w" firstAttribute="bottom" secondItem="t4Z-bD-Mje" secondAttribute="bottom" id="tku-8G-gbe"/>
+                            <constraint firstItem="AYQ-TU-F2v" firstAttribute="leading" secondItem="TAJ-vv-J6w" secondAttribute="leading" id="tvT-cz-q3D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TAJ-vv-J6w"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Forum" id="KF7-wP-5K8"/>
+                    <connections>
+                        <outlet property="postTableView" destination="t4Z-bD-Mje" id="VTF-wB-m58"/>
+                        <outlet property="serieNameLabel" destination="r9x-M7-LdE" id="f9d-FL-YQb"/>
+                        <outlet property="topicTitleLabel" destination="AYQ-TU-F2v" id="lA5-Jo-mCl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQV-Wu-nyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4224.8000000000002" y="1650.224887556222"/>
         </scene>
         <!--Topic Editing View Controller-->
         <scene sceneID="206-bw-pjx">

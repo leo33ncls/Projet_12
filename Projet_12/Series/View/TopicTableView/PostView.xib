@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostView" customModule="Projet_12" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="rJY-XZ-Qur"/>
+                <outlet property="dateLabel" destination="tuf-HW-ZaS" id="61j-Nr-gXj"/>
+                <outlet property="nicknameLabel" destination="Fbs-W8-Kbm" id="Tgu-D9-tCP"/>
+                <outlet property="nicknameView" destination="K4G-7e-MIa" id="1pI-UL-ehN"/>
+                <outlet property="textView" destination="Ezn-1C-mHY" id="G5B-M0-zqM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4G-7e-MIa">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lFo-hu-DRZ">
+                            <rect key="frame" x="8" y="2" width="359" height="37"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pseudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbs-W8-Kbm">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuf-HW-ZaS">
+                                    <rect key="frame" x="0.0" y="18.5" width="359" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="lFo-hu-DRZ" secondAttribute="bottom" constant="6" id="3Bd-I8-odo"/>
+                        <constraint firstItem="lFo-hu-DRZ" firstAttribute="leading" secondItem="K4G-7e-MIa" secondAttribute="leading" constant="8" id="4OK-9A-LfJ"/>
+                        <constraint firstItem="lFo-hu-DRZ" firstAttribute="top" secondItem="K4G-7e-MIa" secondAttribute="top" constant="2" id="8HQ-ek-NVN"/>
+                        <constraint firstAttribute="height" constant="45" id="Ebf-ze-3By"/>
+                        <constraint firstAttribute="trailing" secondItem="lFo-hu-DRZ" secondAttribute="trailing" constant="8" id="p48-Ss-N74"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ezn-1C-mHY">
+                    <rect key="frame" x="8" y="47" width="359" height="141"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ezn-1C-mHY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Am0-Q7-bOV"/>
+                <constraint firstItem="Ezn-1C-mHY" firstAttribute="top" secondItem="K4G-7e-MIa" secondAttribute="bottom" constant="2" id="LDx-za-Lfb"/>
+                <constraint firstItem="K4G-7e-MIa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xov-xE-Wrk"/>
+                <constraint firstItem="K4G-7e-MIa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Y7d-jD-o8i"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ezn-1C-mHY" secondAttribute="bottom" constant="12" id="YII-gm-ugt"/>
+                <constraint firstAttribute="trailing" secondItem="Ezn-1C-mHY" secondAttribute="trailing" constant="8" id="iKt-7d-suV"/>
+                <constraint firstAttribute="trailing" secondItem="K4G-7e-MIa" secondAttribute="trailing" id="ltM-6n-Q4K"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.575712143928037"/>
+        </view>
+    </objects>
+</document>

@@ -60,4 +60,29 @@ class ForumService {
             }
         }
     }
+    
+    static func getPosts(serie: Result, topic: Topic, callback: @escaping ([Post]?) -> Void) {
+        guard let topicId = topic.topicId else {
+            callback(nil)
+            return
+        }
+        forumRef.child(String(serie.id)).child(topicId)
+            .child("Post").observe(.value) { (snapshot) in
+            var posts = [Post]()
+                for child in snapshot.children {
+                    guard let snap = child as? DataSnapshot,
+                        let dictPost = snap.value as? [String: Any],
+                        let userId = dictPost["userId"] as? String,
+                        let text = dictPost["text"] as? String,
+                        let dateString = dictPost["date"] as? String,
+                        let date = DateService().stringToDate(dateString) else {
+                        callback(nil)
+                            return
+                    }
+                    let post = Post(userId: userId, date: date, text: text)
+                    posts.append(post)
+                    callback(posts)
+                }
+        }
+    }
 }

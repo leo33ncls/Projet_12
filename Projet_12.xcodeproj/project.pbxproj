@@ -46,6 +46,10 @@
 		289659B12411A814003536BD /* TopicCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289659B02411A814003536BD /* TopicCellView.xib */; };
 		289659B32411A8A5003536BD /* TopicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659B22411A8A5003536BD /* TopicCellView.swift */; };
 		289659B52411B195003536BD /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659B42411B195003536BD /* TopicCell.swift */; };
+		289659B72412C331003536BD /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659B62412C331003536BD /* TopicViewController.swift */; };
+		289659BA2412CC55003536BD /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289659B92412CC55003536BD /* PostView.xib */; };
+		289659BC2412CCE3003536BD /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659BB2412CCE3003536BD /* PostView.swift */; };
+		289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659BD2412D379003536BD /* PostTableViewCell.swift */; };
 		289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289A667423D62CB200F84F93 /* AuthenticationViewController.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
@@ -114,6 +118,10 @@
 		289659B02411A814003536BD /* TopicCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicCellView.xib; sourceTree = "<group>"; };
 		289659B22411A8A5003536BD /* TopicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCellView.swift; sourceTree = "<group>"; };
 		289659B42411B195003536BD /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		289659B62412C331003536BD /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		289659B92412CC55003536BD /* PostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
+		289659BB2412CCE3003536BD /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		289659BD2412D379003536BD /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		289A667423D62CB200F84F93 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 				289659AD2411A6BC003536BD /* SerieTableView */,
 				289659AE2411A6CC003536BD /* SerieDetailsStaticTableView */,
 				289659AF2411A727003536BD /* ForumTableView */,
+				289659B82412CC23003536BD /* TopicTableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +264,7 @@
 				28965998240DD428003536BD /* EvaluationViewController.swift */,
 				2896599F240EA4DB003536BD /* ForumViewController.swift */,
 				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
+				289659B62412C331003536BD /* TopicViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +315,16 @@
 				289659B02411A814003536BD /* TopicCellView.xib */,
 			);
 			path = ForumTableView;
+			sourceTree = "<group>";
+		};
+		289659B82412CC23003536BD /* TopicTableView */ = {
+			isa = PBXGroup;
+			children = (
+				289659BD2412D379003536BD /* PostTableViewCell.swift */,
+				289659BB2412CCE3003536BD /* PostView.swift */,
+				289659B92412CC55003536BD /* PostView.xib */,
+			);
+			path = TopicTableView;
 			sourceTree = "<group>";
 		};
 		289A667023D62BCB00F84F93 /* Model */ = {
@@ -460,6 +480,7 @@
 				282B446023D627900062C135 /* GoogleService-Info.plist in Resources */,
 				282B445523D623640062C135 /* Assets.xcassets in Resources */,
 				289659B12411A814003536BD /* TopicCellView.xib in Resources */,
+				289659BA2412CC55003536BD /* PostView.xib in Resources */,
 				282B445323D623620062C135 /* Main.storyboard in Resources */,
 				282D6BF6240479AC002A90DA /* ImageSerieTableViewCell.xib in Resources */,
 				28387C4B2404B25000B20BB1 /* SynopsisTableViewCell.xib in Resources */,
@@ -569,10 +590,12 @@
 				282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */,
 				28965999240DD428003536BD /* EvaluationViewController.swift in Sources */,
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
+				289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
 				289659AA24117BD4003536BD /* ForumService.swift in Sources */,
 				289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */,
+				289659BC2412CCE3003536BD /* PostView.swift in Sources */,
 				28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */,
 				28965995240CA0F0003536BD /* CustomShadowLayer.swift in Sources */,
 				282D6BF5240479AC002A90DA /* ImageSerieTableViewCell.swift in Sources */,
@@ -590,6 +613,7 @@
 				2896599E240DE24F003536BD /* Evaluation.swift in Sources */,
 				28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */,
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,
+				289659B72412C331003536BD /* TopicViewController.swift in Sources */,
 				28E324DB23DFA5E900E1884C /* SignUpViewController.swift in Sources */,
 				282D6BF023FCDA2C002A90DA /* SerieCollectionViewCell.swift in Sources */,
 				282D6BEE23FCD482002A90DA /* Genres.swift in Sources */,

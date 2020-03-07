@@ -15,6 +15,7 @@ class ForumViewController: UIViewController {
     var serie: Result?
     var topics = [Topic]()
     let segueToTopicEditingIdentifier = "segueToTopicEditingVC"
+    let segueToTopicIdentifier = "segueToTopicVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,11 @@ class ForumViewController: UIViewController {
         if segue.identifier == segueToTopicEditingIdentifier,
             let topicEditingVC = segue.destination as? TopicEditingViewController {
             topicEditingVC.serie = currentSerie
+        } else if segue.identifier == segueToTopicIdentifier,
+            let topicVC = segue.destination as? TopicViewController,
+            let topic = sender as? Topic {
+            topicVC.serie = currentSerie
+            topicVC.topic = topic
         }
     }
     
@@ -66,5 +72,10 @@ extension ForumViewController: UITableViewDelegate, UITableViewDataSource {
         let topic = topics[indexPath.row]
         cell.topicCellView.configure(topic: topic, indexPath: indexPath.row)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let topic = topics[indexPath.row]
+        performSegue(withIdentifier: segueToTopicIdentifier, sender: topic)
     }
 }
