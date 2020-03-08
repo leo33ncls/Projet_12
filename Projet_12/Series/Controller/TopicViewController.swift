@@ -15,6 +15,7 @@ class TopicViewController: UIViewController {
     
     var serie: Result?
     var topic: Topic?
+    let segueToPostEditingIdentifier = "segueToPostEditingVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,27 @@ class TopicViewController: UIViewController {
         serieNameLabel.text = currentSerie.name
         topicTitleLabel.text = "Sujet: \(currentTopic.title)"
         
-        ForumService.getPosts(serie: currentSerie, topic: currentTopic) { (postArray) in
+        getPosts(serie: currentSerie, topic: currentTopic)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let currentSerie = serie else { return }
+        guard let currentTopic = topic else { return }
+        if segue.identifier == segueToPostEditingIdentifier,
+            let postEditingVC = segue.destination as? PostEditingViewController {
+            postEditingVC.serie = currentSerie
+            postEditingVC.topic = currentTopic
+        }
+    }
+    
+    @IBAction func goToPagePostEditing(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: segueToPostEditingIdentifier, sender: nil)
+    }
+    
+    private func getPosts(serie: Result, topic: Topic) {
+        ForumService.getPosts(serie: serie, topic: topic) { (postArray) in
             if let postArray = postArray {
-                currentTopic.post = postArray
+                topic.post = postArray
                 self.postTableView.reloadData()
             } else {
                 UIAlertController().showAlert(title: "Désolé !",

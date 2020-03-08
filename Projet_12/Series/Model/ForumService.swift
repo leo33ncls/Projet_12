@@ -29,10 +29,29 @@ class ForumService {
                         if let error = error {
                             print(error.localizedDescription)
                         } else {
-                            print("Post saved successfully")
-                            }
+                            print("Topic saved successfully")
+                        }
                     })
                 }
+        }
+    }
+    
+    static func savePost(topic: Topic, post: Post) {
+        guard let topicId = topic.topicId else {
+            print("Topic doesn't exit")
+            return
+        }
+        let topicRef = forumRef.child(String(topic.serieId)).child(topicId)
+        let postRef = topicRef.child("Post").childByAutoId()
+        let postDictionary: NSDictionary = ["userId": post.userId,
+                                            "text": post.text,
+                                            "date": "\(post.date)"]
+        postRef.setValue(postDictionary) { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Post saved successfully")
+            }
         }
     }
     

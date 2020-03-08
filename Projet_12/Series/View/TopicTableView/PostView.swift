@@ -34,9 +34,12 @@ class PostView: UIView {
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         
-        nicknameView.backgroundColor = UIColor.orange.withAlphaComponent(0.05)
+        nicknameView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         textView.isEditable = false
         textView.isScrollEnabled = false
+        
+        contentView.layer.borderColor = UIColor.darkGray.cgColor
+        contentView.layer.borderWidth = 0.25
     }
     
     func configure(post: Post) {

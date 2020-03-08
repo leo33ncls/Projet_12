@@ -46,7 +46,9 @@ class TopicCellView: UIView {
         }
         
         if indexPath % 2 == 0 {
-            contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.05)
+            contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
+            contentView.layer.borderWidth = 0.25
+            contentView.layer.borderColor = UIColor.darkGray.cgColor
         }
     }
     
