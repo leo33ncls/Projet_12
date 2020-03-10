@@ -17,6 +17,8 @@ class PostEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        postTextView.delegate = self
+        
         guard let currentSerie = serie else { return }
         self.navigationItem.title = currentSerie.name
     }
@@ -35,5 +37,16 @@ class PostEditingViewController: UIViewController {
                         text: postText)
         ForumService.savePost(topic: currentTopic, post: post)
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension PostEditingViewController: UITextViewDelegate {
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        postTextView.resignFirstResponder()
     }
 }

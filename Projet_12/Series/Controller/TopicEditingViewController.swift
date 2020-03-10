@@ -18,6 +18,8 @@ class TopicEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topicTitleTextField.delegate = self
+        postTextView.delegate = self
         guard let currentSerie = serie else { return }
         self.navigationItem.title = currentSerie.name
     }
@@ -47,5 +49,22 @@ class TopicEditingViewController: UIViewController {
                                           message: "Informations manquantes !",
                                           viewController: self)
         }
+    }
+}
+
+extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        topicTitleTextField.resignFirstResponder()
+        postTextView.resignFirstResponder()
     }
 }
