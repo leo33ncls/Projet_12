@@ -13,16 +13,16 @@ class Evaluation {
 
     // The id of the user who gives the evaluation
     let userID: String
-    
+
     // The id of the serie which is evaluated
     let serieID: Int
-    
+
     // The evaluation
     var evaluation: Int
-    
+
     /**
      Initializes a new evaluation from a user for a serie.
-     
+
      - Parameters:
         - userID: The id of the user who gives the evaluation.
         - serieID: The id of the serie which is evaluated.

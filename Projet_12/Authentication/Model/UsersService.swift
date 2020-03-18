@@ -14,11 +14,11 @@ class UsersService {
 
     // The reference for the Users database
     static let usersDTBRef = Database.database().reference().child("Users")
-    
+
     /**
      Function which saves a user in the Users database.
      Calling this function saves the user's nickname, email and fullName in the Users dabatabase.
-     
+
      - Parameter user: The user to save in the db.
     */
     static func saveUser(user: User) {
@@ -33,17 +33,17 @@ class UsersService {
             }
         }
     }
-    
+
     /**
      Function which returns a callback with the nickname of a given user.
      Calling this function observes the value of a user in the database
      kepts and returns his nickname value with a callback.
-     
+
      - Parameters:
             - userId: The user Id of the user that we want the nickname.
             - callback: The callback returning the nickname.
      */
-    static func getUserNickname(userId: String, callback: @escaping (String)-> Void) {
+    static func getUserNickname(userId: String, callback: @escaping (String) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
             guard let dictUser = snapshot.value as? [String: Any],
                 let nickname = dictUser["nickname"] as? String else {

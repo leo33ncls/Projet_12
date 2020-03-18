@@ -11,14 +11,14 @@ import FirebaseDatabase
 
 // Class that manages evaluations
 class EvaluationService {
-    
+
     // The reference for the Evaluation database
     static let evaluationRef = Database.database().reference().child("Evaluation")
-    
+
     /**
      Function which saves a evaluation on a serie in the Evaluation database.
      Calling this function saves the user id, the serie id and the evaluation in the Evaluation dabatabase.
-     
+
      - Parameter evaluation: The evaluation to save in the db.
      */
     static func saveEvaluation(evaluation: Evaluation) {
@@ -34,12 +34,12 @@ class EvaluationService {
             }
         }
     }
-    
+
     /**
      Function which returns a callback with the average evaluation of a given serie.
      Calling this function observes the evaluations of a serie in the database
      calculs and returns his average evaluation in a callback.
-     
+
      - Parameters:
         - serie: The serie we want the average evaluation.
         - callback: The callback returning the evaluation.
@@ -48,7 +48,7 @@ class EvaluationService {
         evaluationRef.child(String(serie.id)).observe(.value) { (snapshot) in
             var sumOfEvaluations = 0.0
             var numbersOfVotes = 0.0
-            
+
             for child in snapshot.children {
                 guard let snap = child as? DataSnapshot,
                     let dictEvaluation = snap.value as? [String: Double],
@@ -59,7 +59,7 @@ class EvaluationService {
                 sumOfEvaluations += evaluation
                 numbersOfVotes += 1
             }
-            
+
             guard numbersOfVotes != 0 else {
                 callback(nil)
                 return

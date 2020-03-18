@@ -10,22 +10,22 @@ import Foundation
 
 // An user which is registered in the db
 class User {
-    
+
     // The user id
     let id: String
-    
+
     // The user nickname
     var nickname: String
-    
+
     // The user email
     let email: String
-    
+
     // The user full name
     var fullName: String
-    
+
     /**
      Initializes a new user with some informations.
-     
+
      - Parameters:
         - id: The user id.
         - nickname: The user nickname.

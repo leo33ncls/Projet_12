@@ -13,9 +13,9 @@ class TopicEditingViewController: UIViewController {
 
     @IBOutlet weak var topicTitleTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
-    
+
     var serie: Result?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         topicTitleTextField.delegate = self
@@ -23,7 +23,7 @@ class TopicEditingViewController: UIViewController {
         guard let currentSerie = serie else { return }
         self.navigationItem.title = currentSerie.name
     }
-    
+
     @IBAction func createTopic(_ sender: UIButton) {
         guard let currentSerie = serie else { return }
         guard let user = Auth.auth().currentUser else { return }
@@ -40,7 +40,7 @@ class TopicEditingViewController: UIViewController {
                               date: Date(),
                               title: topictitle,
                               post: [post])
-            
+
             ForumService.saveTopic(topic: topic)
             navigationController?.popViewController(animated: true)
 
@@ -57,12 +57,12 @@ extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
     }
-    
+
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         topicTitleTextField.resignFirstResponder()
         postTextView.resignFirstResponder()

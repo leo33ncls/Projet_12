@@ -14,17 +14,17 @@ class PostView: UIView {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
     private func commonInit() {
         Bundle.main.loadNibNamed("PostView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,15 +33,15 @@ class PostView: UIView {
         contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        
+
         nicknameView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         textView.isEditable = false
         textView.isScrollEnabled = false
-        
+
         contentView.layer.borderColor = UIColor.darkGray.cgColor
         contentView.layer.borderWidth = 0.25
     }
-    
+
     func configure(post: Post) {
         UsersService.getUserNickname(userId: post.userId) { (nickname) in
             self.nicknameLabel.text = nickname

@@ -10,7 +10,7 @@ import Foundation
 
 // Class that manages the date
 class DateService {
-    
+
     /**
      Function which transforms a given string to a date
      - Parameter string: The string we want to change in a date.

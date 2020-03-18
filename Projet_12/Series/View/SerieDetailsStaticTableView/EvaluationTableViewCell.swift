@@ -20,10 +20,10 @@ class EvaluationTableViewCell: UITableViewCell {
         giveEvaluationButton.layer.borderColor = UIColor.black.cgColor
         giveEvaluationButton.setTitleColor(UIColor.black, for: .normal)
         giveEvaluationButton.layer.borderWidth = 3
-        
+
         setEvaluationColor(evaluation: serie.voteAverage, label: evaluationPressLabel)
         evaluationPressLabel.text = "\(serie.voteAverage)"
-        
+
         evaluationReadersLabel.textColor = UIColor.gray
         EvaluationService.getEvaluations(serie: serie) { result in
             if let result = result {
@@ -35,7 +35,7 @@ class EvaluationTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     private func setEvaluationColor(evaluation: Double, label: UILabel) {
         switch evaluation {
         case 0..<3: label.textColor = UIColor.red
@@ -45,7 +45,7 @@ class EvaluationTableViewCell: UITableViewCell {
         default: label.textColor = UIColor.blue
         }
     }
-    
+
     @IBAction func evaluateButtonTapped(_ sender: UIButton) {
         let notifName = NSNotification.Name("EvaluateButtonTapped")
         NotificationCenter.default.post(name: notifName, object: nil, userInfo: nil)

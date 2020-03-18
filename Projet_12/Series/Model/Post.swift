@@ -13,16 +13,16 @@ class Post {
 
     // The id of the user who creates the post
     let userId: String
-    
+
     // The publication date of the post
     let date: Date
 
     // The text of the post
     let text: String
-    
+
     /**
      Initializes a new post on a topic with an user id, a date and a text.
-     
+
      - Parameters:
         - userId: The id of the user who creates the post.
         - date: The publication date of the post.

@@ -12,7 +12,7 @@ class ImageSerieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
-    
+
     func configure(serie: Result) {
         serieNameLabel.text = serie.name
         SeriesService(session: URLSession(configuration: .default))
@@ -22,7 +22,7 @@ class ImageSerieTableViewCell: UITableViewCell {
                 }
         }
     }
-    
+
     func setUpShadow(width: CGFloat) {
         serieImageView.layer.addSublayer(CustomShadowLayer(view: serieImageView,
                                                            shadowColor: UIColor.customGrey,

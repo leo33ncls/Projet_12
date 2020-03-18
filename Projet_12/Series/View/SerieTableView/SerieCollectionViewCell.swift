@@ -11,11 +11,11 @@ import UIKit
 class SerieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
-    
+
     func configure(serie: Result) {
         serieImageView.image = nil
         serieNameLabel.text = serie.name
-        
+
         SeriesService(session: URLSession(configuration: .default))
             .getSerieImage(imageUrl: serie.posterPath) { (data) in
                 if let data = data {

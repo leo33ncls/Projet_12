@@ -11,18 +11,18 @@ import FirebaseAuth
 
 class PostEditingViewController: UIViewController {
     @IBOutlet weak var postTextView: UITextView!
-    
+
     var serie: Result?
     var topic: Topic?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         postTextView.delegate = self
-        
+
         guard let currentSerie = serie else { return }
         self.navigationItem.title = currentSerie.name
     }
-    
+
     @IBAction func savePost(_ sender: UIButton) {
         guard let currentTopic = topic else { return }
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -45,7 +45,7 @@ extension PostEditingViewController: UITextViewDelegate {
         textView.resignFirstResponder()
         return true
     }
-    
+
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         postTextView.resignFirstResponder()
     }

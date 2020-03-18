@@ -11,7 +11,7 @@ import UIKit
 class ForumViewController: UIViewController {
     @IBOutlet weak var topicsTableView: UITableView!
     @IBOutlet weak var serieNameLabel: UILabel!
-    
+
     var serie: Result?
     var topics = [Topic]()
     let segueToTopicEditingIdentifier = "segueToTopicEditingVC"
@@ -21,11 +21,11 @@ class ForumViewController: UIViewController {
         super.viewDidLoad()
         topicsTableView.delegate = self
         topicsTableView.dataSource = self
-        
+
         guard let currentSerie = serie else { return }
         serieNameLabel.text = "Forum: \(currentSerie.name)"
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -41,7 +41,7 @@ class ForumViewController: UIViewController {
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let currentSerie = serie else { return }
         if segue.identifier == segueToTopicEditingIdentifier,
@@ -54,7 +54,7 @@ class ForumViewController: UIViewController {
             topicVC.topic = topic
         }
     }
-    
+
     @IBAction func goToTopicEditingPage(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: segueToTopicEditingIdentifier, sender: nil)
     }
@@ -64,7 +64,7 @@ extension ForumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicCell else {
             return UITableViewCell()
@@ -73,7 +73,7 @@ extension ForumViewController: UITableViewDelegate, UITableViewDataSource {
         cell.topicCellView.configure(topic: topic, indexPath: indexPath.row)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let topic = topics[indexPath.row]
         performSegue(withIdentifier: segueToTopicIdentifier, sender: topic)

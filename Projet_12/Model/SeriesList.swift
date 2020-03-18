@@ -13,7 +13,7 @@ import Foundation
 struct SeriesList: Decodable {
     let page, totalResults, totalPages: Int
     let results: [Result]
-    
+
     enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
@@ -35,7 +35,7 @@ struct Result: Decodable {
     let id: Int
     let voteAverage: Double
     let overview, posterPath: String
-    
+
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case genreIDS = "genre_ids"

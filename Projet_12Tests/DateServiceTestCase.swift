@@ -10,7 +10,7 @@
 import XCTest
 
 class DateServiceTestCase: XCTestCase {
-    
+
     func createDate() -> Date? {
         var dateComponents = DateComponents()
         dateComponents.year = 2020
@@ -20,11 +20,11 @@ class DateServiceTestCase: XCTestCase {
         dateComponents.minute = 02
         dateComponents.second = 16
         dateComponents.timeZone = TimeZone(abbreviation: "GMT")
-        
+
         let date = Calendar.current.date(from: dateComponents)
         return date
     }
-    
+
     func testGivenAValidDateString_WhenCallingStringToDate_ThenShouldTestDateShouldBeEqualToDate() {
         // Given
         guard let date = createDate() else {
@@ -32,21 +32,21 @@ class DateServiceTestCase: XCTestCase {
             return
         }
         let validStringDate = "2020-03-10 13:02:16 +0000"
-        
+
         // When
         let testDate = DateService().stringToDate(validStringDate)
-        
+
         // Then
         XCTAssertEqual(date, testDate)
     }
-    
+
     func testGivenAUnvalidDateString_WhenCallingStringToDate_ThenShouldReturnNil() {
         // Given
         let unvalidStringDate = "2020-03-10"
-        
+
         // When
         let testDate = DateService().stringToDate(unvalidStringDate)
-        
+
         // Then
         XCTAssertNil(testDate)
     }

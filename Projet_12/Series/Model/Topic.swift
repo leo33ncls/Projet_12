@@ -10,13 +10,13 @@ import Foundation
 
 // A topic on a serie
 class Topic {
-    
+
     // The id of the serie that the topic is about
     let serieId: Int
-    
+
     // The id of the topic
     var topicId: String?
-    
+
     // The id of the user who creates the topic
     let userId: String
 
@@ -28,10 +28,10 @@ class Topic {
 
     // The posts of the topic
     var post: [Post]
-    
+
     /**
      Initializes a new topic on a serie with some informations.
-     
+
      - Parameters:
         - serieId: The id of the serie that the topic is about.
         - topicId: The id of the topic.

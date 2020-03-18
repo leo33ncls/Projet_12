@@ -15,45 +15,45 @@ class GenresTestCase: XCTestCase {
         // Given
         let genresId = [16, 80]
         let genres = "Animation, Crime"
-        
+
         // When
         let stringGenres = Genres.getStringGenre(genreId: genresId)
-        
+
         // Then
         XCTAssertEqual(genres, stringGenres)
     }
-    
+
     func testGivenNoGenreId_WhenCallingGetStringGenre_ThenShouldReturnEmptyString() {
         // Given
         let genresId = [Int]()
-        
+
         // When
         let stringGenres = Genres.getStringGenre(genreId: genresId)
-        
+
         // Then
         XCTAssertEqual("", stringGenres)
     }
-    
+
     func testGivenUnvalidGenreId_WhenCallingGetStringGenre_ThenShouldReturnEmptyString() {
         // Given
         let genresId = [90, 502, 72]
-        
+
         // When
         let stringGenres = Genres.getStringGenre(genreId: genresId)
-        
+
         // Then
         XCTAssertEqual("", stringGenres)
     }
-    
-    func testGivenAUnvalidGenreIdAndAValidGenreId_WhenCallingGetStringGenre_ThenShouldStringGenresShouldBeEqualToGenres() {
+
+    func testGivenUnvalidGenreIdAndValidGenreId_WhenCallingGetStringGenre_ThenShouldStringGenresShouldBeEqualToGenre() {
         // Given
         let genresId = [90, 16]
-        let genres = "Animation"
-        
+        let genre = "Animation"
+
         // When
         let stringGenres = Genres.getStringGenre(genreId: genresId)
-        
+
         // Then
-        XCTAssertEqual(genres, stringGenres)
+        XCTAssertEqual(genre, stringGenres)
     }
 }

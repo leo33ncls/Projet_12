@@ -10,29 +10,30 @@ import UIKit
 
 class SeriesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+
     let segueIdentifier = "segueToSerieDetails"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = NSNotification.Name(rawValue: "CollectionViewSelected")
-        NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
         self.tabBarController?.tabBar.tintColor = UIColor.customOrange
         self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-    
+
     @objc func collectionViewTapped(_ notification: NSNotification) {
         guard let serie = notification.userInfo?["serie"] as? Result else {
             return
         }
         performSegue(withIdentifier: segueIdentifier, sender: serie)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Result
@@ -44,9 +45,10 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Genres.genres.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SerieCell", for: indexPath) as? SerieTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SerieCell", for: indexPath)
+            as? SerieTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(genreInd: indexPath.row)
