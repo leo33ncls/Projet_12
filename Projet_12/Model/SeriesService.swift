@@ -8,8 +8,13 @@
 
 import Foundation
 
+// Class that manages the series and the series API
 class SeriesService {
+    
+    // The main URL of the API that sends the series list
     private static let seriesListURL = "https://api.themoviedb.org/3/discover/tv"
+    
+    // The main URL of the API that sends the serie image
     private static let serieImageURL = "https://image.tmdb.org/t/p/w500"
     
     private var task: URLSessionDataTask?
@@ -21,7 +26,13 @@ class SeriesService {
         self.session = session
     }
     
-    // Function which creates an Url with parameters
+    /**
+     Function which creates an Url with paramaters for the serieList API.
+     Calling this function adds the api key and a given genre to the serieListURL.
+     
+     - Parameter genre: The genre of the series we want the API to return.
+     - Returns: A valid url for the seriesList API or a nil
+     */
     private func seriesListUrl(genre: Int) -> URL? {
         let stringGenre = String(genre)
         var seriesURL = URLComponents(string: SeriesService.seriesListURL)
@@ -32,7 +43,18 @@ class SeriesService {
         return url
     }
     
-    // Function which gets an objet SeriesList from a response request
+    /**
+     Function which returns a callback with a series list of a given genre.
+     
+     Calling this function calls the seriesListUrl function,
+     checks if the url is valid, sends a request with the url,
+     gets a JSON responses from the API, tries to decode the response in a SeriesList
+     and returns a callback with a series list.
+     
+     - Parameters:
+        - genre: The genre of the series we want the API to return.
+        - callback: The callback returning the series list.
+     */
     func getSeriesList(genre: Int, callback: @escaping (Bool, SeriesList?) -> Void) {
         guard let url = seriesListUrl(genre: genre) else {
             callback(false, nil)
@@ -63,6 +85,17 @@ class SeriesService {
         task?.resume()
     }
     
+    /**
+     Function which returns a completionHandler with an image data.
+
+     Calling this function creates an url with a given image url,
+     checks if the url is valid, sends a request with the url,
+     gets data from the API and returns a completionHandler with image data.
+     
+     - Parameters:
+        - imageUrl: A string of the image url we want the data.
+        - callback: The callback returning the image data.
+     */
     func getSerieImage(imageUrl: String, completionHandler: @escaping (Data?) -> Void) {
         guard let url = URL(string: SeriesService.serieImageURL + imageUrl) else {
             completionHandler(nil)

@@ -17,6 +17,8 @@ class SeriesViewController: UIViewController {
         super.viewDidLoad()
         let name = NSNotification.Name(rawValue: "CollectionViewSelected")
         NotificationCenter.default.addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
+        self.tabBarController?.tabBar.tintColor = UIColor.customOrange
+        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {

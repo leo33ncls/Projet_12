@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - SeriesList
+// The series list object that the API themoviedb sends back
 struct SeriesList: Decodable {
     let page, totalResults, totalPages: Int
     let results: [Result]

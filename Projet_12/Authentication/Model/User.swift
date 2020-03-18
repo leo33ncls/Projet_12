@@ -8,12 +8,30 @@
 
 import Foundation
 
+// An user which is registered in the db
 class User {
-    var id: String
+    
+    // The user id
+    let id: String
+    
+    // The user nickname
     var nickname: String
-    var email: String
+    
+    // The user email
+    let email: String
+    
+    // The user full name
     var fullName: String
     
+    /**
+     Initializes a new user with some informations.
+     
+     - Parameters:
+        - id: The user id.
+        - nickname: The user nickname.
+        - email: The user email.
+        - fullName: The user full name.
+     */
     init(id: String, nickname: String, email: String, fullName: String) {
         self.id = id
         self.nickname = nickname
