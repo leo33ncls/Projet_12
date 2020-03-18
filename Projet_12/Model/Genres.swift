@@ -32,7 +32,7 @@ class Genres {
     /**
      Function which returns a string of the genres from an array of genre id
      - Parameter genreId: The genres id we want the string.
-     - Returns: A string with the genres 
+     - Returns: A string with the genres.
      */
     static func getStringGenre(genreId: [Int]) -> String {
         var genres = [String]()

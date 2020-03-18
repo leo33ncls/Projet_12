@@ -31,7 +31,7 @@ class SeriesService {
      Calling this function adds the api key and a given genre to the serieListURL.
      
      - Parameter genre: The genre of the series we want the API to return.
-     - Returns: A valid url for the seriesList API or a nil
+     - Returns: A valid url for the seriesList API or a nil.
      */
     private func seriesListUrl(genre: Int) -> URL? {
         let stringGenre = String(genre)
@@ -94,7 +94,7 @@ class SeriesService {
      
      - Parameters:
         - imageUrl: A string of the image url we want the data.
-        - callback: The callback returning the image data.
+        - completionHandler: A completionHandler returning the image data.
      */
     func getSerieImage(imageUrl: String, completionHandler: @escaping (Data?) -> Void) {
         guard let url = URL(string: SeriesService.serieImageURL + imageUrl) else {
