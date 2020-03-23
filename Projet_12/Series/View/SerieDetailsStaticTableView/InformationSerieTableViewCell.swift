@@ -18,24 +18,6 @@ class InformationSerieTableViewCell: UITableViewCell {
 
     var view: UIView!
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        xibSetup()
-    }
-
-    func xibSetup() {
-        view = loadViewFromNib()
-        view.frame = bounds
-        view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
-        addSubview(view)
-    }
-
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle.main
-        let nib = UINib(nibName: "InformationSerieTableViewCell", bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil)[0] as? UIView ?? UIView()
-    }
-
     func configure(serie: Result) {
         self.selectionStyle = .none
         genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: serie.genreIDS))"
