@@ -381,7 +381,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-Qh-p7H">
-                                                    <rect key="frame" x="15" y="34" width="399" height="126"/>
+                                                    <rect key="frame" x="15" y="34" width="360" height="126"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O51-US-LMj">
                                                         <size key="itemSize" width="96" height="128"/>
@@ -427,7 +427,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWb-oh-JUq">
-                                                    <rect key="frame" x="15" y="4" width="384" height="24"/>
+                                                    <rect key="frame" x="15" y="4" width="345" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -639,7 +639,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYX-ZT-cZ3" customClass="TopicCellView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -679,7 +679,7 @@
                         <viewLayoutGuide key="safeArea" id="p8N-Cr-Zy1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Forum" id="0Ne-Pp-cmq">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Pkd-va-w5Z">
+                        <barButtonItem key="rightBarButtonItem" image="writeIcon" id="Pkd-va-w5Z">
                             <connections>
                                 <action selector="goToTopicEditingPage:" destination="QeR-jN-r1r" id="Ouo-M6-pbQ"/>
                             </connections>
@@ -736,7 +736,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-Yf-15A" customClass="PostView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="0.0" width="398" height="200"/>
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="200"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -758,18 +758,18 @@
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bPP-zf-ye5">
-                                        <rect key="frame" x="6" y="7" width="327" height="30"/>
+                                        <rect key="frame" x="6" y="7" width="332" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-Fe-7G8">
-                                        <rect key="frame" x="339" y="6" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-Fe-7G8">
+                                        <rect key="frame" x="344" y="9" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="7hz-dH-mZz"/>
+                                            <constraint firstAttribute="height" constant="25" id="7hz-dH-mZz"/>
                                             <constraint firstAttribute="width" secondItem="hmH-Fe-7G8" secondAttribute="height" multiplier="1:1" id="fA5-oP-fTK"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="sendOrangeIcon"/>
                                         <connections>
                                             <action selector="savePost:" destination="w4h-n3-Dob" eventType="touchUpInside" id="vFX-cA-FLg"/>
                                         </connections>
@@ -783,7 +783,7 @@
                                     <constraint firstAttribute="bottom" secondItem="bPP-zf-ye5" secondAttribute="bottom" constant="7" id="Jcv-rF-JmX"/>
                                     <constraint firstAttribute="height" constant="44" id="OJj-Im-o5y"/>
                                     <constraint firstAttribute="trailing" secondItem="hmH-Fe-7G8" secondAttribute="trailing" constant="6" id="OSv-w2-xHe"/>
-                                    <constraint firstItem="hmH-Fe-7G8" firstAttribute="top" secondItem="wdu-ri-te4" secondAttribute="top" constant="6" id="yRK-PW-hTA"/>
+                                    <constraint firstItem="hmH-Fe-7G8" firstAttribute="top" secondItem="wdu-ri-te4" secondAttribute="top" constant="9" id="yRK-PW-hTA"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -806,10 +806,15 @@
                         <viewLayoutGuide key="safeArea" id="TAJ-vv-J6w"/>
                     </view>
                     <navigationItem key="navigationItem" title="Forum" id="KF7-wP-5K8">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="1S2-CE-3Be"/>
+                        <barButtonItem key="rightBarButtonItem" image="whiteStar" id="1S2-CE-3Be">
+                            <connections>
+                                <action selector="saveTopicAsFavorite:" destination="w4h-n3-Dob" id="eEV-et-GgX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="editingPostView" destination="wdu-ri-te4" id="Arw-Rt-WE2"/>
+                        <outlet property="favoriteButton" destination="1S2-CE-3Be" id="kaq-97-U1X"/>
                         <outlet property="postTableView" destination="t4Z-bD-Mje" id="VTF-wB-m58"/>
                         <outlet property="postTextView" destination="bPP-zf-ye5" id="F72-Ud-8GD"/>
                         <outlet property="serieNameLabel" destination="r9x-M7-LdE" id="f9d-FL-YQb"/>
@@ -1085,7 +1090,10 @@
         <image name="accountIcon" width="25" height="27"/>
         <image name="forumIcon" width="25" height="25"/>
         <image name="searchIcon" width="25" height="25"/>
+        <image name="sendOrangeIcon" width="823" height="700"/>
         <image name="seriesIcon" width="25" height="25"/>
+        <image name="whiteStar" width="25" height="25"/>
+        <image name="writeIcon" width="25" height="25"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -15,6 +15,7 @@ class TopicViewController: UIViewController {
     @IBOutlet weak var postTableView: UITableView!
     @IBOutlet weak var editingPostView: UIView!
     @IBOutlet weak var postTextView: UITextView!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
     var serie: Result?
     var topic: Topic?
@@ -28,13 +29,6 @@ class TopicViewController: UIViewController {
         postTextView.delegate = self
         postTextView.isScrollEnabled = false
 
-        guard let currentSerie = serie else { return }
-        guard let currentTopic = topic else { return }
-        serieNameLabel.text = currentSerie.name
-        topicTitleLabel.text = "Sujet: \(currentTopic.title)"
-
-        getPosts(serie: currentSerie, topic: currentTopic)
-
         // Keyboard Notification.
         let center: NotificationCenter = NotificationCenter.default
         center.addObserver(self,
@@ -43,6 +37,25 @@ class TopicViewController: UIViewController {
         center.addObserver(self,
                            selector: #selector(keyboardWillHide(notification:)),
                            name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let currentSerie = serie else { return }
+        guard let currentTopic = topic else { return }
+        serieNameLabel.text = currentSerie.name
+        topicTitleLabel.text = "Sujet: \(currentTopic.title)"
+
+        getPosts(serie: currentSerie, topic: currentTopic)
+
+        FavoriteTopicService.isAFavoriteTopic(topic: currentTopic) { (success) in
+            if success {
+                self.favoriteButton.tintColor = UIColor.customOrange
+            } else {
+                self.favoriteButton.tintColor = UIColor.white
+            }
+        }
     }
 
     @IBAction func savePost(_ sender: UIButton) {
@@ -60,6 +73,19 @@ class TopicViewController: UIViewController {
         postTextView.text = ""
         postTextView.resignFirstResponder()
         editingPostView.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    }
+
+    @IBAction func saveTopicAsFavorite(_ sender: UIBarButtonItem) {
+        guard let currentTopic = topic else { return }
+        FavoriteTopicService.isAFavoriteTopic(topic: currentTopic) { (success) in
+            if success {
+                FavoriteTopicService.removeFavoriteTopic(topic: currentTopic)
+                self.favoriteButton.tintColor = UIColor.white
+            } else {
+                FavoriteTopicService.saveTopicAsFavorite(topic: currentTopic)
+                self.favoriteButton.tintColor = UIColor.customOrange
+            }
+        }
     }
 
     private func getPosts(serie: Result, topic: Topic) {
