@@ -1,5 +1,4 @@
 language: swift
 xcode_workspace: Projet_12.xcworkspace
-xcode_scheme: Projet_12
-xcode_destination: platform=iOS Simulator, OS=11.0, name=iPhone 8
- 
+xcode_scheme: Projet_12Tests
+xcode_sdk: iphonesimulator8.0
