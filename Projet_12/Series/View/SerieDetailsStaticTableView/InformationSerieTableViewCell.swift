@@ -15,12 +15,9 @@ class InformationSerieTableViewCell: UITableViewCell {
     @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var originalLanguageLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+
+    var view: UIView!
+
     func configure(serie: Result) {
         self.selectionStyle = .none
         genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: serie.genreIDS))"

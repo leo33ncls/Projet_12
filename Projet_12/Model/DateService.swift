@@ -8,15 +8,20 @@
 
 import Foundation
 
+// Class that manages the date
 class DateService {
-    
+
+    /**
+     Function which transforms a given string to a date
+     - Parameter string: The string we want to change in a date.
+     - Returns: A date
+     */
     func stringToDate(_ string: String) -> Date? {
         let dateFomatter = DateFormatter()
         dateFomatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
-        if let date = dateFomatter.date(from: string) {
-            return date
-        } else {
+        guard let date = dateFomatter.date(from: string) else {
             return nil
         }
+        return date
     }
 }

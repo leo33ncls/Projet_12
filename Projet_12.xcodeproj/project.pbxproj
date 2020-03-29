@@ -32,7 +32,9 @@
 		28538D2C23F21DB300EE4FC1 /* SeriesList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28538D2B23F21DB300EE4FC1 /* SeriesList.json */; };
 		28538D2E23F21EB400EE4FC1 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */; };
 		28538D3023F2219D00EE4FC1 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */; };
-		28898D4B24144D9F00BD06F3 /* PostEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28898D4A24144D9F00BD06F3 /* PostEditingViewController.swift */; };
+		28898D4D2422B5B100BD06F3 /* DateServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */; };
+		28898D4F2422BE4D00BD06F3 /* GenresTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */; };
+		289242E824296DFB00F27AD1 /* FavoriteTopicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */; };
 		28965995240CA0F0003536BD /* CustomShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28965994240CA0F0003536BD /* CustomShadowLayer.swift */; };
 		28965997240CA236003536BD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28965996240CA236003536BD /* UIColor.swift */; };
 		28965999240DD428003536BD /* EvaluationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28965998240DD428003536BD /* EvaluationViewController.swift */; };
@@ -105,7 +107,9 @@
 		28538D2B23F21DB300EE4FC1 /* SeriesList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SeriesList.json; sourceTree = "<group>"; };
 		28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
-		28898D4A24144D9F00BD06F3 /* PostEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditingViewController.swift; sourceTree = "<group>"; };
+		28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateServiceTestCase.swift; sourceTree = "<group>"; };
+		28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresTestCase.swift; sourceTree = "<group>"; };
+		289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicService.swift; sourceTree = "<group>"; };
 		28965994240CA0F0003536BD /* CustomShadowLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowLayer.swift; sourceTree = "<group>"; };
 		28965996240CA236003536BD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		28965998240DD428003536BD /* EvaluationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */,
 				28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */,
 				28538D2923F21D6A00EE4FC1 /* SeriesServiceTestCase.swift */,
+				28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */,
+				28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */,
 				28538D2B23F21DB300EE4FC1 /* SeriesList.json */,
 				28538D2323F21D0200EE4FC1 /* Info.plist */,
 			);
@@ -267,7 +273,6 @@
 				2896599F240EA4DB003536BD /* ForumViewController.swift */,
 				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
 				289659B62412C331003536BD /* TopicViewController.swift */,
-				28898D4A24144D9F00BD06F3 /* PostEditingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				289659A3240EB3D2003536BD /* Topic.swift */,
 				289659A5240EB49A003536BD /* Post.swift */,
 				289659A924117BD4003536BD /* ForumService.swift */,
+				289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				282B444823D623620062C135 /* Resources */,
 				815503E4ED5B7F97E87C96BD /* [CP] Embed Pods Frameworks */,
 				8F4A8D3BAB8A7E2A1F866A2D /* [CP] Copy Pods Resources */,
+				28898D502422C55D00BD06F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -503,6 +510,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		28898D502422C55D00BD06F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		51B7C8DCB3FCFD090BC37363 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -589,7 +613,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28387C512404C96D00B20BB1 /* NickNameViewController.swift in Sources */,
-				28898D4B24144D9F00BD06F3 /* PostEditingViewController.swift in Sources */,
 				289659A4240EB3D2003536BD /* Topic.swift in Sources */,
 				282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */,
 				28965999240DD428003536BD /* EvaluationViewController.swift in Sources */,
@@ -609,6 +632,7 @@
 				289659AC24119F7B003536BD /* DateService.swift in Sources */,
 				282D6BF924048A72002A90DA /* InformationSerieTableViewCell.swift in Sources */,
 				28387C4E2404B6A000B20BB1 /* ForumTableViewCell.swift in Sources */,
+				289242E824296DFB00F27AD1 /* FavoriteTopicService.swift in Sources */,
 				28538D1A23F2195B00EE4FC1 /* SeriesList.swift in Sources */,
 				28965997240CA236003536BD /* UIColor.swift in Sources */,
 				28D106B523F2F872002C39C8 /* APIKeys.swift in Sources */,
@@ -637,6 +661,8 @@
 				28538D2A23F21D6A00EE4FC1 /* SeriesServiceTestCase.swift in Sources */,
 				28538D3023F2219D00EE4FC1 /* URLSessionFake.swift in Sources */,
 				28538D2E23F21EB400EE4FC1 /* FakeResponseData.swift in Sources */,
+				28898D4F2422BE4D00BD06F3 /* GenresTestCase.swift in Sources */,
+				28898D4D2422B5B100BD06F3 /* DateServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,7 +747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -776,7 +802,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

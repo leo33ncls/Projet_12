@@ -10,7 +10,7 @@ import UIKit
 
 class SynopsisTableViewCell: UITableViewCell {
     @IBOutlet weak var synopsisTextView: UITextView!
-    
+
     func configure(serie: Result) {
         self.selectionStyle = .none
         synopsisTextView.text = serie.overview

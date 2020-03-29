@@ -8,8 +8,10 @@
 
 import Foundation
 
+// Class that manages the genres of serie
 class Genres {
-    
+
+    // An array of all the serie genres
     static let genres: [(id: Int, genre: String)] = [(10759, "Action & Adventure"),
                                                      (16, "Animation"),
                                                      (35, "Comedy"),
@@ -26,17 +28,20 @@ class Genres {
                                                      (10767, "Talk"),
                                                      (10768, "War & Politics"),
                                                      (37, "Western")]
-    
+
+    /**
+     Function which returns a string of the genres from an array of genre id
+     - Parameter genreId: The genres id we want the string.
+     - Returns: A string with the genres.
+     */
     static func getStringGenre(genreId: [Int]) -> String {
         var genres = [String]()
         for index in 0..<genreId.count {
-            for i in 0..<Genres.genres.count {
-                if genreId[index] == Genres.genres[i].id {
-                    genres.append(Genres.genres[i].genre)
-                }
+            for i in 0..<Genres.genres.count where genreId[index] == Genres.genres[i].id {
+                genres.append(Genres.genres[i].genre)
             }
         }
-        
+
         return genres.joined(separator: ", ")
     }
 }
