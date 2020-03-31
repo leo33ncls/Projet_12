@@ -42,12 +42,15 @@ class TopicViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        guard let currentSerie = serie else { return }
         guard let currentTopic = topic else { return }
-        serieNameLabel.text = currentSerie.name
+        if let currentSerie = serie {
+            serieNameLabel.text = currentSerie.name
+        } else {
+            serieNameLabel.text = String(currentTopic.serieId)
+        }
         topicTitleLabel.text = "Sujet: \(currentTopic.title)"
 
-        getPosts(serie: currentSerie, topic: currentTopic)
+        getPosts(topic: currentTopic)
 
         FavoriteTopicService.isAFavoriteTopic(topic: currentTopic) { (success) in
             if success {
@@ -88,8 +91,8 @@ class TopicViewController: UIViewController {
         }
     }
 
-    private func getPosts(serie: Result, topic: Topic) {
-        ForumService.getPosts(serie: serie, topic: topic) { (postArray) in
+    private func getPosts(topic: Topic) {
+        ForumService.getPosts(topic: topic) { (postArray) in
             if let postArray = postArray {
                 topic.post = postArray
                 self.postTableView.reloadData()

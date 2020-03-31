@@ -32,6 +32,7 @@
 		28538D2C23F21DB300EE4FC1 /* SeriesList.json in Resources */ = {isa = PBXBuildFile; fileRef = 28538D2B23F21DB300EE4FC1 /* SeriesList.json */; };
 		28538D2E23F21EB400EE4FC1 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */; };
 		28538D3023F2219D00EE4FC1 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */; };
+		287B239C2432C49D00DD9176 /* ForumFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B239B2432C49D00DD9176 /* ForumFavoriteViewController.swift */; };
 		28898D4D2422B5B100BD06F3 /* DateServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */; };
 		28898D4F2422BE4D00BD06F3 /* GenresTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */; };
 		289242E824296DFB00F27AD1 /* FavoriteTopicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */; };
@@ -54,6 +55,10 @@
 		289659BC2412CCE3003536BD /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659BB2412CCE3003536BD /* PostView.swift */; };
 		289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289659BD2412D379003536BD /* PostTableViewCell.swift */; };
 		289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289A667423D62CB200F84F93 /* AuthenticationViewController.swift */; };
+		28A0E1152432CA0200B01886 /* FavoriteTopicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E1142432CA0200B01886 /* FavoriteTopicInfos.swift */; };
+		28A0E1182432DA7D00B01886 /* FavoriteTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A0E1172432DA7D00B01886 /* FavoriteTopicView.xib */; };
+		28A0E11C2432DB4600B01886 /* FavoriteTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E11B2432DB4600B01886 /* FavoriteTopicView.swift */; };
+		28A0E11E2432E82F00B01886 /* FavoriteTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E11D2432E82F00B01886 /* FavoriteTopicCell.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -107,6 +112,7 @@
 		28538D2B23F21DB300EE4FC1 /* SeriesList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SeriesList.json; sourceTree = "<group>"; };
 		28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		287B239B2432C49D00DD9176 /* ForumFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumFavoriteViewController.swift; sourceTree = "<group>"; };
 		28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateServiceTestCase.swift; sourceTree = "<group>"; };
 		28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresTestCase.swift; sourceTree = "<group>"; };
 		289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicService.swift; sourceTree = "<group>"; };
@@ -129,6 +135,10 @@
 		289659BB2412CCE3003536BD /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		289659BD2412D379003536BD /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		289A667423D62CB200F84F93 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		28A0E1142432CA0200B01886 /* FavoriteTopicInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicInfos.swift; sourceTree = "<group>"; };
+		28A0E1172432DA7D00B01886 /* FavoriteTopicView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTopicView.xib; sourceTree = "<group>"; };
+		28A0E11B2432DB4600B01886 /* FavoriteTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicView.swift; sourceTree = "<group>"; };
+		28A0E11D2432E82F00B01886 /* FavoriteTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicCell.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -193,6 +203,7 @@
 				289A667123D62BD300F84F93 /* View */,
 				2896598B240C84A2003536BD /* Authentication */,
 				28965991240C857F003536BD /* Series */,
+				287B23972432C37A00DD9176 /* Forum */,
 				28E324DC23DFA6A100E1884C /* Extension */,
 				289A667323D62BF900F84F93 /* Supporting Files */,
 			);
@@ -211,6 +222,46 @@
 				28538D2323F21D0200EE4FC1 /* Info.plist */,
 			);
 			path = Projet_12Tests;
+			sourceTree = "<group>";
+		};
+		287B23972432C37A00DD9176 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				287B23982432C3BD00DD9176 /* Model */,
+				287B23992432C42B00DD9176 /* View */,
+				287B239A2432C44B00DD9176 /* Controller */,
+			);
+			path = Forum;
+			sourceTree = "<group>";
+		};
+		287B23982432C3BD00DD9176 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				289659A3240EB3D2003536BD /* Topic.swift */,
+				28A0E1142432CA0200B01886 /* FavoriteTopicInfos.swift */,
+				289659A5240EB49A003536BD /* Post.swift */,
+				289659A924117BD4003536BD /* ForumService.swift */,
+				289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		287B23992432C42B00DD9176 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E1162432D8F400B01886 /* FavoriteForumTableView */,
+				289659B82412CC23003536BD /* TopicTableView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		287B239A2432C44B00DD9176 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				289659B62412C331003536BD /* TopicViewController.swift */,
+				287B239B2432C49D00DD9176 /* ForumFavoriteViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		2896598B240C84A2003536BD /* Authentication */ = {
@@ -259,7 +310,6 @@
 				289659AD2411A6BC003536BD /* SerieTableView */,
 				289659AE2411A6CC003536BD /* SerieDetailsStaticTableView */,
 				289659AF2411A727003536BD /* ForumTableView */,
-				289659B82412CC23003536BD /* TopicTableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,7 +322,6 @@
 				28965998240DD428003536BD /* EvaluationViewController.swift */,
 				2896599F240EA4DB003536BD /* ForumViewController.swift */,
 				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
-				289659B62412C331003536BD /* TopicViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,10 +331,6 @@
 			children = (
 				2896599D240DE24F003536BD /* Evaluation.swift */,
 				2896599B240DE1DC003536BD /* EvaluationService.swift */,
-				289659A3240EB3D2003536BD /* Topic.swift */,
-				289659A5240EB49A003536BD /* Post.swift */,
-				289659A924117BD4003536BD /* ForumService.swift */,
-				289242E724296DFB00F27AD1 /* FavoriteTopicService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +412,16 @@
 				282B444D23D623620062C135 /* AppDelegate.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28A0E1162432D8F400B01886 /* FavoriteForumTableView */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E11D2432E82F00B01886 /* FavoriteTopicCell.swift */,
+				28A0E11B2432DB4600B01886 /* FavoriteTopicView.swift */,
+				28A0E1172432DA7D00B01886 /* FavoriteTopicView.xib */,
+			);
+			path = FavoriteForumTableView;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -493,6 +548,7 @@
 				289659BA2412CC55003536BD /* PostView.xib in Resources */,
 				282B445323D623620062C135 /* Main.storyboard in Resources */,
 				282D6BF6240479AC002A90DA /* ImageSerieTableViewCell.xib in Resources */,
+				28A0E1182432DA7D00B01886 /* FavoriteTopicView.xib in Resources */,
 				28387C4B2404B25000B20BB1 /* SynopsisTableViewCell.xib in Resources */,
 				282D6BFA24048A72002A90DA /* InformationSerieTableViewCell.xib in Resources */,
 				282D6BFE2404A700002A90DA /* EvaluationTableViewCell.xib in Resources */,
@@ -616,9 +672,11 @@
 				289659A4240EB3D2003536BD /* Topic.swift in Sources */,
 				282D6BF223FD8CA6002A90DA /* SerieDetailsViewController.swift in Sources */,
 				28965999240DD428003536BD /* EvaluationViewController.swift in Sources */,
+				287B239C2432C49D00DD9176 /* ForumFavoriteViewController.swift in Sources */,
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
 				289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
+				28A0E11C2432DB4600B01886 /* FavoriteTopicView.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
 				289659AA24117BD4003536BD /* ForumService.swift in Sources */,
 				289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */,
@@ -638,7 +696,9 @@
 				28D106B523F2F872002C39C8 /* APIKeys.swift in Sources */,
 				282D6BFD2404A700002A90DA /* EvaluationTableViewCell.swift in Sources */,
 				289659A6240EB49A003536BD /* Post.swift in Sources */,
+				28A0E1152432CA0200B01886 /* FavoriteTopicInfos.swift in Sources */,
 				2896599E240DE24F003536BD /* Evaluation.swift in Sources */,
+				28A0E11E2432E82F00B01886 /* FavoriteTopicCell.swift in Sources */,
 				28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */,
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,
 				289659B72412C331003536BD /* TopicViewController.swift in Sources */,

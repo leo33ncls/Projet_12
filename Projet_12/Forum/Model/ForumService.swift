@@ -118,12 +118,12 @@ class ForumService {
         - topic: The topic we want the posts.
         - callback: The callback returning all the topics of the serie.
      */
-    static func getPosts(serie: Result, topic: Topic, callback: @escaping ([Post]?) -> Void) {
+    static func getPosts(topic: Topic, callback: @escaping ([Post]?) -> Void) {
         guard let topicId = topic.topicId else {
             callback(nil)
             return
         }
-        forumRef.child(String(serie.id)).child(topicId)
+        forumRef.child(String(topic.serieId)).child(topicId)
             .child("Post").observe(.value) { (snapshot) in
             var posts = [Post]()
                 for child in snapshot.children {

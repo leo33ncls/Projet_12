@@ -37,7 +37,8 @@ class SeriesService {
         let stringGenre = String(genre)
         var seriesURL = URLComponents(string: SeriesService.seriesListURL)
         seriesURL?.queryItems = [URLQueryItem(name: "api_key", value: APIKeys.serieAPIKey),
-                                 URLQueryItem(name: "with_genres", value: stringGenre)]
+                                 URLQueryItem(name: "with_genres", value: stringGenre),
+                                 URLQueryItem(name: "sort_by", value: "popularity.desc")]
 
         guard let url = seriesURL?.url else { return nil }
         return url
