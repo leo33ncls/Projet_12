@@ -67,7 +67,6 @@
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
 		28D106B323F23473002C39C8 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D106B223F23473002C39C8 /* SeriesViewController.swift */; };
-		28D106B523F2F872002C39C8 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D106B423F2F872002C39C8 /* APIKeys.swift */; };
 		28D106BD23F30892002C39C8 /* SerieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D106BC23F30892002C39C8 /* SerieTableViewCell.swift */; };
 		28E324DB23DFA5E900E1884C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E324DA23DFA5E900E1884C /* SignUpViewController.swift */; };
 		28E324E023DFA80900E1884C /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E324DF23DFA80900E1884C /* UIAlertController.swift */; };
@@ -151,7 +150,6 @@
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		28D106B223F23473002C39C8 /* SeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
-		28D106B423F2F872002C39C8 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		28D106BC23F30892002C39C8 /* SerieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTableViewCell.swift; sourceTree = "<group>"; };
 		28E324DA23DFA5E900E1884C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		28E324DF23DFA80900E1884C /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -416,12 +414,11 @@
 		289A667323D62BF900F84F93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				28D106B423F2F872002C39C8 /* APIKeys.swift */,
+				282B444D23D623620062C135 /* AppDelegate.swift */,
 				28A0E155243A7CB800B01886 /* APIKeys.plist */,
 				282B445423D623640062C135 /* Assets.xcassets */,
 				282B445923D623640062C135 /* Info.plist */,
 				282B445F23D627900062C135 /* GoogleService-Info.plist */,
-				282B444D23D623620062C135 /* AppDelegate.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -707,7 +704,6 @@
 				289242E824296DFB00F27AD1 /* FavoriteTopicService.swift in Sources */,
 				28538D1A23F2195B00EE4FC1 /* SeriesList.swift in Sources */,
 				28965997240CA236003536BD /* UIColor.swift in Sources */,
-				28D106B523F2F872002C39C8 /* APIKeys.swift in Sources */,
 				282D6BFD2404A700002A90DA /* EvaluationTableViewCell.swift in Sources */,
 				289659A6240EB49A003536BD /* Post.swift in Sources */,
 				28A0E1152432CA0200B01886 /* FavoriteTopicInfos.swift in Sources */,
