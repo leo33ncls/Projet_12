@@ -14,17 +14,17 @@ class FavoriteTopicView: UIView {
     @IBOutlet weak var topicTitleLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
     private func commonInit() {
         Bundle.main.loadNibNamed("FavoriteTopicView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,18 +46,18 @@ class FavoriteTopicView: UIView {
         } else {
             dateLabel.text = displayDate(date: favoriteTopic.date)
         }
-        
+
         if indexPath % 2 == 0 {
             contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
             contentView.layer.borderWidth = 0.25
             contentView.layer.borderColor = UIColor.darkGray.cgColor
         }
     }
-    
+
     private func displayDate(date: Date) -> String {
         let day = Calendar.current.component(.day, from: date)
         let month = Calendar.current.component(.month, from: date)
-        
+
         if day < 10 && month < 10 {
             return "0\(day)/0\(month)"
         } else if day < 10 {
@@ -68,11 +68,11 @@ class FavoriteTopicView: UIView {
             return "\(day)/\(month)"
         }
     }
-    
+
     private func displayHour(date: Date) -> String {
         let hour = Calendar.current.component(.hour, from: date)
         let minute = Calendar.current.component(.minute, from: date)
-        
+
         if hour < 10 && minute < 10 {
             return "0\(hour):0\(minute)"
         } else if hour < 10 {

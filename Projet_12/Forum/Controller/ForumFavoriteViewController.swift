@@ -49,7 +49,8 @@ extension ForumFavoriteViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTopicCell", for: indexPath) as? FavoriteTopicCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTopicCell", for: indexPath)
+            as? FavoriteTopicCell else {
             return UITableViewCell()
         }
         let topic = topics[indexPath.row]
