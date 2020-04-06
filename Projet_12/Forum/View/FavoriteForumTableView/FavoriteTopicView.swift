@@ -36,7 +36,7 @@ class FavoriteTopicView: UIView {
     }
 
     func configure(favoriteTopic: Topic, indexPath: Int) {
-        serieNameLabel.text = String(favoriteTopic.serieId)
+        serieNameLabel.text = favoriteTopic.serieName
         topicTitleLabel.text = favoriteTopic.title
         UsersService.getUserNickname(userId: favoriteTopic.userId) { (nickname) in
             self.nicknameLabel.text = nickname

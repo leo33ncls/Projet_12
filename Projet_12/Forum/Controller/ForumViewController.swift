@@ -50,7 +50,6 @@ class ForumViewController: UIViewController {
         } else if segue.identifier == segueToTopicIdentifier,
             let topicVC = segue.destination as? TopicViewController,
             let topic = sender as? Topic {
-            topicVC.serie = currentSerie
             topicVC.topic = topic
         }
     }

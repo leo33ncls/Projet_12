@@ -25,6 +25,7 @@ class ForumService {
     static func saveTopic(topic: Topic) {
         let topicRef = forumRef.child(String(topic.serieId)).childByAutoId()
         let topicDictionary: NSDictionary = ["userId": topic.userId,
+                                             "serieName": topic.serieName,
                                              "title": topic.title,
                                              "date": "\(topic.date)"]
         let postDictionary: NSDictionary = ["userId": topic.post[0].userId,
@@ -99,7 +100,8 @@ class ForumService {
                 let topic = Topic(serieId: serie.id,
                                   topicId: snap.key,
                                   userId: userId ,
-                                  date: date ,
+                                  date: date,
+                                  serieName: serie.name ,
                                   title: title ,
                                   post: [])
                 topics.append(topic)

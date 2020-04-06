@@ -23,6 +23,9 @@ class Topic {
     // The date of the topic creation
     let date: Date
 
+    // The name of the serie that the topic is about
+    let serieName: String
+
     // The title of the topic
     let title: String
 
@@ -37,14 +40,17 @@ class Topic {
         - topicId: The id of the topic.
         - userId: The id of the user who creates the topic.
         - date: The date of the topic creation.
+        - serieName: The name of the serie that the topic is about
         - title: The title of the topic.
         - post: The first post of the topic.
     */
-    init(serieId: Int, topicId: String?, userId: String, date: Date, title: String, post: [Post]) {
+    init(serieId: Int, topicId: String?, userId: String, date: Date,
+         serieName: String, title: String, post: [Post]) {
         self.serieId = serieId
         self.topicId = topicId
         self.userId = userId
         self.date = date
+        self.serieName = serieName
         self.title = title
         self.post = post
     }

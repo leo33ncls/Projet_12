@@ -257,6 +257,7 @@
 		287B23992432C42B00DD9176 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				289659AF2411A727003536BD /* ForumTableView */,
 				28A0E1162432D8F400B01886 /* FavoriteForumTableView */,
 				289659B82412CC23003536BD /* TopicTableView */,
 			);
@@ -266,8 +267,10 @@
 		287B239A2432C44B00DD9176 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				289659B62412C331003536BD /* TopicViewController.swift */,
+				2896599F240EA4DB003536BD /* ForumViewController.swift */,
 				287B239B2432C49D00DD9176 /* ForumFavoriteViewController.swift */,
+				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
+				289659B62412C331003536BD /* TopicViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,7 +320,6 @@
 			children = (
 				289659AD2411A6BC003536BD /* SerieTableView */,
 				289659AE2411A6CC003536BD /* SerieDetailsStaticTableView */,
-				289659AF2411A727003536BD /* ForumTableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,8 +330,6 @@
 				28D106B223F23473002C39C8 /* SeriesViewController.swift */,
 				282D6BF123FD8CA6002A90DA /* SerieDetailsViewController.swift */,
 				28965998240DD428003536BD /* EvaluationViewController.swift */,
-				2896599F240EA4DB003536BD /* ForumViewController.swift */,
-				289659A1240EACE2003536BD /* TopicEditingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

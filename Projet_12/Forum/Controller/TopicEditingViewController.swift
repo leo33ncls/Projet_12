@@ -38,6 +38,7 @@ class TopicEditingViewController: UIViewController {
                               topicId: nil,
                               userId: user.uid,
                               date: Date(),
+                              serieName: currentSerie.name,
                               title: topictitle,
                               post: [post])
 

@@ -17,7 +17,6 @@ class TopicViewController: UIViewController {
     @IBOutlet weak var postTextView: UITextView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
-    var serie: Result?
     var topic: Topic?
 
     override func viewDidLoad() {
@@ -43,11 +42,7 @@ class TopicViewController: UIViewController {
         super.viewWillAppear(animated)
 
         guard let currentTopic = topic else { return }
-        if let currentSerie = serie {
-            serieNameLabel.text = currentSerie.name
-        } else {
-            serieNameLabel.text = String(currentTopic.serieId)
-        }
+        serieNameLabel.text = currentTopic.serieName
         topicTitleLabel.text = "Sujet: \(currentTopic.title)"
 
         getPosts(topic: currentTopic)

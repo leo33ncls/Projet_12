@@ -130,6 +130,7 @@ class FavoriteTopicService {
                         }
                         guard let dictTopic = snapshot.value as? [String: Any],
                             let topicUserId = dictTopic["userId"] as? String,
+                            let serieName = dictTopic["serieName"] as? String,
                             let title = dictTopic["title"] as? String,
                             let dateString = dictTopic["date"] as? String,
                             let date = DateService().stringToDate(dateString) else {
@@ -140,6 +141,7 @@ class FavoriteTopicService {
                                           topicId: favoriteTopicInfos.topicId,
                                           userId: topicUserId,
                                           date: date,
+                                          serieName: serieName,
                                           title: title,
                                           post: [])
                         favoriteTopics.append(topic)
