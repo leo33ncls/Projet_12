@@ -64,6 +64,9 @@
 		28A0E15A243A7FB100B01886 /* APIKeysServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */; };
 		28A0E15C243A801E00B01886 /* APIKeysTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28A0E15B243A801E00B01886 /* APIKeysTest.plist */; };
 		28A0E162243BA58400B01886 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E161243BA58400B01886 /* SearchViewController.swift */; };
+		28A0E16C243BCF4100B01886 /* SearchSerieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A0E16B243BCF4100B01886 /* SearchSerieView.xib */; };
+		28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16D243BD1D200B01886 /* SearchSerieView.swift */; };
+		28A0E170243BD51400B01886 /* SearchSerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16F243BD51400B01886 /* SearchSerieCell.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -148,6 +151,9 @@
 		28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeysServiceTestCase.swift; sourceTree = "<group>"; };
 		28A0E15B243A801E00B01886 /* APIKeysTest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeysTest.plist; sourceTree = "<group>"; };
 		28A0E161243BA58400B01886 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		28A0E16B243BCF4100B01886 /* SearchSerieView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSerieView.xib; sourceTree = "<group>"; };
+		28A0E16D243BD1D200B01886 /* SearchSerieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieView.swift; sourceTree = "<group>"; };
+		28A0E16F243BD51400B01886 /* SearchSerieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieCell.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -457,6 +463,7 @@
 		28A0E15F243BA55500B01886 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				28A0E16A243BCEC000B01886 /* SearchTableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -466,6 +473,16 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		28A0E16A243BCEC000B01886 /* SearchTableView */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E16F243BD51400B01886 /* SearchSerieCell.swift */,
+				28A0E16D243BD1D200B01886 /* SearchSerieView.swift */,
+				28A0E16B243BCF4100B01886 /* SearchSerieView.xib */,
+			);
+			path = SearchTableView;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -596,6 +613,7 @@
 				28A0E1182432DA7D00B01886 /* FavoriteTopicView.xib in Resources */,
 				28387C4B2404B25000B20BB1 /* SynopsisTableViewCell.xib in Resources */,
 				282D6BFA24048A72002A90DA /* InformationSerieTableViewCell.xib in Resources */,
+				28A0E16C243BCF4100B01886 /* SearchSerieView.xib in Resources */,
 				282D6BFE2404A700002A90DA /* EvaluationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +739,7 @@
 				287B239C2432C49D00DD9176 /* ForumFavoriteViewController.swift in Sources */,
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
 				289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */,
+				28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
 				28A0E11C2432DB4600B01886 /* FavoriteTopicView.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
@@ -749,6 +768,7 @@
 				289659B72412C331003536BD /* TopicViewController.swift in Sources */,
 				28E324DB23DFA5E900E1884C /* SignUpViewController.swift in Sources */,
 				28A0E162243BA58400B01886 /* SearchViewController.swift in Sources */,
+				28A0E170243BD51400B01886 /* SearchSerieCell.swift in Sources */,
 				282D6BF023FCDA2C002A90DA /* SerieCollectionViewCell.swift in Sources */,
 				282D6BEE23FCD482002A90DA /* Genres.swift in Sources */,
 				289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */,

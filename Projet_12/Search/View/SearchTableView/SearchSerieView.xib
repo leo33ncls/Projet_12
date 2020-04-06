@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchSerieView" customModule="Projet_12" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Qdd-KR-Ogw"/>
+                <outlet property="serieGenresLabel" destination="eGx-nZ-inD" id="W9S-6n-xNh"/>
+                <outlet property="serieImageView" destination="D5s-HA-e3h" id="wvw-Xg-NAg"/>
+                <outlet property="serieNameLabel" destination="Pei-61-Jq8" id="prj-zH-GHx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D5s-HA-e3h">
+                    <rect key="frame" x="15" y="11" width="90" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="D5s-HA-e3h" secondAttribute="height" multiplier="45:64" id="XTB-i5-ThL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pei-61-Jq8">
+                    <rect key="frame" x="113" y="11" width="247" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Ouj-v8-dS3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGx-nZ-inD">
+                    <rect key="frame" x="113" y="71" width="247" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="e7Y-cr-Qdb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="D5s-HA-e3h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="3x4-HC-MlZ"/>
+                <constraint firstAttribute="bottom" secondItem="D5s-HA-e3h" secondAttribute="bottom" constant="11" id="6wh-vk-LBm"/>
+                <constraint firstItem="eGx-nZ-inD" firstAttribute="leading" secondItem="D5s-HA-e3h" secondAttribute="trailing" constant="8" id="88s-sF-3JL"/>
+                <constraint firstItem="eGx-nZ-inD" firstAttribute="top" secondItem="Pei-61-Jq8" secondAttribute="bottom" id="Euf-8M-J3f"/>
+                <constraint firstItem="Pei-61-Jq8" firstAttribute="leading" secondItem="D5s-HA-e3h" secondAttribute="trailing" constant="8" id="GTV-6G-t67"/>
+                <constraint firstAttribute="trailing" secondItem="Pei-61-Jq8" secondAttribute="trailing" constant="15" id="VGa-Ma-XQY"/>
+                <constraint firstAttribute="trailing" secondItem="eGx-nZ-inD" secondAttribute="trailing" constant="15" id="lzl-JK-hny"/>
+                <constraint firstItem="D5s-HA-e3h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="o9y-AB-fn5"/>
+                <constraint firstItem="Pei-61-Jq8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="svv-6v-jrj"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.575712143928037"/>
+        </view>
+    </objects>
+</document>
