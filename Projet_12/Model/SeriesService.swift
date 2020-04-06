@@ -12,7 +12,10 @@ import Foundation
 class SeriesService {
 
     // The main URL of the API that sends the series list
-    private static let seriesListURL = "https://api.themoviedb.org/3/discover/tv"
+    private static let discoverSeriesURL = "https://api.themoviedb.org/3/discover/tv"
+
+    // The main URL of the API that searches and sends series
+    private static let searchSeriesURL = "https://api.themoviedb.org/3/search/tv"
 
     // The main URL of the API that finds and sends the serie
     private static let serieURL = "https://api.themoviedb.org/3/tv/"
@@ -30,15 +33,15 @@ class SeriesService {
     }
 
     /**
-     Function which creates an Url with paramaters for the serieList API.
-     Calling this function adds the api key and a given genre to the serieListURL.
+     Function which creates an Url with serie genres for the serie API.
+     Calling this function adds the api key and a given genre to the discoverSeriesURL.
 
      - Parameter genre: The genre of the series we want the API to return.
-     - Returns: A valid url for the seriesList API or a nil.
+     - Returns: A valid url for the serie API or a nil.
      */
-    private func seriesListUrl(genre: Int) -> URL? {
+    private func discoverSeriesUrl(genre: Int) -> URL? {
         let stringGenre = String(genre)
-        var seriesURL = URLComponents(string: SeriesService.seriesListURL)
+        var seriesURL = URLComponents(string: SeriesService.discoverSeriesURL)
         seriesURL?.queryItems = [URLQueryItem(name: "api_key",
                                               value: APIKeysService
                                                 .valueForAPIKey(named: APIKeysService.serieAPIKey,
@@ -59,7 +62,7 @@ class SeriesService {
      - Parameter serieId: The id of the serie we want informations.
      - Returns: A valid url to find a serie for the serie API or a nil.
      */
-    private func findSerieUrl(serieId: Int) -> URL? {
+    /*private func findSerieUrl(serieId: Int) -> URL? {
         var serieURL = URLComponents(string: SeriesService.serieURL + String(serieId))
         serieURL?.queryItems = [URLQueryItem(name: "api_key",
                                              value: APIKeysService
@@ -68,12 +71,32 @@ class SeriesService {
                                                                 bundleClass: SeriesService.self))]
         guard let url = serieURL?.url else { return nil }
         return url
+    }*/
+
+    /**
+     Function which creates an Url with paramaters to search series with the serie API.
+     Calling this function adds the api key to the parameters, completes the url path with a string search
+     And then returns a valid url for the serie API.
+     
+     - Parameter text: The title or a part of the serie title that the user searches.
+     - Returns: A valid url to search series for the serie API or a nil.
+     */
+    private func searchSeriesUrl(text: String) -> URL? {
+        var searchSerieURL = URLComponents(string: SeriesService.searchSeriesURL)
+        searchSerieURL?.queryItems = [URLQueryItem(name: "api_key",
+                                                   value: APIKeysService
+                                                    .valueForAPIKey(named: APIKeysService.serieAPIKey,
+                                                                    fileName: APIKeysService.fileName,
+                                                                    bundleClass: SeriesService.self)),
+                                      URLQueryItem(name: "query", value: text)]
+        guard let url = searchSerieURL?.url else { return nil }
+        return url
     }
 
     /**
      Function which returns a callback with a series list of a given genre.
 
-     Calling this function calls the seriesListUrl function,
+     Calling this function calls the discoverSeriesUrl function,
      checks if the url is valid, sends a request with the url,
      gets a JSON responses from the API, tries to decode the response in a SeriesList
      and returns a callback with a series list.
@@ -83,7 +106,7 @@ class SeriesService {
         - callback: The callback returning the series list.
      */
     func getSeriesList(genre: Int, callback: @escaping (Bool, SeriesList?) -> Void) {
-        guard let url = seriesListUrl(genre: genre) else {
+        guard let url = discoverSeriesUrl(genre: genre) else {
             callback(false, nil)
             return
         }
@@ -124,7 +147,7 @@ class SeriesService {
      - serieId: The id of the serie we want informations.
      - callback: The callback returning the series list.
      */
-    func getSerie(serieId: Int, callback: @escaping (Bool, Result?) -> Void) {
+    /*func getSerie(serieId: Int, callback: @escaping (Bool, Result?) -> Void) {
         guard let url = findSerieUrl(serieId: serieId) else {
             callback(false, nil)
             return
@@ -149,6 +172,48 @@ class SeriesService {
                 }
 
                 callback(true, serieJSON)
+            }
+        }
+        task?.resume()
+    }*/
+
+    /**
+     Function which returns a callback with a series list of a user search.
+     
+     Calling this function calls the searchSeriesUrl function,
+     checks if the url is valid, sends a request with the url,
+     gets a JSON responses from the API, tries to decode the response in a SeriesList
+     and returns a callback with a series list.
+     
+     - Parameters:
+     - searchText: The title or a part of the serie title that the user searches.
+     - callback: The callback returning the series list.
+     */
+    func searchSeries(searchText: String, callback: @escaping (Bool, SeriesList?) -> Void) {
+        guard let url = searchSeriesUrl(text: searchText) else {
+            callback(false, nil)
+            return
+        }
+
+        task?.cancel()
+        task = session.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    callback(false, nil)
+                    return
+                }
+
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    callback(false, nil)
+                    return
+                }
+
+                guard let seriesListJSON = try? JSONDecoder().decode(SeriesList.self, from: data) else {
+                    callback(false, nil)
+                    return
+                }
+
+                callback(true, seriesListJSON)
             }
         }
         task?.resume()

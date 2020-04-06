@@ -63,6 +63,7 @@
 		28A0E158243A7D4500B01886 /* APIKeysService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E157243A7D4500B01886 /* APIKeysService.swift */; };
 		28A0E15A243A7FB100B01886 /* APIKeysServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */; };
 		28A0E15C243A801E00B01886 /* APIKeysTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28A0E15B243A801E00B01886 /* APIKeysTest.plist */; };
+		28A0E162243BA58400B01886 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E161243BA58400B01886 /* SearchViewController.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -146,6 +147,7 @@
 		28A0E157243A7D4500B01886 /* APIKeysService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeysService.swift; sourceTree = "<group>"; };
 		28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeysServiceTestCase.swift; sourceTree = "<group>"; };
 		28A0E15B243A801E00B01886 /* APIKeysTest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeysTest.plist; sourceTree = "<group>"; };
+		28A0E161243BA58400B01886 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				2896598B240C84A2003536BD /* Authentication */,
 				28965991240C857F003536BD /* Series */,
 				287B23972432C37A00DD9176 /* Forum */,
+				28A0E15D243BA51C00B01886 /* Search */,
 				28E324DC23DFA6A100E1884C /* Extension */,
 				289A667323D62BF900F84F93 /* Supporting Files */,
 			);
@@ -431,6 +434,38 @@
 				28A0E1172432DA7D00B01886 /* FavoriteTopicView.xib */,
 			);
 			path = FavoriteForumTableView;
+			sourceTree = "<group>";
+		};
+		28A0E15D243BA51C00B01886 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E160243BA56600B01886 /* Model */,
+				28A0E15F243BA55500B01886 /* View */,
+				28A0E15E243BA54600B01886 /* Controller */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		28A0E15E243BA54600B01886 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E161243BA58400B01886 /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		28A0E15F243BA55500B01886 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28A0E160243BA56600B01886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -713,6 +748,7 @@
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,
 				289659B72412C331003536BD /* TopicViewController.swift in Sources */,
 				28E324DB23DFA5E900E1884C /* SignUpViewController.swift in Sources */,
+				28A0E162243BA58400B01886 /* SearchViewController.swift in Sources */,
 				282D6BF023FCDA2C002A90DA /* SerieCollectionViewCell.swift in Sources */,
 				282D6BEE23FCD482002A90DA /* Genres.swift in Sources */,
 				289A667523D62CB200F84F93 /* AuthenticationViewController.swift in Sources */,

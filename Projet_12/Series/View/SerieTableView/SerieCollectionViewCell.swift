@@ -16,8 +16,9 @@ class SerieCollectionViewCell: UICollectionViewCell {
         serieImageView.image = nil
         serieNameLabel.text = serie.name
 
+        guard let serieImageUrl = serie.posterPath else { return }
         SeriesService(session: URLSession(configuration: .default))
-            .getSerieImage(imageUrl: serie.posterPath) { (data) in
+            .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.serieNameLabel.isHidden = true
                     self.serieImageView.image = UIImage(data: data)

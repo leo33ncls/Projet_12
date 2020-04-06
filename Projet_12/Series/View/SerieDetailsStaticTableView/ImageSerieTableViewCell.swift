@@ -15,8 +15,10 @@ class ImageSerieTableViewCell: UITableViewCell {
 
     func configure(serie: Result) {
         serieNameLabel.text = serie.name
+
+        guard let serieImageUrl = serie.backdropPath else { return }
         SeriesService(session: URLSession(configuration: .default))
-            .getSerieImage(imageUrl: serie.backdropPath) { (data) in
+            .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.serieImageView.image = UIImage(data: data)
                 }

@@ -30,11 +30,13 @@ struct Result: Decodable {
     let popularity: Double
     let originCountry: [String]
     let voteCount: Int
-    let firstAirDate, backdropPath: String
+    let firstAirDate: String
+    let backdropPath: String?
     let originalLanguage: String
     let id: Int
     let voteAverage: Double
-    let overview, posterPath: String
+    let overview: String
+    let posterPath: String?
 
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"

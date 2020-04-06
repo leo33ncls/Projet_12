@@ -25,8 +25,10 @@ class InformationSerieTableViewCell: UITableViewCell {
         popularityLabel.text = "Popularité: \(serie.popularity)"
         originalLanguageLabel.text = "Langue originale: \(serie.originalLanguage)"
         countryLabel.text = "Pays: \(serie.originCountry.joined(separator: ", "))"
+
+        guard let serieImageUrl = serie.posterPath else { return }
         SeriesService(session: URLSession(configuration: .default))
-            .getSerieImage(imageUrl: serie.posterPath) { (data) in
+            .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.seriePosterImageView.image = UIImage(data: data)
                 }
