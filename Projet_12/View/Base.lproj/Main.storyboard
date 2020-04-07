@@ -280,14 +280,52 @@
                     </tabBar>
                     <connections>
                         <segue destination="fGP-ds-h7r" kind="relationship" relationship="viewControllers" id="cmm-1X-ZF8"/>
-                        <segue destination="3mp-GT-CZc" kind="relationship" relationship="viewControllers" id="Rg3-VJ-Sc1"/>
                         <segue destination="Ctf-ke-Yau" kind="relationship" relationship="viewControllers" id="cV1-CE-jjt"/>
                         <segue destination="dzU-fa-FMY" kind="relationship" relationship="viewControllers" id="OzM-2N-ufB"/>
+                        <segue destination="114-kb-V4t" kind="relationship" relationship="viewControllers" id="7wt-S2-X3t"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-wd-P5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1289" y="130"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="pUk-D3-YFi">
+            <objects>
+                <navigationController id="114-kb-V4t" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" image="accountIcon" id="cwh-JF-vKH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="IDC-I1-Xvp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Qhv-O5-3Qw" kind="relationship" relationship="rootViewController" id="cfK-4k-0mO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yY8-84-w3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1289" y="-1372"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f9a-uC-0Or">
+            <objects>
+                <viewController id="Qhv-O5-3Qw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ksy-bI-vbu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Yie-2i-Ih5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CHR-PV-AYO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmT-PT-JZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="-1372"/>
         </scene>
         <!--Séries-->
         <scene sceneID="cB2-QT-sC7">
@@ -311,22 +349,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysU-Zw-19Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2190" y="-608"/>
-        </scene>
-        <!--Account-->
-        <scene sceneID="xcy-eD-VvP">
-            <objects>
-                <viewController id="3mp-GT-CZc" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TOP-8O-HyK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="oqY-Qm-uon"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="accountIcon" id="EMZ-ec-nP4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ssb-Bu-sbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1289" y="964"/>
         </scene>
         <!--Forum-->
         <scene sceneID="ZcR-ct-p87">

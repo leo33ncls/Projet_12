@@ -53,4 +53,27 @@ class UsersService {
             callback(nickname)
         }
     }
+
+    /**
+     Function which returns a callback with the user of a given user id.
+     Calling this function observes the value of a user in the database
+     kepts and returns the user value with a callback.
+     
+     - Parameters:
+     - userId: The user Id of the user that we want the information.
+     - callback: The callback returning the user.
+     */
+    static func getUserInformation(userId: String, callback: @escaping (User?) -> Void) {
+        usersDTBRef.child(userId).observe(.value) { (snapshot) in
+            guard let dictUser = snapshot.value as? [String: Any],
+                let nickname = dictUser["nickname"] as? String,
+                let email = dictUser["email"] as? String,
+                let fullName = dictUser["fullName"] as? String else {
+                callback(nil)
+                return
+            }
+            let user = User(id: userId, nickname: nickname, email: email, fullName: fullName)
+            callback(user)
+        }
+    }
 }

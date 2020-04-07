@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
         seriesTableView.delegate = self
         seriesTableView.dataSource = self
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Result
