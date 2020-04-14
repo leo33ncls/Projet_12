@@ -67,6 +67,7 @@
 		28A0E16C243BCF4100B01886 /* SearchSerieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A0E16B243BCF4100B01886 /* SearchSerieView.xib */; };
 		28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16D243BD1D200B01886 /* SearchSerieView.swift */; };
 		28A0E170243BD51400B01886 /* SearchSerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16F243BD51400B01886 /* SearchSerieCell.swift */; };
+		28A0E174243CE09400B01886 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E173243CE09400B01886 /* AccountViewController.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -154,6 +155,7 @@
 		28A0E16B243BCF4100B01886 /* SearchSerieView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSerieView.xib; sourceTree = "<group>"; };
 		28A0E16D243BD1D200B01886 /* SearchSerieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieView.swift; sourceTree = "<group>"; };
 		28A0E16F243BD51400B01886 /* SearchSerieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieCell.swift; sourceTree = "<group>"; };
+		28A0E173243CE09400B01886 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				28965991240C857F003536BD /* Series */,
 				287B23972432C37A00DD9176 /* Forum */,
 				28A0E15D243BA51C00B01886 /* Search */,
+				28A0E172243CE07200B01886 /* Account */,
 				28E324DC23DFA6A100E1884C /* Extension */,
 				289A667323D62BF900F84F93 /* Supporting Files */,
 			);
@@ -483,6 +486,14 @@
 				28A0E16B243BCF4100B01886 /* SearchSerieView.xib */,
 			);
 			path = SearchTableView;
+			sourceTree = "<group>";
+		};
+		28A0E172243CE07200B01886 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E173243CE09400B01886 /* AccountViewController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -763,6 +774,7 @@
 				28A0E1152432CA0200B01886 /* FavoriteTopicInfos.swift in Sources */,
 				2896599E240DE24F003536BD /* Evaluation.swift in Sources */,
 				28A0E11E2432E82F00B01886 /* FavoriteTopicCell.swift in Sources */,
+				28A0E174243CE09400B01886 /* AccountViewController.swift in Sources */,
 				28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */,
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,
 				289659B72412C331003536BD /* TopicViewController.swift in Sources */,
@@ -946,6 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DNK7L46CJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Projet_12/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -965,6 +978,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DNK7L46CJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Projet_12/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

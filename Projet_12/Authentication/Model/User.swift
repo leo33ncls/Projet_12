@@ -23,6 +23,9 @@ class User {
     // The user full name
     var fullName: String
 
+    // The user description
+    var description: String?
+
     /**
      Initializes a new user with some informations.
 
@@ -32,10 +35,11 @@ class User {
         - email: The user email.
         - fullName: The user full name.
      */
-    init(id: String, nickname: String, email: String, fullName: String) {
+    init(id: String, nickname: String, email: String, fullName: String, description: String?) {
         self.id = id
         self.nickname = nickname
         self.email = email
         self.fullName = fullName
+        self.description = description
     }
 }

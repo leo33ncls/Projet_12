@@ -24,7 +24,8 @@ class UsersService {
     static func saveUser(user: User) {
         let userDictionary: NSDictionary = ["nickname": user.nickname,
                                             "email": user.email,
-                                            "fullName": user.fullName]
+                                            "fullName": user.fullName,
+                                            "description": user.description ?? "No description"]
         usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
             if let error = error {
                 print(error.localizedDescription)
@@ -68,11 +69,13 @@ class UsersService {
             guard let dictUser = snapshot.value as? [String: Any],
                 let nickname = dictUser["nickname"] as? String,
                 let email = dictUser["email"] as? String,
-                let fullName = dictUser["fullName"] as? String else {
+                let fullName = dictUser["fullName"] as? String,
+                let description = dictUser["description"] as? String else {
                 callback(nil)
                 return
             }
-            let user = User(id: userId, nickname: nickname, email: email, fullName: fullName)
+            let user = User(id: userId, nickname: nickname, email: email,
+                            fullName: fullName, description: description)
             callback(user)
         }
     }

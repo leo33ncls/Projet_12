@@ -26,7 +26,7 @@ class NickNameViewController: UIViewController {
                 print("Saving Error")
             return
         }
-        let user = User(id: currentUser.uid, nickname: nickname, email: email, fullName: name)
+        let user = User(id: currentUser.uid, nickname: nickname, email: email, fullName: name, description: nil)
         UsersService.saveUser(user: user)
 
         guard let vc = self.storyboard?

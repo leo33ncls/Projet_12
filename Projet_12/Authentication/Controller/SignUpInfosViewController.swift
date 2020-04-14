@@ -45,7 +45,8 @@ class SignUpInfosViewController: UIViewController {
                                               viewController: self)
             } else {
                 guard let userId = user?.user.uid else { return }
-                let user = User(id: userId, nickname: nickname, email: userEmail, fullName: lastName + firstName)
+                let user = User(id: userId, nickname: nickname, email: userEmail,
+                                fullName: lastName + firstName, description: nil)
                 UsersService.saveUser(user: user)
 
                 guard let vc = self.storyboard?
