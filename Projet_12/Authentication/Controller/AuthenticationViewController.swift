@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseAuth
 
 class AuthenticationViewController: UIViewController {
 
@@ -15,5 +16,14 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
         //GIDSignIn.sharedInstance()?.signIn()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        guard let vc = self.storyboard?
+            .instantiateViewController(withIdentifier: "TabBarController") else { return }
+        self.present(vc, animated: true, completion: nil)
     }
 }

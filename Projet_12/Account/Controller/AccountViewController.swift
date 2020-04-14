@@ -27,11 +27,14 @@ class AccountViewController: UIViewController {
 
         imagePicker = UIImagePickerController()
         imagePicker?.delegate = self
-        imagePicker?.allowsEditing = true
     }
 
     private func getUserInfos() {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let userId = Auth.auth().currentUser?.uid else {
+            UIAlertController().showAlert(title: "Sorry", message: "No user logged in!",
+                                          viewController: self)
+            return
+        }
         UsersService.getUserInformation(userId: userId) { (user) in
             if let user = user {
                 self.nicknameLabel.text = user.nickname
@@ -97,6 +100,26 @@ class AccountViewController: UIViewController {
         alertVC.addAction(cancel)
         self.present(alertVC, animated: true, completion: nil)
     }
+
+    private func saveImageAlert(imageData: Data, imageView: UIImageView) {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        let alertVC = UIAlertController(title: "Save this image ?",
+                                        message: nil,
+                                        preferredStyle: .actionSheet)
+
+        let save = UIAlertAction(title: "Save", style: .default) { (act) in
+            if imageView == self.accountImageView {
+                ImageStorageService.saveUserImage(userId: userId, data: imageData)
+            } else if imageView == self.backgroundImageView {
+                ImageStorageService.saveUserBackground(userId: userId, data: imageData)
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertVC.addAction(save)
+        alertVC.addAction(cancel)
+        self.present(alertVC, animated: true, completion: nil)
+    }
 }
 
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -106,18 +129,19 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
 
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if imageViewSelected == 1,
-            let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            backgroundImageView.image = editedImage
-        } else if imageViewSelected == 1,
-            let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            backgroundImageView.image = originalImage
-        } else if imageViewSelected == 2,
-            let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            accountImageView.image = editedImage
-        } else if imageViewSelected == 2,
-            let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            accountImageView.image = originalImage
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let data = image.jpegData(compressionQuality: 0.5) else {
+            imagePicker?.dismiss(animated: true, completion: nil)
+            return
+        }
+        if imageViewSelected == 1 {
+            backgroundImageView.image = image
+            imagePicker?.dismiss(animated: true, completion: nil)
+            saveImageAlert(imageData: data, imageView: backgroundImageView)
+        } else if imageViewSelected == 2 {
+            accountImageView.image = image
+            imagePicker?.dismiss(animated: true, completion: nil)
+            saveImageAlert(imageData: data, imageView: accountImageView)
         }
         imagePicker?.dismiss(animated: true, completion: nil)
     }

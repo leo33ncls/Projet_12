@@ -68,6 +68,7 @@
 		28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16D243BD1D200B01886 /* SearchSerieView.swift */; };
 		28A0E170243BD51400B01886 /* SearchSerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16F243BD51400B01886 /* SearchSerieCell.swift */; };
 		28A0E174243CE09400B01886 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E173243CE09400B01886 /* AccountViewController.swift */; };
+		28B6DFC12446536200231C83 /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFC02446536200231C83 /* ImageStorageService.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -156,6 +157,7 @@
 		28A0E16D243BD1D200B01886 /* SearchSerieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieView.swift; sourceTree = "<group>"; };
 		28A0E16F243BD51400B01886 /* SearchSerieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieCell.swift; sourceTree = "<group>"; };
 		28A0E173243CE09400B01886 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		28B6DFC02446536200231C83 /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -491,9 +493,26 @@
 		28A0E172243CE07200B01886 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				28A0E173243CE09400B01886 /* AccountViewController.swift */,
+				28B6DFBF2446533B00231C83 /* Model */,
+				28B6DFC22446622D00231C83 /* Controller */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		28B6DFBF2446533B00231C83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28B6DFC02446536200231C83 /* ImageStorageService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		28B6DFC22446622D00231C83 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28A0E173243CE09400B01886 /* AccountViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -788,6 +807,7 @@
 				282B444E23D623620062C135 /* AppDelegate.swift in Sources */,
 				289659B32411A8A5003536BD /* TopicCellView.swift in Sources */,
 				289659B52411B195003536BD /* TopicCell.swift in Sources */,
+				28B6DFC12446536200231C83 /* ImageStorageService.swift in Sources */,
 				28A0E158243A7D4500B01886 /* APIKeysService.swift in Sources */,
 				28D106B323F23473002C39C8 /* SeriesViewController.swift in Sources */,
 			);

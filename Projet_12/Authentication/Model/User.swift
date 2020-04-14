@@ -26,6 +26,12 @@ class User {
     // The user description
     var description: String?
 
+    // The user image url
+    var imageUrl: String?
+
+    // The user background image url
+    var backgroundImageUrl: String?
+
     /**
      Initializes a new user with some informations.
 

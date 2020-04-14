@@ -12,6 +12,7 @@ target 'Projet_12' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   pod 'GoogleSignIn'
   pod 'AppAuth','~> 1.2.0'

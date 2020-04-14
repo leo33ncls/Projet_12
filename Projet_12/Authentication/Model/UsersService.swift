@@ -25,7 +25,9 @@ class UsersService {
         let userDictionary: NSDictionary = ["nickname": user.nickname,
                                             "email": user.email,
                                             "fullName": user.fullName,
-                                            "description": user.description ?? "No description"]
+                                            "description": user.description ?? "No description",
+                                            "imageUrl": "nil",
+                                            "backgroundUrl": "nil"]
         usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
             if let error = error {
                 print(error.localizedDescription)

@@ -22,12 +22,14 @@ class FavoriteTopicService {
      Function which saves a topic on a serie in the FavoriteTopic database.
      Calling this function saves the user id, the serie id and the topic id in the FavoriteTopic dabatabase.
      
-     - Parameter topic: The topic to save as favorite in the db.
+     - Parameters :
+        - userId: The id of the user saving the topic as favorite.
+        - topic: The topic to save as favorite in the db.
      */
-    static func saveTopicAsFavorite(topic: Topic) {
+    static func saveTopicAsFavorite(userId: String, topic: Topic) {
         guard let topicID = topic.topicId else { return }
 
-        favoriteTopicRef.child("\(topic.userId)")
+        favoriteTopicRef.child(userId)
             .child("\(topic.serieId)")
             .child(topicID)
             .setValue(topicID) { (error, ref) in
@@ -45,17 +47,19 @@ class FavoriteTopicService {
      and returns a boolean in a callback to tells if the topic exists.
      
      - Parameters:
+     - userId: The id of the user we want to check if the topic is one of his favorites.
      - topic: The topic we want check if it's a favorite.
      - callback: The callback returning a boolean that tells if the topic is a favorite.
      */
-    static func isAFavoriteTopic(topic: Topic, callback: @escaping (Bool) -> Void) {
+    static func isAFavoriteTopic(userId: String, topic: Topic, callback: @escaping (Bool) -> Void) {
         guard let topicID = topic.topicId else {
             callback(false)
             return
         }
 
-        favoriteTopicRef.child("\(topic.userId)")
-            .child("\(topic.serieId)").child("\(topicID)")
+        favoriteTopicRef.child(userId)
+            .child("\(topic.serieId)")
+            .child("\(topicID)")
             .observeSingleEvent(of: .value) { (datasnapshot) in
                 if datasnapshot.exists() {
                     callback(true)
@@ -70,12 +74,14 @@ class FavoriteTopicService {
      Calling this function removes a given topic on a serie from a user thanks to their id
      in the FavoriteTopic dabatabase.
      
-     - Parameter topic: The topic to remove from favorite in the db.
+     - Parameters:
+     - userId: The id of the user we want to remove the topic from his favorites.
+     - topic: The topic to remove from favorite in the db.
      */
-    static func removeFavoriteTopic(topic: Topic) {
+    static func removeFavoriteTopic(userId: String, topic: Topic) {
         guard let topicID = topic.topicId else { return }
 
-        favoriteTopicRef.child("\(topic.userId)")
+        favoriteTopicRef.child(userId)
             .child("\(topic.serieId)").child("\(topicID)").removeValue { (error, ref) in
                 if let error = error {
                     print(error.localizedDescription)

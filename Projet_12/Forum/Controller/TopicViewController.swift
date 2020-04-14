@@ -47,7 +47,8 @@ class TopicViewController: UIViewController {
 
         getPosts(topic: currentTopic)
 
-        FavoriteTopicService.isAFavoriteTopic(topic: currentTopic) { (success) in
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        FavoriteTopicService.isAFavoriteTopic(userId: userId, topic: currentTopic) { (success) in
             if success {
                 self.favoriteButton.tintColor = UIColor.customOrange
             } else {
@@ -75,12 +76,13 @@ class TopicViewController: UIViewController {
 
     @IBAction func saveTopicAsFavorite(_ sender: UIBarButtonItem) {
         guard let currentTopic = topic else { return }
-        FavoriteTopicService.isAFavoriteTopic(topic: currentTopic) { (success) in
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        FavoriteTopicService.isAFavoriteTopic(userId: currentUser, topic: currentTopic) { (success) in
             if success {
-                FavoriteTopicService.removeFavoriteTopic(topic: currentTopic)
+                FavoriteTopicService.removeFavoriteTopic(userId: currentUser, topic: currentTopic)
                 self.favoriteButton.tintColor = UIColor.white
             } else {
-                FavoriteTopicService.saveTopicAsFavorite(topic: currentTopic)
+                FavoriteTopicService.saveTopicAsFavorite(userId: currentUser, topic: currentTopic)
                 self.favoriteButton.tintColor = UIColor.customOrange
             }
         }
