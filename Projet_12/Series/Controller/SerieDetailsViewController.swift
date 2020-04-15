@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SerieDetailsViewController: UITableViewController {
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
+
     var serie: Result?
-    var segueToEvaluationIdentifier = "segueToEvaluationVC"
-    var segueToForumIdentifier = "segueToForumVC"
+    let segueToEvaluationIdentifier = "segueToEvaluationVC"
+    let segueToForumIdentifier = "segueToForumVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +104,20 @@ class SerieDetailsViewController: UITableViewController {
             return UITableViewCell()
         }
         return cell
+    }
+
+    @IBAction func saveSerieAsFavorite(_ sender: UIBarButtonItem) {
+        guard let currentSerie = serie else { return }
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        FavoriteSerieService.isAFavoriteSerie(userId: currentUserId, serie: currentSerie) { (success) in
+            if success {
+                FavoriteSerieService.removeFavoriteSerie(userId: currentUserId, serie: currentSerie)
+                self.favoriteButton.tintColor = UIColor.white
+            } else {
+                FavoriteSerieService.saveSerieAsFavorite(userId: currentUserId, serie: currentSerie)
+                self.favoriteButton.tintColor = UIColor.customOrange
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -62,7 +62,7 @@ class SeriesService {
      - Parameter serieId: The id of the serie we want informations.
      - Returns: A valid url to find a serie for the serie API or a nil.
      */
-    /*private func findSerieUrl(serieId: Int) -> URL? {
+    private func findSerieUrl(serieId: Int) -> URL? {
         var serieURL = URLComponents(string: SeriesService.serieURL + String(serieId))
         serieURL?.queryItems = [URLQueryItem(name: "api_key",
                                              value: APIKeysService
@@ -71,7 +71,7 @@ class SeriesService {
                                                                 bundleClass: SeriesService.self))]
         guard let url = serieURL?.url else { return nil }
         return url
-    }*/
+    }
 
     /**
      Function which creates an Url with paramaters to search series with the serie API.
@@ -147,7 +147,7 @@ class SeriesService {
      - serieId: The id of the serie we want informations.
      - callback: The callback returning the series list.
      */
-    /*func getSerie(serieId: Int, callback: @escaping (Bool, Result?) -> Void) {
+    func getSerie(serieId: Int, callback: @escaping (Bool, Result?) -> Void) {
         guard let url = findSerieUrl(serieId: serieId) else {
             callback(false, nil)
             return
@@ -175,7 +175,7 @@ class SeriesService {
             }
         }
         task?.resume()
-    }*/
+    }
 
     /**
      Function which returns a callback with a series list of a user search.

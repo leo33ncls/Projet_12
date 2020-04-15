@@ -10,13 +10,19 @@ import UIKit
 import FirebaseAuth
 
 class AccountViewController: UIViewController {
+    @IBOutlet weak var userInformationView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var accountImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var accountTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var imagePicker: UIImagePickerController?
     var imageViewSelected: Int?
+    var currentUser: User?
+    let segueToUserInfos = "segueToUserInfos"
+    let segueToFavoriteSerie = "segueToFavoriteSerie"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,47 @@ class AccountViewController: UIViewController {
 
         imagePicker = UIImagePickerController()
         imagePicker?.delegate = self
+
+        accountTableView.delegate = self
+        accountTableView.dataSource = self
+        accountTableView.tableFooterView = UIView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayActivityIndicator(true)
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        ImageStorageService.getUserImage(userId: userId) { (data) in
+            if let data = data {
+                self.accountImageView.image = UIImage(data: data)
+            }
+        }
+        ImageStorageService.getUserBackground(userId: userId) { (data) in
+            if let data = data {
+                self.backgroundImageView.image = UIImage(data: data)
+                self.displayActivityIndicator(false)
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let user = currentUser else { return }
+        guard segue.identifier == segueToUserInfos,
+            let userInfosVC = segue.destination as? UserInfosViewController else {
+                return
+        }
+        userInfosVC.user = user
+    }
+
+    private func displayActivityIndicator(_ bool: Bool) {
+        if bool {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        activityIndicator.isHidden = !bool
+        userInformationView.isHidden = bool
+        accountTableView.isHidden = bool
     }
 
     private func getUserInfos() {
@@ -37,6 +84,7 @@ class AccountViewController: UIViewController {
         }
         UsersService.getUserInformation(userId: userId) { (user) in
             if let user = user {
+                self.currentUser = user
                 self.nicknameLabel.text = user.nickname
                 self.descriptionTextView.text = user.description
             } else {
@@ -69,12 +117,8 @@ class AccountViewController: UIViewController {
         imageViewAlert()
     }
 
-    @IBAction func signOut(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
+    @IBAction func signOut(_ sender: UIBarButtonItem) {
+        signOutAlert()
     }
 
     private func imageViewAlert() {
@@ -105,7 +149,7 @@ class AccountViewController: UIViewController {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         let alertVC = UIAlertController(title: "Save this image ?",
                                         message: nil,
-                                        preferredStyle: .actionSheet)
+                                        preferredStyle: .alert)
 
         let save = UIAlertAction(title: "Save", style: .default) { (act) in
             if imageView == self.accountImageView {
@@ -119,6 +163,27 @@ class AccountViewController: UIViewController {
         alertVC.addAction(save)
         alertVC.addAction(cancel)
         self.present(alertVC, animated: true, completion: nil)
+    }
+
+    private func signOutAlert() {
+        let alertVC = UIAlertController(title: "Are you sure ?",
+                                        message: "Do you want to logout ?",
+                                        preferredStyle: .alert)
+        let logout = UIAlertAction(title: "Yes", style: .default) { (act) in
+            do {
+                try Auth.auth().signOut()
+                guard let vc = self.storyboard?
+                    .instantiateViewController(withIdentifier: "AuthenticationNC") else { return }
+                self.present(vc, animated: true, completion: nil)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+
+        alertVC.addAction(logout)
+        alertVC.addAction(cancel)
+        present(alertVC, animated: true, completion: nil)
     }
 }
 
@@ -144,5 +209,35 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             saveImageAlert(imageData: data, imageView: accountImageView)
         }
         imagePicker?.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
+            as? AccountTableViewCell else {
+            return UITableViewCell()
+        }
+        switch indexPath.row {
+        case 0: cell.configure(title: "Informations personnelles")
+        case 1: cell.configure(title: "Séries Favorites")
+        default: break
+        }
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: segueToUserInfos, sender: nil)
+        case 1:
+            performSegue(withIdentifier: segueToFavoriteSerie, sender: nil)
+        default:
+            break
+        }
     }
 }

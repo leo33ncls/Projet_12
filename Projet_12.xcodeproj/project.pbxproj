@@ -69,6 +69,10 @@
 		28A0E170243BD51400B01886 /* SearchSerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E16F243BD51400B01886 /* SearchSerieCell.swift */; };
 		28A0E174243CE09400B01886 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A0E173243CE09400B01886 /* AccountViewController.swift */; };
 		28B6DFC12446536200231C83 /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFC02446536200231C83 /* ImageStorageService.swift */; };
+		28B6DFC8244681A400231C83 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFC7244681A400231C83 /* AccountTableViewCell.swift */; };
+		28B6DFCA24474DE300231C83 /* FavoriteSerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFC924474DE300231C83 /* FavoriteSerieViewController.swift */; };
+		28B6DFCC24474E0A00231C83 /* UserInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCB24474E0A00231C83 /* UserInfosViewController.swift */; };
+		28B6DFCE2447515400231C83 /* FavoriteSerieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCD2447515400231C83 /* FavoriteSerieService.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -158,6 +162,10 @@
 		28A0E16F243BD51400B01886 /* SearchSerieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieCell.swift; sourceTree = "<group>"; };
 		28A0E173243CE09400B01886 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		28B6DFC02446536200231C83 /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
+		28B6DFC7244681A400231C83 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		28B6DFC924474DE300231C83 /* FavoriteSerieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieViewController.swift; sourceTree = "<group>"; };
+		28B6DFCB24474E0A00231C83 /* UserInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfosViewController.swift; sourceTree = "<group>"; };
+		28B6DFCD2447515400231C83 /* FavoriteSerieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieService.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -353,6 +361,7 @@
 			children = (
 				2896599D240DE24F003536BD /* Evaluation.swift */,
 				2896599B240DE1DC003536BD /* EvaluationService.swift */,
+				28B6DFCD2447515400231C83 /* FavoriteSerieService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				28B6DFBF2446533B00231C83 /* Model */,
+				28B6DFC42446815D00231C83 /* View */,
 				28B6DFC22446622D00231C83 /* Controller */,
 			);
 			path = Account;
@@ -511,8 +521,18 @@
 			isa = PBXGroup;
 			children = (
 				28A0E173243CE09400B01886 /* AccountViewController.swift */,
+				28B6DFCB24474E0A00231C83 /* UserInfosViewController.swift */,
+				28B6DFC924474DE300231C83 /* FavoriteSerieViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		28B6DFC42446815D00231C83 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28B6DFC7244681A400231C83 /* AccountTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		28E324DC23DFA6A100E1884C /* Extension */ = {
@@ -771,6 +791,7 @@
 				289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */,
 				28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
+				28B6DFCA24474DE300231C83 /* FavoriteSerieViewController.swift in Sources */,
 				28A0E11C2432DB4600B01886 /* FavoriteTopicView.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
 				289659AA24117BD4003536BD /* ForumService.swift in Sources */,
@@ -788,12 +809,15 @@
 				289242E824296DFB00F27AD1 /* FavoriteTopicService.swift in Sources */,
 				28538D1A23F2195B00EE4FC1 /* SeriesList.swift in Sources */,
 				28965997240CA236003536BD /* UIColor.swift in Sources */,
+				28B6DFCC24474E0A00231C83 /* UserInfosViewController.swift in Sources */,
 				282D6BFD2404A700002A90DA /* EvaluationTableViewCell.swift in Sources */,
 				289659A6240EB49A003536BD /* Post.swift in Sources */,
 				28A0E1152432CA0200B01886 /* FavoriteTopicInfos.swift in Sources */,
 				2896599E240DE24F003536BD /* Evaluation.swift in Sources */,
 				28A0E11E2432E82F00B01886 /* FavoriteTopicCell.swift in Sources */,
 				28A0E174243CE09400B01886 /* AccountViewController.swift in Sources */,
+				28B6DFCE2447515400231C83 /* FavoriteSerieService.swift in Sources */,
+				28B6DFC8244681A400231C83 /* AccountTableViewCell.swift in Sources */,
 				28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */,
 				289659A0240EA4DB003536BD /* ForumViewController.swift in Sources */,
 				289659B72412C331003536BD /* TopicViewController.swift in Sources */,

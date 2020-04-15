@@ -58,7 +58,7 @@ class UsersService {
     }
 
     /**
-     Function which returns a callback with the user of a given user id.
+     Function which returns a callback with the user infos of a given user id.
      Calling this function observes the value of a user in the database
      kepts and returns the user value with a callback.
      
