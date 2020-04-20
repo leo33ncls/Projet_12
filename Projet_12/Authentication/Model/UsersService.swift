@@ -81,4 +81,20 @@ class UsersService {
             callback(user)
         }
     }
+
+    /**
+     Function which updates the user infos for a given user in the Users database.
+     Calling this function updates the user's full name, nickname and description in the Users dabatabase.
+     
+     - Parameters:
+        - userId: The id of the user for which we want to uptade his values.
+        - fullName: The new full name to save in the db for the given user.
+        - nickname: The new nickname to save in the db for the given user.
+        - description: The new description to save in the db for the given user.
+     */
+    static func updateUserInformation(userId: String, fullName: String, nickname: String, description: String) {
+        usersDTBRef.child(userId).updateChildValues(["fullName": fullName])
+        usersDTBRef.child(userId).updateChildValues(["nickname": nickname])
+        usersDTBRef.child(userId).updateChildValues(["description": description])
+    }
 }
