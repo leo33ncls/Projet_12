@@ -36,7 +36,12 @@ class SearchSerieView: UIView {
 
     func configure(serie: Result) {
         serieNameLabel.text = serie.name
-        serieGenresLabel.text = Genres.getStringGenre(genreId: serie.genreIDS)
+
+        if let genres = serie.genreIDS {
+            serieGenresLabel.text = Genres.getStringGenre(genreId: genres)
+        } else {
+            serieGenresLabel.text = "Unknown genre"
+        }
 
         guard let serieImageUrl = serie.posterPath else { return }
         SeriesService(session: URLSession(configuration: .default))

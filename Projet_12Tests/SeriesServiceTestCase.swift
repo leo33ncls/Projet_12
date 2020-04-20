@@ -12,6 +12,7 @@ import XCTest
 class SeriesServiceTestCase: XCTestCase {
     let genre = 18
     let searchText = "Game"
+    let serieId = 456
 
     //=====================
     // Test function getSeriesList
@@ -25,7 +26,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.getSeriesList(genre: genre) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -41,7 +42,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.getSeriesList(genre: genre) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -59,7 +60,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.getSeriesList(genre: genre) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -77,7 +78,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.getSeriesList(genre: genre) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -95,7 +96,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.getSeriesList(genre: genre) { (success, seriesList) in
-            //Then
+            // Then
             let id = 80743
             let popularity = 344.528
             let name = "The Flash"
@@ -129,7 +130,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -145,7 +146,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -163,7 +164,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -181,7 +182,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
-            //Then
+            // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
             expectation.fulfill()
@@ -199,7 +200,7 @@ class SeriesServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
         seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
-            //Then
+            // Then
             let id = 80743
             let popularity = 344.528
             let name = "The Flash"
@@ -214,6 +215,108 @@ class SeriesServiceTestCase: XCTestCase {
             XCTAssertEqual(name, seriesList?.results[2].name)
             XCTAssertEqual(posterPath, seriesList?.results[3].posterPath)
             XCTAssertEqual(voteAverage, seriesList?.results[4].voteAverage)
+
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    //=====================
+    // Test function getSerie
+
+    func testGetSerieShouldPostFailedCallbackIfError() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: nil,
+                                                                  response: nil,
+                                                                  error: FakeResponseData.error))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerie(serieId: serieId) { (success, serie) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(serie)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieShouldPostFailedCallbackIfNoData() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: nil, response: nil, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerie(serieId: serieId) { (success, serie) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(serie)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieShouldPostFailedCallbackIfIncorrectResponse() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: FakeResponseData.SeriesListCorrectData,
+                                                                  response: FakeResponseData.responseKO,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerie(serieId: serieId) { (success, serie) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(serie)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieShouldPostFailedCallbackIfIncorrectData() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: FakeResponseData.incorrectData,
+                                                                  response: FakeResponseData.responseOK,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerie(serieId: serieId) { (success, serie) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(serie)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieShouldPostSuccesCallbackIfNoErrorAndCorrectData() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: FakeResponseData.SerieCorrectData,
+                                                                  response: FakeResponseData.responseOK,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerie(serieId: serieId) { (success, serie) in
+            // Then
+            let popularity = 115.628
+            let name = "The Simpsons"
+            let posterPath = "/qcr9bBY6MVeLzriKCmJOv1562uY.jpg"
+            let firstAirDate = "1989-12-17"
+
+            XCTAssertTrue(success)
+            XCTAssertNotNil(serie)
+
+            XCTAssertEqual(popularity, serie?.popularity)
+            XCTAssertEqual(name, serie?.name)
+            XCTAssertEqual(posterPath, serie?.posterPath)
+            XCTAssertEqual(firstAirDate, serie?.firstAirDate)
 
             expectation.fulfill()
         }

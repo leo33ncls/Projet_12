@@ -73,6 +73,8 @@
 		28B6DFCA24474DE300231C83 /* FavoriteSerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFC924474DE300231C83 /* FavoriteSerieViewController.swift */; };
 		28B6DFCC24474E0A00231C83 /* UserInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCB24474E0A00231C83 /* UserInfosViewController.swift */; };
 		28B6DFCE2447515400231C83 /* FavoriteSerieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCD2447515400231C83 /* FavoriteSerieService.swift */; };
+		28B6DFD0244D2C3300231C83 /* FavoriteSerieCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */; };
+		28B6DFD4244D44ED00231C83 /* Serie.json in Resources */ = {isa = PBXBuildFile; fileRef = 28B6DFD3244D44ED00231C83 /* Serie.json */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -166,6 +168,8 @@
 		28B6DFC924474DE300231C83 /* FavoriteSerieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieViewController.swift; sourceTree = "<group>"; };
 		28B6DFCB24474E0A00231C83 /* UserInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfosViewController.swift; sourceTree = "<group>"; };
 		28B6DFCD2447515400231C83 /* FavoriteSerieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieService.swift; sourceTree = "<group>"; };
+		28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieCVCell.swift; sourceTree = "<group>"; };
+		28B6DFD3244D44ED00231C83 /* Serie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Serie.json; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */,
 				28538D2923F21D6A00EE4FC1 /* SeriesServiceTestCase.swift */,
 				28538D2B23F21DB300EE4FC1 /* SeriesList.json */,
+				28B6DFD3244D44ED00231C83 /* Serie.json */,
 				28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */,
 				28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */,
 				28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */,
@@ -531,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				28B6DFC7244681A400231C83 /* AccountTableViewCell.swift */,
+				28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -672,6 +678,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B6DFD4244D44ED00231C83 /* Serie.json in Resources */,
 				28538D2C23F21DB300EE4FC1 /* SeriesList.json in Resources */,
 				28A0E15C243A801E00B01886 /* APIKeysTest.plist in Resources */,
 			);
@@ -832,6 +839,7 @@
 				289659B32411A8A5003536BD /* TopicCellView.swift in Sources */,
 				289659B52411B195003536BD /* TopicCell.swift in Sources */,
 				28B6DFC12446536200231C83 /* ImageStorageService.swift in Sources */,
+				28B6DFD0244D2C3300231C83 /* FavoriteSerieCVCell.swift in Sources */,
 				28A0E158243A7D4500B01886 /* APIKeysService.swift in Sources */,
 				28D106B323F23473002C39C8 /* SeriesViewController.swift in Sources */,
 			);

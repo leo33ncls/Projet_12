@@ -17,6 +17,13 @@ class FakeResponseData {
         return data
     }
 
+    static var SerieCorrectData: Data {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "Serie", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        return data
+    }
+
     static let incorrectData = "erreur".data(using: .utf8)!
 
     static let responseOK = HTTPURLResponse(url: URL(string: "https://")!,

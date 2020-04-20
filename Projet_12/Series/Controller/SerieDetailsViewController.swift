@@ -28,6 +28,18 @@ class SerieDetailsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        guard let currentSerie = serie else { return }
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+
+        FavoriteSerieService.isAFavoriteSerie(userId: currentUserId, serie: currentSerie) { (success) in
+            if success {
+                self.favoriteButton.tintColor = UIColor.white
+            } else {
+                self.favoriteButton.tintColor = UIColor.customOrange
+            }
+        }
+
         tableView.reloadData()
     }
 

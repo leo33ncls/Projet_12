@@ -487,20 +487,62 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gZX-99-qQ4">
-                                <rect key="frame" x="0.0" y="134" width="375" height="484"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Daj-56-2Xd">
+                                <rect key="frame" x="16" y="134" width="343" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NrM-Bp-O7L">
+                                    <size key="itemSize" width="96" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteSerieCVCell" id="6Ss-Mh-gvw" customClass="FavoriteSerieCVCell" customModule="Projet_12" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oFN-jJ-7Js">
+                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-I2-SJr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="1sD-I2-SJr" secondAttribute="bottom" id="0HI-qJ-Zst"/>
+                                            <constraint firstItem="1sD-I2-SJr" firstAttribute="top" secondItem="6Ss-Mh-gvw" secondAttribute="top" id="4Qy-52-OKU"/>
+                                            <constraint firstAttribute="trailing" secondItem="oFN-jJ-7Js" secondAttribute="trailing" id="Jco-zF-lve"/>
+                                            <constraint firstItem="1sD-I2-SJr" firstAttribute="leading" secondItem="6Ss-Mh-gvw" secondAttribute="leading" id="S6s-zD-QAC"/>
+                                            <constraint firstItem="oFN-jJ-7Js" firstAttribute="leading" secondItem="6Ss-Mh-gvw" secondAttribute="leading" id="dah-T7-Kat"/>
+                                            <constraint firstItem="oFN-jJ-7Js" firstAttribute="top" secondItem="6Ss-Mh-gvw" secondAttribute="top" id="efv-w7-oGo"/>
+                                            <constraint firstAttribute="bottom" secondItem="oFN-jJ-7Js" secondAttribute="bottom" id="mnr-JK-wbB"/>
+                                            <constraint firstAttribute="trailing" secondItem="1sD-I2-SJr" secondAttribute="trailing" id="vS3-fN-jgh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="serieImageView" destination="oFN-jJ-7Js" id="ocR-I9-Ugg"/>
+                                            <outlet property="serieNameLabel" destination="1sD-I2-SJr" id="yRb-D9-ENz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gZX-99-qQ4" firstAttribute="leading" secondItem="LA7-eO-20r" secondAttribute="leading" id="0pQ-16-0hT"/>
+                            <constraint firstItem="Daj-56-2Xd" firstAttribute="leading" secondItem="LA7-eO-20r" secondAttribute="leading" constant="16" id="1pP-7t-nPw"/>
+                            <constraint firstAttribute="trailing" secondItem="Daj-56-2Xd" secondAttribute="trailing" constant="16" id="23u-ZV-Oo4"/>
                             <constraint firstItem="EgC-yY-dwi" firstAttribute="top" secondItem="LA7-eO-20r" secondAttribute="top" id="2Ln-6a-Lf0"/>
-                            <constraint firstItem="gZX-99-qQ4" firstAttribute="top" secondItem="EgC-yY-dwi" secondAttribute="bottom" id="MCB-bW-dVh"/>
-                            <constraint firstItem="LA7-eO-20r" firstAttribute="bottom" secondItem="gZX-99-qQ4" secondAttribute="bottom" id="O8k-T0-Qi6"/>
+                            <constraint firstItem="Daj-56-2Xd" firstAttribute="top" secondItem="EgC-yY-dwi" secondAttribute="bottom" id="D7D-SI-Nes"/>
                             <constraint firstItem="EgC-yY-dwi" firstAttribute="leading" secondItem="LA7-eO-20r" secondAttribute="leading" id="TzT-4b-jFG"/>
                             <constraint firstItem="LA7-eO-20r" firstAttribute="trailing" secondItem="EgC-yY-dwi" secondAttribute="trailing" id="Vxw-Ac-0N1"/>
-                            <constraint firstItem="LA7-eO-20r" firstAttribute="trailing" secondItem="gZX-99-qQ4" secondAttribute="trailing" id="dVB-qT-8bF"/>
+                            <constraint firstItem="LA7-eO-20r" firstAttribute="bottom" secondItem="Daj-56-2Xd" secondAttribute="bottom" id="v2c-TS-beD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LA7-eO-20r"/>
                     </view>
@@ -508,12 +550,13 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="ItR-25-Mru"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="favoriteSerieTableView" destination="gZX-99-qQ4" id="ckw-6x-SHb"/>
+                        <outlet property="favoriteSerieCollectionView" destination="Daj-56-2Xd" id="V0H-98-N7q"/>
+                        <segue destination="67T-08-PtU" kind="show" identifier="segueToSerieDetailsFromAccount" id="iBJ-aa-8U1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMz-ZY-1Ox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3127" y="-1372"/>
+            <point key="canvasLocation" x="3126" y="-1372"/>
         </scene>
         <!--Serie NavigationC-->
         <scene sceneID="cB2-QT-sC7">
@@ -1470,7 +1513,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2gv-sw-pRx"/>
-        <segue reference="ybs-t0-INP"/>
+        <segue reference="iBJ-aa-8U1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

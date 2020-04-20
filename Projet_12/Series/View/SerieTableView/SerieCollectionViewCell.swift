@@ -19,12 +19,9 @@ class SerieCollectionViewCell: UICollectionViewCell {
         guard let serieImageUrl = serie.posterPath else { return }
         SeriesService(session: URLSession(configuration: .default))
             .getSerieImage(imageUrl: serieImageUrl) { (data) in
-                if let data = data {
-                    self.serieNameLabel.isHidden = true
-                    self.serieImageView.image = UIImage(data: data)
-                } else {
-                    print("No image")
-                }
+                guard let data = data else { return }
+                self.serieNameLabel.isHidden = true
+                self.serieImageView.image = UIImage(data: data)
         }
     }
 }

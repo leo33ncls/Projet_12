@@ -20,7 +20,14 @@ class InformationSerieTableViewCell: UITableViewCell {
 
     func configure(serie: Result) {
         self.selectionStyle = .none
-        genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: serie.genreIDS))"
+        if let genres = serie.genreIDS {
+            genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: genres))"
+        } else if let genres = serie.genres {
+            genreLabel.text = "Genre: \(getGenres(genreArray: genres))"
+        } else {
+            genreLabel.text = "Genre: Unknown"
+        }
+
         dateLabel.text = "Date de sortie: \(serie.firstAirDate)"
         popularityLabel.text = "Popularité: \(serie.popularity)"
         originalLanguageLabel.text = "Langue originale: \(serie.originalLanguage)"
@@ -33,5 +40,13 @@ class InformationSerieTableViewCell: UITableViewCell {
                     self.seriePosterImageView.image = UIImage(data: data)
                 }
         }
+    }
+
+    private func getGenres(genreArray: [Genre]) -> String {
+        var genres = [String]()
+        for genre in genreArray {
+            genres.append(genre.name)
+        }
+        return genres.joined(separator: ", ")
     }
 }
