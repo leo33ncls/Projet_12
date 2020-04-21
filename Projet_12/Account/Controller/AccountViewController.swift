@@ -26,7 +26,6 @@ class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserInfos()
         imageViewRecognizer()
         accountImageView.layer.borderColor = UIColor.white.cgColor
         accountImageView.layer.borderWidth = 5.0
@@ -42,18 +41,12 @@ class AccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         displayActivityIndicator(true)
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        ImageStorageService.getUserImage(userId: userId) { (data) in
-            if let data = data {
-                self.accountImageView.image = UIImage(data: data)
-            }
+        guard let userId = Auth.auth().currentUser?.uid else {
+            UIAlertController().showAlert(title: "Sorry", message: "No user logged in!",
+                                          viewController: self)
+            return
         }
-        ImageStorageService.getUserBackground(userId: userId) { (data) in
-            if let data = data {
-                self.backgroundImageView.image = UIImage(data: data)
-                self.displayActivityIndicator(false)
-            }
-        }
+        getUserInfos(userId: userId)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,20 +69,34 @@ class AccountViewController: UIViewController {
         accountTableView.isHidden = bool
     }
 
-    private func getUserInfos() {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            UIAlertController().showAlert(title: "Sorry", message: "No user logged in!",
-                                          viewController: self)
-            return
-        }
+    private func getUserInfos(userId: String) {
         UsersService.getUserInformation(userId: userId) { (user) in
             if let user = user {
                 self.currentUser = user
                 self.nicknameLabel.text = user.nickname
                 self.descriptionTextView.text = user.description
+                self.getUserImage(userId: userId)
             } else {
                 UIAlertController().showAlert(title: "Sorry", message: "No user found",
                                               viewController: self)
+            }
+        }
+    }
+
+    private func getUserImage(userId: String) {
+        ImageStorageService.getUserImage(userId: userId) { (data) in
+            self.getUserBackground(userId: userId)
+            if let data = data {
+                self.accountImageView.image = UIImage(data: data)
+            }
+        }
+    }
+
+    private func getUserBackground(userId: String) {
+        ImageStorageService.getUserBackground(userId: userId) { (data) in
+            self.displayActivityIndicator(false)
+            if let data = data {
+                self.backgroundImageView.image = UIImage(data: data)
             }
         }
     }

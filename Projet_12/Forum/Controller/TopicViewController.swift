@@ -18,6 +18,7 @@ class TopicViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
     var topic: Topic?
+    let segueToUser = "segueToUserVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,10 @@ class TopicViewController: UIViewController {
 
         postTextView.delegate = self
         postTextView.isScrollEnabled = false
+
+        let name = NSNotification.Name(rawValue: "NicknameTapped")
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(nicknameTapped(_:)), name: name, object: nil)
 
         // Keyboard Notification.
         let center: NotificationCenter = NotificationCenter.default
@@ -55,6 +60,22 @@ class TopicViewController: UIViewController {
                 self.favoriteButton.tintColor = UIColor.white
             }
         }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == segueToUser,
+            let userVC = segue.destination as? UserViewController,
+            let userId = sender as? String else {
+            return
+        }
+        userVC.userId = userId
+    }
+
+    @objc func nicknameTapped(_ notification: NSNotification) {
+        guard let userId = notification.userInfo?["userId"] as? String else {
+            return
+        }
+        performSegue(withIdentifier: segueToUser, sender: userId)
     }
 
     @IBAction func savePost(_ sender: UIButton) {

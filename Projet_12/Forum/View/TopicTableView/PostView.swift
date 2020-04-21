@@ -15,14 +15,30 @@ class PostView: UIView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
 
+    var userId: String?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        tapGestureRecognizer()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        tapGestureRecognizer()
+    }
+
+    private func tapGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showUserAccount))
+        nicknameView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func showUserAccount() {
+        guard let userID = userId else { return }
+        let userIdDict: [String: String] = ["userId": userID]
+        let notifName = NSNotification.Name("NicknameTapped")
+        NotificationCenter.default.post(name: notifName, object: nil, userInfo: userIdDict)
     }
 
     private func commonInit() {
@@ -43,6 +59,7 @@ class PostView: UIView {
     }
 
     func configure(post: Post) {
+        userId = post.userId
         UsersService.getUserNickname(userId: post.userId) { (nickname) in
             self.nicknameLabel.text = nickname
         }
