@@ -8,10 +8,20 @@
 
 import UIKit
 
+// TableViewCell that displays the synopsis
 class SynopsisTableViewCell: UITableViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var synopsisTextView: UITextView!
 
-    func configure(serie: Result) {
+    // MARK: - View Functions
+    /**
+     Function that configures the SynopsisTableViewCell.
+     Calling this function gives a value to the synopsisTextView.
+     
+     - Parameter serie: The serie to display.
+     */
+    func configure(serie: Serie) {
         self.selectionStyle = .none
         synopsisTextView.text = serie.overview
     }

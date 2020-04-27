@@ -34,7 +34,7 @@ class SearchSerieView: UIView {
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     }
 
-    func configure(serie: Result) {
+    func configure(serie: Serie) {
         serieNameLabel.text = serie.name
 
         if let genres = serie.genreIDS {

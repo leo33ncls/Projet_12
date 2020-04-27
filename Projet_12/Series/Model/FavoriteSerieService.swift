@@ -26,7 +26,7 @@ class FavoriteSerieService {
      - userId: The id of the user saving the serie as favorite.
      - serie: The serie to save as favorite in the db.
      */
-    static func saveSerieAsFavorite(userId: String, serie: Result) {
+    static func saveSerieAsFavorite(userId: String, serie: Serie) {
         favoriteSerieRef.child(userId)
             .child(String(serie.id))
             .setValue(serie.id) { (error, ref) in
@@ -48,7 +48,7 @@ class FavoriteSerieService {
      - serie: The serie we want check if it's a favorite.
      - callback: The callback returning a boolean that tells if the topic is a favorite.
      */
-    static func isAFavoriteSerie(userId: String, serie: Result, callback: @escaping (Bool) -> Void) {
+    static func isAFavoriteSerie(userId: String, serie: Serie, callback: @escaping (Bool) -> Void) {
         favoriteSerieRef.child(userId)
             .child(String(serie.id))
             .observeSingleEvent(of: .value) { (datasnapshot) in
@@ -69,7 +69,7 @@ class FavoriteSerieService {
      - userId: The id of the user for which we want to remove the serie from his favorites.
      - serie: The serie to remove from favorite in the db.
      */
-    static func removeFavoriteSerie(userId: String, serie: Result) {
+    static func removeFavoriteSerie(userId: String, serie: Serie) {
         favoriteSerieRef.child(userId)
             .child(String(serie.id)).removeValue { (error, ref) in
                 if let error = error {
@@ -80,6 +80,15 @@ class FavoriteSerieService {
         }
     }
 
+    /**
+     Function which returns a callback with the IDs of the favorite series of a given user.
+     Calling this function observes the IDs of the favorite series of the user in the FavoriteSerie database
+     and returns all the IDs of his favorite series in a callback.
+     
+     - Parameters:
+     - userId: The id of the user for which we want the favorite series.
+     - callback: The callback returning all the favorite series IDs of the user.
+     */
     static func getFavoriteSerieId(userId: String,
                                    callback: @escaping ([Int]?) -> Void) {
         favoriteSerieRef.child(userId).observe(.value) { (snapshot) in

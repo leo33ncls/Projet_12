@@ -41,7 +41,6 @@ class Genres {
                 genres.append(Genres.genres[i].genre)
             }
         }
-
         return genres.joined(separator: ", ")
     }
 }

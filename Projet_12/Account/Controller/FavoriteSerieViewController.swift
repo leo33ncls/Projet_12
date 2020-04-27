@@ -39,7 +39,7 @@ class FavoriteSerieViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == segueIdentifier,
             let serieDetailsVC = segue.destination as? SerieDetailsViewController,
-            let serie = sender as? Result else {
+            let serie = sender as? Serie else {
             return
         }
         serieDetailsVC.serie = serie

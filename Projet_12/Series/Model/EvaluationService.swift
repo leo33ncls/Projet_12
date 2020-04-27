@@ -44,7 +44,7 @@ class EvaluationService {
         - serie: The serie we want the average evaluation.
         - callback: The callback returning the evaluation.
      */
-    static func getEvaluations(serie: Result, callback: @escaping (Double?) -> Void) {
+    static func getEvaluations(serie: Serie, callback: @escaping (Double?) -> Void) {
         evaluationRef.child(String(serie.id)).observe(.value) { (snapshot) in
             var sumOfEvaluations = 0.0
             var numbersOfVotes = 0.0

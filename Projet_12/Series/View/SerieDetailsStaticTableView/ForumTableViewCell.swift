@@ -8,5 +8,6 @@
 
 import UIKit
 
+// TableViewCell that displays the forum cell
 class ForumTableViewCell: UITableViewCell {
 }

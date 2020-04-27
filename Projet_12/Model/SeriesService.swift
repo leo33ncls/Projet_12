@@ -147,7 +147,7 @@ class SeriesService {
      - serieId: The id of the serie we want informations.
      - callback: The callback returning the series list.
      */
-    func getSerie(serieId: Int, callback: @escaping (Bool, Result?) -> Void) {
+    func getSerie(serieId: Int, callback: @escaping (Bool, Serie?) -> Void) {
         guard let url = findSerieUrl(serieId: serieId) else {
             callback(false, nil)
             return
@@ -166,7 +166,7 @@ class SeriesService {
                     return
                 }
 
-                guard let serieJSON = try? JSONDecoder().decode(Result.self, from: data) else {
+                guard let serieJSON = try? JSONDecoder().decode(Serie.self, from: data) else {
                     callback(false, nil)
                     return
                 }

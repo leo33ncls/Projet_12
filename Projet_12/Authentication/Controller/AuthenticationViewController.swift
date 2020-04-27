@@ -12,14 +12,16 @@ import FirebaseAuth
 
 class AuthenticationViewController: UIViewController {
 
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        //GIDSignIn.sharedInstance()?.signIn()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // Checking if the user is already logged in
         guard Auth.auth().currentUser != nil else {
             return
         }

@@ -8,18 +8,23 @@
 
 import UIKit
 
+// View Controller that displays series lists
 class SeriesViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var tableView: UITableView!
 
-    let segueIdentifier = "segueToSerieDetails"
+    // MARK: - View Properties
+    private let segueIdentifier = "segueToSerieDetails"
 
+    // ====================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Observe the notification sent when a collectionViewCell is selected
         let name = NSNotification.Name(rawValue: "CollectionViewSelected")
         NotificationCenter.default
             .addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
-        self.tabBarController?.tabBar.tintColor = UIColor.customOrange
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -27,20 +32,23 @@ class SeriesViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give a serie to the serieDetailsVC
+        if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
+            serieDetailsVC.serie = sender as? Serie
+        }
+    }
+
+    // Function that performs a segue to SerieDetailsVC when the VC receives a notification from a CollectionViewCell
     @objc func collectionViewTapped(_ notification: NSNotification) {
-        guard let serie = notification.userInfo?["serie"] as? Result else {
+        guard let serie = notification.userInfo?["serie"] as? Serie else {
             return
         }
         performSegue(withIdentifier: segueIdentifier, sender: serie)
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
-            serieDetailsVC.serie = sender as? Result
-        }
-    }
 }
 
+// MARK: - TableView
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Genres.genres.count
@@ -52,15 +60,6 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(genreInd: indexPath.row)
-        /*cell.callback = { (success, serie) in
-        }
-        cell.serieClickListener = self*/
         return cell
     }
 }
-
-/*extension SeriesViewController: SerieClickListener {
-    func onClick(serie: Result) {
-        
-    }
-}*/

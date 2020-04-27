@@ -10,11 +10,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+// View controller to start the sign up process
 class SignUpViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
 
+    // ====================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -22,6 +27,7 @@ class SignUpViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give the email and password to SignUpInfosVC
         if segue.identifier == "segueToSignUpInfos",
             let signUpInfosVC = segue.destination as? SignUpInfosViewController {
             signUpInfosVC.email = emailTextField.text
@@ -29,6 +35,8 @@ class SignUpViewController: UIViewController {
         }
     }
 
+    // MARK: - View Action
+    // Action that perform a segue to the SignUpInfosVC if the email and password exist
     @IBAction func passEmailAndPassword(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text,
             email != "", password != ""  else {
@@ -41,14 +49,16 @@ class SignUpViewController: UIViewController {
     }
 }
 
+// MARK: - Keyboard
 extension SignUpViewController: UITextFieldDelegate {
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        emailTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    // Action that dismiss the keyboard when the view is tapped
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 }

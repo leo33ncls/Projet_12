@@ -8,29 +8,31 @@
 
 import UIKit
 
-/*protocol SerieClickListener {
-    func onClick(serie: Result)
-}*/
-
+// TableViewCell that displays the series list
 class SerieTableViewCell: UITableViewCell {
 
+    // MARK: - View Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var genreLabel: UILabel!
 
+    // MARK: - View Properties
     var serieList: SeriesList?
-    //var callback: ((Bool, Result) -> Void)?
-    //var serieClickListener: SerieClickListener?
 
+    // MARK: - View Cycles
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    // MARK: - View Functions
+    /**
+     Function that configures the SerieTableViewCell
+     Calling this function gives a value to the genreLabel,
+     and sends a request to get a series list.
 
+     - Parameter genreInd: The index of the genre.
+    */
     func configure(genreInd: Int) {
         genreLabel.text = Genres.genres[genreInd].genre
 
@@ -47,6 +49,7 @@ class SerieTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - CollectionView
 extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let series = serieList else { return 0 }
@@ -68,15 +71,9 @@ extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let series = serieList else { return }
         let serieSelected = series.results[indexPath.row]
-        /*if let callback = self.callback {
-            callback(true, serieSelected)
-        }
+        let serieDict: [String: Serie] = ["serie": serieSelected]
 
-        if let listener = serieClickListener {
-            listener.onClick(serie: serieSelected)
-        }*/
-
-        let serieDict: [String: Result] = ["serie": serieSelected]
+        // Post a notification to tell that the collectionViewCell is selected by the user
         let notifName = NSNotification.Name("CollectionViewSelected")
         NotificationCenter.default.post(name: notifName, object: nil, userInfo: serieDict)
     }

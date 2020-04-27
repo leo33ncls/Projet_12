@@ -84,7 +84,7 @@ class ForumService {
         - serie: The serie we want the topics.
         - callback: The callback returning all the topics of the serie.
      */
-    static func getTopics(serie: Result, callback: @escaping ([Topic]?) -> Void) {
+    static func getTopics(serie: Serie, callback: @escaping ([Topic]?) -> Void) {
         forumRef.child(String(serie.id)).observe(.value) { (snapshot) in
             var topics = [Topic]()
             for child in snapshot.children {

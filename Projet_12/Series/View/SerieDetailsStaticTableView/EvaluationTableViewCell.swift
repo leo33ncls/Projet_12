@@ -8,12 +8,25 @@
 
 import UIKit
 
+// TableViewCell that displays the serie evaluation
 class EvaluationTableViewCell: UITableViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var evaluationPressLabel: UILabel!
     @IBOutlet weak var evaluationReadersLabel: UILabel!
     @IBOutlet weak var giveEvaluationButton: UIButton!
 
-    func configure(serie: Result) {
+    // =======================
+    // MARK: - View Functions
+    
+    /**
+     Function that configures the EvaluationTableViewCell
+     Calling this function gives a value to the evaluationPressLabel,
+     and get a value for the evaluationReadersLabel in the db.
+     
+     - Parameter serie: The serie to display.
+     */
+    func configure(serie: Serie) {
         self.selectionStyle = .none
         giveEvaluationButton.layer.cornerRadius = 10
         giveEvaluationButton.backgroundColor = UIColor.white
@@ -36,6 +49,7 @@ class EvaluationTableViewCell: UITableViewCell {
         }
     }
 
+    // Function that sets the color for the text of the evaluationLabel depending to the evaluation value.
     private func setEvaluationColor(evaluation: Double, label: UILabel) {
         switch evaluation {
         case 0..<3: label.textColor = UIColor.red
@@ -46,6 +60,8 @@ class EvaluationTableViewCell: UITableViewCell {
         }
     }
 
+    // MARK: - View Actions
+    // Action that sends a notification when the button is tapped.
     @IBAction func evaluateButtonTapped(_ sender: UIButton) {
         let notifName = NSNotification.Name("EvaluateButtonTapped")
         NotificationCenter.default.post(name: notifName, object: nil, userInfo: nil)

@@ -8,7 +8,10 @@
 
 import UIKit
 
+// TableViewCell that displays the serie informations
 class InformationSerieTableViewCell: UITableViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var seriePosterImageView: UIImageView!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,7 +21,18 @@ class InformationSerieTableViewCell: UITableViewCell {
 
     var view: UIView!
 
-    func configure(serie: Result) {
+    // =======================
+    // MARK: - View Functions
+
+    /**
+     Function that configures the InformationSerieTableViewCell.
+     Calling this function gives a value to the genreLabel, the dateLabel,
+     the popularityLabel, the originalLanguageLabel and the countryLabel;
+     sends a request to get the serie image and displays this image.
+
+     - Parameter serie: The serie to display.
+     */
+    func configure(serie: Serie) {
         self.selectionStyle = .none
         if let genres = serie.genreIDS {
             genreLabel.text = "Genre: \(Genres.getStringGenre(genreId: genres))"
@@ -42,6 +56,7 @@ class InformationSerieTableViewCell: UITableViewCell {
         }
     }
 
+    // Function that transforms the genre array in a string.
     private func getGenres(genreArray: [Genre]) -> String {
         var genres = [String]()
         for genre in genreArray {

@@ -12,7 +12,7 @@ import Foundation
 // The series list object that the API themoviedb sends back
 struct SeriesList: Decodable {
     let page, totalResults, totalPages: Int
-    let results: [Result]
+    let results: [Serie]
 
     enum CodingKeys: String, CodingKey {
         case page
@@ -23,7 +23,7 @@ struct SeriesList: Decodable {
 }
 
 // MARK: - Result
-struct Result: Decodable {
+struct Serie: Decodable {
     let originalName: String
     let genreIDS: [Int]?
     let genres: [Genre]?

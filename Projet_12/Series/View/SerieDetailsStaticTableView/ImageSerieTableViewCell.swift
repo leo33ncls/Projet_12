@@ -8,12 +8,24 @@
 
 import UIKit
 
+// TableViewCell that displays the serie image and name
 class ImageSerieTableViewCell: UITableViewCell {
 
+    // MARK: - View Outlet
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
 
-    func configure(serie: Result) {
+    // =======================
+    // MARK: - View Functions
+
+    /**
+     Function that configures the ImageSerieTableViewCell
+     Calling this function gives a value to the serieNameLabel,
+     sends a request to get the serie background image and displays this image.
+     
+     - Parameter serie: The serie to display.
+     */
+    func configure(serie: Serie) {
         serieNameLabel.text = serie.name
 
         guard let serieImageUrl = serie.backdropPath else { return }
@@ -25,6 +37,10 @@ class ImageSerieTableViewCell: UITableViewCell {
         }
     }
 
+    /**
+     Function that set up a shadow on a view.
+     - Parameter width: The width of the shadow.
+     */
     func setUpShadow(width: CGFloat) {
         serieImageView.layer.addSublayer(CustomShadowLayer(view: serieImageView,
                                                            shadowColor: UIColor.customGrey,

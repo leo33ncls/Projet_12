@@ -12,7 +12,7 @@ class ForumViewController: UIViewController {
     @IBOutlet weak var topicsTableView: UITableView!
     @IBOutlet weak var serieNameLabel: UILabel!
 
-    var serie: Result?
+    var serie: Serie?
     var topics = [Topic]()
     let segueToTopicEditingIdentifier = "segueToTopicEditingVC"
     let segueToTopicIdentifier = "segueToTopicVC"

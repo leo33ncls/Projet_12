@@ -8,7 +8,18 @@
 
 import UIKit
 
+// Class that creates a custom shadow for a view
 class CustomShadowLayer: CAGradientLayer {
+
+    /**
+     Initializes a custom shadow for a view.
+     
+     - Parameters:
+     - view: The view on which we want to add the custom shadow.
+     - shadowColor: The color of the custom shadow.
+     - shadowWidth: The width of the custom shadow.
+     - shadowRadius: The radius of the custom shadow.
+     */
     init(view: UIView, shadowColor: UIColor, shadowWidth: CGFloat, shadowRadius: CGFloat) {
         super.init()
         self.colors = [shadowColor.cgColor, UIColor.clear.cgColor]

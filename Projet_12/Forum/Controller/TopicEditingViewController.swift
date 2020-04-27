@@ -14,7 +14,7 @@ class TopicEditingViewController: UIViewController {
     @IBOutlet weak var topicTitleTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
 
-    var serie: Result?
+    var serie: Serie?
 
     override func viewDidLoad() {
         super.viewDidLoad()

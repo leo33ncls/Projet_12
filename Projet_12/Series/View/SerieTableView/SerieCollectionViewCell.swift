@@ -8,11 +8,22 @@
 
 import UIKit
 
+// CollectionViewCell that displays a serie
 class SerieCollectionViewCell: UICollectionViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
 
-    func configure(serie: Result) {
+    // MARK: - View Functions
+    /**
+     Function that configures the SerieCollectionViewCell
+     Calling this function gives a value to the serieNameLabel,
+     sends a request to get the serie image and displays this image.
+     
+     - Parameter serie: The serie to display.
+     */
+    func configure(serie: Serie) {
         serieImageView.image = nil
         serieNameLabel.text = serie.name
 
