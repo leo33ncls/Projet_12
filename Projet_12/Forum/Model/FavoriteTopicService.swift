@@ -9,20 +9,20 @@
 import Foundation
 import FirebaseDatabase
 
-// Class that manages the favorite topics
+// Class that manages the favorite topics.
 class FavoriteTopicService {
 
-    // The reference for the Favorite Topic database
+    /// The reference for the Favorite Topic database.
     static let favoriteTopicRef = Database.database().reference().child("FavoriteTopic")
 
-    // The reference for the Forum database
+    /// The reference for the Forum database.
     static let forumRef = Database.database().reference().child("Forum")
 
     /**
      Function which saves a topic on a serie in the FavoriteTopic database.
-     Calling this function saves the user id, the serie id and the topic id in the FavoriteTopic dabatabase.
+     - Calling this function saves the user id, the serie id and the topic id in the FavoriteTopic dabatabase.
      
-     - Parameters :
+     - Parameters:
         - userId: The id of the user saving the topic as favorite.
         - topic: The topic to save as favorite in the db.
      */
@@ -43,13 +43,14 @@ class FavoriteTopicService {
 
     /**
      Function which returns a callback with a boolean that tells if the topic is a favorite.
+
      Calling this function observes if the topic exists in the FavoriteTopic database for a given user
      and returns a boolean in a callback to tells if the topic exists.
      
      - Parameters:
-     - userId: The id of the user we want to check if the topic is one of his favorites.
-     - topic: The topic we want check if it's a favorite.
-     - callback: The callback returning a boolean that tells if the topic is a favorite.
+        - userId: The id of the user we want to check if the topic is one of his favorites.
+        - topic: The topic we want check if it's a favorite.
+        - callback: The callback returning a boolean that tells if the topic is a favorite.
      */
     static func isAFavoriteTopic(userId: String, topic: Topic, callback: @escaping (Bool) -> Void) {
         guard let topicID = topic.topicId else {
@@ -71,12 +72,13 @@ class FavoriteTopicService {
 
     /**
      Function which removes a topic in the FavoriteTopic database.
+
      Calling this function removes a given topic on a serie from a user thanks to their id
      in the FavoriteTopic dabatabase.
      
      - Parameters:
-     - userId: The id of the user we want to remove the topic from his favorites.
-     - topic: The topic to remove from favorite in the db.
+        - userId: The id of the user we want to remove the topic from his favorites.
+        - topic: The topic to remove from favorite in the db.
      */
     static func removeFavoriteTopic(userId: String, topic: Topic) {
         guard let topicID = topic.topicId else { return }
@@ -113,12 +115,13 @@ class FavoriteTopicService {
 
     /**
      Function which returns a callback with the favorite topics of a given user.
+
      Calling this function observes the favorite topics of a user in the FavoriteTopic database
      and returns all his favorite topics in a callback.
      
      - Parameters:
-     - userId: The id of the user we want the favorite topics.
-     - callback: The callback returning all the favorite topics of the user.
+        - userId: The id of the user we want the favorite topics.
+        - callback: The callback returning all the favorite topics of the user.
      */
     static func getFavoriteTopics(userId: String, callback: @escaping ([Topic]?) -> Void) {
         getFavoriteTopicsInfos(userId: userId) { (favoriteTopicsInfos) in

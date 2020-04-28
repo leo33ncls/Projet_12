@@ -21,7 +21,7 @@ class AuthenticationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Checking if the user is already logged in
+        // Checking if the user is already logged in.
         guard Auth.auth().currentUser != nil else {
             return
         }

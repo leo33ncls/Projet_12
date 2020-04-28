@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TableViewCell that displays the postView.
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postView: PostView!
 }

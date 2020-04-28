@@ -466,7 +466,6 @@
 		28A0E15D243BA51C00B01886 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				28A0E160243BA56600B01886 /* Model */,
 				28A0E15F243BA55500B01886 /* View */,
 				28A0E15E243BA54600B01886 /* Controller */,
 			);
@@ -487,13 +486,6 @@
 				28A0E16A243BCEC000B01886 /* SearchTableView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		28A0E160243BA56600B01886 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		28A0E16A243BCEC000B01886 /* SearchTableView */ = {

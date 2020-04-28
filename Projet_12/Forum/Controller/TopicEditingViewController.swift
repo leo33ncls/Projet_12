@@ -9,13 +9,18 @@
 import UIKit
 import FirebaseAuth
 
+// View Controller to edit a topic.
 class TopicEditingViewController: UIViewController {
 
+    // MARK: - View Outlet
     @IBOutlet weak var topicTitleTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
 
+    // MARK: - View Properties
+    // The serie received from ForumVC.
     var serie: Serie?
 
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         topicTitleTextField.delegate = self
@@ -24,6 +29,8 @@ class TopicEditingViewController: UIViewController {
         self.navigationItem.title = currentSerie.name
     }
 
+    // MARK: - View Actions
+    // Actions that creates and saves a topic in the db.
     @IBAction func createTopic(_ sender: UIButton) {
         guard let currentSerie = serie else { return }
         guard let user = Auth.auth().currentUser else { return }
@@ -53,6 +60,7 @@ class TopicEditingViewController: UIViewController {
     }
 }
 
+// MARK: - Keyboard
 extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -64,6 +72,7 @@ extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
         return true
     }
 
+    // Action that dismiss the keyboard when the view is tapped.
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         topicTitleTextField.resignFirstResponder()
         postTextView.resignFirstResponder()

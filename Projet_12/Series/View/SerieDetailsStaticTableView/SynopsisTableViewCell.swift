@@ -17,7 +17,7 @@ class SynopsisTableViewCell: UITableViewCell {
     // MARK: - View Functions
     /**
      Function that configures the SynopsisTableViewCell.
-     Calling this function gives a value to the synopsisTextView.
+     - Calling this function gives a value to the synopsisTextView.
      
      - Parameter serie: The serie to display.
      */

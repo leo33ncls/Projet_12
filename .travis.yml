@@ -4,9 +4,3 @@ xcode_workspace: Projet_12.xcworkspace
 xcode_scheme: Projet_12
 xcode_sdk: iphonesimulator
 xcode_destination: platform=iOS Simulator,OS=11.0.1,name=iPhone 8
-
-ignore:
--Projet_12/Supporting\ Files/APIKeys.plist
--Projet_12/Supporting Files/APIKeys.plist
--Projet_12/Supporting\ Files/GoogleService-Info.plist
--Projet_12/Supporting Files/GoogleService-Info.plist

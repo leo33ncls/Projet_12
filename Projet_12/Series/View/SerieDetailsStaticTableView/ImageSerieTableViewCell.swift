@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TableViewCell that displays the serie image and name
+// TableViewCell that displays the serie image and name.
 class ImageSerieTableViewCell: UITableViewCell {
 
     // MARK: - View Outlet
@@ -19,7 +19,8 @@ class ImageSerieTableViewCell: UITableViewCell {
     // MARK: - View Functions
 
     /**
-     Function that configures the ImageSerieTableViewCell
+     Function that configures the ImageSerieTableViewCell.
+
      Calling this function gives a value to the serieNameLabel,
      sends a request to get the serie background image and displays this image.
      

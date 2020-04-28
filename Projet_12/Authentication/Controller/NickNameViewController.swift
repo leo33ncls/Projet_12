@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-// View controller to choose a nickname and save the account
+// View controller to choose a nickname and save the account.
 class NickNameViewController: UIViewController {
 
     // MARK: - View Outlet
@@ -22,7 +22,7 @@ class NickNameViewController: UIViewController {
     }
 
     // MARK: - View Actions
-    // Action that saves the account in the database
+    // Action that saves the account in the database.
     @IBAction func saveAccount(_ sender: UIButton) {
         guard let currentUser = Auth.auth().currentUser,
             let nickname = nicknameTextField.text, nickname != "",
@@ -34,7 +34,7 @@ class NickNameViewController: UIViewController {
         let user = User(id: currentUser.uid, nickname: nickname, email: email, fullName: name, description: nil)
         UsersService.saveUser(user: user)
 
-        // Present the TabBarController
+        // Present the TabBarController.
         guard let vc = self.storyboard?
             .instantiateViewController(withIdentifier: "TabBarController") else { return }
         self.present(vc, animated: true, completion: nil)
@@ -48,7 +48,7 @@ extension NickNameViewController: UITextFieldDelegate {
         return true
     }
 
-    // Action that dismiss the keyboard when the view is tapped
+    // Action that dismiss the keyboard when the view is tapped.
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         nicknameTextField.resignFirstResponder()
     }

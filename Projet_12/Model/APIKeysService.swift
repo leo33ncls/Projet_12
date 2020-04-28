@@ -13,7 +13,7 @@ class APIKeysService {
     static let serieAPIKey = "serieAPIKey"
     static let fileName = "APIKeys"
 
-    // Function which returns the API Key from a plist file
+    /// Function which returns the API Key from a plist file
     static func valueForAPIKey(named keyname: String, fileName: String, bundleClass: AnyClass) -> String? {
         guard let path = Bundle(for: bundleClass).path(forResource: fileName, ofType: "plist") else { return nil }
         let keys = NSDictionary(contentsOfFile: path)

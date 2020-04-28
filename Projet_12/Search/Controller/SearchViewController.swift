@@ -8,30 +8,41 @@
 
 import UIKit
 
+// View Controller to search series.
 class SearchViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var seriesTableView: UITableView!
 
+    // MARK: - View Properties
     var seriesResult: SeriesList?
     let segueIdentifier = "segueToSerieDetailsFromSearch"
 
+    // ========================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = false
         searchBar.delegate = self
         seriesTableView.delegate = self
         seriesTableView.dataSource = self
-
-        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
+        // Give a serie to SerieDetailsVC.
+        if segue.identifier == segueIdentifier,
+            let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Serie
         }
     }
 }
 
+// MARK: - SearchBar
 extension SearchViewController: UISearchBarDelegate {
+
+    // Send a searchSeries request with the text in the searchBar when the searchButton is clicked
+    // and get some series from the response.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text, searchText != "" else {
@@ -53,6 +64,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.searchBar.showsCancelButton = true
     }
 
+    // Refresh searchBar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
@@ -60,6 +72,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - TableView
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let series = seriesResult else { return 0 }
@@ -80,6 +93,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let series = seriesResult else { return }
         let serie = series.results[indexPath.row]
+
+        // Perform a segue to SerieDetailsVC
         performSegue(withIdentifier: segueIdentifier, sender: serie)
     }
 }

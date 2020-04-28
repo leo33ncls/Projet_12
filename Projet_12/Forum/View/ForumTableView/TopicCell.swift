@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TableViewCell that displays the topicCellView.
 class TopicCell: UITableViewCell {
     @IBOutlet weak var topicCellView: TopicCellView!
 }

@@ -9,12 +9,18 @@
 import UIKit
 import FirebaseAuth
 
+// View Controller to display the favorite series of the user logged in.
 class FavoriteSerieViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var favoriteSerieCollectionView: UICollectionView!
 
+    // MARK: - View Properties
     var favoriteSeriesId = [Int]()
     let segueIdentifier = "segueToSerieDetailsFromAccount"
 
+    // =========================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         favoriteSerieCollectionView.delegate = self
@@ -23,6 +29,7 @@ class FavoriteSerieViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Get the IDs of the user's favorite series.
         guard let userId = Auth.auth().currentUser?.uid else { return }
         FavoriteSerieService.getFavoriteSerieId(userId: userId) { (seriesId) in
             if let seriesId = seriesId {
@@ -37,6 +44,7 @@ class FavoriteSerieViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give a serie to the SerieDetailsVC.
         guard segue.identifier == segueIdentifier,
             let serieDetailsVC = segue.destination as? SerieDetailsViewController,
             let serie = sender as? Serie else {
@@ -46,6 +54,7 @@ class FavoriteSerieViewController: UIViewController {
     }
 }
 
+// MARK: - CollectionView
 extension FavoriteSerieViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteSeriesId.count
@@ -65,6 +74,7 @@ extension FavoriteSerieViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let serieId = favoriteSeriesId[indexPath.row]
 
+        // Get the serie selected, give it in a segue and perform a segue to the SerieDetailsVC.
         SeriesService(session: URLSession(configuration: .default))
             .getSerie(serieId: serieId) { (success, serie) in
                 guard success, let serie = serie else {

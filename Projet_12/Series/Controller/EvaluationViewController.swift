@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-// View Controller to evaluate a serie
+// View Controller to evaluate a serie.
 class EvaluationViewController: UIViewController {
 
     // MARK: - View Outlet
@@ -19,7 +19,7 @@ class EvaluationViewController: UIViewController {
     @IBOutlet weak var validateButton: UIButton!
 
     // MARK: - View Properties
-    // The serie reveived from SerieDetailsVc
+    // The serie reveived from SerieDetailsVc.
     var serie: Serie?
 
     // MARK: - View Cycles
@@ -34,13 +34,13 @@ class EvaluationViewController: UIViewController {
     // =====================
     // MARK: - View Actions
 
-    // Action that changes the value of the label when the slider value changes
+    // Action that changes the value of the label when the slider value changes.
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         let currentValue = Int(sender.value)
         evaluationLabel.text = "\(currentValue)/10"
     }
 
-    // Action that saves the evaluation when the validateButton is tapped
+    // Action that saves the evaluation when the validateButton is tapped.
     @IBAction func validateButtonTapped(_ sender: UIButton) {
         guard let user = Auth.auth().currentUser else { return }
         guard let currentSerie = serie else { return }

@@ -8,33 +8,33 @@
 
 import Foundation
 
-// Class that manages the series and the series API
+// Class that manages the series and the series API.
 class SeriesService {
 
-    // The main URL of the API that sends the series list
+    /// The main URL of the API that sends the series list.
     private static let discoverSeriesURL = "https://api.themoviedb.org/3/discover/tv"
 
-    // The main URL of the API that searches and sends series
+    /// The main URL of the API that searches and sends series.
     private static let searchSeriesURL = "https://api.themoviedb.org/3/search/tv"
 
-    // The main URL of the API that finds and sends the serie
+    /// The main URL of the API that finds and sends the serie.
     private static let serieURL = "https://api.themoviedb.org/3/tv/"
 
-    // The main URL of the API that sends the serie image
+    /// The main URL of the API that sends the serie image.
     private static let serieImageURL = "https://image.tmdb.org/t/p/w500"
 
     private var task: URLSessionDataTask?
 
     private var session = URLSession(configuration: .default)
 
-    // An initializer which is used for the unit test
+    /// An initializer which is used for the unit test.
     init(session: URLSession) {
         self.session = session
     }
 
     /**
      Function which creates an Url with serie genres for the serie API.
-     Calling this function adds the api key and a given genre to the discoverSeriesURL.
+     - Calling this function adds the api key and a given genre to the discoverSeriesURL.
 
      - Parameter genre: The genre of the series we want the API to return.
      - Returns: A valid url for the serie API or a nil.
@@ -56,8 +56,8 @@ class SeriesService {
 
     /**
      Function which creates an Url with paramaters to find a serie with the serie API.
-     Calling this function completes the url path with a serie id, adds the api key to the parameters
-     And then returns a valid url for the serie API.
+     - Calling this function completes the url path with a serie id, adds the api key to the parameters
+     and then returns a valid url for the serie API.
      
      - Parameter serieId: The id of the serie we want informations.
      - Returns: A valid url to find a serie for the serie API or a nil.
@@ -75,8 +75,8 @@ class SeriesService {
 
     /**
      Function which creates an Url with paramaters to search series with the serie API.
-     Calling this function adds the api key to the parameters, completes the url path with a string search
-     And then returns a valid url for the serie API.
+     - Calling this function adds the api key to the parameters, completes the url path with a string search
+     and then returns a valid url for the serie API.
      
      - Parameter text: The title or a part of the serie title that the user searches.
      - Returns: A valid url to search series for the serie API or a nil.
@@ -144,8 +144,8 @@ class SeriesService {
      and returns a callback with a serie.
      
      - Parameters:
-     - serieId: The id of the serie we want informations.
-     - callback: The callback returning the series list.
+        - serieId: The id of the serie we want informations.
+        - callback: The callback returning the series list.
      */
     func getSerie(serieId: Int, callback: @escaping (Bool, Serie?) -> Void) {
         guard let url = findSerieUrl(serieId: serieId) else {
@@ -186,8 +186,8 @@ class SeriesService {
      and returns a callback with a series list.
      
      - Parameters:
-     - searchText: The title or a part of the serie title that the user searches.
-     - callback: The callback returning the series list.
+        - searchText: The title or a part of the serie title that the user searches.
+        - callback: The callback returning the series list.
      */
     func searchSeries(searchText: String, callback: @escaping (Bool, SeriesList?) -> Void) {
         guard let url = searchSeriesUrl(text: searchText) else {

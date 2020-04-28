@@ -9,14 +9,15 @@
 import Foundation
 import FirebaseDatabase
 
-// Class that manages the forum
+// Class that manages the forum.
 class ForumService {
 
-    // The reference for the Forum database
+    /// The reference for the Forum database.
     static let forumRef = Database.database().reference().child("Forum")
 
     /**
      Function which saves a topic on a serie in the Forum database.
+
      Calling this function creates a topic id on the serie id,
      saves the user id, the title, the date and the first post in the Forum database.
 
@@ -49,6 +50,7 @@ class ForumService {
 
     /**
      Function which saves a post on a topic in the Forum database.
+
      Calling this function creates a post id on the topic id, and
      saves the user id, the text and the date for the new post id in the Forum database.
 
@@ -77,6 +79,7 @@ class ForumService {
 
     /**
      Function which returns a callback with the topics of a given serie.
+
      Calling this function observes the topics of a serie in the Forum database
      and returns all his topics in a callback.
 
@@ -112,6 +115,7 @@ class ForumService {
 
     /**
      Function which returns a callback with the posts of a given topic on a given serie.
+
      Calling this function observes the posts of a given topic in the Forum database
      and returns all his posts in a callback.
 

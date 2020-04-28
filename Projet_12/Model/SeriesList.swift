@@ -22,7 +22,7 @@ struct SeriesList: Decodable {
     }
 }
 
-// MARK: - Result
+// MARK: - Serie
 struct Serie: Decodable {
     let originalName: String
     let genreIDS: [Int]?

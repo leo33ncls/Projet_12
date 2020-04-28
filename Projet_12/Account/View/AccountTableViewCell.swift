@@ -8,9 +8,17 @@
 
 import UIKit
 
+// TableViewCell that displays the name of a section in the AccountVC.
 class AccountTableViewCell: UITableViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var titleCellLabel: UILabel!
 
+    // MARK: - View Functions
+    /**
+     Function that configure the titleLabel of the AccountTableViewCell.
+     - Parameter title: The title of the section.
+    */
     func configure(title: String) {
         titleCellLabel.text = title
     }

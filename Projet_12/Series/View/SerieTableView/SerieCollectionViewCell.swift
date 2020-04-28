@@ -8,7 +8,7 @@
 
 import UIKit
 
-// CollectionViewCell that displays a serie
+// CollectionViewCell that displays a serie.
 class SerieCollectionViewCell: UICollectionViewCell {
 
     // MARK: - View Outlet
@@ -17,7 +17,8 @@ class SerieCollectionViewCell: UICollectionViewCell {
 
     // MARK: - View Functions
     /**
-     Function that configures the SerieCollectionViewCell
+     Function that configures the SerieCollectionViewCell.
+
      Calling this function gives a value to the serieNameLabel,
      sends a request to get the serie image and displays this image.
      

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TableViewCell that displays the favoriteTopicView.
 class FavoriteTopicCell: UITableViewCell {
     @IBOutlet weak var favoriteTopicView: FavoriteTopicView!
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TableViewCell that displays the series list
+// TableViewCell that displays the series list.
 class SerieTableViewCell: UITableViewCell {
 
     // MARK: - View Outlet
@@ -27,7 +27,8 @@ class SerieTableViewCell: UITableViewCell {
 
     // MARK: - View Functions
     /**
-     Function that configures the SerieTableViewCell
+     Function that configures the SerieTableViewCell.
+
      Calling this function gives a value to the genreLabel,
      and sends a request to get a series list.
 
@@ -73,7 +74,7 @@ extension SerieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         let serieSelected = series.results[indexPath.row]
         let serieDict: [String: Serie] = ["serie": serieSelected]
 
-        // Post a notification to tell that the collectionViewCell is selected by the user
+        // Post a notification to tell that the collectionViewCell is selected by the user.
         let notifName = NSNotification.Name("CollectionViewSelected")
         NotificationCenter.default.post(name: notifName, object: nil, userInfo: serieDict)
     }

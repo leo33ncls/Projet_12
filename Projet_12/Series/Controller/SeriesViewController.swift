@@ -8,7 +8,7 @@
 
 import UIKit
 
-// View Controller that displays series lists
+// View Controller that displays series lists.
 class SeriesViewController: UIViewController {
 
     // MARK: - View Outlet
@@ -21,7 +21,7 @@ class SeriesViewController: UIViewController {
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Observe the notification sent when a collectionViewCell is selected
+        // Observe the notification sent when a collectionViewCell is selected.
         let name = NSNotification.Name(rawValue: "CollectionViewSelected")
         NotificationCenter.default
             .addObserver(self, selector: #selector(collectionViewTapped(_:)), name: name, object: nil)
@@ -33,13 +33,13 @@ class SeriesViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Give a serie to the serieDetailsVC
+        // Give a serie to the serieDetailsVC.
         if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Serie
         }
     }
 
-    // Function that performs a segue to SerieDetailsVC when the VC receives a notification from a CollectionViewCell
+    /// Function that performs a segue to SerieDetailsVC when the VC receives a notification from a CollectionViewCell.
     @objc func collectionViewTapped(_ notification: NSNotification) {
         guard let serie = notification.userInfo?["serie"] as? Serie else {
             return

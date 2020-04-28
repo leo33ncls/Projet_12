@@ -8,10 +8,22 @@
 
 import UIKit
 
+// CollectionViewCell that displays the favorite series of a user.
 class FavoriteSerieCVCell: UICollectionViewCell {
+
+    // MARK: - View Outlet
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
 
+    // MARK: - View Functions
+    /**
+     Function that configures the FavoriteSerieCVCell.
+     
+     Calling this function sends a request to get the serie, gets the serie informations,
+     gives a value to the serieNameLabel, sends a request to get the serie image and displays this image.
+     
+     - Parameter serieId: The id of the serie to display.
+    */
     func configure(serieId: Int) {
         serieImageView.image = nil
 

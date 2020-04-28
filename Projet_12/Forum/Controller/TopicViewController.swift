@@ -9,7 +9,10 @@
 import UIKit
 import FirebaseAuth
 
+// View Controller to display a topic (list of posts).
 class TopicViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var serieNameLabel: UILabel!
     @IBOutlet weak var topicTitleLabel: UILabel!
     @IBOutlet weak var postTableView: UITableView!
@@ -17,8 +20,13 @@ class TopicViewController: UIViewController {
     @IBOutlet weak var postTextView: UITextView!
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
+    // MARK: - View Properties
+    // The topic received from ForumVC or from ForumFavoriteVC.
     var topic: Topic?
     let segueToUser = "segueToUserVC"
+
+    // ========================
+    // MARK: - View Cycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +37,7 @@ class TopicViewController: UIViewController {
         postTextView.delegate = self
         postTextView.isScrollEnabled = false
 
+        // Observe the notification sent when a nickname is tapped.
         let name = NSNotification.Name(rawValue: "NicknameTapped")
         NotificationCenter.default
             .addObserver(self, selector: #selector(nicknameTapped(_:)), name: name, object: nil)
@@ -45,13 +54,13 @@ class TopicViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         guard let currentTopic = topic else { return }
         serieNameLabel.text = currentTopic.serieName
         topicTitleLabel.text = "Sujet: \(currentTopic.title)"
 
         getPosts(topic: currentTopic)
 
+        // Set the color of the favoriteButton.
         guard let userId = Auth.auth().currentUser?.uid else { return }
         FavoriteTopicService.isAFavoriteTopic(userId: userId, topic: currentTopic) { (success) in
             if success {
@@ -63,6 +72,7 @@ class TopicViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give the userId of a post to UserVC.
         guard segue.identifier == segueToUser,
             let userVC = segue.destination as? UserViewController,
             let userId = sender as? String else {
@@ -78,6 +88,10 @@ class TopicViewController: UIViewController {
         performSegue(withIdentifier: segueToUser, sender: userId)
     }
 
+    // =====================
+    // MARK: - View Actions
+
+    // Action that creates and saves a post.
     @IBAction func savePost(_ sender: UIButton) {
         guard let currentTopic = topic else { return }
         guard let userId = Auth.auth().currentUser?.uid else { return }
@@ -90,11 +104,13 @@ class TopicViewController: UIViewController {
                         text: postText)
         ForumService.savePost(topic: currentTopic, post: post)
 
+        // Refresh the postTextView.
         postTextView.text = ""
         postTextView.resignFirstResponder()
         editingPostView.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
 
+    // Action that saves or removes the topic in the FavoriteTopic database.
     @IBAction func saveTopicAsFavorite(_ sender: UIBarButtonItem) {
         guard let currentTopic = topic else { return }
         guard let currentUser = Auth.auth().currentUser?.uid else { return }
@@ -109,6 +125,12 @@ class TopicViewController: UIViewController {
         }
     }
 
+    // =====================
+    // MARK: - View Functions
+    /**
+     Function that gets all the post of the topic.
+     - Parameter topic: The topic for which we want to get its posts.
+    */
     private func getPosts(topic: Topic) {
         ForumService.getPosts(topic: topic) { (postArray) in
             if let postArray = postArray {
@@ -123,6 +145,7 @@ class TopicViewController: UIViewController {
     }
 }
 
+// MARK: - TableView
 extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let currentTopic = topic else {
@@ -148,7 +171,11 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+// MARK: - Keyboard and postTextView
 extension TopicViewController: UITextViewDelegate {
+
+    // Function which makes the textView size dynamic when the text changes.
     func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: textView.frame.width,
                           height: .infinity)
@@ -166,6 +193,7 @@ extension TopicViewController: UITextViewDelegate {
         }
     }
 
+    /// Function which moves up the view when the keyboard appears.
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let info = notification.userInfo as NSDictionary? else { return }
         guard let keyboardFrame = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
@@ -185,6 +213,7 @@ extension TopicViewController: UITextViewDelegate {
         }, completion: nil)
     }
 
+    /// Function which moves back the view when the keyboard disappears.
     @objc func keyboardWillHide(notification: NSNotification) {
         guard let info: NSDictionary = notification.userInfo as NSDictionary? else { return }
         guard let keyboardFrame = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }

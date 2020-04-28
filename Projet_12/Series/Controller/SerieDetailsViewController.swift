@@ -9,14 +9,14 @@
 import UIKit
 import FirebaseAuth
 
-// View Controller that displays details of a serie
+// View Controller that displays details of a serie.
 class SerieDetailsViewController: UITableViewController {
 
     // MARK: - View Outlet
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
     // MARK: - View Properties
-    // The serie received from SeriesVC
+    // The serie received from SeriesVC, SearchVC or FavoriteSerieVC.
     var serie: Serie?
     let segueToEvaluationIdentifier = "segueToEvaluationVC"
     let segueToForumIdentifier = "segueToForumVC"
@@ -29,7 +29,7 @@ class SerieDetailsViewController: UITableViewController {
         tabBarController?.tabBar.isHidden = true
         registerCell()
 
-        // Observe the notification sent when the evaluateButton is tapped
+        // Observe the notification sent when the evaluateButton is tapped.
         let name = NSNotification.Name(rawValue: "EvaluateButtonTapped")
         NotificationCenter.default.addObserver(self, selector: #selector(evaluateButtonTapped), name: name, object: nil)
         tableView.reloadData()
@@ -40,7 +40,7 @@ class SerieDetailsViewController: UITableViewController {
         guard let currentSerie = serie else { return }
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
 
-        // Set the color of the favoriteButton
+        // Set the color of the favoriteButton.
         FavoriteSerieService.isAFavoriteSerie(userId: currentUserId, serie: currentSerie) { (success) in
             if success {
                 self.favoriteButton.tintColor = UIColor.customOrange
@@ -53,7 +53,7 @@ class SerieDetailsViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let currentSerie = serie else { return }
-        // Give the serie to the EvaluationVC or to the ForumVC
+        // Give the serie to the EvaluationVC or to the ForumVC.
         if segue.identifier == segueToEvaluationIdentifier,
             let evaluationVC = segue.destination as? EvaluationViewController {
             evaluationVC.serie = currentSerie
@@ -63,7 +63,7 @@ class SerieDetailsViewController: UITableViewController {
         }
     }
 
-    // Function that performs a segue to EvaluationVC when the evaluateButton is pressed
+    /// Function that performs a segue to EvaluationVC when the evaluateButton is pressed.
     @objc func evaluateButtonTapped() {
         performSegue(withIdentifier: segueToEvaluationIdentifier, sender: nil)
     }
@@ -71,7 +71,7 @@ class SerieDetailsViewController: UITableViewController {
     // ========================
     // MARK: - View Functions
 
-    // Function that registers the custom cells on the tableView
+    /// Function that registers the custom cells on the tableView.
     private func registerCell() {
         let imageSerieCell = UINib(nibName: "ImageSerieTableViewCell", bundle: nil)
         self.tableView.register(imageSerieCell, forCellReuseIdentifier: "ImageSerieCell")
@@ -89,7 +89,7 @@ class SerieDetailsViewController: UITableViewController {
         self.tableView.register(forumCell, forCellReuseIdentifier: "ForumCell")
     }
 
-    // Function that creates and configures the ImageSerieTableViewCell
+    /// Function that creates and configures the ImageSerieTableViewCell.
     private func configureImageSerieTVCell(tableView: UITableView, currentSerie: Serie) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageSerieCell")
             as? ImageSerieTableViewCell else {
@@ -100,7 +100,7 @@ class SerieDetailsViewController: UITableViewController {
         return cell
     }
 
-    // Function that creates and configures the InformationSerieTableViewCell
+    /// Function that creates and configures the InformationSerieTableViewCell.
     private func configureInformationSerieTVCell(tableView: UITableView, currentSerie: Serie) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InformationSerieCell")
             as? InformationSerieTableViewCell else {
@@ -110,7 +110,7 @@ class SerieDetailsViewController: UITableViewController {
         return cell
     }
 
-    // Function that creates and configures the EvaluationTableViewCell
+    /// Function that creates and configures the EvaluationTableViewCell.
     private func configureEvaluationTVCell(tableView: UITableView, currentSerie: Serie) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EvaluationCell")
             as? EvaluationTableViewCell else {
@@ -120,7 +120,7 @@ class SerieDetailsViewController: UITableViewController {
         return cell
     }
 
-    // Function that creates and configures the SynopsisTableViewCell
+    /// Function that creates and configures the SynopsisTableViewCell.
     private func configureSynopsisTVCell(tableView: UITableView, currentSerie: Serie) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SynopsisCell") as? SynopsisTableViewCell else {
             return UITableViewCell()
@@ -129,7 +129,7 @@ class SerieDetailsViewController: UITableViewController {
         return cell
     }
 
-    // Function that creates and configures the ForumTableViewCell
+    /// Function that creates and configures the ForumTableViewCell.
     private func configureForumTVCell(tableView: UITableView, currentSerie: Serie) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForumCell") as? ForumTableViewCell else {
             return UITableViewCell()
@@ -140,7 +140,7 @@ class SerieDetailsViewController: UITableViewController {
     // =================
     // MARK: - View Actions
 
-    // Action that saves or removes the serie in the FavoriteSerie database
+    // Action that saves or removes the serie in the FavoriteSerie database.
     @IBAction func saveSerieAsFavorite(_ sender: UIBarButtonItem) {
         guard let currentSerie = serie else { return }
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
@@ -185,7 +185,7 @@ class SerieDetailsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Perform a segue to ForumVC when the ForumTableViewCell is selected
+        // Perform a segue to ForumVC when the ForumTableViewCell is selected.
         if indexPath.row == 4 {
             performSegue(withIdentifier: segueToForumIdentifier, sender: nil)
         }

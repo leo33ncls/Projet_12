@@ -9,7 +9,10 @@
 import UIKit
 import FirebaseAuth
 
+// View Controller to display the user informations of the user logged in the application.
 class AccountViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var userInformationView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var accountImageView: UIImageView!
@@ -18,15 +21,19 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var accountTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    // MARK: - View Properties
     var imagePicker: UIImagePickerController?
     var imageViewSelected: Int?
     var currentUser: User?
     let segueToUserInfos = "segueToUserInfos"
     let segueToFavoriteSerie = "segueToFavoriteSerie"
 
+    // ========================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         imageViewRecognizer()
+
         accountImageView.layer.borderColor = UIColor.white.cgColor
         accountImageView.layer.borderWidth = 5.0
 
@@ -40,8 +47,11 @@ class AccountViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+
         displayActivityIndicator(true)
         guard let userId = Auth.auth().currentUser?.uid else {
+            displayActivityIndicator(false)
             UIAlertController().showAlert(title: "Sorry", message: "No user logged in!",
                                           viewController: self)
             return
@@ -50,6 +60,7 @@ class AccountViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give the user to UserInfosVC.
         guard let user = currentUser else { return }
         guard segue.identifier == segueToUserInfos,
             let userInfosVC = segue.destination as? UserInfosViewController else {
@@ -58,6 +69,10 @@ class AccountViewController: UIViewController {
         userInfosVC.user = user
     }
 
+    // =======================
+    // MARK: - View Functions
+
+    /// Function that displays a activity indicator and hides the other views.
     private func displayActivityIndicator(_ bool: Bool) {
         if bool {
             activityIndicator.startAnimating()
@@ -69,6 +84,11 @@ class AccountViewController: UIViewController {
         accountTableView.isHidden = bool
     }
 
+    /**
+     Function that gets the user informations from the User database
+     and displays them in the userInformationView.
+     - Parameter userId: The id of the user whose we want the informations.
+    */
     private func getUserInfos(userId: String) {
         UsersService.getUserInformation(userId: userId) { (user) in
             if let user = user {
@@ -83,6 +103,10 @@ class AccountViewController: UIViewController {
         }
     }
 
+    /**
+     Function that gets the user image from the imageStorage and displays it in the accountImageView.
+     - Parameter userId: The id of the user for which we want the image.
+     */
     private func getUserImage(userId: String) {
         ImageStorageService.getUserImage(userId: userId) { (data) in
             self.getUserBackground(userId: userId)
@@ -92,6 +116,11 @@ class AccountViewController: UIViewController {
         }
     }
 
+    /**
+     Function that gets the background image from a user in the imageStorage
+     and displays it in the backgroundImageView.
+     - Parameter userId: The id of the user for which we want the backgroundImage.
+     */
     private func getUserBackground(userId: String) {
         ImageStorageService.getUserBackground(userId: userId) { (data) in
             self.displayActivityIndicator(false)
@@ -101,6 +130,7 @@ class AccountViewController: UIViewController {
         }
     }
 
+    /// Function that adds a tapGestureRecognizer to accountImageView and backgroundImageView.
     private func imageViewRecognizer() {
         backgroundImageView.isUserInteractionEnabled = true
         accountImageView.isUserInteractionEnabled = true
@@ -114,23 +144,43 @@ class AccountViewController: UIViewController {
         accountImageView.addGestureRecognizer(accountTapGestureRecognizer)
     }
 
+    /**
+     Function that sets the backgroundImageView as the selected imageView and presents the imageViewAlert
+     when the backgroundImageView is tapped.
+    */
     @objc private func setBackgroundImageViewSelected() {
         imageViewSelected = 1
         imageViewAlert()
     }
 
+    /**
+     Function that sets the AccountImageView as the selected imageView and presents the imageViewAlert
+     when the accountImageView is tapped.
+     */
     @objc private func setAccountImageViewSelected() {
         imageViewSelected = 2
         imageViewAlert()
     }
 
+    // ==========================
+    // MARK: - View Actions
+    // Action that presents the signOutAlert
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         signOutAlert()
     }
 
+    // ==========================
+    // MARK: - View Alert
+
+    /**
+     Function that presents an alert allowing the user to chooce a media for the imagePicker.
+
+     Calling this function shows an alert allowing the user to choose between the camera
+     or the photo library to pick an image for a image view.
+     */
     private func imageViewAlert() {
         guard let imagePickerController = imagePicker else { return }
-        let alertVC = UIAlertController(title: "Choice a media",
+        let alertVC = UIAlertController(title: "Choose a media",
                                         message: nil,
                                         preferredStyle: .actionSheet)
 
@@ -152,6 +202,16 @@ class AccountViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
 
+    /**
+     Function that presents an alert to make sure that the user wants to save the image.
+     
+     Calling this function shows an alert asking the user if he wants to save the image in the db
+     and saves the image if the user clicks "save".
+     
+     - Parameters:
+        - imageData: The data of the image chosen by the user.
+        - imageView: The imageView selected by the user to receive this image.
+     */
     private func saveImageAlert(imageData: Data, imageView: UIImageView) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         let alertVC = UIAlertController(title: "Save this image ?",
@@ -172,6 +232,12 @@ class AccountViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
 
+    /**
+     Function that presents an alert to make sure that the user wants to log out.
+     
+     Calling this function shows an alert asking the user if he wants to log out;
+     signs out the user if he clicks "Yes" and presents the AuthenticationVC.
+     */
     private func signOutAlert() {
         let alertVC = UIAlertController(title: "Are you sure ?",
                                         message: "Do you want to logout ?",
@@ -194,6 +260,7 @@ class AccountViewController: UIViewController {
     }
 }
 
+// MARK: - ImagePicker
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         imagePicker?.dismiss(animated: true, completion: nil)
@@ -206,11 +273,14 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             imagePicker?.dismiss(animated: true, completion: nil)
             return
         }
+
         if imageViewSelected == 1 {
+            // Pick an image for the backgroundImageView if it is selected and show the saveImageAlert.
             backgroundImageView.image = image
             imagePicker?.dismiss(animated: true, completion: nil)
             saveImageAlert(imageData: data, imageView: backgroundImageView)
         } else if imageViewSelected == 2 {
+            // Pick an image for the backgroundImageView if it is selected and show the saveImageAlert.
             accountImageView.image = image
             imagePicker?.dismiss(animated: true, completion: nil)
             saveImageAlert(imageData: data, imageView: accountImageView)
@@ -219,6 +289,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+// MARK: - TableView
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -240,8 +311,10 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            // Perform a segue to UserInfosVC.
             performSegue(withIdentifier: segueToUserInfos, sender: nil)
         case 1:
+            // Perform a segue to FavoriteSerieVC.
             performSegue(withIdentifier: segueToFavoriteSerie, sender: nil)
         default:
             break

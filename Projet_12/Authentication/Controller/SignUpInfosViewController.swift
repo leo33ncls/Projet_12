@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-// View controller to save the user informations
+// View controller to save the user informations.
 class SignUpInfosViewController: UIViewController {
 
     // MARK: - View Outlet
@@ -19,7 +19,7 @@ class SignUpInfosViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
 
     // MARK: - View Properties
-    // Email and password received from SignUpVC
+    // Email and password received from SignUpVC.
     var email: String?
     var password: String?
 
@@ -32,7 +32,7 @@ class SignUpInfosViewController: UIViewController {
     }
 
     // MARK: - View Actions
-    // Action that creates and saves the user in the database
+    // Action that creates and saves the user in the database.
     @IBAction func saveInformations(_ sender: UIButton) {
         guard let userEmail = email,
             let userPassword = password,
@@ -56,7 +56,7 @@ class SignUpInfosViewController: UIViewController {
                                 fullName: lastName + firstName, description: nil)
                 UsersService.saveUser(user: user)
 
-                // Present the TabBarController
+                // Present the TabBarController.
                 guard let vc = self.storyboard?
                     .instantiateViewController(withIdentifier: "TabBarController") else { return }
                 self.present(vc, animated: true, completion: nil)
@@ -72,7 +72,7 @@ extension SignUpInfosViewController: UITextFieldDelegate {
         return true
     }
 
-    // Action that dismiss the keyboard when the view is tapped
+    // Action that dismiss the keyboard when the view is tapped.
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         nicknameTextField.resignFirstResponder()
         lastNameTextField.resignFirstResponder()

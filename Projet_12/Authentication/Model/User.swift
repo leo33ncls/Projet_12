@@ -11,25 +11,25 @@ import Foundation
 // An user which is registered in the db
 class User {
 
-    // The user id
+    /// The user id
     let id: String
 
-    // The user nickname
+    /// The user nickname
     var nickname: String
 
-    // The user email
+    /// The user email
     let email: String
 
-    // The user full name
+    /// The user full name
     var fullName: String
 
-    // The user description
+    /// The user description
     var description: String?
 
-    // The user image url
+    /// The user image url
     var imageUrl: String?
 
-    // The user background image url
+    /// The user background image url
     var backgroundImageUrl: String?
 
     /**

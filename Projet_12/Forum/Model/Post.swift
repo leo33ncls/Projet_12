@@ -8,16 +8,16 @@
 
 import Foundation
 
-// A user's post on a topic
+// A user's post on a topic.
 class Post {
 
-    // The id of the user who creates the post
+    /// The id of the user who creates the post.
     let userId: String
 
-    // The publication date of the post
+    /// The publication date of the post.
     let date: Date
 
-    // The text of the post
+    /// The text of the post.
     let text: String
 
     /**

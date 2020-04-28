@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TableViewCell that displays the serie evaluation
+// TableViewCell that displays the serie evaluation.
 class EvaluationTableViewCell: UITableViewCell {
 
     // MARK: - View Outlet
@@ -20,7 +20,8 @@ class EvaluationTableViewCell: UITableViewCell {
     // MARK: - View Functions
     
     /**
-     Function that configures the EvaluationTableViewCell
+     Function that configures the EvaluationTableViewCell.
+
      Calling this function gives a value to the evaluationPressLabel,
      and get a value for the evaluationReadersLabel in the db.
      
@@ -49,7 +50,7 @@ class EvaluationTableViewCell: UITableViewCell {
         }
     }
 
-    // Function that sets the color for the text of the evaluationLabel depending to the evaluation value.
+    /// Function that sets the color for the text of the evaluationLabel depending to the evaluation value.
     private func setEvaluationColor(evaluation: Double, label: UILabel) {
         switch evaluation {
         case 0..<3: label.textColor = UIColor.red

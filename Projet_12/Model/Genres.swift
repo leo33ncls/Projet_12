@@ -8,10 +8,10 @@
 
 import Foundation
 
-// Class that manages the genres of serie
+// Class that manages the genres of serie.
 class Genres {
 
-    // An array of all the serie genres
+    /// An array of all the serie genres.
     static let genres: [(id: Int, genre: String)] = [(10759, "Action & Adventure"),
                                                      (16, "Animation"),
                                                      (35, "Comedy"),
@@ -30,7 +30,7 @@ class Genres {
                                                      (37, "Western")]
 
     /**
-     Function which returns a string of the genres from an array of genre id
+     Function which returns a string of the genres from an array of genre id.
      - Parameter genreId: The genres id we want the string.
      - Returns: A string with the genres.
      */

@@ -8,12 +8,17 @@
 
 import UIKit
 
+// View that displays a serie after a research.
 class SearchSerieView: UIView {
+
+    // MARK: - View Outlet
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var serieImageView: UIImageView!
     @IBOutlet weak var serieNameLabel: UILabel!
     @IBOutlet weak var serieGenresLabel: UILabel!
 
+    // ======================
+    // MARK: - View Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -24,6 +29,7 @@ class SearchSerieView: UIView {
         commonInit()
     }
 
+    // The init of the view from the nib.
     private func commonInit() {
         Bundle.main.loadNibNamed("SearchSerieView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +40,17 @@ class SearchSerieView: UIView {
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     }
 
+    // =======================
+    // MARK: - View Functions
+
+    /**
+     Function that configures the SearchSerieView.
+
+     Calling this function gives a value to the serieNameLabel, gets the serie genres,
+     sends a request to get the serie image and displays this image.
+
+     - Parameter serie: The serie to display.
+     */
     func configure(serie: Serie) {
         serieNameLabel.text = serie.name
 

@@ -9,17 +9,25 @@
 import UIKit
 import FirebaseAuth
 
+// View Controller to display the favorite topics.
 class ForumFavoriteViewController: UIViewController {
+
+    // MARK: - View Outlet
     @IBOutlet weak var topicsTableView: UITableView!
 
+    // MARK: - View Propeties
     var topics = [Topic]()
     let segueToTopicIdentifier = "segueToTopicFromFavoriteForum"
 
+    // ======================
+    // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         topicsTableView.delegate = self
         topicsTableView.dataSource = self
 
+        // Gets the favorite topics of the user.
         guard let userId = Auth.auth().currentUser?.uid else { return }
         FavoriteTopicService.getFavoriteTopics(userId: userId) { (topicArray) in
             if let topicArray = topicArray {
@@ -34,6 +42,7 @@ class ForumFavoriteViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Give a topic to TopicVC.
         if segue.identifier == segueToTopicIdentifier,
             let topicVC = segue.destination as? TopicViewController,
             let topic = sender as? Topic {
@@ -43,6 +52,7 @@ class ForumFavoriteViewController: UIViewController {
 
 }
 
+// MARK: - TableView
 extension ForumFavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
@@ -60,6 +70,7 @@ extension ForumFavoriteViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let topic = topics[indexPath.row]
+        // Perform a segue to TopicVC.
         performSegue(withIdentifier: segueToTopicIdentifier, sender: topic)
     }
 }

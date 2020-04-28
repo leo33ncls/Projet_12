@@ -8,21 +8,21 @@
 
 import Foundation
 
-// The informations of a favorite topic
+// The informations of a favorite topic.
 class FavoriteTopicInfos {
 
-    // The id of the serie that the favorite topic is about
+    /// The id of the serie that the favorite topic is about.
     let serieId: Int
 
-    // The id of the favorite topic
+    /// The id of the favorite topic.
     var topicId: String
 
     /**
      Initializes a new topic on a serie with some informations.
      
      - Parameters:
-     - serieId: The id of the serie that the favorite topic is about.
-     - topicId: The id of the favorite topic.
+        - serieId: The id of the serie that the favorite topic is about.
+        - topicId: The id of the favorite topic.
      */
     init(serieId: Int, topicId: String) {
         self.serieId = serieId

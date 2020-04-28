@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-// View controller to start the sign up process
+// View controller to start the sign up process.
 class SignUpViewController: UIViewController {
 
     // MARK: - View Outlet
@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Give the email and password to SignUpInfosVC
+        // Give the email and password to SignUpInfosVC.
         if segue.identifier == "segueToSignUpInfos",
             let signUpInfosVC = segue.destination as? SignUpInfosViewController {
             signUpInfosVC.email = emailTextField.text
@@ -35,8 +35,9 @@ class SignUpViewController: UIViewController {
         }
     }
 
+    // ====================
     // MARK: - View Action
-    // Action that perform a segue to the SignUpInfosVC if the email and password exist
+    // Action that perform a segue to the SignUpInfosVC if the email and password exist.
     @IBAction func passEmailAndPassword(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text,
             email != "", password != ""  else {
@@ -56,7 +57,7 @@ extension SignUpViewController: UITextFieldDelegate {
         return true
     }
 
-    // Action that dismiss the keyboard when the view is tapped
+    // Action that dismiss the keyboard when the view is tapped.
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

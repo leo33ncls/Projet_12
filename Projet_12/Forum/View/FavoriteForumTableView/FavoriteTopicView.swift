@@ -8,12 +8,18 @@
 
 import UIKit
 
+// View that displays favorite topic informations.
 class FavoriteTopicView: UIView {
+
+    // MARK: - View Outlet
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var serieNameLabel: UILabel!
     @IBOutlet weak var topicTitleLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+
+    // ====================
+    // MARK: - View Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,6 +31,7 @@ class FavoriteTopicView: UIView {
         commonInit()
     }
 
+    // The init of the view from the nib.
     private func commonInit() {
         Bundle.main.loadNibNamed("FavoriteTopicView", owner: self, options: nil)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +42,19 @@ class FavoriteTopicView: UIView {
         contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     }
 
+    // =======================
+    // MARK: - View Functions
+
+    /**
+     Function that configures the FavoriteTopicView.
+
+     Calling this function gives a value to the serieNameLabel and the topicTitleLabel;
+     gets the user nickname, and displays the creation date of the topic.
+     
+     - Parameters:
+        - favoriteTopic: The favorite topic to display.
+        - indexPath: The indexPath of the cell.
+     */
     func configure(favoriteTopic: Topic, indexPath: Int) {
         serieNameLabel.text = favoriteTopic.serieName
         topicTitleLabel.text = favoriteTopic.title
@@ -42,45 +62,15 @@ class FavoriteTopicView: UIView {
             self.nicknameLabel.text = nickname
         }
         if Calendar.current.isDate(Date(), inSameDayAs: favoriteTopic.date) {
-            dateLabel.text = displayHour(date: favoriteTopic.date)
+            dateLabel.text = DateService().transformHourToString(date: favoriteTopic.date)
         } else {
-            dateLabel.text = displayDate(date: favoriteTopic.date)
+            dateLabel.text = DateService().transformDateToString(date: favoriteTopic.date)
         }
 
         if indexPath % 2 == 0 {
             contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
             contentView.layer.borderWidth = 0.25
             contentView.layer.borderColor = UIColor.darkGray.cgColor
-        }
-    }
-
-    private func displayDate(date: Date) -> String {
-        let day = Calendar.current.component(.day, from: date)
-        let month = Calendar.current.component(.month, from: date)
-
-        if day < 10 && month < 10 {
-            return "0\(day)/0\(month)"
-        } else if day < 10 {
-            return "0\(day)/\(month)"
-        } else if month < 10 {
-            return "\(day)/0\(month)"
-        } else {
-            return "\(day)/\(month)"
-        }
-    }
-
-    private func displayHour(date: Date) -> String {
-        let hour = Calendar.current.component(.hour, from: date)
-        let minute = Calendar.current.component(.minute, from: date)
-
-        if hour < 10 && minute < 10 {
-            return "0\(hour):0\(minute)"
-        } else if hour < 10 {
-            return "0\(hour):\(minute)"
-        } else if minute < 10 {
-            return "\(hour):0\(minute)"
-        } else {
-            return "\(hour):\(minute)"
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TableViewCell that displays the searchSerieView.
 class SearchSerieCell: UITableViewCell {
     @IBOutlet weak var searchSerieView: SearchSerieView!
 }

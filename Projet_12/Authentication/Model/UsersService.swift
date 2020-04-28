@@ -12,12 +12,12 @@ import FirebaseDatabase
 // Class that manages users
 class UsersService {
 
-    // The reference for the Users database
+    /// The reference for the Users database.
     static let usersDTBRef = Database.database().reference().child("Users")
 
     /**
      Function which saves a user in the Users database.
-     Calling this function saves the user's nickname, email and fullName in the Users dabatabase.
+     - Calling this function saves the user's nickname, email and fullName in the Users dabatabase.
 
      - Parameter user: The user to save in the db.
     */
@@ -39,12 +39,13 @@ class UsersService {
 
     /**
      Function which returns a callback with the nickname of a given user.
+
      Calling this function observes the value of a user in the database
      kepts and returns his nickname value with a callback.
 
      - Parameters:
-            - userId: The user Id of the user that we want the nickname.
-            - callback: The callback returning the nickname.
+        - userId: The user Id of the user that we want the nickname.
+        - callback: The callback returning the nickname.
      */
     static func getUserNickname(userId: String, callback: @escaping (String) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
@@ -59,12 +60,13 @@ class UsersService {
 
     /**
      Function which returns a callback with the user infos of a given user id.
+
      Calling this function observes the value of a user in the database
      kepts and returns the user value with a callback.
      
      - Parameters:
-     - userId: The user Id of the user that we want the information.
-     - callback: The callback returning the user.
+        - userId: The user Id of the user whose we want the information.
+        - callback: The callback returning the user.
      */
     static func getUserInformation(userId: String, callback: @escaping (User?) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
@@ -84,7 +86,7 @@ class UsersService {
 
     /**
      Function which updates the user infos for a given user in the Users database.
-     Calling this function updates the user's full name, nickname and description in the Users dabatabase.
+     - Calling this function updates the user's full name, nickname and description in the Users dabatabase.
      
      - Parameters:
         - userId: The id of the user for which we want to uptade his values.

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TableViewCell that displays the serie informations
+// TableViewCell that displays the serie informations.
 class InformationSerieTableViewCell: UITableViewCell {
 
     // MARK: - View Outlet
@@ -26,6 +26,7 @@ class InformationSerieTableViewCell: UITableViewCell {
 
     /**
      Function that configures the InformationSerieTableViewCell.
+
      Calling this function gives a value to the genreLabel, the dateLabel,
      the popularityLabel, the originalLanguageLabel and the countryLabel;
      sends a request to get the serie image and displays this image.
@@ -56,7 +57,7 @@ class InformationSerieTableViewCell: UITableViewCell {
         }
     }
 
-    // Function that transforms the genre array in a string.
+    /// Function that transforms the genre array in a string.
     private func getGenres(genreArray: [Genre]) -> String {
         var genres = [String]()
         for genre in genreArray {

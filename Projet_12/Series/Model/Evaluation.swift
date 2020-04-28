@@ -11,13 +11,13 @@ import Foundation
 // An user evaluation on a serie
 class Evaluation {
 
-    // The id of the user who gives the evaluation
+    /// The id of the user who gives the evaluation
     let userID: String
 
-    // The id of the serie which is evaluated
+    /// The id of the serie which is evaluated
     let serieID: Int
 
-    // The evaluation
+    /// The evaluation
     var evaluation: Int
 
     /**
