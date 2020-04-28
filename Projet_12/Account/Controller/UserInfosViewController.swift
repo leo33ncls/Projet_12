@@ -92,7 +92,7 @@ class UserInfosViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
         let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-        
+
         alertVC.addAction(save)
         alertVC.addAction(cancel)
         present(alertVC, animated: true, completion: nil)
