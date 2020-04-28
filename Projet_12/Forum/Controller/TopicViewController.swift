@@ -171,7 +171,6 @@ extension TopicViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
 // MARK: - Keyboard and postTextView
 extension TopicViewController: UITextViewDelegate {
 

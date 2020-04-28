@@ -24,7 +24,7 @@ class DateService {
         }
         return date
     }
-    
+
     /**
      Function that transforms a date into a string.
      - Parameter date: The date to transform into a string.
@@ -33,7 +33,7 @@ class DateService {
     func transformDateToString(date: Date) -> String {
         let day = Calendar.current.component(.day, from: date)
         let month = Calendar.current.component(.month, from: date)
-        
+
         if day < 10 && month < 10 {
             return "0\(day)/0\(month)"
         } else if day < 10 {
@@ -53,7 +53,7 @@ class DateService {
     func transformHourToString(date: Date) -> String {
         let hour = Calendar.current.component(.hour, from: date)
         let minute = Calendar.current.component(.minute, from: date)
-        
+
         if hour < 10 && minute < 10 {
             return "0\(hour):0\(minute)"
         } else if hour < 10 {

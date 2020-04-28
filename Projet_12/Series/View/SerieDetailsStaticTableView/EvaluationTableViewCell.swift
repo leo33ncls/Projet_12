@@ -18,7 +18,7 @@ class EvaluationTableViewCell: UITableViewCell {
 
     // =======================
     // MARK: - View Functions
-    
+
     /**
      Function that configures the EvaluationTableViewCell.
 

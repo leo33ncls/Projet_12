@@ -27,10 +27,7 @@ class DateServiceTestCase: XCTestCase {
 
     func testGivenAValidDateString_WhenCallingStringToDate_ThenShouldTestDateShouldBeEqualToDate() {
         // Given
-        guard let date = createDate() else {
-            print("Test: Aucune date créée")
-            return
-        }
+        guard let date = createDate() else { return }
         let validStringDate = "2020-03-10 13:02:16 +0000"
 
         // When

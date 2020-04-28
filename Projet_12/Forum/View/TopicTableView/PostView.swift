@@ -84,7 +84,8 @@ class PostView: UIView {
         UsersService.getUserNickname(userId: post.userId) { (nickname) in
             self.nicknameLabel.text = nickname
         }
-        dateLabel.text = "Posté le \(DateService().transformDateToString(date: post.date)) à \(DateService().transformHourToString(date: post.date))"
+        dateLabel.text = "Posté le \(DateService().transformDateToString(date: post.date))"
+                        + " à \(DateService().transformHourToString(date: post.date))"
         textView.text = post.text
     }
 }

@@ -76,6 +76,7 @@
 		28B6DFD0244D2C3300231C83 /* FavoriteSerieCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */; };
 		28B6DFD4244D44ED00231C83 /* Serie.json in Resources */ = {isa = PBXBuildFile; fileRef = 28B6DFD3244D44ED00231C83 /* Serie.json */; };
 		28B6DFD6244E4CD100231C83 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD5244E4CD100231C83 /* UserViewController.swift */; };
+		28B6DFD82458A3F000231C83 /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD72458A3F000231C83 /* Print.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -172,6 +173,7 @@
 		28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSerieCVCell.swift; sourceTree = "<group>"; };
 		28B6DFD3244D44ED00231C83 /* Serie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Serie.json; sourceTree = "<group>"; };
 		28B6DFD5244E4CD100231C83 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		28B6DFD72458A3F000231C83 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 			children = (
 				28E324DF23DFA80900E1884C /* UIAlertController.swift */,
 				28965996240CA236003536BD /* UIColor.swift */,
+				28B6DFD72458A3F000231C83 /* Print.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				28965999240DD428003536BD /* EvaluationViewController.swift in Sources */,
 				287B239C2432C49D00DD9176 /* ForumFavoriteViewController.swift in Sources */,
 				2896599C240DE1DC003536BD /* EvaluationService.swift in Sources */,
+				28B6DFD82458A3F000231C83 /* Print.swift in Sources */,
 				289659BE2412D379003536BD /* PostTableViewCell.swift in Sources */,
 				28A0E16E243BD1D200B01886 /* SearchSerieView.swift in Sources */,
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
