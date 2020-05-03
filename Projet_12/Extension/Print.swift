@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Writes the textual representations of the given items into the standard output if it's a debug build.
+/// Writes the textual representations of the given items into the standard output if it's a debug build.
 func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
     #if DEBUG
     Swift.print(items[0], separator: separator, terminator: terminator)

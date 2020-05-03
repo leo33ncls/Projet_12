@@ -23,7 +23,6 @@ class ForumFavoriteViewController: UIViewController {
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
         topicsTableView.delegate = self
         topicsTableView.dataSource = self
 
@@ -39,6 +38,11 @@ class ForumFavoriteViewController: UIViewController {
                                               viewController: self)
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

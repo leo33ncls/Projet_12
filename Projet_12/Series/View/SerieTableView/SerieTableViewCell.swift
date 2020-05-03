@@ -43,8 +43,7 @@ class SerieTableViewCell: UITableViewCell {
                     self.serieList = seriesList
                     self.collectionView.reloadData()
                 } else {
-                    print(Genres.genres[genreInd].id)
-                    print("SeriesList Request Error")
+                    print("SeriesList Request Error Genre: \(Genres.genres[genreInd].id)")
                 }
         }
     }

@@ -40,14 +40,13 @@ class SeriesService {
      - Returns: A valid url for the serie API or a nil.
      */
     private func discoverSeriesUrl(genre: Int) -> URL? {
-        let stringGenre = String(genre)
         var seriesURL = URLComponents(string: SeriesService.discoverSeriesURL)
         seriesURL?.queryItems = [URLQueryItem(name: "api_key",
                                               value: APIKeysService
                                                 .valueForAPIKey(named: APIKeysService.serieAPIKey,
                                                                 fileName: APIKeysService.fileName,
                                                                 bundleClass: SeriesService.self)),
-                                 URLQueryItem(name: "with_genres", value: stringGenre),
+                                 URLQueryItem(name: "with_genres", value: String(genre)),
                                  URLQueryItem(name: "sort_by", value: "popularity.desc")]
 
         guard let url = seriesURL?.url else { return nil }

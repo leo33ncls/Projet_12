@@ -24,8 +24,8 @@ class EvaluationService {
     static func saveEvaluation(evaluation: Evaluation) {
         let userDictionary: NSDictionary = ["evaluation": evaluation.evaluation]
 
-        evaluationRef.child("\(evaluation.serieID)")
-            .child("\(evaluation.userID)")
+        evaluationRef.child(String(evaluation.serieID))
+            .child(String(evaluation.userID))
             .setValue(userDictionary) { (error, ref) in
             if let error = error {
                 print(error.localizedDescription)

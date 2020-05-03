@@ -29,11 +29,16 @@ class ImageSerieTableViewCell: UITableViewCell {
     func configure(serie: Serie) {
         serieNameLabel.text = serie.name
 
-        guard let serieImageUrl = serie.backdropPath else { return }
+        guard let serieImageUrl = serie.backdropPath else {
+            serieImageView.image = UIImage(named: "defaultBackground")
+            return
+        }
         SeriesService(session: URLSession(configuration: .default))
             .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.serieImageView.image = UIImage(data: data)
+                } else {
+                    self.serieImageView.image = UIImage(named: "defaultBackground")
                 }
         }
     }

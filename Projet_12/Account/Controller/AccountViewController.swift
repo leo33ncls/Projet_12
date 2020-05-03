@@ -23,10 +23,10 @@ class AccountViewController: UIViewController {
 
     // MARK: - View Properties
     var imagePicker: UIImagePickerController?
-    var imageViewSelected: Int?
+    var imageViewSelected: UIImageView?
     var currentUser: User?
-    let segueToUserInfos = "segueToUserInfos"
-    let segueToFavoriteSerie = "segueToFavoriteSerie"
+    let segueToUserInfosIdentifier = "segueToUserInfos"
+    let segueToFavoriteSerieIdentifier = "segueToFavoriteSerie"
 
     // ========================
     // MARK: - View Cycles
@@ -43,6 +43,9 @@ class AccountViewController: UIViewController {
         accountTableView.delegate = self
         accountTableView.dataSource = self
         accountTableView.tableFooterView = UIView()
+
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        getUserImage(userId: userId)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +65,7 @@ class AccountViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Give the user to UserInfosVC.
         guard let user = currentUser else { return }
-        guard segue.identifier == segueToUserInfos,
+        guard segue.identifier == segueToUserInfosIdentifier,
             let userInfosVC = segue.destination as? UserInfosViewController else {
                 return
         }
@@ -91,11 +94,11 @@ class AccountViewController: UIViewController {
     */
     private func getUserInfos(userId: String) {
         UsersService.getUserInformation(userId: userId) { (user) in
+            self.displayActivityIndicator(false)
             if let user = user {
                 self.currentUser = user
                 self.nicknameLabel.text = user.nickname
                 self.descriptionTextView.text = user.description
-                self.getUserImage(userId: userId)
             } else {
                 UIAlertController().showAlert(title: "Sorry", message: "No user found",
                                               viewController: self)
@@ -112,6 +115,8 @@ class AccountViewController: UIViewController {
             self.getUserBackground(userId: userId)
             if let data = data {
                 self.accountImageView.image = UIImage(data: data)
+            } else {
+                self.accountImageView.image = UIImage(named: "defaultUserImage")
             }
         }
     }
@@ -123,9 +128,10 @@ class AccountViewController: UIViewController {
      */
     private func getUserBackground(userId: String) {
         ImageStorageService.getUserBackground(userId: userId) { (data) in
-            self.displayActivityIndicator(false)
             if let data = data {
                 self.backgroundImageView.image = UIImage(data: data)
+            } else {
+                self.backgroundImageView.image = UIImage(named: "defaultBackground")
             }
         }
     }
@@ -135,21 +141,21 @@ class AccountViewController: UIViewController {
         backgroundImageView.isUserInteractionEnabled = true
         accountImageView.isUserInteractionEnabled = true
 
-        let backgroundTapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                    action: #selector(setBackgroundImageViewSelected))
-        backgroundImageView.addGestureRecognizer(backgroundTapGestureRecognizer)
+        let backgroundTapGesture = UITapGestureRecognizer(target: self,
+                                                          action: #selector(setBackgroundImageViewSelected(sender:)))
+        backgroundImageView.addGestureRecognizer(backgroundTapGesture)
 
-        let accountTapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                 action: #selector(setAccountImageViewSelected))
-        accountImageView.addGestureRecognizer(accountTapGestureRecognizer)
+        let accountTapGesture = UITapGestureRecognizer(target: self,
+                                                       action: #selector(setAccountImageViewSelected(sender:)))
+        accountImageView.addGestureRecognizer(accountTapGesture)
     }
 
     /**
      Function that sets the backgroundImageView as the selected imageView and presents the imageViewAlert
      when the backgroundImageView is tapped.
     */
-    @objc private func setBackgroundImageViewSelected() {
-        imageViewSelected = 1
+    @objc private func setBackgroundImageViewSelected(sender: UIImageView) {
+        imageViewSelected = sender
         imageViewAlert()
     }
 
@@ -157,8 +163,8 @@ class AccountViewController: UIViewController {
      Function that sets the AccountImageView as the selected imageView and presents the imageViewAlert
      when the accountImageView is tapped.
      */
-    @objc private func setAccountImageViewSelected() {
-        imageViewSelected = 2
+    @objc private func setAccountImageViewSelected(sender: UIImageView) {
+        imageViewSelected = sender
         imageViewAlert()
     }
 
@@ -212,24 +218,15 @@ class AccountViewController: UIViewController {
         - imageData: The data of the image chosen by the user.
         - imageView: The imageView selected by the user to receive this image.
      */
-    private func saveImageAlert(imageData: Data, imageView: UIImageView) {
+    private func saveImage(imageData: Data, imageView: UIImageView?) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        let alertVC = UIAlertController(title: "Save this image ?",
-                                        message: nil,
-                                        preferredStyle: .alert)
-
-        let save = UIAlertAction(title: "Save", style: .default) { (act) in
+        if let imageView = imageView {
             if imageView == self.accountImageView {
                 ImageStorageService.saveUserImage(userId: userId, data: imageData)
             } else if imageView == self.backgroundImageView {
                 ImageStorageService.saveUserBackground(userId: userId, data: imageData)
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        alertVC.addAction(save)
-        alertVC.addAction(cancel)
-        self.present(alertVC, animated: true, completion: nil)
     }
 
     /**
@@ -274,18 +271,9 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
 
-        if imageViewSelected == 1 {
-            // Pick an image for the backgroundImageView if it is selected and show the saveImageAlert.
-            backgroundImageView.image = image
-            imagePicker?.dismiss(animated: true, completion: nil)
-            saveImageAlert(imageData: data, imageView: backgroundImageView)
-        } else if imageViewSelected == 2 {
-            // Pick an image for the backgroundImageView if it is selected and show the saveImageAlert.
-            accountImageView.image = image
-            imagePicker?.dismiss(animated: true, completion: nil)
-            saveImageAlert(imageData: data, imageView: accountImageView)
-        }
+        imageViewSelected?.image = image
         imagePicker?.dismiss(animated: true, completion: nil)
+        saveImage(imageData: data, imageView: imageViewSelected)
     }
 }
 
@@ -312,10 +300,10 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             // Perform a segue to UserInfosVC.
-            performSegue(withIdentifier: segueToUserInfos, sender: nil)
+            performSegue(withIdentifier: segueToUserInfosIdentifier, sender: nil)
         case 1:
             // Perform a segue to FavoriteSerieVC.
-            performSegue(withIdentifier: segueToFavoriteSerie, sender: nil)
+            performSegue(withIdentifier: segueToFavoriteSerieIdentifier, sender: nil)
         default:
             break
         }

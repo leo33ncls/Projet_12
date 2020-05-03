@@ -29,6 +29,8 @@ class EvaluationTableViewCell: UITableViewCell {
      */
     func configure(serie: Serie) {
         self.selectionStyle = .none
+
+        // giveEvaluationButton style
         giveEvaluationButton.layer.cornerRadius = 10
         giveEvaluationButton.backgroundColor = UIColor.white
         giveEvaluationButton.layer.borderColor = UIColor.black.cgColor
@@ -38,13 +40,13 @@ class EvaluationTableViewCell: UITableViewCell {
         setEvaluationColor(evaluation: serie.voteAverage, label: evaluationPressLabel)
         evaluationPressLabel.text = "\(serie.voteAverage)"
 
-        evaluationReadersLabel.textColor = UIColor.gray
         EvaluationService.getEvaluations(serie: serie) { result in
             if let result = result {
                 let roundedResult = Double(round(10*result)/10)
                 self.setEvaluationColor(evaluation: roundedResult, label: self.evaluationReadersLabel)
                 self.evaluationReadersLabel.text = "\(roundedResult)"
             } else {
+                self.evaluationReadersLabel.textColor = UIColor.gray
                 self.evaluationReadersLabel.text = "/"
             }
         }

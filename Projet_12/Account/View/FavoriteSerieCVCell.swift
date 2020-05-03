@@ -25,11 +25,12 @@ class FavoriteSerieCVCell: UICollectionViewCell {
      - Parameter serieId: The id of the serie to display.
     */
     func configure(serieId: Int) {
-        serieImageView.image = nil
+        serieImageView.image = UIImage(named: "defaultSerieImage")
 
         SeriesService(session: URLSession(configuration: .default))
             .getSerie(serieId: serieId) { (success, serie) in
                 guard success, let serie = serie else { return }
+                self.serieImageView.image = nil
                 self.serieNameLabel.text = serie.name
 
                 guard let serieImageUrl = serie.posterPath else { return }

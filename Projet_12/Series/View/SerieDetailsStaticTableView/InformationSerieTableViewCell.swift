@@ -48,11 +48,16 @@ class InformationSerieTableViewCell: UITableViewCell {
         originalLanguageLabel.text = "Langue originale: \(serie.originalLanguage)"
         countryLabel.text = "Pays: \(serie.originCountry.joined(separator: ", "))"
 
-        guard let serieImageUrl = serie.posterPath else { return }
+        guard let serieImageUrl = serie.posterPath else {
+            seriePosterImageView.image = UIImage(named: "defaultSerieImage")
+            return
+        }
         SeriesService(session: URLSession(configuration: .default))
             .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.seriePosterImageView.image = UIImage(data: data)
+                } else {
+                    self.seriePosterImageView.image = UIImage(named: "defaultSerieImage")
                 }
         }
     }

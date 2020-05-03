@@ -36,7 +36,6 @@ class ForumViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
 
         // Gets the topics of the serie.
         guard let currentSerie = serie else { return }

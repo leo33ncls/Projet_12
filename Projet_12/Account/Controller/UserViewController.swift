@@ -72,11 +72,15 @@ class UserViewController: UIViewController {
         ImageStorageService.getUserImage(userId: userId) { (data) in
             if let data = data {
                 self.userImageView.image = UIImage(data: data)
+            } else {
+                self.userImageView.image = UIImage(named: "defaultUserImage")
             }
         }
         ImageStorageService.getUserBackground(userId: userId) { (data) in
             if let data = data {
                 self.backgroundImageView.image = UIImage(data: data)
+            } else {
+                self.backgroundImageView.image = UIImage(named: "defaultBackground")
             }
         }
     }

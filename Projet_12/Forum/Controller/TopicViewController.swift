@@ -23,7 +23,7 @@ class TopicViewController: UIViewController {
     // MARK: - View Properties
     // The topic received from ForumVC or from ForumFavoriteVC.
     var topic: Topic?
-    let segueToUser = "segueToUserVC"
+    let segueToUserIdentifier = "segueToUserVC"
 
     // ========================
     // MARK: - View Cycles
@@ -54,6 +54,8 @@ class TopicViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+
         guard let currentTopic = topic else { return }
         serieNameLabel.text = currentTopic.serieName
         topicTitleLabel.text = "Sujet: \(currentTopic.title)"
@@ -73,7 +75,7 @@ class TopicViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Give the userId of a post to UserVC.
-        guard segue.identifier == segueToUser,
+        guard segue.identifier == segueToUserIdentifier,
             let userVC = segue.destination as? UserViewController,
             let userId = sender as? String else {
             return
@@ -85,7 +87,8 @@ class TopicViewController: UIViewController {
         guard let userId = notification.userInfo?["userId"] as? String else {
             return
         }
-        performSegue(withIdentifier: segueToUser, sender: userId)
+        // Perform a segue to UserVC
+        performSegue(withIdentifier: segueToUserIdentifier, sender: userId)
     }
 
     // =====================

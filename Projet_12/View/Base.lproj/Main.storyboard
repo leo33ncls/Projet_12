@@ -333,7 +333,7 @@
                                             <constraint firstAttribute="height" constant="150" id="Mp3-e9-Lpi"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoOSTV" translatesAutoresizingMaskIntoConstraints="NO" id="IDK-zA-kRw">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDK-zA-kRw">
                                         <rect key="frame" x="25" y="100" width="100" height="100"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -432,7 +432,7 @@
                         <viewLayoutGuide key="safeArea" id="Yie-2i-Ih5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="CHR-PV-AYO">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="cQQ-5R-SIO">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="logoutIcon" id="cQQ-5R-SIO">
                             <connections>
                                 <action selector="signOut:" destination="Qhv-O5-3Qw" id="Ild-kN-8i4"/>
                             </connections>
@@ -592,7 +592,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
                                                     <color key="backgroundColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-I2-SJr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sD-I2-SJr">
                                                     <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1337,6 +1337,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qtx-bo-86n">
                                 <rect key="frame" x="0.0" y="70" width="375" height="150"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="JdT-pw-oBx"/>
                                 </constraints>
@@ -1692,6 +1693,7 @@
         <image name="LogoOSTV" width="373" height="379"/>
         <image name="accountIcon" width="25" height="27"/>
         <image name="forumIcon" width="25" height="25"/>
+        <image name="logoutIcon" width="25" height="25"/>
         <image name="searchIcon" width="25" height="25"/>
         <image name="sendOrangeIcon" width="823" height="700"/>
         <image name="seriesIcon" width="25" height="25"/>

@@ -17,21 +17,25 @@ class SearchViewController: UIViewController {
 
     // MARK: - View Properties
     var seriesResult: SeriesList?
-    let segueIdentifier = "segueToSerieDetailsFromSearch"
+    let segueToSerieDetailsIdentifier = "segueToSerieDetailsFromSearch"
 
     // ========================
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false
         searchBar.delegate = self
         seriesTableView.delegate = self
         seriesTableView.dataSource = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Give a serie to SerieDetailsVC.
-        if segue.identifier == segueIdentifier,
+        if segue.identifier == segueToSerieDetailsIdentifier,
             let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Serie
         }
@@ -48,14 +52,13 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text, searchText != "" else {
             return
         }
-        print(searchText)
         SeriesService(session: URLSession(configuration: .default))
             .searchSeries(searchText: searchText) { (success, seriesList) in
                 if success, let seriesList = seriesList {
                     self.seriesResult = seriesList
                     self.seriesTableView.reloadData()
                 } else {
-                    print("Search Series Request Error")
+                    print("Search Series Request Error or No Result")
                 }
         }
     }
@@ -95,6 +98,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let serie = series.results[indexPath.row]
 
         // Perform a segue to SerieDetailsVC
-        performSegue(withIdentifier: segueIdentifier, sender: serie)
+        performSegue(withIdentifier: segueToSerieDetailsIdentifier, sender: serie)
     }
 }

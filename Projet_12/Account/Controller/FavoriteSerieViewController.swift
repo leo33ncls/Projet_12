@@ -17,7 +17,7 @@ class FavoriteSerieViewController: UIViewController {
 
     // MARK: - View Properties
     var favoriteSeriesId = [Int]()
-    let segueIdentifier = "segueToSerieDetailsFromAccount"
+    let segueToSerieDetailsIdentifier = "segueToSerieDetailsFromAccount"
 
     // =========================
     // MARK: - View Cycles
@@ -45,7 +45,7 @@ class FavoriteSerieViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Give a serie to the SerieDetailsVC.
-        guard segue.identifier == segueIdentifier,
+        guard segue.identifier == segueToSerieDetailsIdentifier,
             let serieDetailsVC = segue.destination as? SerieDetailsViewController,
             let serie = sender as? Serie else {
             return
@@ -83,7 +83,7 @@ extension FavoriteSerieViewController: UICollectionViewDelegate, UICollectionVie
                                                   viewController: self)
                     return
                 }
-                self.performSegue(withIdentifier: self.segueIdentifier, sender: serie)
+                self.performSegue(withIdentifier: self.segueToSerieDetailsIdentifier, sender: serie)
         }
     }
 }

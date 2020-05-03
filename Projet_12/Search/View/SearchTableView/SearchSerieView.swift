@@ -53,6 +53,7 @@ class SearchSerieView: UIView {
      */
     func configure(serie: Serie) {
         serieNameLabel.text = serie.name
+        serieImageView.image = nil
 
         if let genres = serie.genreIDS {
             serieGenresLabel.text = Genres.getStringGenre(genreId: genres)
@@ -65,6 +66,8 @@ class SearchSerieView: UIView {
             .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {
                     self.serieImageView.image = UIImage(data: data)
+                } else {
+                    self.serieImageView.image = UIImage(named: "defaultSerieImage")
                 }
         }
     }

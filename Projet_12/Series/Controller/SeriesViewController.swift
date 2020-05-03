@@ -15,7 +15,7 @@ class SeriesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     // MARK: - View Properties
-    private let segueIdentifier = "segueToSerieDetails"
+    private let segueToSerieDetailsIdentifier = "segueToSerieDetails"
 
     // ====================
     // MARK: - View Cycles
@@ -34,7 +34,8 @@ class SeriesViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Give a serie to the serieDetailsVC.
-        if segue.identifier == segueIdentifier, let serieDetailsVC = segue.destination as? SerieDetailsViewController {
+        if segue.identifier == segueToSerieDetailsIdentifier,
+            let serieDetailsVC = segue.destination as? SerieDetailsViewController {
             serieDetailsVC.serie = sender as? Serie
         }
     }
@@ -44,7 +45,8 @@ class SeriesViewController: UIViewController {
         guard let serie = notification.userInfo?["serie"] as? Serie else {
             return
         }
-        performSegue(withIdentifier: segueIdentifier, sender: serie)
+        // Perform a segue to SerieDetailsVC
+        performSegue(withIdentifier: segueToSerieDetailsIdentifier, sender: serie)
     }
 }
 

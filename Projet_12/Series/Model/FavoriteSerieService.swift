@@ -103,8 +103,8 @@ class FavoriteSerieService {
                         return
                 }
                 favoritesSeries.append(serieId)
-                callback(favoritesSeries)
             }
+            callback(favoritesSeries)
         }
     }
 }
