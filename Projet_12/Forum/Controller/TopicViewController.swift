@@ -32,7 +32,6 @@ class TopicViewController: UIViewController {
         super.viewDidLoad()
         postTableView.delegate = self
         postTableView.dataSource = self
-        postTableView.backgroundColor = UIColor.customGrey
 
         postTextView.delegate = self
         postTextView.isScrollEnabled = false
@@ -138,11 +137,10 @@ class TopicViewController: UIViewController {
         ForumService.getPosts(topic: topic) { (postArray) in
             if let postArray = postArray {
                 topic.post = postArray
+                self.postTableView.restore()
                 self.postTableView.reloadData()
             } else {
-                UIAlertController().showAlert(title: "Désolé !",
-                                              message: "Ce sujet n'a aucun publication !",
-                                              viewController: self)
+                self.postTableView.setEmptyView(title: "Désolé !", message: "Ce sujet n'a aucun post !")
             }
         }
     }

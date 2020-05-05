@@ -34,11 +34,13 @@ class FavoriteSerieViewController: UIViewController {
         FavoriteSerieService.getFavoriteSerieId(userId: userId) { (seriesId) in
             if let seriesId = seriesId {
                 self.favoriteSeriesId = seriesId
+                self.favoriteSerieCollectionView.restore()
                 self.favoriteSerieCollectionView.reloadData()
             } else {
-                UIAlertController().showAlert(title: "Désolé !",
-                                              message: "Vous n'avez aucune serie favorite pour le moment !",
-                                              viewController: self)
+                self.favoriteSeriesId.removeAll()
+                self.favoriteSerieCollectionView.reloadData()
+                self.favoriteSerieCollectionView.setEmptyView(title: "Aucune serie favorite pour le moment !",
+                                                              message: "Cliquez sur l'étoile pour mettre une serie dans vos favoris.")
             }
         }
     }
@@ -78,9 +80,7 @@ extension FavoriteSerieViewController: UICollectionViewDelegate, UICollectionVie
         SeriesService(session: URLSession(configuration: .default))
             .getSerie(serieId: serieId) { (success, serie) in
                 guard success, let serie = serie else {
-                    UIAlertController().showAlert(title: "Désolé",
-                                                  message: "Le serie Id est incorrecte !",
-                                                  viewController: self)
+                    print("Incorrect serie id")
                     return
                 }
                 self.performSegue(withIdentifier: self.segueToSerieDetailsIdentifier, sender: serie)

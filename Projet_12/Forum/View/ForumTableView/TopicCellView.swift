@@ -57,7 +57,11 @@ class TopicCellView: UIView {
     func configure(topic: Topic, indexPath: Int) {
         titleLabel.text = topic.title
         UsersService.getUserNickname(userId: topic.userId) { (nickname) in
-            self.nicknameLabel.text = nickname
+            if let nickname = nickname {
+                self.nicknameLabel.text = nickname
+            } else {
+                self.nicknameLabel.text = "Unknown"
+            }
         }
         if Calendar.current.isDate(Date(), inSameDayAs: topic.date) {
             dateLabel.text = DateService().transformHourToString(date: topic.date)
@@ -67,8 +71,6 @@ class TopicCellView: UIView {
 
         if indexPath % 2 == 0 {
             contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
-            contentView.layer.borderWidth = 0.25
-            contentView.layer.borderColor = UIColor.darkGray.cgColor
         }
     }
 }

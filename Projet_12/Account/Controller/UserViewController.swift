@@ -16,7 +16,9 @@ class UserViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var alertLabel: UILabel!
+    
     // MARK: - View Properties
     // The user id received from TopicVC.
     var userId: String?
@@ -32,10 +34,12 @@ class UserViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        alertLabel.isHidden = true
+        displayActivityIndicator(true)
+
         guard let currentUserId = userId else {
-            UIAlertController().showAlert(title: "Sorry",
-                                          message: "No user found",
-                                          viewController: self)
+            displayActivityIndicator(false)
+            displayAlertLabel(message: "No user found !")
             return
         }
         getUserInfos(userId: currentUserId)
@@ -45,20 +49,42 @@ class UserViewController: UIViewController {
     // ==========================
     // MARK: - View Functions
 
+    /// Function that displays a activity indicator and hides the other views.
+    private func displayActivityIndicator(_ bool: Bool) {
+        if bool {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        activityIndicator.isHidden = !bool
+        backgroundImageView.isHidden = bool
+        userImageView.isHidden = bool
+        nicknameLabel.isHidden = bool
+        descriptionTextView.isHidden = bool
+    }
+    
+    private func displayAlertLabel(message: String) {
+        alertLabel.text = message
+        alertLabel.isHidden = false
+        backgroundImageView.isHidden = true
+        userImageView.isHidden = true
+        nicknameLabel.isHidden = true
+        descriptionTextView.isHidden = true
+    }
+
     /**
      Function that gets the user informations from the User database and displays them.
      - Parameter userId: The id of the user whose we want the informations.
      */
     private func getUserInfos(userId: String) {
         UsersService.getUserInformation(userId: userId) { (user) in
+            self.displayActivityIndicator(false)
             if let user = user {
                 self.currentUser = user
                 self.nicknameLabel.text = user.nickname
                 self.descriptionTextView.text = user.description
             } else {
-                UIAlertController().showAlert(title: "Sorry",
-                                              message: "No user found",
-                                              viewController: self)
+                self.displayAlertLabel(message: "No user found !")
             }
         }
     }

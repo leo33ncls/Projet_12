@@ -90,6 +90,10 @@ class ForumService {
     static func getTopics(serie: Serie, callback: @escaping ([Topic]?) -> Void) {
         forumRef.child(String(serie.id)).observe(.value) { (snapshot) in
             var topics = [Topic]()
+            guard snapshot.exists() else {
+                callback(nil)
+                return
+            }
             for child in snapshot.children {
                 guard let snap = child as? DataSnapshot,
                     let dictTopic = snap.value as? [String: Any],

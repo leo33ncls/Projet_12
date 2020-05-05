@@ -77,6 +77,8 @@
 		28B6DFD4244D44ED00231C83 /* Serie.json in Resources */ = {isa = PBXBuildFile; fileRef = 28B6DFD3244D44ED00231C83 /* Serie.json */; };
 		28B6DFD6244E4CD100231C83 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD5244E4CD100231C83 /* UserViewController.swift */; };
 		28B6DFD82458A3F000231C83 /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD72458A3F000231C83 /* Print.swift */; };
+		28B6DFDA245F794100231C83 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD9245F794100231C83 /* UITableView.swift */; };
+		28B6DFDE245F993300231C83 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFDD245F993300231C83 /* UICollectionView.swift */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -174,6 +176,8 @@
 		28B6DFD3244D44ED00231C83 /* Serie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Serie.json; sourceTree = "<group>"; };
 		28B6DFD5244E4CD100231C83 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		28B6DFD72458A3F000231C83 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		28B6DFD9245F794100231C83 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		28B6DFDD245F993300231C83 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		28C4511723FC410200BBB0F2 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
 		28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfosViewController.swift; sourceTree = "<group>"; };
 		28C4511B23FC49CE00BBB0F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -543,6 +547,8 @@
 			children = (
 				28E324DF23DFA80900E1884C /* UIAlertController.swift */,
 				28965996240CA236003536BD /* UIColor.swift */,
+				28B6DFD9245F794100231C83 /* UITableView.swift */,
+				28B6DFDD245F993300231C83 /* UICollectionView.swift */,
 				28B6DFD72458A3F000231C83 /* Print.swift */,
 			);
 			path = Extension;
@@ -800,10 +806,12 @@
 				28387C4A2404B25000B20BB1 /* SynopsisTableViewCell.swift in Sources */,
 				28B6DFCA24474DE300231C83 /* FavoriteSerieViewController.swift in Sources */,
 				28A0E11C2432DB4600B01886 /* FavoriteTopicView.swift in Sources */,
+				28B6DFDA245F794100231C83 /* UITableView.swift in Sources */,
 				28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */,
 				289659AA24117BD4003536BD /* ForumService.swift in Sources */,
 				289659A2240EACE2003536BD /* TopicEditingViewController.swift in Sources */,
 				289659BC2412CCE3003536BD /* PostView.swift in Sources */,
+				28B6DFDE245F993300231C83 /* UICollectionView.swift in Sources */,
 				28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */,
 				28965995240CA0F0003536BD /* CustomShadowLayer.swift in Sources */,
 				282D6BF5240479AC002A90DA /* ImageSerieTableViewCell.swift in Sources */,

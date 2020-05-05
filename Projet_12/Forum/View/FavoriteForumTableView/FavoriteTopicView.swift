@@ -59,7 +59,11 @@ class FavoriteTopicView: UIView {
         serieNameLabel.text = favoriteTopic.serieName
         topicTitleLabel.text = favoriteTopic.title
         UsersService.getUserNickname(userId: favoriteTopic.userId) { (nickname) in
-            self.nicknameLabel.text = nickname
+            if let nickname = nickname {
+                self.nicknameLabel.text = nickname
+            } else {
+                self.nicknameLabel.text = "Unknown"
+            }
         }
         if Calendar.current.isDate(Date(), inSameDayAs: favoriteTopic.date) {
             dateLabel.text = DateService().transformHourToString(date: favoriteTopic.date)
@@ -69,8 +73,6 @@ class FavoriteTopicView: UIView {
 
         if indexPath % 2 == 0 {
             contentView.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
-            contentView.layer.borderWidth = 0.25
-            contentView.layer.borderColor = UIColor.darkGray.cgColor
         }
     }
 }

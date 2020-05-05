@@ -25,24 +25,26 @@ class ForumFavoriteViewController: UIViewController {
         super.viewDidLoad()
         topicsTableView.delegate = self
         topicsTableView.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
 
         // Gets the favorite topics of the user.
         guard let userId = Auth.auth().currentUser?.uid else { return }
         FavoriteTopicService.getFavoriteTopics(userId: userId) { (topicArray) in
             if let topicArray = topicArray {
                 self.topics = topicArray
+                self.topicsTableView.restore()
                 self.topicsTableView.reloadData()
             } else {
-                UIAlertController().showAlert(title: "Désolé !",
-                                              message: "Vous n'avez aucun sujet favoris pour le moment !",
-                                              viewController: self)
+                self.topics.removeAll()
+                self.topicsTableView.reloadData()
+                self.topicsTableView.setEmptyView(title: "Aucun sujet favoris pour le moment !",
+                                                  message: "Cliquez sur l'étoile pour mettre un sujet dans vos favoris.")
             }
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

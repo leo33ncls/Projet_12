@@ -60,7 +60,7 @@ class PostView: UIView {
     /// Function that adds a tapGestureRecognizer to the nicknameLabel.
     private func tapGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showUserAccount))
-        nicknameLabel.addGestureRecognizer(tapGesture)
+        nicknameView.addGestureRecognizer(tapGesture)
     }
 
     /// Function that sends a notification to tell when the nicknameLabel is tapped.
@@ -80,9 +80,14 @@ class PostView: UIView {
      - Parameter post: The post to display.
      */
     func configure(post: Post) {
-        userId = post.userId
         UsersService.getUserNickname(userId: post.userId) { (nickname) in
-            self.nicknameLabel.text = nickname
+            if let nickname = nickname {
+                self.nicknameLabel.text = nickname
+                self.userId = post.userId
+            } else {
+                self.nicknameLabel.text = "Unknown"
+                self.userId = nil
+            }
         }
         dateLabel.text = "Posté le \(DateService().transformDateToString(date: post.date))"
                         + " à \(DateService().transformHourToString(date: post.date))"

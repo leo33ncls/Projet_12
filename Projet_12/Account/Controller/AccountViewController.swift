@@ -44,8 +44,15 @@ class AccountViewController: UIViewController {
         accountTableView.dataSource = self
         accountTableView.tableFooterView = UIView()
 
-        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard let userId = Auth.auth().currentUser?.uid else {
+            // If the user isn't logged in, send them to the Authentication page.
+            guard let vc = self.storyboard?
+                .instantiateViewController(withIdentifier: "AuthenticationNC") else { return }
+            self.present(vc, animated: true, completion: nil)
+            return
+        }
         getUserImage(userId: userId)
+        getUserBackground(userId: userId)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,8 +62,11 @@ class AccountViewController: UIViewController {
         displayActivityIndicator(true)
         guard let userId = Auth.auth().currentUser?.uid else {
             displayActivityIndicator(false)
-            UIAlertController().showAlert(title: "Sorry", message: "No user logged in!",
-                                          viewController: self)
+
+            // If the user isn't logged in, send them to the Authentication page.
+            guard let vc = self.storyboard?
+                .instantiateViewController(withIdentifier: "AuthenticationNC") else { return }
+            self.present(vc, animated: true, completion: nil)
             return
         }
         getUserInfos(userId: userId)
@@ -112,7 +122,6 @@ class AccountViewController: UIViewController {
      */
     private func getUserImage(userId: String) {
         ImageStorageService.getUserImage(userId: userId) { (data) in
-            self.getUserBackground(userId: userId)
             if let data = data {
                 self.accountImageView.image = UIImage(data: data)
             } else {
@@ -168,6 +177,27 @@ class AccountViewController: UIViewController {
         imageViewAlert()
     }
 
+    /**
+     Function that saves the user image.
+     
+     Calling this function shows an alert asking the user if he wants to save the image in the db
+     and saves the image if the user clicks "save".
+     
+     - Parameters:
+     - imageData: The data of the image chosen by the user.
+     - imageView: The imageView selected by the user to receive this image.
+     */
+    private func saveImage(imageData: Data, imageView: UIImageView?) {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        if let imageView = imageView {
+            if imageView == self.accountImageView {
+                ImageStorageService.saveUserImage(userId: userId, data: imageData)
+            } else if imageView == self.backgroundImageView {
+                ImageStorageService.saveUserBackground(userId: userId, data: imageData)
+            }
+        }
+    }
+
     // ==========================
     // MARK: - View Actions
     // Action that presents the signOutAlert
@@ -206,27 +236,6 @@ class AccountViewController: UIViewController {
         alertVC.addAction(photoLibrary)
         alertVC.addAction(cancel)
         self.present(alertVC, animated: true, completion: nil)
-    }
-
-    /**
-     Function that presents an alert to make sure that the user wants to save the image.
-     
-     Calling this function shows an alert asking the user if he wants to save the image in the db
-     and saves the image if the user clicks "save".
-     
-     - Parameters:
-        - imageData: The data of the image chosen by the user.
-        - imageView: The imageView selected by the user to receive this image.
-     */
-    private func saveImage(imageData: Data, imageView: UIImageView?) {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
-        if let imageView = imageView {
-            if imageView == self.accountImageView {
-                ImageStorageService.saveUserImage(userId: userId, data: imageData)
-            } else if imageView == self.backgroundImageView {
-                ImageStorageService.saveUserBackground(userId: userId, data: imageData)
-            }
-        }
     }
 
     /**

@@ -33,17 +33,28 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    private func checkTextfield(textfield: UITextField, placeholder: String) -> String? {
+        guard let text = textfield.text, text != "", text != " " else {
+            textfield.layer.borderColor = UIColor.red.cgColor
+            textfield.layer.borderWidth = 1
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholder + " (manquants)",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor:
+                                                                    UIColor.red])
+            return nil
+        }
+        textfield.layer.borderWidth = 0
+        textfield.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                             attributes: [NSAttributedString.Key.foregroundColor:
+                                                                UIColor.placeholderGray])
+        return text
+    }
+
     // Action that signes in the user in the application if the email and password are corrected.
     @IBAction func loginAction(_ sender: UIButton) {
-        guard let email = emailTextField.text,
-            let password = passwordTextField.text,
-            email != "", password != "" else {
-                UIAlertController().showAlert(title: "Warning",
-                                              message: "Please enter your email and password",
-                                              viewController: self)
-                return
-        }
+        let emailText = checkTextfield(textfield: emailTextField, placeholder: "Email")
+        let passwordText = checkTextfield(textfield: passwordTextField, placeholder: "Password")
 
+        guard let email = emailText, let password = passwordText else { return }
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 UIAlertController().showAlert(title: "Error",
@@ -61,6 +72,19 @@ class LoginViewController: UIViewController {
 
 // MARK: - Keyboard
 extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+        if textField == emailTextField {
+            textField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor:
+                                                                    UIColor.placeholderGray])
+        } else if textField == passwordTextField {
+            textField.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor:
+                                                                    UIColor.placeholderGray])
+        }
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

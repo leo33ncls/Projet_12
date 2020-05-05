@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     // MARK: - View Outlet
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var seriesTableView: UITableView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
 
     // MARK: - View Properties
     var seriesResult: SeriesList?
@@ -26,6 +27,16 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         seriesTableView.delegate = self
         seriesTableView.dataSource = self
+
+        // Blur TapGestureRecognizer
+        let blurTapGesture = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
+        blurView.addGestureRecognizer(blurTapGesture)
+    }
+
+    /// Function that dismisses the keyboard.
+    @objc private func blurTapped() {
+        searchBar.resignFirstResponder()
+        blurView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +60,7 @@ extension SearchViewController: UISearchBarDelegate {
     // and get some series from the response.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        blurView.isHidden = true
         guard let searchText = searchBar.text, searchText != "" else {
             return
         }
@@ -56,19 +68,22 @@ extension SearchViewController: UISearchBarDelegate {
             .searchSeries(searchText: searchText) { (success, seriesList) in
                 if success, let seriesList = seriesList {
                     self.seriesResult = seriesList
+                    self.seriesTableView.restore()
                     self.seriesTableView.reloadData()
                 } else {
-                    print("Search Series Request Error or No Result")
+                    self.seriesTableView.setEmptyView(title: "Désolé !", message: "Aucun résultat trouvé")
                 }
         }
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        blurView.isHidden = false
         self.searchBar.showsCancelButton = true
     }
 
     // Refresh searchBar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        blurView.isHidden = true
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
@@ -78,7 +93,11 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - TableView
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let series = seriesResult else { return 0 }
+        guard let series = seriesResult, series.results.count != 0 else {
+            self.seriesTableView.setEmptyView(title: "Aucun résultat",
+                                              message: "Faites une nouvelle recherche.")
+            return 0
+        }
         return series.results.count
     }
 

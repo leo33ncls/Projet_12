@@ -95,6 +95,11 @@ class FavoriteSerieService {
     static func getFavoriteSerieId(userId: String,
                                    callback: @escaping ([Int]?) -> Void) {
         favoriteSerieRef.child(userId).observe(.value) { (snapshot) in
+            guard snapshot.exists() else {
+                callback(nil)
+                return
+            }
+
             var favoritesSeries = [Int]()
             for child in snapshot.children {
                 guard let snap = child as? DataSnapshot,

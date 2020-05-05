@@ -61,7 +61,10 @@ class SearchSerieView: UIView {
             serieGenresLabel.text = "Unknown genre"
         }
 
-        guard let serieImageUrl = serie.posterPath else { return }
+        guard let serieImageUrl = serie.posterPath else {
+            serieImageView.image = UIImage(named: "defaultSerieImage")
+            return
+        }
         SeriesService(session: URLSession(configuration: .default))
             .getSerieImage(imageUrl: serieImageUrl) { (data) in
                 if let data = data {

@@ -33,9 +33,10 @@ class UserInfosViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let currentUser = user else {
-            UIAlertController().showAlert(title: "Désolé",
-                                          message: "Aucun utilisateur trouvé",
-                                          viewController: self)
+            // If the user isn't logged in, send them to the Authentication page.
+            guard let vc = self.storyboard?
+                .instantiateViewController(withIdentifier: "AuthenticationNC") else { return }
+            self.present(vc, animated: true, completion: nil)
             return
         }
         // Display the user informations.

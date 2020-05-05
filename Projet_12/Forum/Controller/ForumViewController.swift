@@ -42,11 +42,11 @@ class ForumViewController: UIViewController {
         ForumService.getTopics(serie: currentSerie) { (topicArray) in
             if let topicArray = topicArray {
                 self.topics = topicArray
+                self.topicsTableView.restore()
                 self.topicsTableView.reloadData()
             } else {
-                UIAlertController().showAlert(title: "Désolé !",
-                                              message: "Aucun sujet pour le moment !",
-                                              viewController: self)
+                self.topicsTableView.setEmptyView(title: "Aucun sujet pour le moment !",
+                                                  message: "Cliquez en haut à droit pour créer un topic.")
             }
         }
     }

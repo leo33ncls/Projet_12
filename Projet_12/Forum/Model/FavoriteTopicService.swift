@@ -96,6 +96,11 @@ class FavoriteTopicService {
     private static func getFavoriteTopicsInfos(userId: String,
                                                callback: @escaping ([FavoriteTopicInfos]?) -> Void) {
         FavoriteTopicService.favoriteTopicRef.child(userId).observe(.value) { (snapshot) in
+            guard snapshot.exists() else {
+                callback(nil)
+                return
+            }
+
             var favoriteTopics = [FavoriteTopicInfos]()
             for child in snapshot.children {
                 guard let snap = child as? DataSnapshot,
@@ -129,6 +134,7 @@ class FavoriteTopicService {
                 callback(nil)
                 return
             }
+
             var favoriteTopics = [Topic]()
             for favoriteTopicInfos in favoriteTopicsInfos {
                 forumRef.child(String(favoriteTopicInfos.serieId))

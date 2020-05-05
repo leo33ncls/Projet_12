@@ -47,11 +47,11 @@ class UsersService {
         - userId: The user Id of the user that we want the nickname.
         - callback: The callback returning the nickname.
      */
-    static func getUserNickname(userId: String, callback: @escaping (String) -> Void) {
+    static func getUserNickname(userId: String, callback: @escaping (String?) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
             guard let dictUser = snapshot.value as? [String: Any],
                 let nickname = dictUser["nickname"] as? String else {
-                    callback("Unknown")
+                    callback(nil)
                     return
             }
             callback(nickname)
