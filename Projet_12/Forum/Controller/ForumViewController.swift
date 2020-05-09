@@ -31,7 +31,7 @@ class ForumViewController: UIViewController {
         topicsTableView.dataSource = self
 
         guard let currentSerie = serie else { return }
-        serieNameLabel.text = "Forum: \(currentSerie.name)"
+        serieNameLabel.text = "\(currentSerie.name)"
     }
 
     override func viewWillAppear(_ animated: Bool) {

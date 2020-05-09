@@ -17,12 +17,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var alertLabel: UILabel!
 
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        alertLabel.isHidden = true
     }
 
     // ====================
@@ -33,33 +39,20 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    private func checkTextfield(textfield: UITextField, placeholder: String) -> String? {
-        guard let text = textfield.text, text != "", text != " " else {
-            textfield.layer.borderColor = UIColor.red.cgColor
-            textfield.layer.borderWidth = 1
-            textfield.attributedPlaceholder = NSAttributedString(string: placeholder + " (manquants)",
-                                                                 attributes: [NSAttributedString.Key.foregroundColor:
-                                                                    UIColor.red])
-            return nil
-        }
-        textfield.layer.borderWidth = 0
-        textfield.attributedPlaceholder = NSAttributedString(string: placeholder,
-                                                             attributes: [NSAttributedString.Key.foregroundColor:
-                                                                UIColor.placeholderGray])
-        return text
-    }
-
     // Action that signes in the user in the application if the email and password are corrected.
     @IBAction func loginAction(_ sender: UIButton) {
-        let emailText = checkTextfield(textfield: emailTextField, placeholder: "Email")
-        let passwordText = checkTextfield(textfield: passwordTextField, placeholder: "Password")
+        let emailText = emailTextField.checkTextfield(placeholder: "E-mail")
+        let passwordText = passwordTextField.checkTextfield(placeholder: "Mot de passe")
 
-        guard let email = emailText, let password = passwordText else { return }
+        guard let email = emailText, let password = passwordText else {
+            alertLabel.isHidden = false
+            alertLabel.text = "Informations manquantes !"
+            return
+        }
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                UIAlertController().showAlert(title: "Error",
-                                              message: error.localizedDescription,
-                                              viewController: self)
+                self.alertLabel.isHidden = false
+                self.alertLabel.text = error.localizedDescription
             } else {
                 // Present the tabBarController.
                 guard let vc = self.storyboard?
@@ -73,15 +66,12 @@ class LoginViewController: UIViewController {
 // MARK: - Keyboard
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        alertLabel.isHidden = true
         textField.layer.borderWidth = 0
         if textField == emailTextField {
-            textField.attributedPlaceholder = NSAttributedString(string: "Email",
-                                                                 attributes: [NSAttributedString.Key.foregroundColor:
-                                                                    UIColor.placeholderGray])
+            emailTextField.restore(placeholder: "E-mail")
         } else if textField == passwordTextField {
-            textField.attributedPlaceholder = NSAttributedString(string: "Password",
-                                                                 attributes: [NSAttributedString.Key.foregroundColor:
-                                                                    UIColor.placeholderGray])
+            passwordTextField.restore(placeholder: "Mot de passe")
         }
     }
 

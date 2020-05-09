@@ -39,19 +39,25 @@ class SignUpViewController: UIViewController {
     // MARK: - View Action
     // Action that perform a segue to the SignUpInfosVC if the email and password exist.
     @IBAction func passEmailAndPassword(_ sender: UIButton) {
-        guard let email = emailTextField.text, let password = passwordTextField.text,
-            email != "", password != ""  else {
-            UIAlertController().showAlert(title: "Warning",
-                                          message: "Please enter your email and password",
-                                          viewController: self)
-            return
-        }
+        let emailText = emailTextField.checkTextfield(placeholder: "E-mail")
+        let passwordText = passwordTextField.checkTextfield(placeholder: "Mot de passe")
+
+        guard emailText != nil && passwordText != nil else { return }
         performSegue(withIdentifier: "segueToSignUpInfos", sender: nil)
     }
 }
 
 // MARK: - Keyboard
 extension SignUpViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+        if textField == emailTextField {
+            emailTextField.restore(placeholder: "E-mail")
+        } else if textField == passwordTextField {
+            passwordTextField.restore(placeholder: "Mot de passe")
+        }
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

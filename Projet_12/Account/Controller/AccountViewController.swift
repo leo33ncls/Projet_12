@@ -151,11 +151,11 @@ class AccountViewController: UIViewController {
         accountImageView.isUserInteractionEnabled = true
 
         let backgroundTapGesture = UITapGestureRecognizer(target: self,
-                                                          action: #selector(setBackgroundImageViewSelected(sender:)))
+                                                          action: #selector(setBackgroundImageViewSelected(_:)))
         backgroundImageView.addGestureRecognizer(backgroundTapGesture)
 
         let accountTapGesture = UITapGestureRecognizer(target: self,
-                                                       action: #selector(setAccountImageViewSelected(sender:)))
+                                                       action: #selector(setAccountImageViewSelected(_:)))
         accountImageView.addGestureRecognizer(accountTapGesture)
     }
 
@@ -163,8 +163,9 @@ class AccountViewController: UIViewController {
      Function that sets the backgroundImageView as the selected imageView and presents the imageViewAlert
      when the backgroundImageView is tapped.
     */
-    @objc private func setBackgroundImageViewSelected(sender: UIImageView) {
-        imageViewSelected = sender
+    @objc private func setBackgroundImageViewSelected(_ sender: UIGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView else { return }
+        imageViewSelected = imageView
         imageViewAlert()
     }
 
@@ -172,8 +173,9 @@ class AccountViewController: UIViewController {
      Function that sets the AccountImageView as the selected imageView and presents the imageViewAlert
      when the accountImageView is tapped.
      */
-    @objc private func setAccountImageViewSelected(sender: UIImageView) {
-        imageViewSelected = sender
+    @objc private func setAccountImageViewSelected(_ sender: UIGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView else { return }
+        imageViewSelected = imageView
         imageViewAlert()
     }
 
@@ -189,12 +191,11 @@ class AccountViewController: UIViewController {
      */
     private func saveImage(imageData: Data, imageView: UIImageView?) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        if let imageView = imageView {
-            if imageView == self.accountImageView {
-                ImageStorageService.saveUserImage(userId: userId, data: imageData)
-            } else if imageView == self.backgroundImageView {
-                ImageStorageService.saveUserBackground(userId: userId, data: imageData)
-            }
+        guard let imageView = imageView else { return }
+        if imageView == self.accountImageView {
+            ImageStorageService.saveUserImage(userId: userId, data: imageData)
+        } else if imageView == self.backgroundImageView {
+            ImageStorageService.saveUserBackground(userId: userId, data: imageData)
         }
     }
 
@@ -279,7 +280,6 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             imagePicker?.dismiss(animated: true, completion: nil)
             return
         }
-
         imageViewSelected?.image = image
         imagePicker?.dismiss(animated: true, completion: nil)
         saveImage(imageData: data, imageView: imageViewSelected)

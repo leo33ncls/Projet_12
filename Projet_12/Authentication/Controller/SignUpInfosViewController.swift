@@ -17,6 +17,7 @@ class SignUpInfosViewController: UIViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var alertLabel: UILabel!
 
     // MARK: - View Properties
     // Email and password received from SignUpVC.
@@ -31,25 +32,32 @@ class SignUpInfosViewController: UIViewController {
         firstNameTextField.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        alertLabel.isHidden = true
+    }
+
     // MARK: - View Actions
     // Action that creates and saves the user in the database.
     @IBAction func saveInformations(_ sender: UIButton) {
+        let nicknameText = nicknameTextField.checkTextfield(placeholder: "Pseudo")
+        let lastNameText = lastNameTextField.checkTextfield(placeholder: "Nom")
+        let firstNameText = firstNameTextField.checkTextfield(placeholder: "Prénom")
+
         guard let userEmail = email,
             let userPassword = password,
-            let nickname = nicknameTextField.text, nickname != "",
-            let lastName = lastNameTextField.text, lastName != "",
-            let firstName = firstNameTextField.text, firstName != "" else {
-                UIAlertController().showAlert(title: "Attention !",
-                                              message: "Informations manquantes !",
-                                              viewController: self)
+            let nickname = nicknameText,
+            let lastName = lastNameText,
+            let firstName = firstNameText else {
+                alertLabel.isHidden = false
+                alertLabel.text = "Informations manquantes !"
                 return
         }
 
         Auth.auth().createUser(withEmail: userEmail, password: userPassword) { (user, error) in
             if let error = error {
-                UIAlertController().showAlert(title: "Error",
-                                              message: error.localizedDescription,
-                                              viewController: self)
+                self.alertLabel.isHidden = false
+                self.alertLabel.text = error.localizedDescription
             } else {
                 guard let userId = user?.user.uid else { return }
                 let user = User(id: userId, nickname: nickname, email: userEmail,
@@ -67,6 +75,18 @@ class SignUpInfosViewController: UIViewController {
 
 // MARK: - Keyboard
 extension SignUpInfosViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        alertLabel.isHidden = true
+        textField.layer.borderWidth = 0
+        if textField == nicknameTextField {
+            nicknameTextField.restore(placeholder: "Pseudo")
+        } else if textField == lastNameTextField {
+            lastNameTextField.restore(placeholder: "Nom")
+        } else if textField == firstNameTextField {
+            firstNameTextField.restore(placeholder: "Prénom")
+        }
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

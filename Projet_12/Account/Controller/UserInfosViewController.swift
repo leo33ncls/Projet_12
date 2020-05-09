@@ -48,22 +48,12 @@ class UserInfosViewController: UIViewController {
     // MARK: - View Actions
     // Action checking if the textFields are completed and presents the saveInfosAlert.
     @IBAction func saveUserInfosChange(_ sender: UIButton) {
-        guard let fullName = fullNameTextField.text, fullName != "" else {
-            UIAlertController().showAlert(title: "Warning",
-                                          message: "Full name is incomplete !",
-                                          viewController: self)
-            return
-        }
-        guard let nickname = nicknameTextField.text, nickname != "" else {
-            UIAlertController().showAlert(title: "Warning",
-                                          message: "Nickname is unvalid !",
-                                          viewController: self)
-            return
-        }
+        let fullNameText = fullNameTextField.checkTextfield(placeholder: "Fullname")
+        let nicknameText = nicknameTextField.checkTextfield(placeholder: "Nickname")
+
+        guard let fullName =  fullNameText, let nickname = nicknameText else { return }
         guard let description = descriptionTextView.text, description != "" else {
-            UIAlertController().showAlert(title: "Warning",
-                                          message: "Descritpion is incomplete !",
-                                          viewController: self)
+            saveInfosAlert(fullName: fullName, nickname: nickname, description: "No description")
             return
         }
         saveInfosAlert(fullName: fullName, nickname: nickname, description: description)

@@ -9,6 +9,8 @@
 import UIKit
 
 extension UITableView {
+
+    /// Function that sets a empty view with a message for the backgroundView of a tableView.
     func setEmptyView(title: String, message: String) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y,
                                              width: self.bounds.size.width, height: self.bounds.size.height))
@@ -43,6 +45,7 @@ extension UITableView {
         self.separatorStyle = .none
     }
 
+    /// Function that restores the backgroundView of a TableView
     func restore() {
         self.tableFooterView = UIView()
         self.backgroundView = nil

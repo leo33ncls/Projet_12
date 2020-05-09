@@ -18,7 +18,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var alertLabel: UILabel!
-    
+
     // MARK: - View Properties
     // The user id received from TopicVC.
     var userId: String?
@@ -62,7 +62,7 @@ class UserViewController: UIViewController {
         nicknameLabel.isHidden = bool
         descriptionTextView.isHidden = bool
     }
-    
+
     private func displayAlertLabel(message: String) {
         alertLabel.text = message
         alertLabel.isHidden = false

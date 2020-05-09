@@ -14,6 +14,7 @@ class NickNameViewController: UIViewController {
 
     // MARK: - View Outlet
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var alertLabel: UILabel!
 
     // MARK: - View Cycles
     override func viewDidLoad() {
@@ -21,14 +22,22 @@ class NickNameViewController: UIViewController {
         nicknameTextField.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        alertLabel.isHidden = true
+    }
+
     // MARK: - View Actions
     // Action that saves the account in the database.
     @IBAction func saveAccount(_ sender: UIButton) {
+        let nicknameText = nicknameTextField.checkTextfield(placeholder: "Nickname")
+
         guard let currentUser = Auth.auth().currentUser,
-            let nickname = nicknameTextField.text, nickname != "",
+            let nickname = nicknameText,
             let email = currentUser.email,
             let name = currentUser.displayName else {
-                print("Saving Error")
+                alertLabel.isHidden = false
+                alertLabel.text = "Informations manquantes !"
             return
         }
         let user = User(id: currentUser.uid, nickname: nickname, email: email, fullName: name, description: nil)
@@ -43,6 +52,12 @@ class NickNameViewController: UIViewController {
 
 // MARK: - Keyboard
 extension NickNameViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        alertLabel.isHidden = true
+        textField.layer.borderWidth = 0
+        textField.restore(placeholder: "Nickname")
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

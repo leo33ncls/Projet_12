@@ -1,0 +1,243 @@
+
+/* Class = "UINavigationItem"; title = "Forum"; ObjectID = "0Ne-Pp-cmq"; */
+"0Ne-Pp-cmq.title" = "Forum";
+
+/* Class = "UINavigationController"; title = "Account NavigationC"; ObjectID = "114-kb-V4t"; */
+"114-kb-V4t.title" = "Account NavigationC";
+
+/* Class = "UIButton"; normalTitle = "Se connecter"; ObjectID = "16i-58-ce8"; */
+"16i-58-ce8.normalTitle" = "Se connecter";
+
+/* Class = "UIViewController"; title = "NickName VC"; ObjectID = "1Ry-Q4-BdL"; */
+"1Ry-Q4-BdL.title" = "NickName VC";
+
+/* Class = "UIButton"; normalTitle = "Enregistrer"; ObjectID = "2K1-UN-Wq6"; */
+"2K1-UN-Wq6.normalTitle" = "Enregistrer";
+
+/* Class = "UIViewController"; title = "Search VC"; ObjectID = "2ss-Rx-ffN"; */
+"2ss-Rx-ffN.title" = "Search VC";
+
+/* Class = "UIButton"; normalTitle = "Créer le sujet"; ObjectID = "3nk-E9-nt3"; */
+"3nk-E9-nt3.normalTitle" = "Créer le sujet";
+
+/* Class = "UIButton"; normalTitle = "Valider"; ObjectID = "3zG-Rt-g8i"; */
+"3zG-Rt-g8i.normalTitle" = "Valider";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "4Df-qf-uS7"; */
+"4Df-qf-uS7.normalTitle" = "X";
+
+/* Class = "UIViewController"; title = "Evaluation VC"; ObjectID = "5OI-2C-r0E"; */
+"5OI-2C-r0E.title" = "Evaluation VC";
+
+/* Class = "UITableViewController"; title = "Serie Details VC"; ObjectID = "67T-08-PtU"; */
+"67T-08-PtU.title" = "Serie Details VC";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "79e-Oh-Kf7"; */
+"79e-Oh-Kf7.title" = "Search";
+
+/* Class = "UILabel"; text = "Premier post"; ObjectID = "7KE-pW-ECs"; */
+"7KE-pW-ECs.text" = "Premier post";
+
+/* Class = "UINavigationItem"; title = "Séries"; ObjectID = "8fV-NK-q1b"; */
+"8fV-NK-q1b.title" = "Séries";
+
+/* Class = "UITextField"; placeholder = "Prénom"; ObjectID = "8go-87-vQa"; */
+"8go-87-vQa.placeholder" = "Prénom";
+
+/* Class = "UITextField"; placeholder = "Pseudo"; ObjectID = "8jC-WV-eqP"; */
+"8jC-WV-eqP.placeholder" = "Pseudo";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "9jn-UN-90Y"; */
+"9jn-UN-90Y.title" = "Back";
+
+/* Class = "UILabel"; text = "Sujet: ..."; ObjectID = "AYQ-TU-F2v"; */
+"AYQ-TU-F2v.text" = "Sujet: ...";
+
+/* Class = "UIViewController"; title = "Topic Editing VC"; ObjectID = "AaK-Q2-0rq"; */
+"AaK-Q2-0rq.title" = "Topic Editing VC";
+
+/* Class = "UIButton"; normalTitle = "Pas encore inscrit ?  S'inscrire"; ObjectID = "AvP-Jd-Dec"; */
+"AvP-Jd-Dec.normalTitle" = "Pas encore inscrit ?  S'inscrire";
+
+/* Class = "UINavigationItem"; title = "Forum"; ObjectID = "BLB-hX-ciC"; */
+"BLB-hX-ciC.title" = "Forum";
+
+/* Class = "UIViewController"; title = "Authentication VC"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Authentication VC";
+
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "CHR-PV-AYO"; */
+"CHR-PV-AYO.title" = "Account";
+
+/* Class = "UINavigationController"; title = "Forum NavigationC"; ObjectID = "Ctf-ke-Yau"; */
+"Ctf-ke-Yau.title" = "Forum NavigationC";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DAs-Wn-EzF"; */
+"DAs-Wn-EzF.text" = "Label";
+
+/* Class = "UILabel"; text = "Séries Favorites"; ObjectID = "EgC-yY-dwi"; */
+"EgC-yY-dwi.text" = "Séries Favorites";
+
+/* Class = "UIButton"; normalTitle = "Se connecter par e-mail"; ObjectID = "GZV-F1-SoW"; */
+"GZV-F1-SoW.normalTitle" = "Se connecter par e-mail";
+
+/* Class = "UIViewController"; title = "ForumFavorite VC"; ObjectID = "GjL-ae-yrP"; */
+"GjL-ae-yrP.title" = "ForumFavorite VC";
+
+/* Class = "UILabel"; text = "User"; ObjectID = "HAK-cS-nob"; */
+"HAK-cS-nob.text" = "User";
+
+/* Class = "UILabel"; text = "Forum: Serie"; ObjectID = "HNK-i4-nXa"; */
+"HNK-i4-nXa.text" = "Forum: Serie";
+
+/* Class = "UITextView"; text = "No description"; ObjectID = "I5Z-b9-Qlz"; */
+"I5Z-b9-Qlz.text" = "No description";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ItR-25-Mru"; */
+"ItR-25-Mru.title" = "Back";
+
+/* Class = "UINavigationItem"; title = "Forum"; ObjectID = "KF7-wP-5K8"; */
+"KF7-wP-5K8.title" = "Forum";
+
+/* Class = "UIViewController"; title = "Serie VC"; ObjectID = "KQC-1u-tnw"; */
+"KQC-1u-tnw.title" = "Serie VC";
+
+/* Class = "UIButton"; normalTitle = "Suivant"; ObjectID = "Mia-bE-UM4"; */
+"Mia-bE-UM4.normalTitle" = "Suivant";
+
+/* Class = "UITextView"; text = "No description"; ObjectID = "Nps-cx-v2t"; */
+"Nps-cx-v2t.text" = "No description";
+
+/* Class = "UITextField"; placeholder = "Nom"; ObjectID = "OK7-At-atd"; */
+"OK7-At-atd.placeholder" = "Nom";
+
+/* Class = "UILabel"; text = "No user found"; ObjectID = "QKP-9E-gfB"; */
+"QKP-9E-gfB.text" = "No user found";
+
+/* Class = "UIViewController"; title = "Forum VC"; ObjectID = "QeR-jN-r1r"; */
+"QeR-jN-r1r.title" = "Forum VC";
+
+/* Class = "UIViewController"; title = "Account VC"; ObjectID = "Qhv-O5-3Qw"; */
+"Qhv-O5-3Qw.title" = "Account VC";
+
+/* Class = "UIButton"; normalTitle = "Enregistrer"; ObjectID = "Tck-iP-MxE"; */
+"Tck-iP-MxE.normalTitle" = "Enregistrer";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "WDb-gP-wyZ"; */
+"WDb-gP-wyZ.title" = "Item";
+
+/* Class = "UILabel"; text = "Connexion par e-mail"; ObjectID = "Y0S-BI-5yK"; */
+"Y0S-BI-5yK.text" = "Connexion par e-mail";
+
+/* Class = "UITextField"; placeholder = "titre"; ObjectID = "ZTc-ef-vM0"; */
+"ZTc-ef-vM0.placeholder" = "titre";
+
+/* Class = "UILabel"; text = "0/10"; ObjectID = "b2N-Sz-uw2"; */
+"b2N-Sz-uw2.text" = "0/10";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "bSQ-Bj-7SK"; */
+"bSQ-Bj-7SK.placeholder" = "E-mail";
+
+/* Class = "UITextField"; placeholder = "Pseudo"; ObjectID = "cBG-5Y-4Is"; */
+"cBG-5Y-4Is.placeholder" = "Pseudo";
+
+/* Class = "UILabel"; text = "Sujets Favoris"; ObjectID = "cFf-Ug-EXz"; */
+"cFf-Ug-EXz.text" = "Sujets Favoris";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "cQQ-5R-SIO"; */
+"cQQ-5R-SIO.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "cwh-JF-vKH"; */
+"cwh-JF-vKH.title" = "Account";
+
+/* Class = "UILabel"; text = "Création de sujet"; ObjectID = "dDD-RZ-G12"; */
+"dDD-RZ-G12.text" = "Création de sujet";
+
+/* Class = "UINavigationController"; title = "Search NavigationC"; ObjectID = "dzU-fa-FMY"; */
+"dzU-fa-FMY.title" = "Search NavigationC";
+
+/* Class = "UILabel"; text = "Pseudo"; ObjectID = "f2N-QH-NJn"; */
+"f2N-QH-NJn.text" = "Pseudo";
+
+/* Class = "UINavigationController"; title = "Serie NavigationC"; ObjectID = "fGP-ds-h7r"; */
+"fGP-ds-h7r.title" = "Serie NavigationC";
+
+/* Class = "UIViewController"; title = "Sign Up VC"; ObjectID = "g7f-4A-xSh"; */
+"g7f-4A-xSh.title" = "Sign Up VC";
+
+/* Class = "UILabel"; text = "Nickname"; ObjectID = "htZ-vt-PaC"; */
+"htZ-vt-PaC.text" = "Nickname";
+
+/* Class = "UITabBarItem"; title = "Séries"; ObjectID = "i2b-qG-ldE"; */
+"i2b-qG-ldE.title" = "Séries";
+
+/* Class = "UILabel"; text = "Choisissez un pseudo"; ObjectID = "i7n-In-09w"; */
+"i7n-In-09w.text" = "Choisissez un pseudo";
+
+/* Class = "UILabel"; text = "Full name"; ObjectID = "iGB-LL-XIO"; */
+"iGB-LL-XIO.text" = "Full name";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "iiT-DM-2ae"; */
+"iiT-DM-2ae.placeholder" = "E-mail";
+
+/* Class = "UITextField"; placeholder = "Mot de passse"; ObjectID = "iqQ-Vl-rbi"; */
+"iqQ-Vl-rbi.placeholder" = "Mot de passse";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "kmb-sR-bN6"; */
+"kmb-sR-bN6.text" = "Description";
+
+/* Class = "UIViewController"; title = "Sign Up Infos VC"; ObjectID = "ly7-ZE-3ll"; */
+"ly7-ZE-3ll.title" = "Sign Up Infos VC";
+
+/* Class = "UINavigationItem"; title = "S'inscrire"; ObjectID = "mzM-Jc-zh8"; */
+"mzM-Jc-zh8.title" = "S'inscrire";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "n1z-hn-QqV"; */
+"n1z-hn-QqV.normalTitle" = "X";
+
+/* Class = "UILabel"; text = ">"; ObjectID = "nC5-EN-fF1"; */
+"nC5-EN-fF1.text" = ">";
+
+/* Class = "UILabel"; text = "Informations Personnelles"; ObjectID = "pXm-ZN-OQp"; */
+"pXm-ZN-OQp.text" = "Informations Personnelles";
+
+/* Class = "UILabel"; text = "Nom Serie"; ObjectID = "r9x-M7-LdE"; */
+"r9x-M7-LdE.text" = "Nom Serie";
+
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "rok-1b-LaL"; */
+"rok-1b-LaL.title" = "Search";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sxd-78-xPF"; */
+"sxd-78-xPF.text" = "Label";
+
+/* Class = "UILabel"; text = "Quelle note donneriez vous à ... ?"; ObjectID = "t80-lT-i7k"; */
+"t80-lT-i7k.text" = "Quelle note donneriez vous à ... ?";
+
+/* Class = "UIButton"; normalTitle = "Enregistrer"; ObjectID = "tTr-63-RP3"; */
+"tTr-63-RP3.normalTitle" = "Enregistrer";
+
+/* Class = "UILabel"; text = "Pseudo"; ObjectID = "tsm-9h-9P5"; */
+"tsm-9h-9P5.text" = "Pseudo";
+
+/* Class = "UITabBarItem"; title = "Forum"; ObjectID = "u0a-a0-11l"; */
+"u0a-a0-11l.title" = "Forum";
+
+/* Class = "UIViewController"; title = "Login VC"; ObjectID = "w4h-HD-yFV"; */
+"w4h-HD-yFV.title" = "Login VC";
+
+/* Class = "UIViewController"; title = "Topic VC"; ObjectID = "w4h-n3-Dob"; */
+"w4h-n3-Dob.title" = "Topic VC";
+
+/* Class = "UINavigationItem"; title = "S'inscrire"; ObjectID = "wH1-eQ-H3S"; */
+"wH1-eQ-H3S.title" = "S'inscrire";
+
+/* Class = "UILabel"; text = "Genre"; ObjectID = "xWb-oh-JUq"; */
+"xWb-oh-JUq.text" = "Genre";
+
+/* Class = "UITextField"; placeholder = "Mot de passe"; ObjectID = "y1b-Az-lKT"; */
+"y1b-Az-lKT.placeholder" = "Mot de passe";
+
+/* Class = "UINavigationItem"; title = "Série"; ObjectID = "ys7-ll-yFw"; */
+"ys7-ll-yFw.title" = "Série";
+
+/* Class = "UILabel"; text = "Titre du sujet"; ObjectID = "z1n-jB-Xbg"; */
+"z1n-jB-Xbg.text" = "Titre du sujet";
