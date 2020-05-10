@@ -37,8 +37,17 @@ class SerieTableViewCell: UITableViewCell {
     func configure(genreInd: Int) {
         genreLabel.text = Genres.genres[genreInd].genre
 
+        if NSLocale.current.languageCode == "fr" {
+            getSeriesList(genreInd: genreInd, language: "fr")
+        } else {
+            getSeriesList(genreInd: genreInd, language: "en")
+        }
+    }
+
+    /// Function that sends a request with a specific language and gets a series list.
+    private func getSeriesList(genreInd: Int, language: String) {
         SeriesService(session: URLSession(configuration: .default))
-            .getSeriesList(genre: Genres.genres[genreInd].id) { (success, seriesList) in
+            .getSeriesList(genre: Genres.genres[genreInd].id, language: language) { (success, seriesList) in
                 if success, let seriesList = seriesList {
                     self.serieList = seriesList
                     self.collectionView.reloadData()

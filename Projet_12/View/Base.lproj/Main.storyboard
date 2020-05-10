@@ -105,6 +105,7 @@
                         <outlet property="alertLabel" destination="xc5-sk-Sqz" id="XUc-CM-on0"/>
                         <outlet property="emailTextField" destination="bSQ-Bj-7SK" id="c7T-yL-UIX"/>
                         <outlet property="loginButton" destination="16i-58-ce8" id="ltk-kc-iio"/>
+                        <outlet property="loginLabel" destination="Y0S-BI-5yK" id="dgq-De-C57"/>
                         <outlet property="passwordTextField" destination="iqQ-Vl-rbi" id="Z91-Km-wan"/>
                     </connections>
                 </viewController>
@@ -206,6 +207,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="YFw-tz-QFa"/>
+                    <connections>
+                        <outlet property="emailLoginButton" destination="GZV-F1-SoW" id="sbm-Hs-UpA"/>
+                        <outlet property="signUpButton" destination="AvP-Jd-Dec" id="dCp-xj-G7b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,6 +286,8 @@
                     <connections>
                         <outlet property="alertLabel" destination="9eQ-4G-kTr" id="2ai-DZ-ErK"/>
                         <outlet property="nicknameTextField" destination="8jC-WV-eqP" id="gzR-zr-uZp"/>
+                        <outlet property="nicknameTitleLabel" destination="i7n-In-09w" id="Me5-tS-8nZ"/>
+                        <outlet property="saveButton" destination="Tck-iP-MxE" id="eJa-oz-QCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aud-Sn-frg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1758,6 +1765,8 @@
                         <outlet property="firstNameTextField" destination="8go-87-vQa" id="iTq-DT-sjr"/>
                         <outlet property="lastNameTextField" destination="OK7-At-atd" id="mrZ-Bw-Sgw"/>
                         <outlet property="nicknameTextField" destination="cBG-5Y-4Is" id="7yl-lc-SIY"/>
+                        <outlet property="saveButton" destination="2K1-UN-Wq6" id="fnW-dF-nlh"/>
+                        <outlet property="titleLabel" destination="pXm-ZN-OQp" id="w80-bS-3cQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiF-Bu-rNt" userLabel="First Responder" sceneMemberID="firstResponder"/>

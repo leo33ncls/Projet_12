@@ -51,6 +51,33 @@ class SearchViewController: UIViewController {
             serieDetailsVC.serie = sender as? Serie
         }
     }
+
+    // ========================
+    // MARK: - View Functions
+
+    /**
+     Function that gets a seriesList according to the user search.
+     
+     Calling this function sends a request with the text in the searchBar
+     and gets some series from the API response.
+     
+     - Parameters:
+        - searchText: The text that the API will search.
+        - language: The language in which we want the response.
+     */
+    private func searchSeries(searchText: String, language: String) {
+        SeriesService(session: URLSession(configuration: .default))
+            .searchSeries(searchText: searchText, language: language) { (success, seriesList) in
+                if success, let seriesList = seriesList {
+                    self.seriesResult = seriesList
+                    self.seriesTableView.restore()
+                    self.seriesTableView.reloadData()
+                } else {
+                    self.seriesTableView.setEmptyView(title: "Désolé !", message: "Aucun résultat trouvé")
+                }
+        }
+    }
+
 }
 
 // MARK: - SearchBar
@@ -61,18 +88,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         blurView.isHidden = true
-        guard let searchText = searchBar.text, searchText != "" else {
-            return
-        }
-        SeriesService(session: URLSession(configuration: .default))
-            .searchSeries(searchText: searchText) { (success, seriesList) in
-                if success, let seriesList = seriesList {
-                    self.seriesResult = seriesList
-                    self.seriesTableView.restore()
-                    self.seriesTableView.reloadData()
-                } else {
-                    self.seriesTableView.setEmptyView(title: "Désolé !", message: "Aucun résultat trouvé")
-                }
+        guard let searchText = searchBar.text, searchText != "" else { return }
+        if NSLocale.current.languageCode == "fr" {
+            searchSeries(searchText: searchText, language: "fr")
+        } else {
+            searchSeries(searchText: searchText, language: "en")
         }
     }
 

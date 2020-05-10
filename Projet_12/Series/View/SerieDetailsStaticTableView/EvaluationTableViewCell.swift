@@ -12,6 +12,9 @@ import UIKit
 class EvaluationTableViewCell: UITableViewCell {
 
     // MARK: - View Outlet
+    @IBOutlet weak var evaluationTitleLabel: UILabel!
+    @IBOutlet weak var pressTitleLabel: UILabel!
+    @IBOutlet weak var readersTitleLabel: UILabel!
     @IBOutlet weak var evaluationPressLabel: UILabel!
     @IBOutlet weak var evaluationReadersLabel: UILabel!
     @IBOutlet weak var giveEvaluationButton: UIButton!
@@ -29,13 +32,8 @@ class EvaluationTableViewCell: UITableViewCell {
      */
     func configure(serie: Serie) {
         self.selectionStyle = .none
-
-        // giveEvaluationButton style
-        giveEvaluationButton.layer.cornerRadius = 10
-        giveEvaluationButton.backgroundColor = UIColor.white
-        giveEvaluationButton.layer.borderColor = UIColor.black.cgColor
-        giveEvaluationButton.setTitleColor(UIColor.black, for: .normal)
-        giveEvaluationButton.layer.borderWidth = 3
+        setTextAndTitle()
+        setEvaluationButtonStyle()
 
         setEvaluationColor(evaluation: serie.voteAverage, label: evaluationPressLabel)
         evaluationPressLabel.text = "\(serie.voteAverage)"
@@ -61,6 +59,23 @@ class EvaluationTableViewCell: UITableViewCell {
         case 7...10: label.textColor = UIColor.green
         default: label.textColor = UIColor.blue
         }
+    }
+
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle() {
+        evaluationTitleLabel.text = NSLocalizedString("EVALUATIONS", comment: "")
+        pressTitleLabel.text = NSLocalizedString("PRESS", comment: "")
+        readersTitleLabel.text = NSLocalizedString("READERS", comment: "")
+        giveEvaluationButton.setTitle(NSLocalizedString("EVALUATE", comment: ""), for: .normal)
+    }
+
+    /// Function that sets the evaluation button style.
+    private func setEvaluationButtonStyle() {
+        giveEvaluationButton.layer.cornerRadius = 10
+        giveEvaluationButton.backgroundColor = UIColor.white
+        giveEvaluationButton.layer.borderColor = UIColor.black.cgColor
+        giveEvaluationButton.setTitleColor(UIColor.black, for: .normal)
+        giveEvaluationButton.layer.borderWidth = 3
     }
 
     // MARK: - View Actions

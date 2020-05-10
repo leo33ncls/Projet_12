@@ -108,7 +108,10 @@
             <connections>
                 <outlet property="evaluationPressLabel" destination="7J0-Z4-6Wu" id="ScZ-VR-L4T"/>
                 <outlet property="evaluationReadersLabel" destination="NeN-jY-4Bj" id="9EK-qy-ohi"/>
+                <outlet property="evaluationTitleLabel" destination="zHO-yV-2Ra" id="Jvm-jC-XDL"/>
                 <outlet property="giveEvaluationButton" destination="MbS-OC-mnG" id="FvE-gC-QkT"/>
+                <outlet property="pressTitleLabel" destination="H8Z-AA-xRb" id="hdU-Wb-UDe"/>
+                <outlet property="readersTitleLabel" destination="pMF-Q4-OUq" id="vjA-3N-NkA"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
         </tableViewCell>

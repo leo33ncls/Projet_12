@@ -40,13 +40,15 @@ class InformationSerieTableViewCell: UITableViewCell {
         } else if let genres = serie.genres {
             genreLabel.text = "Genre: \(getGenres(genreArray: genres))"
         } else {
-            genreLabel.text = "Genre: Unknown"
+            genreLabel.text = "Genre:" + NSLocalizedString("ACCOUNT_DELECTED", comment: "")
         }
 
-        dateLabel.text = "Date de sortie: \(serie.firstAirDate)"
-        popularityLabel.text = "Popularité: \(serie.popularity)"
-        originalLanguageLabel.text = "Langue originale: \(serie.originalLanguage)"
-        countryLabel.text = "Pays: \(serie.originCountry.joined(separator: ", "))"
+        dateLabel.text = NSLocalizedString("RELEASE_DATE", comment: "") + ": \(serie.firstAirDate)"
+        popularityLabel.text = NSLocalizedString("POPULARITY", comment: "") + ": \(serie.popularity)"
+        originalLanguageLabel.text = NSLocalizedString("ORIGINAL_LANGUAGE", comment: "")
+                                        + ": \(serie.originalLanguage.uppercased())"
+        countryLabel.text = NSLocalizedString("COUNTRY", comment: "")
+                                        + ": \(serie.originCountry.joined(separator: ", "))"
 
         guard let serieImageUrl = serie.posterPath else {
             seriePosterImageView.image = UIImage(named: "defaultSerieImage")

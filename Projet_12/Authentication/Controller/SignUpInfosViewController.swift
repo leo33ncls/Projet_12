@@ -14,6 +14,8 @@ import FirebaseAuth
 class SignUpInfosViewController: UIViewController {
 
     // MARK: - View Outlet
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -24,12 +26,18 @@ class SignUpInfosViewController: UIViewController {
     var email: String?
     var password: String?
 
+    // MARK: - View Text
+    let nicknamePlaceholder = NSLocalizedString("NICKNAME", comment: "")
+    let lastNamePlaceholder = NSLocalizedString("LAST_NAME", comment: "")
+    let firstNamePlacholder = NSLocalizedString("FIRST_NAME", comment: "")
+
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         nicknameTextField.delegate = self
         lastNameTextField.delegate = self
         firstNameTextField.delegate = self
+        setTextAndTitle()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +48,9 @@ class SignUpInfosViewController: UIViewController {
     // MARK: - View Actions
     // Action that creates and saves the user in the database.
     @IBAction func saveInformations(_ sender: UIButton) {
-        let nicknameText = nicknameTextField.checkTextfield(placeholder: "Pseudo")
-        let lastNameText = lastNameTextField.checkTextfield(placeholder: "Nom")
-        let firstNameText = firstNameTextField.checkTextfield(placeholder: "Prénom")
+        let nicknameText = nicknameTextField.checkTextfield(placeholder: nicknamePlaceholder)
+        let lastNameText = lastNameTextField.checkTextfield(placeholder: lastNamePlaceholder)
+        let firstNameText = firstNameTextField.checkTextfield(placeholder: firstNamePlacholder)
 
         guard let userEmail = email,
             let userPassword = password,
@@ -50,7 +58,7 @@ class SignUpInfosViewController: UIViewController {
             let lastName = lastNameText,
             let firstName = firstNameText else {
                 alertLabel.isHidden = false
-                alertLabel.text = "Informations manquantes !"
+                alertLabel.text = NSLocalizedString("ALERT_EMPTY_TEXTFIELD", comment: "Missing infos !")
                 return
         }
 
@@ -79,11 +87,11 @@ extension SignUpInfosViewController: UITextFieldDelegate {
         alertLabel.isHidden = true
         textField.layer.borderWidth = 0
         if textField == nicknameTextField {
-            nicknameTextField.restore(placeholder: "Pseudo")
+            nicknameTextField.restore(placeholder: nicknamePlaceholder)
         } else if textField == lastNameTextField {
-            lastNameTextField.restore(placeholder: "Nom")
+            lastNameTextField.restore(placeholder: lastNamePlaceholder)
         } else if textField == firstNameTextField {
-            firstNameTextField.restore(placeholder: "Prénom")
+            firstNameTextField.restore(placeholder: firstNamePlacholder)
         }
     }
 
@@ -97,5 +105,28 @@ extension SignUpInfosViewController: UITextFieldDelegate {
         nicknameTextField.resignFirstResponder()
         lastNameTextField.resignFirstResponder()
         firstNameTextField.resignFirstResponder()
+    }
+}
+
+// MARK: - Localization
+extension SignUpInfosViewController {
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle() {
+        self.navigationItem.title = NSLocalizedString("SIGN_UP", comment: "")
+        titleLabel.text = NSLocalizedString("SIGN_UP_INFOS_TITLE", comment: "Personal Informations")
+        saveButton.setTitle(NSLocalizedString("SAVE", comment: ""), for: .normal)
+
+        nicknameTextField
+            .attributedPlaceholder = NSAttributedString(string: nicknamePlaceholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
+        lastNameTextField
+            .attributedPlaceholder = NSAttributedString(string: lastNamePlaceholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
+        firstNameTextField
+            .attributedPlaceholder = NSAttributedString(string: firstNamePlacholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
     }
 }

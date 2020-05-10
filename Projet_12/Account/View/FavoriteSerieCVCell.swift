@@ -19,16 +19,26 @@ class FavoriteSerieCVCell: UICollectionViewCell {
     /**
      Function that configures the FavoriteSerieCVCell.
      
-     Calling this function sends a request to get the serie, gets the serie informations,
-     gives a value to the serieNameLabel, sends a request to get the serie image and displays this image.
+     Calling this function calls the displaySerie function to send a request to get the serie,
+     to get the serie informations, to give a value to the serieNameLabel,
+     to send a request to get the serie image and to display this image.
      
      - Parameter serieId: The id of the serie to display.
     */
     func configure(serieId: Int) {
         serieImageView.image = UIImage(named: "defaultSerieImage")
 
+        if NSLocale.current.languageCode == "fr" {
+            displaySerie(serieId: serieId, language: "fr")
+        } else {
+            displaySerie(serieId: serieId, language: "en")
+        }
+    }
+
+    /// Function that gets a serie and his image; and displays then in the view.
+    private func displaySerie(serieId: Int, language: String) {
         SeriesService(session: URLSession(configuration: .default))
-            .getSerie(serieId: serieId) { (success, serie) in
+            .getSerie(serieId: serieId, language: language) { (success, serie) in
                 guard success, let serie = serie else { return }
                 self.serieImageView.image = nil
                 self.serieNameLabel.text = serie.name

@@ -18,12 +18,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
 
+    // MARK: - View Text
+    let emailPlaceholder = NSLocalizedString("EMAIL", comment: "")
+    let passwordPlaceholder = NSLocalizedString("PASSWORD", comment: "")
+
     // ====================
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        setTextAndTitle()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,8 +44,8 @@ class SignUpViewController: UIViewController {
     // MARK: - View Action
     // Action that perform a segue to the SignUpInfosVC if the email and password exist.
     @IBAction func passEmailAndPassword(_ sender: UIButton) {
-        let emailText = emailTextField.checkTextfield(placeholder: "E-mail")
-        let passwordText = passwordTextField.checkTextfield(placeholder: "Mot de passe")
+        let emailText = emailTextField.checkTextfield(placeholder: emailPlaceholder)
+        let passwordText = passwordTextField.checkTextfield(placeholder: passwordPlaceholder)
 
         guard emailText != nil && passwordText != nil else { return }
         performSegue(withIdentifier: "segueToSignUpInfos", sender: nil)
@@ -52,9 +57,9 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
         if textField == emailTextField {
-            emailTextField.restore(placeholder: "E-mail")
+            emailTextField.restore(placeholder: emailPlaceholder)
         } else if textField == passwordTextField {
-            passwordTextField.restore(placeholder: "Mot de passe")
+            passwordTextField.restore(placeholder: passwordPlaceholder)
         }
     }
 
@@ -67,5 +72,21 @@ extension SignUpViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+}
+
+// MARK: - Localization
+extension SignUpViewController {
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle() {
+        self.navigationItem.title = NSLocalizedString("SIGN_UP", comment: "")
+        nextButton.setTitle(NSLocalizedString("NEXT", comment: ""), for: .normal)
+
+        emailTextField.attributedPlaceholder = NSAttributedString(string: emailPlaceholder,
+                                                                  attributes: [NSAttributedString.Key.foregroundColor:
+                                                                    UIColor.placeholderGray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordPlaceholder,
+                                                                  attributes: [NSAttributedString.Key.foregroundColor:
+                                                                    UIColor.placeholderGray])
     }
 }

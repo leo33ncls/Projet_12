@@ -1,14 +1,51 @@
+// ======================
 // Authentication
-"Connect by email" = "Connect by email"
-"Not registered ? Register" = "Not registered ? Register"
-"Login by email" = "Login by email"
-"Email" = "Email"
-"Password" = "Password"
-"Login" = "Login"
-"Register" = "Register"
-"Next" = "Next
-"Personal Informations" = "Personal Informations"
-"Nickname" = "Nickname"
-"Last Name" = "Last Name"
-"First Name" = "First Name"
-"Save" = "Save"
+
+// Authentication common string
+"LOGIN" = "Login";
+"SIGN_UP" = "Sign up";
+"EMAIL" = "Email";
+"PASSWORD" = "Password";
+"ALERT_EMPTY_TEXTFIELD" = "Missing information !";
+
+// AuthenticationVC
+"EMAIL_LOGIN_BUTTON" = "Connect by email";
+"SIGN_UP_BUTTON" = "Not registered ? Register";
+
+// LoginVC
+"LOGIN_LABEL" = "Login by email";
+
+// NickNameVC
+"NICKNAME_TITLE_LABEL" = "Choose a nickname";
+
+// SignUpInfosVC
+"SIGN_UP_INFOS_TITLE" = "Personal Informations";
+
+//================================
+// Series
+"SERIES" = "Series";
+"SERIE" = "Serie";
+"RELEASE_DATE" = "Release date";
+"POPULARITY" = "Popularity";
+"ORIGINAL_LANGUAGE" = "Original language";
+"COUNTRY" = "Country";
+
+"EVALUATIONS" = "Evaluations";
+"EVALUATION" = "Evaluation";
+"EVALUATE" = "Evaluate";
+"PRESS" = "Press";
+"READERS" = "Readers";
+
+// EvaluationVC
+"EVALUATION_QUESTION_LABEL" = "How would you rate %@?";
+
+
+// ===============================
+// Common string
+"NEXT" = "Next";
+"SAVE" = "Save";
+"VALIDATE" = "Validate";
+"NICKNAME" = "Nickname";
+"LAST_NAME" = "Last Name";
+"FIRST_NAME" = "First Name";
+"ACCOUNT_DELECTED" = "Account Delected";

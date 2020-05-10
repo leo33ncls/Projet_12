@@ -26,8 +26,7 @@ class EvaluationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let currentSerie = serie else { return }
-        self.navigationItem.title = currentSerie.name
-        questionLabel.text = "Quelle note donneriez vous à \(currentSerie.name) ?"
+        setTextAndTitle(serieName: currentSerie.name)
         validateButton.layer.cornerRadius = 5.0
     }
 
@@ -49,5 +48,17 @@ class EvaluationViewController: UIViewController {
                                     evaluation: Int(evaluationSlider.value))
         EvaluationService.saveEvaluation(evaluation: evaluation)
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Localization
+extension EvaluationViewController {
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle(serieName: String) {
+        self.navigationItem.title = serieName
+        validateButton.setTitle(NSLocalizedString("VALIDATE", comment: ""), for: .normal)
+
+        let formatString = NSLocalizedString("EVALUATION_QUESTION_LABEL", comment: "How would you rate ?")
+        questionLabel.text = String.localizedStringWithFormat(formatString, serieName)
     }
 }

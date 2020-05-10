@@ -80,6 +80,7 @@
 		28B6DFDA245F794100231C83 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD9245F794100231C83 /* UITableView.swift */; };
 		28B6DFDE245F993300231C83 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFDD245F993300231C83 /* UICollectionView.swift */; };
 		28BBF02D2461E49400D0866D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BBF02C2461E49400D0866D /* UITextField.swift */; };
+		28BBF03024676BE400D0866D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28BBF02A2461B95800D0866D /* Localizable.strings */; };
 		28C4511823FC410200BBB0F2 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511723FC410200BBB0F2 /* UsersService.swift */; };
 		28C4511A23FC45CC00BBB0F2 /* SignUpInfosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511923FC45CC00BBB0F2 /* SignUpInfosViewController.swift */; };
 		28C4511C23FC49CE00BBB0F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C4511B23FC49CE00BBB0F2 /* User.swift */; };
@@ -680,6 +681,7 @@
 				282D6BF6240479AC002A90DA /* ImageSerieTableViewCell.xib in Resources */,
 				28A0E156243A7CB800B01886 /* APIKeys.plist in Resources */,
 				28A0E1182432DA7D00B01886 /* FavoriteTopicView.xib in Resources */,
+				28BBF03024676BE400D0866D /* Localizable.strings in Resources */,
 				28387C4B2404B25000B20BB1 /* SynopsisTableViewCell.xib in Resources */,
 				282D6BFA24048A72002A90DA /* InformationSerieTableViewCell.xib in Resources */,
 				28A0E16C243BCF4100B01886 /* SearchSerieView.xib in Resources */,

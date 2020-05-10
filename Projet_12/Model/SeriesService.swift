@@ -36,16 +36,19 @@ class SeriesService {
      Function which creates an Url with serie genres for the serie API.
      - Calling this function adds the api key and a given genre to the discoverSeriesURL.
 
-     - Parameter genre: The genre of the series we want the API to return.
+     - Parameters:
+        - genre: The genre of the series we want the API to return.
+        - language: The language in which we want to receive the API response.
      - Returns: A valid url for the serie API or a nil.
      */
-    private func discoverSeriesUrl(genre: Int) -> URL? {
+    private func discoverSeriesUrl(genre: Int, language: String) -> URL? {
         var seriesURL = URLComponents(string: SeriesService.discoverSeriesURL)
         seriesURL?.queryItems = [URLQueryItem(name: "api_key",
                                               value: APIKeysService
                                                 .valueForAPIKey(named: APIKeysService.serieAPIKey,
                                                                 fileName: APIKeysService.fileName,
                                                                 bundleClass: SeriesService.self)),
+                                 URLQueryItem(name: "language", value: language),
                                  URLQueryItem(name: "with_genres", value: String(genre)),
                                  URLQueryItem(name: "sort_by", value: "popularity.desc")]
 
@@ -58,16 +61,19 @@ class SeriesService {
      - Calling this function completes the url path with a serie id, adds the api key to the parameters
      and then returns a valid url for the serie API.
      
-     - Parameter serieId: The id of the serie we want informations.
+     - Parameters:
+        - serieId: The id of the serie we want informations.
+        - language: The language in which we want the informations.
      - Returns: A valid url to find a serie for the serie API or a nil.
      */
-    private func findSerieUrl(serieId: Int) -> URL? {
+    private func findSerieUrl(serieId: Int, language: String) -> URL? {
         var serieURL = URLComponents(string: SeriesService.serieURL + String(serieId))
         serieURL?.queryItems = [URLQueryItem(name: "api_key",
                                              value: APIKeysService
                                                 .valueForAPIKey(named: APIKeysService.serieAPIKey,
                                                                 fileName: APIKeysService.fileName,
-                                                                bundleClass: SeriesService.self))]
+                                                                bundleClass: SeriesService.self)),
+                                URLQueryItem(name: "language", value: language)]
         guard let url = serieURL?.url else { return nil }
         return url
     }
@@ -77,16 +83,19 @@ class SeriesService {
      - Calling this function adds the api key to the parameters, completes the url path with a string search
      and then returns a valid url for the serie API.
      
-     - Parameter text: The title or a part of the serie title that the user searches.
+     - Parameters:
+        - text: The title or a part of the serie title that the user searches.
+        - language: The language in which we want to receive the API response.
      - Returns: A valid url to search series for the serie API or a nil.
      */
-    private func searchSeriesUrl(text: String) -> URL? {
+    private func searchSeriesUrl(text: String, language: String) -> URL? {
         var searchSerieURL = URLComponents(string: SeriesService.searchSeriesURL)
         searchSerieURL?.queryItems = [URLQueryItem(name: "api_key",
                                                    value: APIKeysService
                                                     .valueForAPIKey(named: APIKeysService.serieAPIKey,
                                                                     fileName: APIKeysService.fileName,
                                                                     bundleClass: SeriesService.self)),
+                                      URLQueryItem(name: "language", value: language),
                                       URLQueryItem(name: "query", value: text)]
         guard let url = searchSerieURL?.url else { return nil }
         return url
@@ -102,10 +111,11 @@ class SeriesService {
 
      - Parameters:
         - genre: The genre of the series we want the API to return.
+        - language: The language in which we wants to receive the API response.
         - callback: The callback returning the series list.
      */
-    func getSeriesList(genre: Int, callback: @escaping (Bool, SeriesList?) -> Void) {
-        guard let url = discoverSeriesUrl(genre: genre) else {
+    func getSeriesList(genre: Int, language: String, callback: @escaping (Bool, SeriesList?) -> Void) {
+        guard let url = discoverSeriesUrl(genre: genre, language: language) else {
             callback(false, nil)
             return
         }
@@ -144,10 +154,11 @@ class SeriesService {
      
      - Parameters:
         - serieId: The id of the serie we want informations.
+        - language: The language in which we wants the informations.
         - callback: The callback returning the series list.
      */
-    func getSerie(serieId: Int, callback: @escaping (Bool, Serie?) -> Void) {
-        guard let url = findSerieUrl(serieId: serieId) else {
+    func getSerie(serieId: Int, language: String, callback: @escaping (Bool, Serie?) -> Void) {
+        guard let url = findSerieUrl(serieId: serieId, language: language) else {
             callback(false, nil)
             return
         }
@@ -186,10 +197,11 @@ class SeriesService {
      
      - Parameters:
         - searchText: The title or a part of the serie title that the user searches.
+        - language: The language in which we wants to receive the API response.
         - callback: The callback returning the series list.
      */
-    func searchSeries(searchText: String, callback: @escaping (Bool, SeriesList?) -> Void) {
-        guard let url = searchSeriesUrl(text: searchText) else {
+    func searchSeries(searchText: String, language: String, callback: @escaping (Bool, SeriesList?) -> Void) {
+        guard let url = searchSeriesUrl(text: searchText, language: language) else {
             callback(false, nil)
             return
         }

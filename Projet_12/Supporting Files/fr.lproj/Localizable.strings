@@ -1,14 +1,51 @@
+// ======================
 // Authentication
-"Connect by email" = "Se connecter par e-mail"
-"Not registered ? Register" = "Pas encore inscrit ? S'inscrire"
-"Login by email" = "Connexion par e-mail"
-"Email" = "E-mail"
-"Password" = "Mot de passe"
-"Login" = "Se connecter"
-"Register" = "S'inscrire"
-"Next" = "Suivant"
-"Personal Informations" = "Informations Personnelles"
-"Nickname" = "Pseudo"
-"Last Name" = "Nom"
-"First Name" = "Prénom"
-"Save" = "Enregistrer"
+
+// Authentication common string
+"LOGIN" = "Se connecter";
+"SIGN_UP" = "S'inscrire";
+"EMAIL" = "E-mail";
+"PASSWORD" = "Mot de passe";
+"ALERT_EMPTY_TEXTFIELD" = "Informations manquantes !";
+
+// AuthenticationVC
+"EMAIL_LOGIN_BUTTON" = "Se connecter par e-mail";
+"SIGN_UP_BUTTON" = "Pas encore inscrit ? S'inscrire";
+
+// LoginVC
+"LOGIN_LABEL" = "Connexion par e-mail";
+
+// NickNameVC
+"NICKNAME_TITLE_LABEL" = "Choisissez un pseudo";
+
+// SignUpInfosVC
+"SIGN_UP_INFOS_TITLE" = "Informations personnelles";
+
+//================================
+// Series
+"SERIES" = "Séries";
+"SERIE" = "Série";
+"RELEASE_DATE" = "Date de sortie";
+"POPULARITY" = "Popularité";
+"ORIGINAL_LANGUAGE" = "Langue originale";
+"COUNTRY" = "Pays";
+
+"EVALUATIONS" = "Notes";
+"EVALUATION" = "Evaluation";
+"EVALUATE" = "Noter";
+"PRESS" = "Presse";
+"READERS" = "Lecteurs";
+
+// EvaluationVC
+"EVALUATION_QUESTION_LABEL" = "Quelle note donneriez vous à %@ ?";
+
+
+// ===============================
+// Common string
+"NEXT" = "Suivant";
+"SAVE" = "Enregistrer";
+"VALIDATE" = "Valider";
+"NICKNAME" = "Pseudo";
+"LAST_NAME" = "Nom";
+"FIRST_NAME" = "Prénom";
+"ACCOUNT_DELECTED" = "Compte Supprimé";

@@ -54,6 +54,31 @@ class FavoriteSerieViewController: UIViewController {
         }
         serieDetailsVC.serie = serie
     }
+
+    // ========================
+    // MARK: - View Functions
+    
+    /**
+     Function that gets the selected serie and gives it to SerieDetailsVC.
+     
+     Calling this function sends a request with the id of the selected serie to the API,
+     gets the selected serie informations from the API response;
+     gives it in a segue and performs a segue to the SerieDetailsVC
+     
+     - Parameters:
+        - serieId: The id of the selected serie.
+        - language: The language in which we want the response.
+     */
+    private func getSelectedSerie(serieId: Int, language: String) {
+        SeriesService(session: URLSession(configuration: .default))
+            .getSerie(serieId: serieId, language: language) { (success, serie) in
+                guard success, let serie = serie else {
+                    print("Incorrect serie id")
+                    return
+                }
+                self.performSegue(withIdentifier: self.segueToSerieDetailsIdentifier, sender: serie)
+        }
+    }
 }
 
 // MARK: - CollectionView
@@ -77,13 +102,10 @@ extension FavoriteSerieViewController: UICollectionViewDelegate, UICollectionVie
         let serieId = favoriteSeriesId[indexPath.row]
 
         // Get the serie selected, give it in a segue and perform a segue to the SerieDetailsVC.
-        SeriesService(session: URLSession(configuration: .default))
-            .getSerie(serieId: serieId) { (success, serie) in
-                guard success, let serie = serie else {
-                    print("Incorrect serie id")
-                    return
-                }
-                self.performSegue(withIdentifier: self.segueToSerieDetailsIdentifier, sender: serie)
+        if NSLocale.current.languageCode == "fr" {
+            getSelectedSerie(serieId: serieId, language: "fr")
+        } else {
+            getSelectedSerie(serieId: serieId, language: "en")
         }
     }
 }
