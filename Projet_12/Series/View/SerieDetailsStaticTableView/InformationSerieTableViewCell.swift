@@ -40,7 +40,7 @@ class InformationSerieTableViewCell: UITableViewCell {
         } else if let genres = serie.genres {
             genreLabel.text = "Genre: \(getGenres(genreArray: genres))"
         } else {
-            genreLabel.text = "Genre:" + NSLocalizedString("ACCOUNT_DELECTED", comment: "")
+            genreLabel.text = "Genre:" + NSLocalizedString("UNKNOWN", comment: "")
         }
 
         dateLabel.text = NSLocalizedString("RELEASE_DATE", comment: "") + ": \(serie.firstAirDate)"

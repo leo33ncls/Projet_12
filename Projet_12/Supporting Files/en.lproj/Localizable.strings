@@ -1,12 +1,12 @@
 // ======================
-// Authentication
+// AUTHENTICATION
 
 // Authentication common string
 "LOGIN" = "Login";
 "SIGN_UP" = "Sign up";
 "EMAIL" = "Email";
 "PASSWORD" = "Password";
-"ALERT_EMPTY_TEXTFIELD" = "Missing information !";
+"ALERT_EMPTY_TEXTFIELD" = "Missing information!";
 
 // AuthenticationVC
 "EMAIL_LOGIN_BUTTON" = "Connect by email";
@@ -22,7 +22,7 @@
 "SIGN_UP_INFOS_TITLE" = "Personal Informations";
 
 //================================
-// Series
+// SERIES
 "SERIES" = "Series";
 "SERIE" = "Serie";
 "RELEASE_DATE" = "Release date";
@@ -39,13 +39,83 @@
 // EvaluationVC
 "EVALUATION_QUESTION_LABEL" = "How would you rate %@?";
 
+//================================
+// FORUM
+"FORUM" = "Forum";
+"POST_DATE" = "Post on %@";
+"POST_HOUR" = "at %@";
+
+// ForumVC
+"FORUM_TABLEVIEW_ALERT_TITLE" = "No topic yet!";
+"FORUM_TABLEVIEW_ALERT_MESSAGE" = "Click on the top right to create a topic.";
+
+// ForumFavoriteVC
+"FORUM_FAVORITE_TITLE" = "Favorite topics";
+"FAVFORUM_TABLEVIEW_ALERT_TITLE" = "No favorite topic yet!";
+"FAVFORUM_TABLEVIEW_ALERT_MESSAGE" = "Click on the star to put a topic in your favorites.";
+
+// TopicEditingVC
+"TOPIC_EDITING_TITLE" = "Topic creation";
+"TOPIC_TITLE_LABEL" = "Topic title";
+"TOPIC_POST_LABEL" = "First post";
+"TOPIC_CREATION_BUTTON" = "Create the topic";
+
+// TopicVC
+"TOPIC_TABLEVIEW_ALERT_TITLE" = "Sorry!";
+"TOPIC_TABLEVIEW_ALERT_MESSAGE" = "This topic has no posts!";
 
 // ===============================
-// Common string
+// SEARCH
+"SEARCH" = "Search";
+"UNKNOWN_GENRE" = "Unknown genre";
+"SEARCH_TABLEVIEW_ALERT_TITLE" = "No result";
+"SEARCH_TABLEVIEW_ALERT_MESSAGE" = "Do a new search.";
+
+// ===============================
+// ACCOUNT
+
+// AccountVC
+"ACCOUNT" = "Account";
+"PERSONAL_INFOS_CELL" = "Personal informations";
+"FAVORITE_SERIES_CELL" = "Favorite series";
+"MEDIA_ALERT_TITLE" = "Choose a media";
+"CAMERA_ALERT_ACTION" = "Camera";
+"PHOTO_ALERT_ACTION" = "Photo Library";
+"SIGN_OUT_ALERT_TITLE" = "Are you sure ?";
+"SIGN_OUT_ALERT_MESSAGE" = "Do you want to logout ?";
+
+// UserInfosVC
+"NO_DESCRIPTION" = "No descritpion";
+"PERSONAL_INFOS_TITLE" = "Personal informations";
+"DESCRIPTION" = "Description (optional)";
+"SAVE_INFOS_ALERT_TITLE" = "Are you sure ?";
+"SAVE_INFOS_ALERT_MESSAGE" = "Do you want to save this new informations ?";
+
+// FavoriteSerieVC
+"FAVORITE_SERIE_TITLE" = "Favorite Series";
+"FAVSERIE_TABLEVIEW_ALERT_TITLE" = "No favorite serie yet!";
+"FAVSERIE_TABLEVIEW_ALERT_MESSAGE" = "Click on the star to put a serie in your favorites.";
+
+// UserVC
+"USER" = "User";
+"NO_USER_ALERT" = "No user found!";
+
+// ===============================
+// COMMON STRING
 "NEXT" = "Next";
 "SAVE" = "Save";
 "VALIDATE" = "Validate";
+"CANCEL" = "Cancel";
+"YES" = "Yes";
+
 "NICKNAME" = "Nickname";
+"FULLNAME" = "Fullname";
 "LAST_NAME" = "Last Name";
 "FIRST_NAME" = "First Name";
+
 "ACCOUNT_DELECTED" = "Account Delected";
+"UNKNOWN" = "Unknown";
+"SORRY" = "Sorry!";
+
+"TITLE" = "Title";
+"TOPIC" = "Topic";

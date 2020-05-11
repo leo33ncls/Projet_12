@@ -13,8 +13,12 @@ import FirebaseAuth
 class TopicEditingViewController: UIViewController {
 
     // MARK: - View Outlet
+    @IBOutlet weak var viewTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var firstPostLabel: UILabel!
     @IBOutlet weak var topicTitleTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
+    @IBOutlet weak var editTopicButton: UIButton!
 
     // MARK: - View Properties
     // The serie received from ForumVC.
@@ -25,6 +29,7 @@ class TopicEditingViewController: UIViewController {
         super.viewDidLoad()
         topicTitleTextField.delegate = self
         postTextView.delegate = self
+        setTextAndTitle()
         guard let currentSerie = serie else { return }
         self.navigationItem.title = currentSerie.name
     }
@@ -34,34 +39,49 @@ class TopicEditingViewController: UIViewController {
     @IBAction func createTopic(_ sender: UIButton) {
         guard let currentSerie = serie else { return }
         guard let user = Auth.auth().currentUser else { return }
+        let topicTitleText = topicTitleTextField.checkTextfield(placeholder: NSLocalizedString("TITLE",
+                                                                                               comment: ""))
+        let postTVText = checkTextView(textview: postTextView)
 
-        if let topictitle = topicTitleTextField.text, topictitle != "",
-            let postText = postTextView.text, postText != "" {
+        guard let topicTitle = topicTitleText, let postText = postTVText else { return }
+        let post = Post(userId: user.uid,
+                        date: Date(),
+                        text: postText)
+        let topic = Topic(serieId: currentSerie.id,
+                          topicId: nil,
+                          userId: user.uid,
+                          date: Date(),
+                          serieName: currentSerie.name,
+                          title: topicTitle,
+                          post: [post])
 
-            let post = Post(userId: user.uid,
-                            date: Date(),
-                            text: postText)
-            let topic = Topic(serieId: currentSerie.id,
-                              topicId: nil,
-                              userId: user.uid,
-                              date: Date(),
-                              serieName: currentSerie.name,
-                              title: topictitle,
-                              post: [post])
+        ForumService.saveTopic(topic: topic)
+        navigationController?.popViewController(animated: true)
+    }
 
-            ForumService.saveTopic(topic: topic)
-            navigationController?.popViewController(animated: true)
-
-        } else {
-            UIAlertController().showAlert(title: "Attention",
-                                          message: "Informations manquantes !",
-                                          viewController: self)
+    // MARK: - View Functions
+    /// Function that checks if the text in the textview is valid and returns the text.
+    private func checkTextView(textview: UITextView) -> String? {
+        guard let text = textview.text, text != "", text != " " else {
+            textview.layer.borderColor = UIColor.red.cgColor
+            textview.layer.borderWidth = 1
+            return nil
         }
+        textview.layer.borderWidth = 0
+        return text
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard, TextField and TextView
 extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.layer.borderWidth = 0
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -76,5 +96,22 @@ extension TopicEditingViewController: UITextFieldDelegate, UITextViewDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         topicTitleTextField.resignFirstResponder()
         postTextView.resignFirstResponder()
+    }
+}
+
+// MARK: - Localization
+extension TopicEditingViewController {
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle() {
+        viewTitleLabel.text = NSLocalizedString("TOPIC_EDITING_TITLE", comment: "Topic creation")
+        titleLabel.text = NSLocalizedString("TOPIC_TITLE_LABEL", comment: "Topic title")
+        firstPostLabel.text = NSLocalizedString("TOPIC_POST_LABEL", comment: "First post")
+        editTopicButton.setTitle(NSLocalizedString("TOPIC_CREATION_BUTTON", comment: "Create topic"),
+                                 for: .normal)
+
+        topicTitleTextField
+            .attributedPlaceholder = NSAttributedString(string: NSLocalizedString("TITLE", comment: ""),
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
     }
 }

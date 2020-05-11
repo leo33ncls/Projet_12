@@ -60,7 +60,7 @@ class TopicCellView: UIView {
             if let nickname = nickname {
                 self.nicknameLabel.text = nickname
             } else {
-                self.nicknameLabel.text = "Unknown"
+                self.nicknameLabel.text = NSLocalizedString("ACCOUNT_DELECTED", comment: "")
             }
         }
         if Calendar.current.isDate(Date(), inSameDayAs: topic.date) {

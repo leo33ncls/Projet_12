@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="344.80000000000001" y="129.98500749625188"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="MwI-jM-3qf">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="fjU-lS-OUs" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="fjU-lS-OUs" customClass="CustomTabBarController" customModule="Projet_12" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="yA8-Av-vxy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -417,13 +417,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAs-Wn-EzF">
-                                                    <rect key="frame" x="16" y="11" width="238" height="22.5"/>
+                                                    <rect key="frame" x="16" y="11" width="293" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.1843137255" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC5-EN-fF1">
-                                                    <rect key="frame" x="262" y="11" width="42" height="22.5"/>
+                                                    <rect key="frame" x="317" y="11" width="42" height="22.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="3Qe-gP-0y6"/>
                                                     </constraints>
@@ -573,9 +573,13 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="kmb-sR-bN6" id="ed7-Kr-1m1"/>
                         <outlet property="descriptionTextView" destination="Rf4-sn-tYz" id="O7a-3R-9IG"/>
                         <outlet property="fullNameTextField" destination="Jnc-v6-EsO" id="fuz-Mf-Sms"/>
+                        <outlet property="fullnameLabel" destination="iGB-LL-XIO" id="6ch-MU-wry"/>
+                        <outlet property="nicknameLabel" destination="htZ-vt-PaC" id="msw-0Y-JlI"/>
                         <outlet property="nicknameTextField" destination="QEv-sS-C18" id="w1L-Gp-j4N"/>
+                        <outlet property="saveButton" destination="tTr-63-RP3" id="aq7-PJ-mgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDx-Lf-9Qu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -669,6 +673,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteSerieCollectionView" destination="Daj-56-2Xd" id="V0H-98-N7q"/>
+                        <outlet property="seriesFavoriteLabel" destination="EgC-yY-dwi" id="Nor-wT-Kit"/>
                         <segue destination="67T-08-PtU" kind="show" identifier="segueToSerieDetailsFromAccount" id="iBJ-aa-8U1"/>
                     </connections>
                 </viewController>
@@ -768,7 +773,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWg-AD-NSu" customClass="SearchSerieView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -873,7 +878,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCr-1o-frK" customClass="FavoriteTopicView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -906,6 +911,7 @@
                     <navigationItem key="navigationItem" title="Forum" id="BLB-hX-ciC"/>
                     <connections>
                         <outlet property="topicsTableView" destination="zte-si-Wrf" id="PE0-aC-1Of"/>
+                        <outlet property="viewTitleLabel" destination="cFf-Ug-EXz" id="OA5-Sb-hjZ"/>
                         <segue destination="w4h-n3-Dob" kind="show" identifier="segueToTopicFromFavoriteForum" id="yrt-qv-sTX"/>
                     </connections>
                 </viewController>
@@ -933,7 +939,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-Qh-p7H">
-                                                    <rect key="frame" x="15" y="34" width="305" height="126"/>
+                                                    <rect key="frame" x="15" y="34" width="360" height="126"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O51-US-LMj">
                                                         <size key="itemSize" width="96" height="128"/>
@@ -979,7 +985,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWb-oh-JUq">
-                                                    <rect key="frame" x="15" y="4" width="290" height="24"/>
+                                                    <rect key="frame" x="15" y="4" width="345" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1199,7 +1205,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYX-ZT-cZ3" customClass="TopicCellView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -1297,7 +1303,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-Yf-15A" customClass="PostView" customModule="Projet_12" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="0.0" width="304" height="200"/>
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="200"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -1592,8 +1598,12 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="editTopicButton" destination="3nk-E9-nt3" id="HTc-wF-x4J"/>
+                        <outlet property="firstPostLabel" destination="7KE-pW-ECs" id="4cw-fc-EGy"/>
                         <outlet property="postTextView" destination="aDF-lg-ZXp" id="OjH-JD-3W2"/>
+                        <outlet property="titleLabel" destination="z1n-jB-Xbg" id="UV8-v6-mNJ"/>
                         <outlet property="topicTitleTextField" destination="ZTc-ef-vM0" id="4m0-YI-My1"/>
+                        <outlet property="viewTitleLabel" destination="dDD-RZ-G12" id="NvP-cy-6pC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxr-vx-lbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1791,8 +1801,8 @@
         <image name="writeIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2gv-sw-pRx"/>
-        <segue reference="Ebm-It-bOK"/>
+        <segue reference="yrt-qv-sTX"/>
+        <segue reference="iBJ-aa-8U1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

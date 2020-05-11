@@ -27,6 +27,7 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         seriesTableView.delegate = self
         seriesTableView.dataSource = self
+        self.navigationItem.title = NSLocalizedString("SEARCH", comment: "")
 
         // Blur TapGestureRecognizer
         let blurTapGesture = UITapGestureRecognizer(target: self, action: #selector(blurTapped))
@@ -73,7 +74,10 @@ class SearchViewController: UIViewController {
                     self.seriesTableView.restore()
                     self.seriesTableView.reloadData()
                 } else {
-                    self.seriesTableView.setEmptyView(title: "Désolé !", message: "Aucun résultat trouvé")
+                    self.seriesTableView.setEmptyView(title: NSLocalizedString("SEARCH_TABLEVIEW_ALERT_TITLE",
+                                                                               comment: "No result"),
+                                                      message: NSLocalizedString("SEARCH_TABLEVIEW_ALERT_MESSAGE",
+                                                                                 comment: "Advice"))
                 }
         }
     }
@@ -114,8 +118,10 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let series = seriesResult, series.results.count != 0 else {
-            self.seriesTableView.setEmptyView(title: "Aucun résultat",
-                                              message: "Faites une nouvelle recherche.")
+            self.seriesTableView.setEmptyView(title: NSLocalizedString("SEARCH_TABLEVIEW_ALERT_TITLE",
+                                                                       comment: "No result"),
+                                              message: NSLocalizedString("SEARCH_TABLEVIEW_ALERT_MESSAGE",
+                                                                         comment: "Advice"))
             return 0
         }
         return series.results.count

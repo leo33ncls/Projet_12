@@ -32,6 +32,7 @@ class AccountViewController: UIViewController {
     // MARK: - View Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = NSLocalizedString("ACCOUNT", comment: "")
         imageViewRecognizer()
 
         accountImageView.layer.borderColor = UIColor.white.cgColor
@@ -108,9 +109,16 @@ class AccountViewController: UIViewController {
             if let user = user {
                 self.currentUser = user
                 self.nicknameLabel.text = user.nickname
-                self.descriptionTextView.text = user.description
+                guard let description = user.description else {
+                    self.descriptionTextView.textColor = UIColor.lightGray
+                    self.descriptionTextView.text = NSLocalizedString("NO_DESCRIPTION", comment: "")
+                    return
+                }
+                self.descriptionTextView.textColor = UIColor.black
+                self.descriptionTextView.text = description
             } else {
-                UIAlertController().showAlert(title: "Sorry", message: "No user found",
+                UIAlertController().showAlert(title: NSLocalizedString("SORRY", comment: ""),
+                                              message: NSLocalizedString("NO_USER_ALERT", comment: ""),
                                               viewController: self)
             }
         }
@@ -217,21 +225,24 @@ class AccountViewController: UIViewController {
      */
     private func imageViewAlert() {
         guard let imagePickerController = imagePicker else { return }
-        let alertVC = UIAlertController(title: "Choose a media",
+        let alertVC = UIAlertController(title: NSLocalizedString("MEDIA_ALERT_TITLE", comment: "Choose a media"),
                                         message: nil,
                                         preferredStyle: .actionSheet)
 
-        let camera = UIAlertAction(title: "Camera", style: .default) { (act) in
+        let camera = UIAlertAction(title: NSLocalizedString("CAMERA_ALERT_ACTION", comment: "Camera"),
+                                   style: .default) { (act) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             }
         }
-        let photoLibrary = UIAlertAction(title: "Photo Library", style: .default) { (act) in
+        let photoLibrary = UIAlertAction(title: NSLocalizedString("PHOTO_ALERT_ACTION", comment: "Photo Library"),
+                                         style: .default) { (act) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""),
+                                   style: .cancel, handler: nil)
 
         alertVC.addAction(camera)
         alertVC.addAction(photoLibrary)
@@ -246,10 +257,11 @@ class AccountViewController: UIViewController {
      signs out the user if he clicks "Yes" and presents the AuthenticationVC.
      */
     private func signOutAlert() {
-        let alertVC = UIAlertController(title: "Are you sure ?",
-                                        message: "Do you want to logout ?",
+        let alertVC = UIAlertController(title: NSLocalizedString("SIGN_OUT_ALERT_TITLE", comment: "Sure ?"),
+                                        message: NSLocalizedString("SIGN_OUT_ALERT_MESSAGE", comment: "Log out ?"),
                                         preferredStyle: .alert)
-        let logout = UIAlertAction(title: "Yes", style: .default) { (act) in
+        let logout = UIAlertAction(title: NSLocalizedString("YES", comment: ""),
+                                   style: .default) { (act) in
             do {
                 try Auth.auth().signOut()
                 guard let vc = self.storyboard?
@@ -259,7 +271,8 @@ class AccountViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""),
+                                   style: .cancel, handler: nil)
 
         alertVC.addAction(logout)
         alertVC.addAction(cancel)
@@ -298,8 +311,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         switch indexPath.row {
-        case 0: cell.configure(title: "Informations personnelles")
-        case 1: cell.configure(title: "Séries Favorites")
+        case 0: cell.configure(title: NSLocalizedString("PERSONAL_INFOS_CELL", comment: "Personal infos"))
+        case 1: cell.configure(title: NSLocalizedString("FAVORITE_SERIES_CELL", comment: "Séries favorites"))
         default: break
         }
         return cell

@@ -30,6 +30,7 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
         userImageView.layer.borderColor = UIColor.white.cgColor
         userImageView.layer.borderWidth = 5.0
+        self.navigationItem.title = NSLocalizedString("USER", comment: "")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +40,7 @@ class UserViewController: UIViewController {
 
         guard let currentUserId = userId else {
             displayActivityIndicator(false)
-            displayAlertLabel(message: "No user found !")
+            displayAlertLabel(message: NSLocalizedString("NO_USER_ALERT", comment: "No user found!"))
             return
         }
         getUserInfos(userId: currentUserId)
@@ -82,9 +83,15 @@ class UserViewController: UIViewController {
             if let user = user {
                 self.currentUser = user
                 self.nicknameLabel.text = user.nickname
-                self.descriptionTextView.text = user.description
+                guard let description = user.description else {
+                    self.descriptionTextView.textColor = UIColor.lightGray
+                    self.descriptionTextView.text = NSLocalizedString("NO_DESCRIPTION", comment: "")
+                    return
+                }
+                self.descriptionTextView.textColor = UIColor.black
+                self.descriptionTextView.text = description
             } else {
-                self.displayAlertLabel(message: "No user found !")
+                self.displayAlertLabel(message: NSLocalizedString("NO_USER_ALERT", comment: "No user found!"))
             }
         }
     }

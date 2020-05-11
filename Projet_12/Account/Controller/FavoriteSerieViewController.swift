@@ -14,6 +14,7 @@ class FavoriteSerieViewController: UIViewController {
 
     // MARK: - View Outlet
     @IBOutlet weak var favoriteSerieCollectionView: UICollectionView!
+    @IBOutlet weak var seriesFavoriteLabel: UILabel!
 
     // MARK: - View Properties
     var favoriteSeriesId = [Int]()
@@ -25,6 +26,7 @@ class FavoriteSerieViewController: UIViewController {
         super.viewDidLoad()
         favoriteSerieCollectionView.delegate = self
         favoriteSerieCollectionView.dataSource = self
+        seriesFavoriteLabel.text = NSLocalizedString("FAVORITE_SERIE_TITLE", comment: "Favorite series")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +41,11 @@ class FavoriteSerieViewController: UIViewController {
             } else {
                 self.favoriteSeriesId.removeAll()
                 self.favoriteSerieCollectionView.reloadData()
-                self.favoriteSerieCollectionView.setEmptyView(title: "Aucune serie favorite pour le moment !",
-                                                              message: "Cliquez sur l'étoile pour mettre une serie dans vos favoris.")
+                self.favoriteSerieCollectionView
+                    .setEmptyView(title: NSLocalizedString("FAVSERIE_TABLEVIEW_ALERT_TITLE",
+                                                           comment: "No favorite serie"),
+                                  message: NSLocalizedString("FAVSERIE_TABLEVIEW_ALERT_MESSAGE",
+                                                             comment: "Instructions"))
             }
         }
     }
@@ -57,7 +62,7 @@ class FavoriteSerieViewController: UIViewController {
 
     // ========================
     // MARK: - View Functions
-    
+
     /**
      Function that gets the selected serie and gives it to SerieDetailsVC.
      

@@ -52,10 +52,9 @@ class SignUpViewController: UIViewController {
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard and TextField
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderWidth = 0
         if textField == emailTextField {
             emailTextField.restore(placeholder: emailPlaceholder)
         } else if textField == passwordTextField {

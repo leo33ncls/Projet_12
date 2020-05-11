@@ -56,11 +56,10 @@ class NickNameViewController: UIViewController {
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard and TextField
 extension NickNameViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         alertLabel.isHidden = true
-        textField.layer.borderWidth = 0
         textField.restore(placeholder: nicknamePlaceholder)
     }
 

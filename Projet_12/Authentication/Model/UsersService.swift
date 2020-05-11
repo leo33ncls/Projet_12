@@ -25,7 +25,7 @@ class UsersService {
         let userDictionary: NSDictionary = ["nickname": user.nickname,
                                             "email": user.email,
                                             "fullName": user.fullName,
-                                            "description": user.description ?? "No description",
+                                            "description": user.description ?? "nil",
                                             "imageUrl": "nil",
                                             "backgroundUrl": "nil"]
         usersDTBRef.child(user.id).setValue(userDictionary) { (error, ref) in
@@ -78,6 +78,12 @@ class UsersService {
                 callback(nil)
                 return
             }
+            guard description != "nil" else {
+                let user = User(id: userId, nickname: nickname, email: email,
+                                fullName: fullName, description: nil)
+                callback(user)
+                return
+            }
             let user = User(id: userId, nickname: nickname, email: email,
                             fullName: fullName, description: description)
             callback(user)
@@ -94,9 +100,9 @@ class UsersService {
         - nickname: The new nickname to save in the db for the given user.
         - description: The new description to save in the db for the given user.
      */
-    static func updateUserInformation(userId: String, fullName: String, nickname: String, description: String) {
+    static func updateUserInformation(userId: String, fullName: String, nickname: String, description: String?) {
         usersDTBRef.child(userId).updateChildValues(["fullName": fullName])
         usersDTBRef.child(userId).updateChildValues(["nickname": nickname])
-        usersDTBRef.child(userId).updateChildValues(["description": description])
+        usersDTBRef.child(userId).updateChildValues(["description": description ?? "nil"])
     }
 }

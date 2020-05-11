@@ -1,5 +1,5 @@
 // ======================
-// Authentication
+// AUTHENTICATION
 
 // Authentication common string
 "LOGIN" = "Se connecter";
@@ -22,7 +22,7 @@
 "SIGN_UP_INFOS_TITLE" = "Informations personnelles";
 
 //================================
-// Series
+// SERIES
 "SERIES" = "Séries";
 "SERIE" = "Série";
 "RELEASE_DATE" = "Date de sortie";
@@ -39,13 +39,83 @@
 // EvaluationVC
 "EVALUATION_QUESTION_LABEL" = "Quelle note donneriez vous à %@ ?";
 
+//================================
+// FORUM
+"FORUM" = "Forum";
+"POST_DATE" = "Posté le %@";
+"POST_HOUR" = "à %@";
+
+// ForumVC
+"TOPICS_TABLEVIEW_ALERT_TITLE" = "Aucun sujet pour le moment !";
+"TOPICS_TABLEVIEW_ALERT_MESSAGE" = "Cliquez en haut à droit pour créer un topic.";
+
+// ForumFavoriteVC
+"FORUM_FAVORITE_TITLE" = "Sujets favoris";
+"FAVFORUM_TABLEVIEW_ALERT_TITLE" = "Aucun sujet favoris pour le moment !";
+"FAVFORUM_TABLEVIEW_ALERT_MESSAGE" = "Cliquez sur l'étoile pour mettre un sujet dans vos favoris.";
+
+// TopicEditingVC
+"TOPIC_EDITING_TITLE" = "Création de sujet";
+"TOPIC_TITLE_LABEL" = "Titre du sujet";
+"TOPIC_POST_LABEL" = "Premier post";
+"TOPIC_CREATION_BUTTON" = "Créer le sujet";
+
+// TopicVC
+"TOPIC_TABLEVIEW_ALERT_TITLE" = "Désolé !";
+"TOPIC_TABLEVIEW_ALERT_MESSAGE" = "Ce sujet n'a aucun post !";
 
 // ===============================
-// Common string
+// SEARCH
+"SEARCH" = "Recherche";
+"UNKNOWN_GENRE" = "Genre inconnue";
+"SEARCH_TABLEVIEW_ALERT_TITLE" = "Aucun résultat";
+"SEARCH_TABLEVIEW_ALERT_MESSAGE" = "Faites une nouvelle recherche.";
+
+// ===============================
+// ACCOUNT
+
+// AccountVC
+"ACCOUNT" = "Compte";
+"PERSONAL_INFOS_CELL" = "Informations personnelles";
+"FAVORITE_SERIES_CELL" = "Séries favorites";
+"MEDIA_ALERT_TITLE" = "Choisissez un média";
+"CAMERA_ALERT_ACTION" = "Appareil Photo";
+"PHOTO_ALERT_ACTION" = "Photo Galerie";
+"SIGN_OUT_ALERT_TITLE" = "Êtes-vous sûr ?";
+"SIGN_OUT_ALERT_MESSAGE" = "Voulez-vous vous déconnecter ?";
+
+// UserInfosVC
+"NO_DESCRIPTION" = "Aucune description";
+"PERSONAL_INFOS_TITLE" = "Informations personnelles";
+"DESCRIPTION" = "Description (optionelle)";
+"SAVE_INFOS_ALERT_TITLE" = "Êtes-vous sûr ?";
+"SAVE_INFOS_ALERT_MESSAGE" = "Voulez-vous sauvegarder ces nouvelles informations ?";
+
+// FavoriteSerieVC
+"FAVORITE_SERIE_TITLE" = "Séries Favorites";
+"FAVSERIE_TABLEVIEW_ALERT_TITLE" = "Aucune série favorite pour le moment !";
+"FAVSERIE_TABLEVIEW_ALERT_MESSAGE" = "Cliquez sur l'étoile pour mettre une série dans vos favoris.";
+
+// UserVC
+"USER" = "Utilisateur";
+"NO_USER_ALERT" = "Pas d'utilisateur trouvé !";
+
+// ===============================
+// COMMON STRING
 "NEXT" = "Suivant";
 "SAVE" = "Enregistrer";
 "VALIDATE" = "Valider";
+"CANCEL" = "Annuler";
+"YES" = "Oui";
+
 "NICKNAME" = "Pseudo";
+"FULLNAME" = "Nom complet";
 "LAST_NAME" = "Nom";
 "FIRST_NAME" = "Prénom";
+
 "ACCOUNT_DELECTED" = "Compte Supprimé";
+"UNKNOWN" = "Inconnue";
+"SORRY" = "Désolé !";
+
+"TITLE" = "Titre";
+"TOPIC" = "Sujet";

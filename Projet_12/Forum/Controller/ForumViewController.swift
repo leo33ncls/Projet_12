@@ -45,8 +45,10 @@ class ForumViewController: UIViewController {
                 self.topicsTableView.restore()
                 self.topicsTableView.reloadData()
             } else {
-                self.topicsTableView.setEmptyView(title: "Aucun sujet pour le moment !",
-                                                  message: "Cliquez en haut à droit pour créer un topic.")
+                self.topicsTableView.setEmptyView(title: NSLocalizedString("FORUM_TABLEVIEW_ALERT_TITLE",
+                                                                           comment: "No topic yet !"),
+                                                  message: NSLocalizedString("FORUM_TABLEVIEW_ALERT_MESSAGE",
+                                                                             comment: "Instructions"))
             }
         }
     }

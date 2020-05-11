@@ -12,9 +12,17 @@ import UIKit
 class UserInfosViewController: UIViewController {
 
     // MARK: - View Outlet
+    @IBOutlet weak var fullnameLabel: UILabel!
     @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+
+    // MARK: - View Text
+    let fullnamePlaceholder = NSLocalizedString("FULLNAME", comment: "")
+    let nicknamePlaceholder = NSLocalizedString("NICKNAME", comment: "")
 
     // MARK: - View Properties
     // The user received from the AccountVC.
@@ -23,6 +31,7 @@ class UserInfosViewController: UIViewController {
     // =======================
     // MARK: - View Cycles
     override func viewDidLoad() {
+        setTextAndTitle()
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         fullNameTextField.delegate = self
@@ -42,18 +51,22 @@ class UserInfosViewController: UIViewController {
         // Display the user informations.
         fullNameTextField.text = currentUser.fullName
         nicknameTextField.text = currentUser.nickname
-        descriptionTextView.text = currentUser.description
+        if currentUser.description == "nil" {
+            descriptionTextView.text = ""
+        } else {
+            descriptionTextView.text = currentUser.description
+        }
     }
 
     // MARK: - View Actions
     // Action checking if the textFields are completed and presents the saveInfosAlert.
     @IBAction func saveUserInfosChange(_ sender: UIButton) {
-        let fullNameText = fullNameTextField.checkTextfield(placeholder: "Fullname")
-        let nicknameText = nicknameTextField.checkTextfield(placeholder: "Nickname")
+        let fullNameText = fullNameTextField.checkTextfield(placeholder: fullnamePlaceholder)
+        let nicknameText = nicknameTextField.checkTextfield(placeholder: nicknamePlaceholder)
 
         guard let fullName =  fullNameText, let nickname = nicknameText else { return }
         guard let description = descriptionTextView.text, description != "" else {
-            saveInfosAlert(fullName: fullName, nickname: nickname, description: "No description")
+            saveInfosAlert(fullName: fullName, nickname: nickname, description: nil)
             return
         }
         saveInfosAlert(fullName: fullName, nickname: nickname, description: description)
@@ -72,17 +85,25 @@ class UserInfosViewController: UIViewController {
         - nickname: The user nickname we want to save.
         - description: The user description we want to save.
      */
-    private func saveInfosAlert(fullName: String, nickname: String, description: String) {
+    private func saveInfosAlert(fullName: String, nickname: String, description: String?) {
         guard let currentUser = user else { return }
-        let alertVC = UIAlertController(title: "Are you sure ?",
-                                        message: "Do you want to save this new informations ?",
+        guard currentUser.fullName != fullName || currentUser.nickname != nickname
+            || currentUser.description != description else {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
+
+        let alertVC = UIAlertController(title: NSLocalizedString("SAVE_INFOS_ALERT_TITLE", comment: "Sure ?"),
+                                        message: NSLocalizedString("SAVE_INFOS_ALERT_MESSAGE", comment: "Save ?"),
                                         preferredStyle: .alert)
-        let save = UIAlertAction(title: "Yes", style: .default) { (act) in
+        let save = UIAlertAction(title: NSLocalizedString("YES", comment: ""),
+                                 style: .default) { (act) in
             UsersService.updateUserInformation(userId: currentUser.id, fullName: fullName,
                                                nickname: nickname, description: description)
             self.navigationController?.popViewController(animated: true)
         }
-        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""),
+                                   style: .cancel, handler: nil)
 
         alertVC.addAction(save)
         alertVC.addAction(cancel)
@@ -92,6 +113,13 @@ class UserInfosViewController: UIViewController {
 
 // MARK: - Keyboard and TextView
 extension UserInfosViewController: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == fullNameTextField {
+            textField.restore(placeholder: fullnamePlaceholder)
+        } else if textField == nicknameTextField {
+            textField.restore(placeholder: nicknamePlaceholder)
+        }
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -127,5 +155,26 @@ extension UserInfosViewController: UITextFieldDelegate, UITextViewDelegate {
         fullNameTextField.resignFirstResponder()
         nicknameTextField.resignFirstResponder()
         descriptionTextView.resignFirstResponder()
+    }
+}
+
+// MARK: - Localization
+extension UserInfosViewController {
+    /// Function that sets texts and titles of the view depending on the localization.
+    private func setTextAndTitle() {
+        self.navigationItem.title = NSLocalizedString("PERSONAL_INFOS_TITLE", comment: "Personal infos")
+        fullnameLabel.text = NSLocalizedString("FULLNAME", comment: "")
+        nicknameLabel.text = NSLocalizedString("NICKNAME", comment: "")
+        descriptionLabel.text = NSLocalizedString("DESCRIPTION", comment: "")
+        saveButton.setTitle(NSLocalizedString("SAVE", comment: ""), for: .normal)
+
+        fullNameTextField
+            .attributedPlaceholder = NSAttributedString(string: fullnamePlaceholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
+        nicknameTextField
+            .attributedPlaceholder = NSAttributedString(string: nicknamePlaceholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor:
+                                                            UIColor.placeholderGray])
     }
 }

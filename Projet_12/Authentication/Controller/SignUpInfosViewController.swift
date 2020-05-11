@@ -81,11 +81,10 @@ class SignUpInfosViewController: UIViewController {
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard and TextField
 extension SignUpInfosViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         alertLabel.isHidden = true
-        textField.layer.borderWidth = 0
         if textField == nicknameTextField {
             nicknameTextField.restore(placeholder: nicknamePlaceholder)
         } else if textField == lastNameTextField {

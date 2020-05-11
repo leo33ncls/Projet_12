@@ -85,12 +85,16 @@ class PostView: UIView {
                 self.nicknameLabel.text = nickname
                 self.userId = post.userId
             } else {
-                self.nicknameLabel.text = "Unknown"
+                self.nicknameLabel.text = NSLocalizedString("ACCOUNT_DELECTED", comment: "")
                 self.userId = nil
             }
         }
-        dateLabel.text = "Posté le \(DateService().transformDateToString(date: post.date))"
-                        + " à \(DateService().transformHourToString(date: post.date))"
+        let dateFormatString = NSLocalizedString("POST_DATE", comment: "Post on ...")
+        let hourFormatString = NSLocalizedString("POST_HOUR", comment: "at ...")
+        dateLabel.text = String.localizedStringWithFormat(dateFormatString,
+                                                          DateService().transformDateToString(date: post.date))
+            + " " + String.localizedStringWithFormat(hourFormatString,
+                                                     DateService().transformHourToString(date: post.date))
         textView.text = post.text
     }
 }

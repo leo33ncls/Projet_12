@@ -58,7 +58,7 @@ class SearchSerieView: UIView {
         if let genres = serie.genreIDS {
             serieGenresLabel.text = Genres.getStringGenre(genreId: genres)
         } else {
-            serieGenresLabel.text = "Unknown genre"
+            serieGenresLabel.text = NSLocalizedString("UNKNOWN_GENRE", comment: "")
         }
 
         guard let serieImageUrl = serie.posterPath else {

@@ -57,7 +57,7 @@ class TopicViewController: UIViewController {
 
         guard let currentTopic = topic else { return }
         serieNameLabel.text = currentTopic.serieName
-        topicTitleLabel.text = "Sujet: \(currentTopic.title)"
+        topicTitleLabel.text = NSLocalizedString("TOPIC", comment: "") + ": \(currentTopic.title)"
 
         getPosts(topic: currentTopic)
 
@@ -140,7 +140,10 @@ class TopicViewController: UIViewController {
                 self.postTableView.restore()
                 self.postTableView.reloadData()
             } else {
-                self.postTableView.setEmptyView(title: "Désolé !", message: "Ce sujet n'a aucun post !")
+                self.postTableView.setEmptyView(title: NSLocalizedString("TOPIC_TABLEVIEW_ALERT_TITLE",
+                                                                         comment: "Sorry"),
+                                                message: NSLocalizedString("TOPIC_TABLEVIEW_ALERT_MESSAGE",
+                                                                           comment: "No post"))
             }
         }
     }

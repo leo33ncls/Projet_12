@@ -14,6 +14,7 @@ class ForumFavoriteViewController: UIViewController {
 
     // MARK: - View Outlet
     @IBOutlet weak var topicsTableView: UITableView!
+    @IBOutlet weak var viewTitleLabel: UILabel!
 
     // MARK: - View Propeties
     var topics = [Topic]()
@@ -25,6 +26,7 @@ class ForumFavoriteViewController: UIViewController {
         super.viewDidLoad()
         topicsTableView.delegate = self
         topicsTableView.dataSource = self
+        viewTitleLabel.text = NSLocalizedString("FORUM_FAVORITE_TITLE", comment: "Favorite topics")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +43,10 @@ class ForumFavoriteViewController: UIViewController {
             } else {
                 self.topics.removeAll()
                 self.topicsTableView.reloadData()
-                self.topicsTableView.setEmptyView(title: "Aucun sujet favoris pour le moment !",
-                                                  message: "Cliquez sur l'étoile pour mettre un sujet dans vos favoris.")
+                self.topicsTableView.setEmptyView(title: NSLocalizedString("FAVFORUM_TABLEVIEW_ALERT_TITLE",
+                                                                           comment: "No topic!"),
+                                                  message: NSLocalizedString("FAVFORUM_TABLEVIEW_ALERT_MESSAGE",
+                                                                             comment: "Instructions"))
             }
         }
     }

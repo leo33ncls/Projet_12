@@ -69,11 +69,10 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: - Keyboard
+// MARK: - Keyboard and TextField
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         alertLabel.isHidden = true
-        textField.layer.borderWidth = 0
         if textField == emailTextField {
             emailTextField.restore(placeholder: emailPlaceholder)
         } else if textField == passwordTextField {
