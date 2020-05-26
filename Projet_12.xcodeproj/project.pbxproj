@@ -79,6 +79,10 @@
 		28B6DFD82458A3F000231C83 /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD72458A3F000231C83 /* Print.swift */; };
 		28B6DFDA245F794100231C83 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFD9245F794100231C83 /* UITableView.swift */; };
 		28B6DFDE245F993300231C83 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6DFDD245F993300231C83 /* UICollectionView.swift */; };
+		28BA640124736793008090C5 /* UsersServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA640024736793008090C5 /* UsersServiceTestCase.swift */; };
+		28BA640324736847008090C5 /* FakeSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA640224736847008090C5 /* FakeSnapshot.swift */; };
+		28BA6407247415DC008090C5 /* FirebaseDatabaseFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA6406247415DC008090C5 /* FirebaseDatabaseFake.swift */; };
+		28BA640D247C8695008090C5 /* FavoriteTopicsServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA640C247C8695008090C5 /* FavoriteTopicsServiceTestCase.swift */; };
 		28BBF02D2461E49400D0866D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BBF02C2461E49400D0866D /* UITextField.swift */; };
 		28BBF03024676BE400D0866D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28BBF02A2461B95800D0866D /* Localizable.strings */; };
 		28BBF0322468C5AA00D0866D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BBF0312468C5AA00D0866D /* CustomTabBarController.swift */; };
@@ -181,6 +185,10 @@
 		28B6DFD72458A3F000231C83 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
 		28B6DFD9245F794100231C83 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		28B6DFDD245F993300231C83 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		28BA640024736793008090C5 /* UsersServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersServiceTestCase.swift; sourceTree = "<group>"; };
+		28BA640224736847008090C5 /* FakeSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSnapshot.swift; sourceTree = "<group>"; };
+		28BA6406247415DC008090C5 /* FirebaseDatabaseFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseFake.swift; sourceTree = "<group>"; };
+		28BA640C247C8695008090C5 /* FavoriteTopicsServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTopicsServiceTestCase.swift; sourceTree = "<group>"; };
 		28BBF0262461B81B00D0866D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		28BBF0272461B81B00D0866D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		28BBF0292461B95800D0866D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -262,11 +270,11 @@
 		28538D2023F21D0200EE4FC1 /* Projet_12Tests */ = {
 			isa = PBXGroup;
 			children = (
-				28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */,
-				28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */,
+				28BA6408247416E9008090C5 /* Double */,
+				28BA6409247416FE008090C5 /* FakeData */,
 				28538D2923F21D6A00EE4FC1 /* SeriesServiceTestCase.swift */,
-				28538D2B23F21DB300EE4FC1 /* SeriesList.json */,
-				28B6DFD3244D44ED00231C83 /* Serie.json */,
+				28BA640024736793008090C5 /* UsersServiceTestCase.swift */,
+				28BA640C247C8695008090C5 /* FavoriteTopicsServiceTestCase.swift */,
 				28898D4C2422B5B100BD06F3 /* DateServiceTestCase.swift */,
 				28898D4E2422BE4D00BD06F3 /* GenresTestCase.swift */,
 				28A0E159243A7FB100B01886 /* APIKeysServiceTestCase.swift */,
@@ -540,6 +548,26 @@
 				28B6DFCF244D2C3300231C83 /* FavoriteSerieCVCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		28BA6408247416E9008090C5 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				28538D2F23F2219D00EE4FC1 /* URLSessionFake.swift */,
+				28BA6406247415DC008090C5 /* FirebaseDatabaseFake.swift */,
+			);
+			path = Double;
+			sourceTree = "<group>";
+		};
+		28BA6409247416FE008090C5 /* FakeData */ = {
+			isa = PBXGroup;
+			children = (
+				28538D2D23F21EB400EE4FC1 /* FakeResponseData.swift */,
+				28BA640224736847008090C5 /* FakeSnapshot.swift */,
+				28538D2B23F21DB300EE4FC1 /* SeriesList.json */,
+				28B6DFD3244D44ED00231C83 /* Serie.json */,
+			);
+			path = FakeData;
 			sourceTree = "<group>";
 		};
 		28BBF0332468CBB500D0866D /* General */ = {
@@ -897,12 +925,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BA6407247415DC008090C5 /* FirebaseDatabaseFake.swift in Sources */,
+				28BA640324736847008090C5 /* FakeSnapshot.swift in Sources */,
 				28538D2A23F21D6A00EE4FC1 /* SeriesServiceTestCase.swift in Sources */,
 				28538D3023F2219D00EE4FC1 /* URLSessionFake.swift in Sources */,
 				28538D2E23F21EB400EE4FC1 /* FakeResponseData.swift in Sources */,
+				28BA640124736793008090C5 /* UsersServiceTestCase.swift in Sources */,
 				28898D4F2422BE4D00BD06F3 /* GenresTestCase.swift in Sources */,
 				28A0E15A243A7FB100B01886 /* APIKeysServiceTestCase.swift in Sources */,
 				28898D4D2422B5B100BD06F3 /* DateServiceTestCase.swift in Sources */,
+				28BA640D247C8695008090C5 /* FavoriteTopicsServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 // View Controller to evaluate a serie.
 class EvaluationViewController: UIViewController {

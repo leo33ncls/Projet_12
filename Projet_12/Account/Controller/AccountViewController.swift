@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 // View Controller to display the user informations of the user logged in the application.
 class AccountViewController: UIViewController {
@@ -104,7 +105,7 @@ class AccountViewController: UIViewController {
      - Parameter userId: The id of the user whose we want the informations.
     */
     private func getUserInfos(userId: String) {
-        UsersService.getUserInformation(userId: userId) { (user) in
+        UsersService(FIRDatabase: Database.database()).getUserInformation(userId: userId) { (user) in
             self.displayActivityIndicator(false)
             if let user = user {
                 self.currentUser = user

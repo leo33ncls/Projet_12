@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // View that displays favorite topic informations.
 class FavoriteTopicView: UIView {
@@ -58,7 +59,7 @@ class FavoriteTopicView: UIView {
     func configure(favoriteTopic: Topic, indexPath: Int) {
         serieNameLabel.text = favoriteTopic.serieName
         topicTitleLabel.text = favoriteTopic.title
-        UsersService.getUserNickname(userId: favoriteTopic.userId) { (nickname) in
+        UsersService(FIRDatabase: Database.database()).getUserNickname(userId: favoriteTopic.userId) { (nickname) in
             if let nickname = nickname {
                 self.nicknameLabel.text = nickname
             } else {

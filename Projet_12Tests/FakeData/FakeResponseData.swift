@@ -24,6 +24,8 @@ class FakeResponseData {
         return data
     }
 
+    static let imageData = "image".data(using: .utf8)!
+
     static let incorrectData = "erreur".data(using: .utf8)!
 
     static let responseOK = HTTPURLResponse(url: URL(string: "https://")!,

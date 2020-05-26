@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // View Controller to display the user informations of a user.
 class UserViewController: UIViewController {
@@ -78,7 +79,7 @@ class UserViewController: UIViewController {
      - Parameter userId: The id of the user whose we want the informations.
      */
     private func getUserInfos(userId: String) {
-        UsersService.getUserInformation(userId: userId) { (user) in
+        UsersService(FIRDatabase: Database.database()).getUserInformation(userId: userId) { (user) in
             self.displayActivityIndicator(false)
             if let user = user {
                 self.currentUser = user

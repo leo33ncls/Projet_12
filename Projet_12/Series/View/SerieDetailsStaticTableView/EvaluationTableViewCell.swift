@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // TableViewCell that displays the serie evaluation.
 class EvaluationTableViewCell: UITableViewCell {

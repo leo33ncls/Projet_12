@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 // View controller to save the user informations.
 class SignUpInfosViewController: UIViewController {
@@ -70,7 +71,7 @@ class SignUpInfosViewController: UIViewController {
                 guard let userId = user?.user.uid else { return }
                 let user = User(id: userId, nickname: nickname, email: userEmail,
                                 fullName: lastName + firstName, description: nil)
-                UsersService.saveUser(user: user)
+                UsersService(FIRDatabase: Database.database()).saveUser(user: user)
 
                 // Present the TabBarController.
                 guard let vc = self.storyboard?

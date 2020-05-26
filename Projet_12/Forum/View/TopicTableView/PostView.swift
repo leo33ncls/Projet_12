@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // View that displays a post of a topic.
 class PostView: UIView {
@@ -80,7 +81,7 @@ class PostView: UIView {
      - Parameter post: The post to display.
      */
     func configure(post: Post) {
-        UsersService.getUserNickname(userId: post.userId) { (nickname) in
+        UsersService(FIRDatabase: Database.database()).getUserNickname(userId: post.userId) { (nickname) in
             if let nickname = nickname {
                 self.nicknameLabel.text = nickname
                 self.userId = post.userId

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 // View controller to choose a nickname and save the account.
 class NickNameViewController: UIViewController {
@@ -47,7 +48,7 @@ class NickNameViewController: UIViewController {
             return
         }
         let user = User(id: currentUser.uid, nickname: nickname, email: email, fullName: name, description: nil)
-        UsersService.saveUser(user: user)
+        UsersService(FIRDatabase: Database.database()).saveUser(user: user)
 
         // Present the TabBarController.
         guard let vc = self.storyboard?

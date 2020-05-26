@@ -5,6 +5,7 @@
 //  Created by Léo NICOLAS on 11/02/2020.
 //  Copyright © 2020 Léo NICOLAS. All rights reserved.
 //
+// swiftlint:disable type_body_length
 
 @testable import Projet_12
 import XCTest
@@ -13,6 +14,8 @@ class SeriesServiceTestCase: XCTestCase {
     let genre = 18
     let searchText = "Game"
     let serieId = 456
+    let language = "en"
+    let serieImageUrl = "https://serieImage"
 
     //=====================
     // Test function getSeriesList
@@ -25,7 +28,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSeriesList(genre: genre) { (success, seriesList) in
+        seriesService.getSeriesList(genre: genre, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -41,7 +44,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSeriesList(genre: genre) { (success, seriesList) in
+        seriesService.getSeriesList(genre: genre, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -59,7 +62,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSeriesList(genre: genre) { (success, seriesList) in
+        seriesService.getSeriesList(genre: genre, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -77,7 +80,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSeriesList(genre: genre) { (success, seriesList) in
+        seriesService.getSeriesList(genre: genre, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -95,7 +98,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSeriesList(genre: genre) { (success, seriesList) in
+        seriesService.getSeriesList(genre: genre, language: language) { (success, seriesList) in
             // Then
             let id = 80743
             let popularity = 344.528
@@ -129,7 +132,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
+        seriesService.searchSeries(searchText: searchText, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -145,7 +148,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
+        seriesService.searchSeries(searchText: searchText, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -163,7 +166,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
+        seriesService.searchSeries(searchText: searchText, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -181,7 +184,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
+        seriesService.searchSeries(searchText: searchText, language: language) { (success, seriesList) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(seriesList)
@@ -199,7 +202,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.searchSeries(searchText: searchText) { (success, seriesList) in
+        seriesService.searchSeries(searchText: searchText, language: language) { (success, seriesList) in
             // Then
             let id = 80743
             let popularity = 344.528
@@ -233,7 +236,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSerie(serieId: serieId) { (success, serie) in
+        seriesService.getSerie(serieId: serieId, language: language) { (success, serie) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(serie)
@@ -249,7 +252,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSerie(serieId: serieId) { (success, serie) in
+        seriesService.getSerie(serieId: serieId, language: language) { (success, serie) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(serie)
@@ -267,7 +270,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSerie(serieId: serieId) { (success, serie) in
+        seriesService.getSerie(serieId: serieId, language: language) { (success, serie) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(serie)
@@ -285,7 +288,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSerie(serieId: serieId) { (success, serie) in
+        seriesService.getSerie(serieId: serieId, language: language) { (success, serie) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(serie)
@@ -303,7 +306,7 @@ class SeriesServiceTestCase: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        seriesService.getSerie(serieId: serieId) { (success, serie) in
+        seriesService.getSerie(serieId: serieId, language: language) { (success, serie) in
             // Then
             let popularity = 115.628
             let name = "The Simpsons"
@@ -318,6 +321,77 @@ class SeriesServiceTestCase: XCTestCase {
             XCTAssertEqual(posterPath, serie?.posterPath)
             XCTAssertEqual(firstAirDate, serie?.firstAirDate)
 
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    //===================
+    // Test function getSerieImage
+
+    func testGetSerieImageShouldPostFailedCompletionHandlerIfError() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: nil,
+                                                                  response: nil,
+                                                                  error: FakeResponseData.error))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerieImage(imageUrl: serieImageUrl) { (data) in
+            // Then
+            XCTAssertNil(data)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieImageShouldPostFailedCompletionHandlerIfNoData() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: nil,
+                                                                  response: nil,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerieImage(imageUrl: serieImageUrl) { (data) in
+            // Then
+            XCTAssertNil(data)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieImageShouldPostFailedCompletionHandlerIfIncorrectResponse() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: FakeResponseData.imageData,
+                                                                  response: FakeResponseData.responseKO,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerieImage(imageUrl: serieImageUrl) { (data) in
+            // Then
+            XCTAssertNil(data)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetSerieImageShouldReturnDataIfNoErrorAndImageData() {
+        // Given
+        let seriesService = SeriesService(session: URLSessionFake(data: FakeResponseData.imageData,
+                                                                  response: FakeResponseData.responseOK,
+                                                                  error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        seriesService.getSerieImage(imageUrl: serieImageUrl) { (data) in
+            // Then
+            XCTAssertNotNil(data)
             expectation.fulfill()
         }
 

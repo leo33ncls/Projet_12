@@ -35,7 +35,8 @@ class ImageStorageService {
             userRef.downloadURL(completion: { (url, error) in
                 if let urlString = url?.absoluteString {
                     let imageDict = ["imageUrl": urlString]
-                    UsersService.usersDTBRef.child(userId).updateChildValues(imageDict)
+                    UsersService(FIRDatabase: Database.database())
+                        .usersDTBRef.child(userId).updateChildValues(imageDict)
                 } else {
                     print("Error saving user image")
                 }
@@ -59,7 +60,8 @@ class ImageStorageService {
             userRef.downloadURL(completion: { (url, error) in
                 if let urlString = url?.absoluteString {
                     let backgroundDict = ["backgroundUrl": urlString]
-                    UsersService.usersDTBRef.child(userId).updateChildValues(backgroundDict)
+                    UsersService(FIRDatabase: Database.database())
+                        .usersDTBRef.child(userId).updateChildValues(backgroundDict)
                 } else {
                     print("Error saving user image")
                 }

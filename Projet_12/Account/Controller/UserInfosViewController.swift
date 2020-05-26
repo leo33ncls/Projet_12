@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // View Controller to change the user information of the user logged in the application.
 class UserInfosViewController: UIViewController {
@@ -98,8 +99,9 @@ class UserInfosViewController: UIViewController {
                                         preferredStyle: .alert)
         let save = UIAlertAction(title: NSLocalizedString("YES", comment: ""),
                                  style: .default) { (act) in
-            UsersService.updateUserInformation(userId: currentUser.id, fullName: fullName,
-                                               nickname: nickname, description: description)
+            UsersService(FIRDatabase: Database.database())
+                .updateUserInformation(userId: currentUser.id, fullName: fullName,
+                                       nickname: nickname, description: description)
             self.navigationController?.popViewController(animated: true)
         }
         let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""),

@@ -13,7 +13,12 @@ import FirebaseDatabase
 class UsersService {
 
     /// The reference for the Users database.
-    static let usersDTBRef = Database.database().reference().child("Users")
+    var usersDTBRef = Database.database().reference().child("Users")
+
+    /// An initializer which is used for the unit test.
+    init(FIRDatabase: Database) {
+        self.usersDTBRef = FIRDatabase.reference().child("Users")
+    }
 
     /**
      Function which saves a user in the Users database.
@@ -21,7 +26,7 @@ class UsersService {
 
      - Parameter user: The user to save in the db.
     */
-    static func saveUser(user: User) {
+    func saveUser(user: User) {
         let userDictionary: NSDictionary = ["nickname": user.nickname,
                                             "email": user.email,
                                             "fullName": user.fullName,
@@ -47,7 +52,7 @@ class UsersService {
         - userId: The user Id of the user that we want the nickname.
         - callback: The callback returning the nickname.
      */
-    static func getUserNickname(userId: String, callback: @escaping (String?) -> Void) {
+    func getUserNickname(userId: String, callback: @escaping (String?) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
             guard let dictUser = snapshot.value as? [String: Any],
                 let nickname = dictUser["nickname"] as? String else {
@@ -68,7 +73,7 @@ class UsersService {
         - userId: The user Id of the user whose we want the information.
         - callback: The callback returning the user.
      */
-    static func getUserInformation(userId: String, callback: @escaping (User?) -> Void) {
+    func getUserInformation(userId: String, callback: @escaping (User?) -> Void) {
         usersDTBRef.child(userId).observe(.value) { (snapshot) in
             guard let dictUser = snapshot.value as? [String: Any],
                 let nickname = dictUser["nickname"] as? String,
@@ -100,7 +105,7 @@ class UsersService {
         - nickname: The new nickname to save in the db for the given user.
         - description: The new description to save in the db for the given user.
      */
-    static func updateUserInformation(userId: String, fullName: String, nickname: String, description: String?) {
+    func updateUserInformation(userId: String, fullName: String, nickname: String, description: String?) {
         usersDTBRef.child(userId).updateChildValues(["fullName": fullName])
         usersDTBRef.child(userId).updateChildValues(["nickname": nickname])
         usersDTBRef.child(userId).updateChildValues(["description": description ?? "nil"])

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 // View Controller to display a topic (list of posts).
 class TopicViewController: UIViewController {
@@ -63,7 +64,8 @@ class TopicViewController: UIViewController {
 
         // Set the color of the favoriteButton.
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        FavoriteTopicService.isAFavoriteTopic(userId: userId, topic: currentTopic) { (success) in
+        FavoriteTopicService(FIRDatabase: Database.database())
+            .isAFavoriteTopic(userId: userId, topic: currentTopic) { (success) in
             if success {
                 self.favoriteButton.tintColor = UIColor.customOrange
             } else {
@@ -116,12 +118,15 @@ class TopicViewController: UIViewController {
     @IBAction func saveTopicAsFavorite(_ sender: UIBarButtonItem) {
         guard let currentTopic = topic else { return }
         guard let currentUser = Auth.auth().currentUser?.uid else { return }
-        FavoriteTopicService.isAFavoriteTopic(userId: currentUser, topic: currentTopic) { (success) in
+        FavoriteTopicService(FIRDatabase: Database.database())
+            .isAFavoriteTopic(userId: currentUser, topic: currentTopic) { (success) in
             if success {
-                FavoriteTopicService.removeFavoriteTopic(userId: currentUser, topic: currentTopic)
+                FavoriteTopicService(FIRDatabase: Database.database())
+                    .removeFavoriteTopic(userId: currentUser, topic: currentTopic)
                 self.favoriteButton.tintColor = UIColor.white
             } else {
-                FavoriteTopicService.saveTopicAsFavorite(userId: currentUser, topic: currentTopic)
+                FavoriteTopicService(FIRDatabase: Database.database())
+                    .saveTopicAsFavorite(userId: currentUser, topic: currentTopic)
                 self.favoriteButton.tintColor = UIColor.customOrange
             }
         }

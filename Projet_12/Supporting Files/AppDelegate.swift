@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseDatabase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -51,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 guard let rootVC = self.window?.rootViewController,
                     let id = Auth.auth().currentUser?.uid else { return }
 
-                let ref = UsersService.usersDTBRef.child(id)
+                let ref = UsersService(FIRDatabase: Database.database()).usersDTBRef.child(id)
                 ref.observe(.value) { (snapshot) in
                     if snapshot.exists() {
                         guard let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")

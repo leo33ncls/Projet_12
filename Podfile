@@ -8,6 +8,7 @@ target 'Projet_12' do
   inhibit_all_warnings!
 
   # Pods for Projet_12
+  pod 'Firebase'
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 // View Controller to display the favorite topics.
 class ForumFavoriteViewController: UIViewController {
@@ -35,7 +36,7 @@ class ForumFavoriteViewController: UIViewController {
 
         // Gets the favorite topics of the user.
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        FavoriteTopicService.getFavoriteTopics(userId: userId) { (topicArray) in
+        FavoriteTopicService(FIRDatabase: Database.database()).getFavoriteTopics(userId: userId) { (topicArray) in
             if let topicArray = topicArray {
                 self.topics = topicArray
                 self.topicsTableView.restore()

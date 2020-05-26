@@ -13,10 +13,16 @@ import FirebaseDatabase
 class FavoriteTopicService {
 
     /// The reference for the Favorite Topic database.
-    static let favoriteTopicRef = Database.database().reference().child("FavoriteTopic")
+    var favoriteTopicRef = Database.database().reference().child("FavoriteTopic")
 
     /// The reference for the Forum database.
-    static let forumRef = Database.database().reference().child("Forum")
+    var forumRef = Database.database().reference().child("Forum")
+
+    /// An initializer which is used for the unit test.
+    init(FIRDatabase: Database) {
+        self.favoriteTopicRef = FIRDatabase.reference().child("FavoriteTopic")
+        self.forumRef = FIRDatabase.reference().child("Forum")
+    }
 
     /**
      Function which saves a topic on a serie in the FavoriteTopic database.
@@ -26,7 +32,7 @@ class FavoriteTopicService {
         - userId: The id of the user saving the topic as favorite.
         - topic: The topic to save as favorite in the db.
      */
-    static func saveTopicAsFavorite(userId: String, topic: Topic) {
+    func saveTopicAsFavorite(userId: String, topic: Topic) {
         guard let topicID = topic.topicId else { return }
 
         favoriteTopicRef.child(userId)
@@ -52,7 +58,7 @@ class FavoriteTopicService {
         - topic: The topic we want check if it's a favorite.
         - callback: The callback returning a boolean that tells if the topic is a favorite.
      */
-    static func isAFavoriteTopic(userId: String, topic: Topic, callback: @escaping (Bool) -> Void) {
+    func isAFavoriteTopic(userId: String, topic: Topic, callback: @escaping (Bool) -> Void) {
         guard let topicID = topic.topicId else {
             callback(false)
             return
@@ -80,7 +86,7 @@ class FavoriteTopicService {
         - userId: The id of the user we want to remove the topic from his favorites.
         - topic: The topic to remove from favorite in the db.
      */
-    static func removeFavoriteTopic(userId: String, topic: Topic) {
+    func removeFavoriteTopic(userId: String, topic: Topic) {
         guard let topicID = topic.topicId else { return }
 
         favoriteTopicRef.child(userId)
@@ -93,9 +99,9 @@ class FavoriteTopicService {
         }
     }
 
-    private static func getFavoriteTopicsInfos(userId: String,
-                                               callback: @escaping ([FavoriteTopicInfos]?) -> Void) {
-        FavoriteTopicService.favoriteTopicRef.child(userId).observe(.value) { (snapshot) in
+    func getFavoriteTopicsInfos(userId: String,
+                                callback: @escaping ([FavoriteTopicInfos]?) -> Void) {
+        favoriteTopicRef.child(userId).observe(.value) { (snapshot) in
             guard snapshot.exists() else {
                 callback(nil)
                 return
@@ -128,7 +134,7 @@ class FavoriteTopicService {
         - userId: The id of the user we want the favorite topics.
         - callback: The callback returning all the favorite topics of the user.
      */
-    static func getFavoriteTopics(userId: String, callback: @escaping ([Topic]?) -> Void) {
+    func getFavoriteTopics(userId: String, callback: @escaping ([Topic]?) -> Void) {
         getFavoriteTopicsInfos(userId: userId) { (favoriteTopicsInfos) in
             guard let favoriteTopicsInfos = favoriteTopicsInfos else {
                 callback(nil)
@@ -137,7 +143,7 @@ class FavoriteTopicService {
 
             var favoriteTopics = [Topic]()
             for favoriteTopicInfos in favoriteTopicsInfos {
-                forumRef.child(String(favoriteTopicInfos.serieId))
+                self.forumRef.child(String(favoriteTopicInfos.serieId))
                     .child(favoriteTopicInfos.topicId).observe(.value, with: { (snapshot) in
                         guard snapshot.exists() else {
                             callback(nil)

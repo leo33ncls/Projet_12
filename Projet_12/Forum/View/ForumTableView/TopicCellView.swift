@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // View that displays topic informations.
 class TopicCellView: UIView {
@@ -56,7 +57,7 @@ class TopicCellView: UIView {
      */
     func configure(topic: Topic, indexPath: Int) {
         titleLabel.text = topic.title
-        UsersService.getUserNickname(userId: topic.userId) { (nickname) in
+        UsersService(FIRDatabase: Database.database()).getUserNickname(userId: topic.userId) { (nickname) in
             if let nickname = nickname {
                 self.nicknameLabel.text = nickname
             } else {
