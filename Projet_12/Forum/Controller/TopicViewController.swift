@@ -204,10 +204,10 @@ extension TopicViewController: UITextViewDelegate {
     /// Function which moves up the view when the keyboard appears.
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let info = notification.userInfo as NSDictionary? else { return }
-        guard let keyboardFrame = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        guard let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
         let keyboardSize = keyboardFrame.cgRectValue
-        let keyboardHeight: CGFloat = keyboardSize.height
+        let keyboardHeight: CGFloat = keyboardSize.height - view.safeAreaInsets.bottom
 
         guard let keyboardAnimationTime = info[UIResponder.keyboardAnimationDurationUserInfoKey]
             as? NSNumber as? CGFloat else { return }
@@ -224,10 +224,10 @@ extension TopicViewController: UITextViewDelegate {
     /// Function which moves back the view when the keyboard disappears.
     @objc func keyboardWillHide(notification: NSNotification) {
         guard let info: NSDictionary = notification.userInfo as NSDictionary? else { return }
-        guard let keyboardFrame = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        guard let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
         let keyboardSize = keyboardFrame.cgRectValue
-        let keyboardHeight: CGFloat = keyboardSize.height
+        let keyboardHeight: CGFloat = keyboardSize.height - view.safeAreaInsets.bottom
 
         guard let keyboardAnimationTime = info[UIResponder.keyboardAnimationDurationUserInfoKey]
             as? NSNumber as? CGFloat else { return }

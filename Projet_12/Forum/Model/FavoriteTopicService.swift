@@ -116,7 +116,6 @@ class FavoriteTopicService {
                         callback(nil)
                         return
                 }
-                print(dictTopic)
                 for topic in dictTopic {
                     let favoriteTopic = FavoriteTopicInfos(serieId: serieId,
                                                            topicId: topic.key)
