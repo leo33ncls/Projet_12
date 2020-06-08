@@ -112,15 +112,18 @@ class FavoriteTopicService {
                 guard let snap = child as? DataSnapshot,
                     let serieId = Int(snap.key),
                     let dictTopic = snap.value as? [String: Any],
-                    dictTopic.count == 1 else {
+                    dictTopic.count >= 1 else {
                         callback(nil)
                         return
                 }
-                let favoriteTopic = FavoriteTopicInfos(serieId: serieId,
-                                                       topicId: dictTopic.keys.joined())
-                favoriteTopics.append(favoriteTopic)
-                callback(favoriteTopics)
+                print(dictTopic)
+                for topic in dictTopic {
+                    let favoriteTopic = FavoriteTopicInfos(serieId: serieId,
+                                                           topicId: topic.key)
+                    favoriteTopics.append(favoriteTopic)
+                }
             }
+            callback(favoriteTopics)
         }
     }
 

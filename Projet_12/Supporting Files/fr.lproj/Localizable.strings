@@ -46,8 +46,8 @@
 "POST_HOUR" = "à %@";
 
 // ForumVC
-"TOPICS_TABLEVIEW_ALERT_TITLE" = "Aucun sujet pour le moment !";
-"TOPICS_TABLEVIEW_ALERT_MESSAGE" = "Cliquez en haut à droit pour créer un topic.";
+"FORUM_TABLEVIEW_ALERT_TITLE" = "Aucun sujet pour le moment !";
+"FORUM_TABLEVIEW_ALERT_MESSAGE" = "Cliquez en haut à droit pour créer un topic.";
 
 // ForumFavoriteVC
 "FORUM_FAVORITE_TITLE" = "Sujets favoris";

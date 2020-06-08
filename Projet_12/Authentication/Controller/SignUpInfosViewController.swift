@@ -70,7 +70,7 @@ class SignUpInfosViewController: UIViewController {
             } else {
                 guard let userId = user?.user.uid else { return }
                 let user = User(id: userId, nickname: nickname, email: userEmail,
-                                fullName: lastName + firstName, description: nil)
+                                fullName: lastName + " " + firstName, description: nil)
                 UsersService(FIRDatabase: Database.database()).saveUser(user: user)
 
                 // Present the TabBarController.

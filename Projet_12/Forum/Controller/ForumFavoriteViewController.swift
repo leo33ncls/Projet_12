@@ -39,6 +39,7 @@ class ForumFavoriteViewController: UIViewController {
         FavoriteTopicService(FIRDatabase: Database.database()).getFavoriteTopics(userId: userId) { (topicArray) in
             if let topicArray = topicArray {
                 self.topics = topicArray
+                print(self.topics[0].title)
                 self.topicsTableView.restore()
                 self.topicsTableView.reloadData()
             } else {
